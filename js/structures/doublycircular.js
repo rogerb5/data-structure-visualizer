@@ -1,0 +1,1 @@
+console.log('doubly circular linked list code output test');
