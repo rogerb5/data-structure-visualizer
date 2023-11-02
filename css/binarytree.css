@@ -32,8 +32,8 @@ a.home-button {
 
 a.home-button:hover {
     cursor: pointer;
-    color: white;
-    background-color: #0E103D;
+    color: #f1faee;
+    background-color: black;
 }
 
 body {
