@@ -7,12 +7,12 @@
 
 /* Default Styles */
 body {
-    background-color: #1d3557;
+    background-color: #a8dadc;
 }
 
 /* Styles Go Here */
 header {
-    background-color: #e63946;
+    background-color: #e96a70;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,6 +48,6 @@ a.home-button:hover {
 }
 
 main {
-    cursor: url(../assets/icons/diagram-2-fill.svg)15 15, default;
+    cursor: url(../assets/icons/circle-fill.svg)30 30, default;
     min-height: 100vh;
 }
