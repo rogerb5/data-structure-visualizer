@@ -35,8 +35,10 @@ a.home-button:hover {
     color: #f1faee;
     background-color: black;
 }
-
 body {
     border-top: 6rem solid #e63946;
     background-color: #1d3557;
+    cursor: url(../assets/icons/diagram-2-fill.svg), auto;
+    background-size: cover;
+    min-height: 100%;
 }
