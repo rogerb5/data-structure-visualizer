@@ -1,15 +1,6 @@
 /*
   To do implement 
-
-  heapifyUp();
-  heapifyDown();
-
-  extractMax();
   contains();
-  size();
-
-  Open the browser console to see results.
-  Array Based Max Tree Heap
 */
 
 class MaxHeap {
@@ -17,27 +8,80 @@ class MaxHeap {
         this.data = [];
         this.size = 0;
     }
+
     getParentIndex(index) {
         return Math.floor((index - 1) / 2);
     }
 
     getLeftChildIndex(index) {
-        console.log('left child value', this.data[index * 2 + 1]);
         return index * 2 + 1;
     }
 
     getRightChildIndex(index) {
-        console.log('right child value', this.data[index * 2 + 2]);
         return index * 2 + 2;
     }
 
-    add(key) {
-        this.data[this.size] = key;
+    add(value) {
+        this.data[this.size] = value;
         this.size++;
+        // this.heapifyUp();
+    }
+
+    extractMax() {
+        if (this.size === 0) {
+            return null;
+        }
+        this.swap(0, this.size - 1);
+        const max = this.data.pop();
+        this.size--;
+        this.heapifyDown(0);
+        return max;
+    }
+
+    swap(index1, index2) {
+        const temp = this.data[index1];
+        this.data[index1] = this.data[index2];
+        this.data[index2] = temp;
+    }
+
+    heapifyUp() {
+        let currentIndex = this.size - 1;
+        while (this.data[this.getParentIndex(currentIndex)] < this.data[currentIndex]) {
+            const parentIndex = this.getParentIndex(currentIndex);
+            this.swap(parentIndex, currentIndex);
+            currentIndex = parentIndex;
+        }
+    }
+
+    heapifyDown(currentIndex) {
+        while (this.getLeftChildIndex(currentIndex) < this.size) {
+            let biggestChildIndex = this.getLeftChildIndex(currentIndex);
+            if (this.getRightChildIndex(currentIndex) < this.size &&
+                this.data[this.getRightChildIndex(currentIndex)] > this.data[biggestChildIndex]) {
+                biggestChildIndex = this.getRightChildIndex(currentIndex);
+            }
+            if (this.data[currentIndex] < this.data[biggestChildIndex]) {
+                this.swap(currentIndex, biggestChildIndex);
+                currentIndex = biggestChildIndex;
+            } else {
+                return;
+            }
+        }
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    buildMaxHeap() {
+        const lastNonLeafIndex = Math.floor(this.size / 2) - 1;
+        for (let i = lastNonLeafIndex; i >= 0; i--) {
+            this.heapifyDown(i);
+        }
     }
 
     toString() {
-        let result = 'MaxHeap Array Representation: [';
+        let result = '[';
         for (let index = 0; index < this.size; index++) {
             result += this.data[index];
             if (index < this.size - 1) {
@@ -49,12 +93,76 @@ class MaxHeap {
     }
 }
 
-const heap = new MaxHeap();
-heap.add(2);
-heap.add(11);
-heap.add(27);
 
-/* Testing Methods */
-console.log(heap.getLeftChildIndex(0)); // Output: left child value – 11, index 1
-console.log(heap.getRightChildIndex(0)); // Output: right child value - 27, index 2
-console.log(heap.toString()); // Output: MaxHeap Array Representation: [2, 11, 27]
+/*
+
+ TESTING CODE --------------------------------------------------
+
+*/
+const heap = new MaxHeap();
+heap.add(5);
+heap.add(2);
+heap.add(6);
+heap.add(7);
+heap.add(1);
+heap.add(4);
+heap.add(3);
+
+/* A valid max heap using maxHeapify in the add method
+     7
+   /  \
+  6    5
+ /\   / \
+2  1 4   3
+
+[7, 6, 5, 2, 1, 4, 3]
+
+*/
+
+/* A valid max heap using floyd's buildHeap algorithm, 
+   and not using maxHeapify() in the add method, both implmentations are correct but floyds is faster.
+     7
+    / \
+   5   6
+  /\   /\
+ 2  1  4 3
+
+ [7, 5, 6, 2, 1, 4, 3]
+*/
+
+console.log("Before build: " + heap.toString() + " size: " + heap.getSize()); // Before build: [5, 2, 6, 7, 1, 4, 3] size: 7
+heap.buildMaxHeap();
+console.log("After build: " + heap.toString() + " size: " + heap.getSize()); // After build:   [7, 5, 6, 2, 1, 4, 3] size: 7
+
+heap.extractMax();
+console.log("MaxHeap: after extract max: " + heap.toString() + " size: " + heap.getSize()); // [6, 3, 5, 2, 1, 4]
+
+/*
+ The result is still a valid max heap after extractMax of 7. Using add method with heapifyUp
+    6
+   / \
+  3   5
+ / \ /
+2  1 4
+
+[6, 3, 5, 2, 1, 4] size: 6
+
+*/
+
+/*
+ The result is still a valid max heap after extractMax of 7. Using floyd's algorithm
+    6
+   /  \
+  5    4
+ / \  /
+2  1  3
+
+[6, 5, 4, 2, 1, 3] size: 6
+*/
+
+// Final result
+// Before build: [5, 2, 6, 7, 1, 4, 3]   size: 7 
+// After build:  [7, 5, 6, 2, 1, 4, 3]    size: 7 
+// after extract max: [6, 5, 4, 2, 1, 3]   size: 6 
+
+console.log(heap.getParentIndex(1));
