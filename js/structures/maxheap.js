@@ -1,8 +1,5 @@
-/*
-  To do implement 
-  contains();
-*/
 
+// Todo: contains method
 class MaxHeap {
     constructor() {
         this.data = [];
@@ -10,6 +7,10 @@ class MaxHeap {
     }
 
     getParentIndex(index) {
+        if (index <= 0) {
+            index = 0
+            return index;
+        }
         return Math.floor((index - 1) / 2);
     }
 
@@ -151,18 +152,31 @@ console.log("MaxHeap: after extract max: " + heap.toString() + " size: " + heap.
 
 /*
  The result is still a valid max heap after extractMax of 7. Using floyd's algorithm
-    6
-   /  \
-  5    4
- / \  /
-2  1  3
+    6(0)
+   /    \
+5(1)     4(2)
+ /  \      /
+2(3) 1(4) 3(5)
 
-[6, 5, 4, 2, 1, 3] size: 6
+  0  1  2  3  4  5
+ [6, 5, 4, 2, 1, 3] size: 6
 */
 
-// Final result
-// Before build: [5, 2, 6, 7, 1, 4, 3]   size: 7 
-// After build:  [7, 5, 6, 2, 1, 4, 3]    size: 7 
-// after extract max: [6, 5, 4, 2, 1, 3]   size: 6 
+// Testing getParent()
+// Index 0: Value = 6, Parent Index = 0, Parent Value = 6
+// Index 1: Value = 5, Parent Index = 0, Parent Value = 6
+// Index 2: Value = 4, Parent Index = 0, Parent Value = 6
+// Index 3: Value = 2, Parent Index = 1, Parent Value = 5
+// Index 4: Value = 1, Parent Index = 1, Parent Value = 5
+// Index 5: Value = 3, Parent Index = 2, Parent Value = 4
 
-console.log(heap.getParentIndex(1));
+function testGetParentIndex(heap) {
+    for (let index = 0; index < heap.getSize(); index++) {
+        const parentIndex = heap.getParentIndex(index);
+        const value = heap.data[index];
+        const parentValue = heap.data[parentIndex];
+        console.log(`Index ${index}: Value = ${value}, Parent Index = ${parentIndex}, Parent Value = ${parentValue}`);
+    }
+}
+
+testGetParentIndex(heap);
