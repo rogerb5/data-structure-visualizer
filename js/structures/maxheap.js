@@ -1,3 +1,4 @@
+
 // Todo: contains() method
 class MaxHeap {
     constructor() {
@@ -179,3 +180,5 @@ function testGetParentIndex(heap) {
 }
 
 testGetParentIndex(heap);
+
+console.log('maxheap code output test'); 
