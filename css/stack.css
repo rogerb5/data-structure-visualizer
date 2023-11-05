@@ -5,3 +5,121 @@
 }
 
 /* Styles Go Here */
+.header {
+  background-color: #3498DB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+}
+
+.subheader {
+  background-color: #5BC0DE;
+  display: flex;
+  text-align: center;
+  min-height: 50px;
+}
+
+h1 {
+    text-align: center;
+    color: #f1faee;
+    position: relative;
+}
+
+body{
+  background-color: #BDE3FF
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* Create two unequal columns that floats next to each other */  
+  /* Left column */
+  .column.left {
+    float: left;
+    width: 33.33%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Right column */
+  .column.right {
+    float: left;
+    width: 66.66%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  /* Clear floats after the columns */
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column.right, .column.left {
+      width: 100%;
+    }
+  }
+
+/* Place holder for future images */
+.tempimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/*-- Buttons --*/
+a.home-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: #FF6B6B;
+    border-radius: 15px;
+    box-shadow: 0 9px #1d587f;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+  
+  a.home-button:hover {
+    background-color: #943f3f
+}
+  
+ a.home-button:active {
+    background-color: #943f3f;
+    box-shadow: 0 5px #103046;
+    transform: translateY(4px);
+  }
+
+  a.my-button {
+    display: inline-block;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: #FF6B6B;
+    border-radius: 15px;
+    box-shadow: 0 9px #1d587f;
+    position: absolute;
+  }
+  a.button:hover {
+    background-color: #943f3f
+  }
+  a.button:active {
+    background-color: #94693f;
+  }
