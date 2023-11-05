@@ -5,3 +5,112 @@
 }
 
 /* Styles Go Here */
+.header {
+    background-color: #3498DB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+  }
+  
+  .subheader {
+    background-color: #5BC0DE;
+    display: flex;
+    text-align: center;
+    min-height: 50px;
+  }
+  
+  h1 {
+      text-align: center;
+      color: #f1faee;
+      position: relative;
+  }
+  
+  body{
+    background-color: #BDE3FF
+  }
+  
+  a {
+    text-decoration: none;
+  }
+
+
+
+/*-- Buttons --*/
+/* Home Button */
+a.home-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: #FF6B6B;
+    border-radius: 15px;
+    box-shadow: 0 9px #00000055;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+  
+  a.home-button:hover {
+    background-color: #943f3f
+}
+  
+ a.home-button:active {
+    background-color: #943f3f;
+    box-shadow: 0 5px #00000075;
+    transform: translateY(4px);
+  }
+
+
+/* Back Button */
+  a.back-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: #FF6B6B;
+    border-radius: 15px;
+    box-shadow: 0 9px #00000055;
+    position: absolute;
+    top: 1rem;
+    left: 9rem;
+  }
+  
+  a.back-button:hover {
+    background-color: #943f3f
+}
+  
+ a.back-button:active {
+    background-color: #943f3f;
+    box-shadow: 0 5px #00000075;
+    transform: translateY(4px);
+  }
+
+
+/* Normal Button */
+a.reg-button {
+    display: inline-block;
+    font-size: 20px;
+    padding: 5px 5px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: #FF6B6B;
+    border-radius: 15px;
+    box-shadow: 0 6px #00000055;
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 7px;
+  }
+  a.reg-button:hover {
+    background-color: #943f3f
+  }
+  a.reg-button:active {
+    background-color: #943f3f;
+    box-shadow: 0 3px #00000075;
+    transform: translateY(3px);
+  }
