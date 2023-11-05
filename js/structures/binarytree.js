@@ -35,6 +35,15 @@ class BinarySearchTree {
         this.root = null; //initialize the root as null
         this.compare = compare; //store the compare function 
     }
+
+    Insert(data) {
+        let node = this.root; 
+        if(node === null) {
+            node = new NodeBST(data);
+            return node; 
+        }
+
+    }
 }
 
   
