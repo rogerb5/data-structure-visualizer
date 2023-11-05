@@ -11,7 +11,7 @@ const defaultCompareNumberFn = (x, y) => { //default comparison function for com
     // if x is less than y return -1 and if greater return 1 
   };
 
-class BinarySearchTree{
+class NodeBST{
     constructor(data, nodeParent) { //constructor 
         this.data = data.toString(); //storing the data 
         this.nodeLeft = null; //initialize left child node
@@ -25,8 +25,16 @@ class BinarySearchTree{
     }
 
     get isLeaf() { //leaf means it has no children 
-        return this.nodeLeft == null && this.nodeRight == null;
+        return this.nodeLeft === null && this.nodeRight === null;
         //returns true if both left and right children are null(no children)
     }
 }
+
+class BinarySearchTree {
+    constructor(compare = defaultCompareNumberFn) {
+        this.root = null; //initialize the root as null
+        this.compare = compare; //store the compare function 
+    }
+}
+
   
