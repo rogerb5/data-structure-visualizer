@@ -102,8 +102,12 @@ class BinarySearchTree {
             return node; 
         } 
     }
-
-
+    lookMinNode(node){
+        if(node.nodeLeft === null) { //if left child is null it means the current node is the min. value
+            return node; 
+        }
+        return this.lookMinNode(node.nodeLeft); //if not null then there is smaller value in the left so keep searching
+    }
 }
 
   
