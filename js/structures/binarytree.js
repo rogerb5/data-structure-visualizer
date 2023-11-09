@@ -66,6 +66,44 @@ class BinarySearchTree {
             }
         }
     }
+    Remove(data) {
+        this.root = this.removeNode(this.root, data); 
+    }
+    removeNode(node, k) {
+        if(node === null)  { //if node not found or tree empty return null 
+            return null; 
+        }
+        if(this.compare(k, node.data) === COMPARISON.SMALLER) { //if the value is smaller than current node then the node to remove is on the left subtree
+            node.nodeLeft = this.removeNode(node.nodeLeft, k);
+            return node;
+        }
+        else if(this.compare(k, node.data) === COMPARISON.GREATER) { //if the value is greater than current node then the node to remove is on the right subtree
+            node.nodeRight = this.removeNode(node.nodeRight, k);
+            return node; 
+        }
+        else {
+            if(node.isLeaf) { //if node is leaf(no children), node is set to null 
+                this.node = null; 
+                return node; 
+            }
+            if(node.nodeRight === null) { //if node has one children. Update node with the non-null child
+                node = node.nodeLeft;
+                return node; 
+            }
+            else if(node.nodeLeft === null) {
+                node = node.nodeRight; 
+                return node; 
+            }
+            //if node has 2 children. Find the min. value node in the right subtree 
+            //copy the data to the current node and remove the min.value node
+            const minNode = this.lookupMinNode(node.nodeRight); 
+            node.data = minNode.data; 
+            node.nodeRight = this.removeNode(node.nodeRight, minNode.data);
+            return node; 
+        } 
+    }
+
+
 }
 
   
