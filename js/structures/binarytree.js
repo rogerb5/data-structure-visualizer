@@ -102,11 +102,29 @@ class BinarySearchTree {
             return node; 
         } 
     }
-    lookMinNode(node){
+    lookupMinNode(node){
         if(node.nodeLeft === null) { //if left child is null it means the current node is the min. value
             return node; 
         }
-        return this.lookMinNode(node.nodeLeft); //if not null then there is smaller value in the left so keep searching
+        return this.lookupMinNode(node.nodeLeft); //if not null then there is smaller value in the left so keep searching
+    }
+    search(node){
+        return this.lookup(this.root, data);
+    }
+    lookup(node, k) {
+        if(node === null) { //if node cannot be found
+            return null; //return null
+        }
+        else if(this.compare(k, node.data) === COMPARISON.EQUAL) {
+            return node; //node is found 
+        }
+        else if(this.compare(k, node.data) === COMPARISON.SMALLER) { //if value is smaller than current node then look at left subtree
+            return this.lookup(node.nodeLeft, k);
+        }
+        else {
+            return this.lookup(node.nodeRight, k); //otherwise look at right subtree
+        }
+
     }
 }
 
