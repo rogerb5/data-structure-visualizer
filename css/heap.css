@@ -2,6 +2,81 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: system-ui;
 }
 
-/* Styles Go Here */
+a {
+    text-decoration: none;
+}
+
+/* CSS variables */
+:root {
+    --node-color: whitesmoke;
+    --swap-color: #F9DA8B;
+    --max-color: #E66A6A;
+    --lastnode-color: #FAB8D9;
+    --node-txt-color: #333;
+    --nav-txt-color: whitesmoke;
+    --nav-bg-color: #35469C;
+    --main-bg-color: #E0E8F9;
+    --primary-border-color: #D9E2EC;
+    --input-bg-color: #D9E2EC;
+    --primary-padding: 0.7rem;
+}
+
+/******************************** Navigation Bar Styling */
+nav.navigation-bar {
+    background-color: var(--nav-bg-color);
+    padding: var(--primary-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.navigation-bar h1 {
+    color: var(--nav-txt-color);
+}
+
+section.input-section {
+    background-color: var(--nav-txt-color);
+    padding: var(--primary-padding);
+    display: flex;
+    gap: 0.2rem;
+}
+
+input[type=text] {
+    background-color: var(--input-bg-color);
+    padding: 0.4rem;
+    border: none;
+    font-size: 0.9rem;
+}
+
+button {
+    padding: 0.3rem 0.9rem 0.3rem 0.9rem;
+    border: none;
+    flex-shrink: 33%;
+    font-size: 14px;
+    background-color: #E0E8F9;
+    transition: color 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+    border: 2px solid var(--primary-border-color);
+}
+
+button:hover {
+    cursor: pointer;
+    border: 2px solid var(--nav-bg-color);
+}
+
+/************************************ Main Styling */
+main {
+    background-color: var(--main-bg-color);
+    min-height: 100vh;
+    padding: var(--primary-padding);
+}
+
+/* Mobile Screen Settings ******************/
+@media screen and (max-width: 500px) {
+    nav.navigation-bar {
+        flex-direction: column;
+        min-height: 20vh;
+    }
+}
