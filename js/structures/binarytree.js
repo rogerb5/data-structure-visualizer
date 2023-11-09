@@ -75,32 +75,30 @@ class BinarySearchTree {
         }
         if(this.compare(k, node.data) === COMPARISON.SMALLER) { //if the value is smaller than current node then the node to remove is on the left subtree
             node.nodeLeft = this.removeNode(node.nodeLeft, k);
-            return node;
         }
         else if(this.compare(k, node.data) === COMPARISON.GREATER) { //if the value is greater than current node then the node to remove is on the right subtree
             node.nodeRight = this.removeNode(node.nodeRight, k);
-            return node; 
         }
         else {
             if(node.isLeaf) { //if node is leaf(no children), node is set to null 
-                this.node = null; 
-                return node; 
+                return null;
             }
             if(node.nodeRight === null) { //if node has one children. Update node with the non-null child
-                node = node.nodeLeft;
-                return node; 
+                return node.nodeLeft;
             }
             else if(node.nodeLeft === null) {
-                node = node.nodeRight; 
-                return node; 
+                return node.nodeRight; 
             }
+            else {
+
             //if node has 2 children. Find the min. value node in the right subtree 
             //copy the data to the current node and remove the min.value node
             const minNode = this.lookupMinNode(node.nodeRight); 
             node.data = minNode.data; 
             node.nodeRight = this.removeNode(node.nodeRight, minNode.data);
-            return node; 
+            }
         } 
+        return node;
     }
     lookupMinNode(node){
         if(node.nodeLeft === null) { //if left child is null it means the current node is the min. value
@@ -108,10 +106,16 @@ class BinarySearchTree {
         }
         return this.lookupMinNode(node.nodeLeft); //if not null then there is smaller value in the left so keep searching
     }
-    search(node){
-        return this.lookup(this.root, data);
+    lookupMaxNode(node){
+        if(node.nodeRight === null) { //if left child is null it means the current node is the min. value
+            return node; 
+        }
+        return this.lookupMaxNode(node.nodeRight); //if not null then there is smaller value in the left so keep searching
     }
-    lookup(node, k) {
+    lookup(node){
+        return this.lookupNode(this.root, data);
+    }
+    lookupNode(node, k) {
         if(node === null) { //if node cannot be found
             return null; //return null
         }
@@ -119,12 +123,11 @@ class BinarySearchTree {
             return node; //node is found 
         }
         else if(this.compare(k, node.data) === COMPARISON.SMALLER) { //if value is smaller than current node then look at left subtree
-            return this.lookup(node.nodeLeft, k);
+            return this.lookupNode(node.nodeLeft, k);
         }
         else {
-            return this.lookup(node.nodeRight, k); //otherwise look at right subtree
+            return this.lookupNode(node.nodeRight, k); //otherwise look at right subtree
         }
-
     }
 }
 
