@@ -37,12 +37,34 @@ class BinarySearchTree {
     }
 
     Insert(data) {
-        let node = this.root; 
-        if(node === null) {
-            node = new NodeBST(data);
-            return node; 
+        const newNode = new NodeBST(data); //creating a new node 
+        if(this.root === null) {
+            this.root = newNode; //if the tree is empty, set the new node as the root 
+        }
+        else {
+            this.insertionNode(this.root, newNode); //call the method so we can insert the node starting from root 
         }
 
+    }
+    insertionNode(node, newNode) {
+        if(this.compare(newNode.data, node.data) === COMPARISON.SMALLER) { //if the new node is smaller that the current node
+            if(node.nodeLeft === null) { //checks to see if left of the node is empty
+                node.nodeLeft = newNode; //insert new node on the left if smaller than current node
+                newNode.nodeParent = node; //setting the parent of the new node
+            }
+            else {
+                this.insertionNode(node.nodeLeft, newNode); //traverse the left subtree 
+            }
+        }
+        else if(this.compare(newNode.data, node.data) === COMPARISON.GREATER) { //if the new node is greater than the current node 
+            if(node.nodeRight === null) { //checks to see if right of the node is empty 
+                node.nodeRight = newNode; //insert new node on the right 
+                newNode.nodeParent = node; //setting the parent of the new node 
+            }
+            else {
+                this.insertionNode(node.nodeRight, newNode); //traverse the right subtree 
+            }
+        }
     }
 }
 
