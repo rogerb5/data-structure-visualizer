@@ -1,4 +1,3 @@
-// Todo: contains() method!
 class MaxHeap {
     constructor() {
         this.data = [];
@@ -75,6 +74,15 @@ class MaxHeap {
 
     isEmpty() {
         return this.size === 0;
+    }
+
+    contains(value) {
+        for (let index = 0; index < this.size; index++) {
+            if (this.data[index] === value) {
+                return true;
+            }
+        }
+        return false;
     }
 
     buildMaxHeap() {
