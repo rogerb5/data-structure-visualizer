@@ -23,17 +23,18 @@ class MaxHeap {
     add(value) {
         this.data[this.size] = value;
         this.size++;
-        // this.heapifyUp();
+        // this.heapifyUp(); since I am using floyd's no need to heapifyUp()
     }
 
     extractMax() {
         if (this.size === 0) {
             return null;
         }
-        this.swap(0, this.size - 1);
+        const firstIndex = 0;
+        this.swap(firstIndex, this.size - 1);
         const max = this.data.pop();
         this.size--;
-        this.heapifyDown(0);
+        this.heapifyDown(firstIndex);
         return max;
     }
 
@@ -44,24 +45,24 @@ class MaxHeap {
     }
 
     heapifyUp() {
-        let currentIndex = this.size - 1;
-        while (this.data[this.getParentIndex(currentIndex)] < this.data[currentIndex]) {
-            const parentIndex = this.getParentIndex(currentIndex);
-            this.swap(parentIndex, currentIndex);
-            currentIndex = parentIndex;
+        let lastIndex = this.size - 1;
+        while (this.data[this.getParentIndex(lastIndex)] < this.data[lastIndex]) {
+            const parentIndex = this.getParentIndex(lastIndex);
+            this.swap(parentIndex, lastIndex);
+            lastIndex = parentIndex;
         }
     }
 
-    heapifyDown(currentIndex) {
-        while (this.getLeftChildIndex(currentIndex) < this.size) {
-            let biggestChildIndex = this.getLeftChildIndex(currentIndex);
-            if (this.getRightChildIndex(currentIndex) < this.size &&
-                this.data[this.getRightChildIndex(currentIndex)] > this.data[biggestChildIndex]) {
-                biggestChildIndex = this.getRightChildIndex(currentIndex);
+    heapifyDown(firstIndex) {
+        while (this.getLeftChildIndex(firstIndex) < this.size) {
+            let biggestSiblingIndex = this.getLeftChildIndex(firstIndex);
+            if (this.getRightChildIndex(firstIndex) < this.size
+                && this.data[this.getRightChildIndex(firstIndex)] > this.data[biggestSiblingIndex]) {
+                biggestSiblingIndex = this.getRightChildIndex(firstIndex);
             }
-            if (this.data[currentIndex] < this.data[biggestChildIndex]) {
-                this.swap(currentIndex, biggestChildIndex);
-                currentIndex = biggestChildIndex;
+            if (this.data[firstIndex] < this.data[biggestSiblingIndex]) {
+                this.swap(firstIndex, biggestSiblingIndex);
+                firstIndex = biggestSiblingIndex;
             } else {
                 return;
             }
