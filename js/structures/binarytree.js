@@ -32,7 +32,7 @@ class NodeBST{
 }
 
 class BinarySearchTree extends NodeBST{
-    constructor(compare = defaultCompareNumberFn) {
+    constructor(compare = Comparison.defaultCompareNumberFn) {
         super();
         this.root = null; //initialize the root as null
         this.compare = compare; //store the compare function 
@@ -161,5 +161,6 @@ class BinarySearchTree extends NodeBST{
     preOrder(call) {
         this.preOrderTraverse(this.root, call);
     }
+
 }
-export{NodeBST,BinarySearchTree};
+export{Comparison,NodeBST,BinarySearchTree};
