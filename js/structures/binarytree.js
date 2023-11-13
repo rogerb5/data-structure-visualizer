@@ -160,3 +160,4 @@ class BinarySearchTree {
         this.preOrderTraverse(this.root, call);
     }
 }
+export{NodeBST,BinarySearchTree};
