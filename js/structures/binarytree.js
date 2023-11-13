@@ -1,15 +1,16 @@
-const COMPARISON = { //defines constants for comparison 
-    SMALLER: -1, GREATER: 1, EQUAL: 0,
-};
+class Comparison {
+    static SMALLER = -1;
+    static GREATER = 1;
+    static EQUAL = 0;
 
-const defaultCompareNumberFn = (x, y) => { //default comparison function for comparing x and y 
-    if (Number(x) == Number(y)) { //if x and y are equal return 0 
-      return COMPARISON.EQUAL;
+    static defaultCompareNumberFn(x, y) {
+        if (Number(x) == Number(y)) {
+            return Comparison.EQUAL;
+        }
+
+        return Number(x) < Number(y) ? Comparison.SMALLER : Comparison.GREATER;
     }
-  
-    return Number(x) < Number(y) ? COMPARISON.SMALLER : COMPARISON.GREATER; 
-    // if x is less than y return -1 and if greater return 1 
-  };
+}
 
 class NodeBST{
     constructor(data, nodeParent) { //constructor 
@@ -30,8 +31,9 @@ class NodeBST{
     }
 }
 
-class BinarySearchTree {
+class BinarySearchTree extends NodeBST{
     constructor(compare = defaultCompareNumberFn) {
+        super();
         this.root = null; //initialize the root as null
         this.compare = compare; //store the compare function 
     }
