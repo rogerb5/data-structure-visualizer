@@ -129,4 +129,34 @@ class BinarySearchTree {
             return this.lookupNode(node.nodeRight, k); //otherwise look at right subtree
         }
     }
+    inOrderTraverse(node,call) {
+        if(node != null) {
+            this.inOrderTraverse(node.nodeLeft, call);
+            call(node.data);
+            this.inOrderTraverse(node.nodeRight, call); 
+        }
+    }
+    inOrder(call) {
+        this.inOrderTraverse(this.root, call);
+    }
+    postOrderTraverse(node,call) {
+        if(node!= null) {
+            this.postOrderTraverse(node.nodeLeft, call);
+            this.postOrderTraverse(node.nodeRight, call); 
+            call(node.data);
+        }
+    }
+    postOrder(call) {
+        this.postOrderTraverse(this.root, call);
+    }
+    preOrderTraverse(node,call) {
+        if(node!= null) {
+            call(node.data);
+            this.preOrderTraverse(node.nodeLeft, call);
+            this.preOrderTraverse(node.nodeRight, call); 
+        }
+    }
+    preOrder(call) {
+        this.preOrderTraverse(this.root, call);
+    }
 }
