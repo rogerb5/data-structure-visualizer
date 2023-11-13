@@ -1,4 +1,4 @@
-import {Comparison,NodeBST,BinarySearchTree} from "./circular.js";
+import {Comparison,NodeBST,BinarySearchTree} from "./binarytree.js";
     const tree = new BinarySearchTree();
 
     // Insert some data
