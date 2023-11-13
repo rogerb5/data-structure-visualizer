@@ -1,5 +1,23 @@
-class MaxHeap {
+class MaxHeapUI {
     constructor() {
+    }
+
+    createNode() {
+
+    }
+
+    createSwapAnimation() {
+
+    }
+
+    createTreeLevels() {
+
+    }
+}
+
+class MaxHeap extends MaxHeapUI {
+    constructor() {
+        super();
         this.data = [];
         this.size = 0;
     }
@@ -106,4 +124,5 @@ class MaxHeap {
     }
 }
 
-export default MaxHeap; // export max heap
+
+export { MaxHeapUI, MaxHeap }; // export MaxHeapUI, and MaxHeap
