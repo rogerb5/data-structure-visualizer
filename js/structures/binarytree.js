@@ -14,7 +14,7 @@ class Comparison {
 
 class NodeBST{
     constructor(data, nodeParent) { //constructor 
-        this.data = data.toString(); //storing the data 
+        this.data = data !== undefined ? data.toString() : ''; // storing the data
         this.nodeLeft = null; //initialize left child node
         this.nodeRight = null; //initialize right child node 
         this.nodeParent = nodeParent || null; //set parent node or null if not provided
