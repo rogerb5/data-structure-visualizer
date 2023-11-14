@@ -49,7 +49,7 @@ class BinarySearchTree extends NodeBST{
 
     }
     insertionNode(node, newNode) {
-        if(this.compare(newNode.data, node.data) === COMPARISON.SMALLER) { //if the new node is smaller that the current node
+        if(this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
             if(node.nodeLeft === null) { //checks to see if left of the node is empty
                 node.nodeLeft = newNode; //insert new node on the left if smaller than current node
                 newNode.nodeParent = node; //setting the parent of the new node
@@ -58,7 +58,7 @@ class BinarySearchTree extends NodeBST{
                 this.insertionNode(node.nodeLeft, newNode); //traverse the left subtree 
             }
         }
-        else if(this.compare(newNode.data, node.data) === COMPARISON.GREATER) { //if the new node is greater than the current node 
+        else if(this.compare(newNode.data, node.data) === Comparison.GREATER) { //if the new node is greater than the current node 
             if(node.nodeRight === null) { //checks to see if right of the node is empty 
                 node.nodeRight = newNode; //insert new node on the right 
                 newNode.nodeParent = node; //setting the parent of the new node 
@@ -75,10 +75,10 @@ class BinarySearchTree extends NodeBST{
         if(node === null)  { //if node not found or tree empty return null 
             return null; 
         }
-        if(this.compare(k, node.data) === COMPARISON.SMALLER) { //if the value is smaller than current node then the node to remove is on the left subtree
+        if(this.compare(k, node.data) === Comparison.SMALLER) { //if the value is smaller than current node then the node to remove is on the left subtree
             node.nodeLeft = this.removeNode(node.nodeLeft, k);
         }
-        else if(this.compare(k, node.data) === COMPARISON.GREATER) { //if the value is greater than current node then the node to remove is on the right subtree
+        else if(this.compare(k, node.data) === Comparison.GREATER) { //if the value is greater than current node then the node to remove is on the right subtree
             node.nodeRight = this.removeNode(node.nodeRight, k);
         }
         else {
@@ -121,10 +121,10 @@ class BinarySearchTree extends NodeBST{
         if(node === null) { //if node cannot be found
             return null; //return null
         }
-        else if(this.compare(k, node.data) === COMPARISON.EQUAL) {
+        else if(this.compare(k, node.data) === Comparison.EQUAL) {
             return node; //node is found 
         }
-        else if(this.compare(k, node.data) === COMPARISON.SMALLER) { //if value is smaller than current node then look at left subtree
+        else if(this.compare(k, node.data) === Comparison.SMALLER) { //if value is smaller than current node then look at left subtree
             return this.lookupNode(node.nodeLeft, k);
         }
         else {
