@@ -32,10 +32,10 @@ class NodeBST{
 }
 
 class BinarySearchTree extends NodeBST{
-    constructor(compare = COMPARISON) {
+    constructor(compare = Comparison.defaultCompareNumberFn) {
         super();
         this.root = null; //initialize the root as null
-        this.COMPARISON = comparison; 
+        this.compare = compare;
     }
 
     Insert(data) {
