@@ -114,23 +114,22 @@ class BinarySearchTree extends NodeBST{
         }
         return this.lookupMaxNode(node.nodeRight); //if not null then there is smaller value in the left so keep searching
     }
-    lookup(node){
-        return this.lookupNode(this.root, data);
+    lookup(node) {
+        return this.lookupNode(this.root, node); // <-- pass 'node' instead of 'data'
     }
+    
     lookupNode(node, k) {
-        if(node === null) { //if node cannot be found
-            return null; //return null
-        }
-        else if(this.compare(k, node.data) === Comparison.EQUAL) {
-            return node; //node is found 
-        }
-        else if(this.compare(k, node.data) === Comparison.SMALLER) { //if value is smaller than current node then look at left subtree
+        if (node === null) {
+            return null;
+        } else if (this.compare(k, node.data) === Comparison.EQUAL) {
+            return node;
+        } else if (this.compare(k, node.data) === Comparison.SMALLER) {
             return this.lookupNode(node.nodeLeft, k);
-        }
-        else {
-            return this.lookupNode(node.nodeRight, k); //otherwise look at right subtree
+        } else {
+            return this.lookupNode(node.nodeRight, k);
         }
     }
+    
     inOrderTraverse(node,call) {
         if(node != null) {
             this.inOrderTraverse(node.nodeLeft, call);
