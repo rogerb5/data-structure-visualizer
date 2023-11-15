@@ -35,40 +35,9 @@ a {
 }
 
 
-/* Create two unequal columns that floats next to each other */  
-/* Left column */
-.column.left {
-  float: left;
-  width: 33.33%;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-/* Right column */
-.column.right {
-  float: left;
-  width: 66.66%;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-/* Clear floats after the columns */
-.row::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column.right, .column.left {
-    width: 100%;
-  }
-}
-
 /* Place holder for future images */
 .tempimg {
-  background-color: #aaa;
+  background-color: lightgray;
   width: 100%;
   padding: 20px;
 }
