@@ -14,9 +14,7 @@
     <div class="header">
       <h1>Stack Visualizer</h1>
     </div>
-    <div class="subheader">
-        <a class="reg-button" id="Pop">Pop</a>
-    </div>
+    <!--a class="reg-button" id="Pop">Pop</a-->
 
     <div class="home-container">
         <a href="index.html" class="home-button" id="home-button">Home</a>
@@ -26,9 +24,41 @@
         <a href="stack.html" class="back-button" id="back-button">Back</a>
     </div>
 
-    <div id="stack-container">
-        <!-- Stack elements will be added here dynamically -->
-        
+    <div class="container">
+        <div class="column column-30">
+            <div class="button-panel">
+                <h2>Operations</h2>
+                <a class="method-button" id="Pop-Button">Pop</a>
+                <a class="method-button" id="Peek-Button">Peek</a>
+                <a class="method-button" id="isEmpty-Button">isEmpty</a>
+                <a class="method-button" id="size-Button">size</a>
+                <div>
+                    <a class="method-button" id="Push-Button">Push</a>
+                    <input type="number" class="custom-input" placeholder="Enter an integer">
+                </div>
+            </div>
+            <div class="code-panel">
+                <h2>Code</h2>
+                <a class="code-button" id="Java-Button">Java</a>
+                <a class="code-button" id="Peek-Button">C</a>
+                <a class="code-button" id="isEmpty-Button">Python</a>
+                <div class="code-container">
+                    <pre>
+                    <code>
+// PLACEHOLDER EXAMPLE
+function greet(name) {
+    console.log('Hello, ' + name + '!');
+}
+greet('World');
+                    </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="column column-70">
+            <div class="canvas-panel"></div>
+        </div>
     </div>
 
     <script src="js/structures/stackvisualizer.js"></script>
