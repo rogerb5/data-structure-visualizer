@@ -6,7 +6,7 @@
 
 /* Styles Go Here */
 .header {
-  background-color: #3498DB;
+  background-color: #581845;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .subheader {
-  background-color: #5BC0DE;
+  background-color: #900c3f;
   display: flex;
   text-align: center;
   min-height: 50px;
@@ -27,7 +27,7 @@ h1 {
 }
 
 body{
-  background-color: #BDE3FF
+  background-color: #ff5733
 }
 
 a {
@@ -36,35 +36,35 @@ a {
 
 
 /* Create two unequal columns that floats next to each other */  
-  /* Left column */
-  .column.left {
-    float: left;
-    width: 33.33%;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+/* Left column */
+.column.left {
+  float: left;
+  width: 33.33%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
-  /* Right column */
-  .column.right {
-    float: left;
-    width: 66.66%;
-    padding-left: 10px;
-    padding-right: 10px;
+/* Right column */
+.column.right {
+  float: left;
+  width: 66.66%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.right, .column.left {
+    width: 100%;
   }
-  
-  /* Clear floats after the columns */
-  .row::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .column.right, .column.left {
-      width: 100%;
-    }
-  }
+}
 
 /* Place holder for future images */
 .tempimg {
@@ -83,7 +83,7 @@ a {
 
 /*-- Buttons --*/
 /* Home Button */
-a.home-button {
+.home-button {
     display: inline-block;
     padding: 15px 25px;
     font-size: 24px;
@@ -98,18 +98,18 @@ a.home-button {
     left: 1rem;
   }
   
-  a.home-button:hover {
+  .home-button:hover {
     background-color: #943f3f
 }
   
- a.home-button:active {
+ .home-button:active {
     background-color: #943f3f;
     box-shadow: 0 5px #00000075;
     transform: translateY(4px);
   }
 
   /* Normal Button */
-  a.reg-button {
+  .reg-button {
     display: inline-block;
     font-size: 20px;
     padding: 5px 5px;
@@ -124,10 +124,10 @@ a.home-button {
     margin-left: 7px;
     
   }
-  a.reg-button:hover {
+  .reg-button:hover {
     background-color: #943f3f
   }
-  a.reg-button:active {
+  .reg-button:active {
     background-color: #943f3f;
     box-shadow: 0 3px #00000075;
     transform: translateY(3px);

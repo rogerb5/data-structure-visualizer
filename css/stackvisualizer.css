@@ -30,7 +30,7 @@ a {
 
 
 .header {
-  background-color: #3498DB;
+  background-color: #581845;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,14 +49,14 @@ a {
   margin: 0px;
 }
 .column-30 {
-  background-color: #b0f3ff;
+  background-color: #900c3f;
   height: flex;
   justify-content: space-between;
   flex: 30%;
 }
 
 .column-70 {
-  background-color: white;
+  background-color: #FF5733;
   flex: 70%;
 }
 
