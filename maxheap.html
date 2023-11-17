@@ -11,22 +11,24 @@
 </head>
 
 <body>
+    <a href="index.html">Home Page</a>
     <nav class="navigation-bar">
         <h1>Max Heap Visualizer</h1>
         <section class="input-section">
             <input type="text" class="node-value" placeholder="Node Value">
-            <button class="submit-value">Add</button>
-            <button class="extract-value">Extract Max</button>
+            <button class="add-btn">Add</button>
+            <button class="extract-btn">Extract Max</button>
             <!-- <button class="clear-value">Clear Heap</button> -->
         </section>
     </nav>
 
     <main>
-        <a href="index.html">Home Page</a>
+        <div class="maxheap-container"></div>
     </main>
 
     <!--Use type=module to import/export classes and src test file-->
-    <script type="module" src="js/structures/maxheaptests.js"></script>
+    <!-- <script type="module" src="js/structures/maxheaptests.js"></script> -->
+    <script type="module" src="js/structures/maxheap-events.js"></script>
 </body>
 
 </html>

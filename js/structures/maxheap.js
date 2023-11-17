@@ -2,17 +2,35 @@ class MaxHeapUI {
     constructor() {
     }
 
-    createNode() {
-
-    }
-
     createSwapAnimation() {
 
     }
 
     createTreeLevels() {
-
+        const baseFontSize = 10;
+        const container = document.querySelector('div.maxheap-container');
+        container.innerHTML = '';
+        for (let i = 0; i < this.size; i++) {
+            const level = Math.floor(Math.log2(i + 1));
+            const elementsInRow = Math.pow(2, level);
+            const row = document.createElement('div');
+            row.classList.add('level'); // add css 
+            container.appendChild(row);
+            const columnWidthPercentage = 100 / elementsInRow;
+            const fontSize = (baseFontSize * (11 - 1 * level) / 100) + 'rem';
+            for (let j = 0; j < elementsInRow && i < this.size; j++) {
+                const node = document.createElement('div');
+                node.classList.add('node');
+                node.textContent = this.data[i];
+                node.style.fontSize = fontSize;
+                row.appendChild(node);
+                i++;
+            }
+            i--;
+            row.style.gridTemplateColumns = `repeat(${elementsInRow}, minmax(${columnWidthPercentage}%, 1fr))`;
+        }
     }
+
 }
 
 class MaxHeap extends MaxHeapUI {
@@ -41,7 +59,7 @@ class MaxHeap extends MaxHeapUI {
     add(value) {
         this.data[this.size] = value;
         this.size++;
-        // this.heapifyUp(); since I am using floyd's no need to heapifyUp()
+        this.heapifyUp();
     }
 
     extractMax() {
@@ -56,7 +74,7 @@ class MaxHeap extends MaxHeapUI {
         return max;
     }
 
-    swap(index1, index2) {
+    swap(index1, index2) { //todo add css keyframe triggered swap animation
         const temp = this.data[index1];
         this.data[index1] = this.data[index2];
         this.data[index2] = temp;
@@ -104,12 +122,12 @@ class MaxHeap extends MaxHeapUI {
         return false;
     }
 
-    buildMaxHeap() {
-        const lastNonLeafIndex = Math.floor(this.size / 2) - 1;
-        for (let i = lastNonLeafIndex; i >= 0; i--) {
-            this.heapifyDown(i);
-        }
-    }
+    // buildMaxHeap() {
+    //     const lastNonLeafIndex = Math.floor(this.size / 2) - 1;
+    //     for (let i = lastNonLeafIndex; i >= 0; i--) {
+    //         this.heapifyDown(i);
+    //     }
+    // }
 
     toString() {
         let result = '[';
