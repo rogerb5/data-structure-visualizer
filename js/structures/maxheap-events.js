@@ -9,6 +9,6 @@ const input = document.querySelector('input.node-value');
 addBtn.addEventListener('click', () => {
     const inputValue = parseInt(document.querySelector('input.node-value').value);
     maxHeap.add(inputValue);
-    maxHeap.createTreeLevels();
+    // maxHeap.createTreeLevels();
     input.value = '';
 });

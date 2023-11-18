@@ -6,7 +6,7 @@ class MaxHeapUI {
 
     }
 
-    createTreeLevels() {
+    createHeapLevels() {
         const baseFontSize = 10;
         const container = document.querySelector('div.maxheap-container');
         container.innerHTML = '';
@@ -30,7 +30,6 @@ class MaxHeapUI {
             row.style.gridTemplateColumns = `repeat(${elementsInRow}, minmax(${columnWidthPercentage}%, 1fr))`;
         }
     }
-
 }
 
 class MaxHeap extends MaxHeapUI {
@@ -60,6 +59,7 @@ class MaxHeap extends MaxHeapUI {
         this.data[this.size] = value;
         this.size++;
         this.heapifyUp();
+        this.createHeapLevels();
     }
 
     extractMax() {
@@ -141,6 +141,5 @@ class MaxHeap extends MaxHeapUI {
         return result;
     }
 }
-
 
 export { MaxHeapUI, MaxHeap }; // export MaxHeapUI, and MaxHeap
