@@ -38,15 +38,18 @@ class BinarySearchTree extends NodeBST {
     }
 
     Insert(data) {
-        const newNode = new NodeBST(data); // creating a new node 
-        if (this.root === null) {
-            this.root = newNode; // if the tree is empty, set the new node as the root 
-            this.createNodeElement(newNode); // create and append the div element for the new node
-        } else {
-            this.insertionNode(this.root, newNode);
-            this.createNodeElement(newNode);
+        Insert(data) {
+            const newNode = new NodeBST(data);
+            if (this.root === null) {
+                this.root = newNode;
+                this.createNodeElement(newNode);
+            } else {
+                this.insertionNode(this.root, newNode);
+                this.createNodeElement(newNode);
+                // Update the entire tree UI after insertion
+                this.renderTree();
+            }
         }
-    }
 
     insertionNode(node, newNode) {
         if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
