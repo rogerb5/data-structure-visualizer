@@ -105,3 +105,28 @@ div.bst-node {
     height: 40px;
     margin: 0.2rem;
 }
+
+.bst-node {
+    display: inline-block;
+    position: relative;
+}
+
+.bst-node::before {
+    content: "";
+    position: absolute;
+    top: 20px; /* Adjust based on your design */
+    left: 50%;
+    width: 0;
+    height: 20px; /* Adjust based on your design */
+    border-left: 1px solid #000; /* Line color */
+}
+
+.bst-node:first-child::before {
+    border-left: none; /* Remove the left border for the first node */
+}
+
+.bst-node[data-node-id="1"]::before,
+.bst-node[data-node-id="3"]::before,
+.bst-node[data-node-id="4"]::before {
+    top: 0; /* Adjust based on your design */
+}
