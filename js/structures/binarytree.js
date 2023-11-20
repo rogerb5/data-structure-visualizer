@@ -177,15 +177,16 @@ class BinarySearchTree extends NodeBST {
         const nodeElement = document.createElement('div');
         nodeElement.classList.add('bst-node');
         nodeElement.textContent = node.data;
+    
         const level = this.getNodeLevel(node);
-        let row = container.querySelector(`.level-${level}`);
-        if (!row) {
-            row = document.createElement('div');
-            row.classList.add('level', `level-${level}`);
-            container.appendChild(row);
-        }
-        row.appendChild(nodeElement);
+        const horizontalSpacing = 50; // Adjust this value based on your preference
+    
+        nodeElement.style.left = level * horizontalSpacing + 'px'; // Position based on level
+        nodeElement.style.top = level * 50 + 'px'; // Adjust vertical spacing
+    
+        container.appendChild(nodeElement);
     }
+    
 
     getNodeLevel(node) {
         let level = 0;
