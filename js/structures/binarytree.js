@@ -7,12 +7,11 @@ class Comparison {
         if (Number(x) == Number(y)) {
             return Comparison.EQUAL;
         }
-
         return Number(x) < Number(y) ? Comparison.SMALLER : Comparison.GREATER;
     }
 }
 
-class NodeBST{
+class NodeBST {
     constructor(data, nodeParent) { //constructor 
         this.data = data !== undefined ? data.toString() : ''; // storing the data
         this.nodeLeft = null; //initialize left child node
@@ -20,8 +19,8 @@ class NodeBST{
         this.nodeParent = nodeParent || null; //set parent node or null if not provided
     }
 
-    get children() { 
-        return this.nodeLeft != null || this.nodeRight != null; 
+    get children() {
+        return this.nodeLeft != null || this.nodeRight != null;
         //returns true if either the left or right child is not null 
     }
 
@@ -31,7 +30,7 @@ class NodeBST{
     }
 }
 
-class BinarySearchTree extends NodeBST{
+class BinarySearchTree extends NodeBST {
     constructor(compare = Comparison.defaultCompareNumberFn) {
         super();
         this.root = null; //initialize the root as null
@@ -39,18 +38,19 @@ class BinarySearchTree extends NodeBST{
     }
 
     Insert(data) {
-        const newNode = new NodeBST(data); //creating a new node 
-        if(this.root === null) {
-            this.root = newNode; //if the tree is empty, set the new node as the root 
+        const newNode = new NodeBST(data); // creating a new node 
+        if (this.root === null) {
+            this.root = newNode; // if the tree is empty, set the new node as the root 
+            this.createNodeElement(newNode); // create and append the div element for the new node
+        } else {
+            this.insertionNode(this.root, newNode);
+            this.createNodeElement(newNode);
         }
-        else {
-            this.insertionNode(this.root, newNode); //call the method so we can insert the node starting from root 
-        }
-
     }
+
     insertionNode(node, newNode) {
-        if(this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
-            if(node.nodeLeft === null) { //checks to see if left of the node is empty
+        if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
+            if (node.nodeLeft === null) { //checks to see if left of the node is empty
                 node.nodeLeft = newNode; //insert new node on the left if smaller than current node
                 newNode.nodeParent = node; //setting the parent of the new node
             }
@@ -58,8 +58,8 @@ class BinarySearchTree extends NodeBST{
                 this.insertionNode(node.nodeLeft, newNode); //traverse the left subtree 
             }
         }
-        else if(this.compare(newNode.data, node.data) === Comparison.GREATER) { //if the new node is greater than the current node 
-            if(node.nodeRight === null) { //checks to see if right of the node is empty 
+        else if (this.compare(newNode.data, node.data) === Comparison.GREATER) { //if the new node is greater than the current node 
+            if (node.nodeRight === null) { //checks to see if right of the node is empty 
                 node.nodeRight = newNode; //insert new node on the right 
                 newNode.nodeParent = node; //setting the parent of the new node 
             }
@@ -68,56 +68,61 @@ class BinarySearchTree extends NodeBST{
             }
         }
     }
+
     Remove(data) {
-        this.root = this.removeNode(this.root, data); 
+        this.root = this.removeNode(this.root, data);
     }
+
     removeNode(node, k) {
-        if(node === null)  { //if node not found or tree empty return null 
-            return null; 
+        if (node === null) { //if node not found or tree empty return null 
+            return null;
         }
-        if(this.compare(k, node.data) === Comparison.SMALLER) { //if the value is smaller than current node then the node to remove is on the left subtree
+        if (this.compare(k, node.data) === Comparison.SMALLER) { //if the value is smaller than current node then the node to remove is on the left subtree
             node.nodeLeft = this.removeNode(node.nodeLeft, k);
         }
-        else if(this.compare(k, node.data) === Comparison.GREATER) { //if the value is greater than current node then the node to remove is on the right subtree
+        else if (this.compare(k, node.data) === Comparison.GREATER) { //if the value is greater than current node then the node to remove is on the right subtree
             node.nodeRight = this.removeNode(node.nodeRight, k);
         }
         else {
-            if(node.isLeaf) { //if node is leaf(no children), node is set to null 
+            if (node.isLeaf) { //if node is leaf(no children), node is set to null 
                 return null;
             }
-            if(node.nodeRight === null) { //if node has one children. Update node with the non-null child
+            if (node.nodeRight === null) { //if node has one children. Update node with the non-null child
                 return node.nodeLeft;
             }
-            else if(node.nodeLeft === null) {
-                return node.nodeRight; 
+            else if (node.nodeLeft === null) {
+                return node.nodeRight;
             }
             else {
 
-            //if node has 2 children. Find the min. value node in the right subtree 
-            //copy the data to the current node and remove the min.value node
-            const minNode = this.lookupMinNode(node.nodeRight); 
-            node.data = minNode.data; 
-            node.nodeRight = this.removeNode(node.nodeRight, minNode.data);
+                //if node has 2 children. Find the min. value node in the right subtree 
+                //copy the data to the current node and remove the min.value node
+                const minNode = this.lookupMinNode(node.nodeRight);
+                node.data = minNode.data;
+                node.nodeRight = this.removeNode(node.nodeRight, minNode.data);
             }
-        } 
+        }
         return node;
     }
-    lookupMinNode(node){
-        if(node.nodeLeft === null) { //if left child is null it means the current node is the min. value
-            return node; 
+
+    lookupMinNode(node) {
+        if (node.nodeLeft === null) { //if left child is null it means the current node is the min. value
+            return node;
         }
         return this.lookupMinNode(node.nodeLeft); //if not null then there is smaller value in the left so keep searching
     }
-    lookupMaxNode(node){
-        if(node.nodeRight === null) { //if left child is null it means the current node is the min. value
-            return node; 
+
+    lookupMaxNode(node) {
+        if (node.nodeRight === null) { //if left child is null it means the current node is the min. value
+            return node;
         }
         return this.lookupMaxNode(node.nodeRight); //if not null then there is smaller value in the left so keep searching
     }
+
     lookup(node) {
         return this.lookupNode(this.root, node); // <-- pass 'node' instead of 'data'
     }
-    
+
     lookupNode(node, k) {
         if (node === null) {
             return null;
@@ -129,37 +134,64 @@ class BinarySearchTree extends NodeBST{
             return this.lookupNode(node.nodeRight, k);
         }
     }
-    
-    inOrderTraverse(node,call) {
-        if(node != null) {
+
+    inOrderTraverse(node, call) {
+        if (node != null) {
             this.inOrderTraverse(node.nodeLeft, call);
             call(node.data);
-            this.inOrderTraverse(node.nodeRight, call); 
+            this.inOrderTraverse(node.nodeRight, call);
         }
     }
+
     inOrder(call) {
         this.inOrderTraverse(this.root, call);
     }
-    postOrderTraverse(node,call) {
-        if(node!= null) {
+
+    postOrderTraverse(node, call) {
+        if (node != null) {
             this.postOrderTraverse(node.nodeLeft, call);
-            this.postOrderTraverse(node.nodeRight, call); 
+            this.postOrderTraverse(node.nodeRight, call);
             call(node.data);
         }
     }
+
     postOrder(call) {
         this.postOrderTraverse(this.root, call);
     }
-    preOrderTraverse(node,call) {
-        if(node!= null) {
+
+    preOrderTraverse(node, call) {
+        if (node != null) {
             call(node.data);
             this.preOrderTraverse(node.nodeLeft, call);
-            this.preOrderTraverse(node.nodeRight, call); 
+            this.preOrderTraverse(node.nodeRight, call);
         }
     }
     preOrder(call) {
         this.preOrderTraverse(this.root, call);
     }
 
+    createNodeElement(node) {
+        const container = document.querySelector('section.binarytree-container');
+        const nodeElement = document.createElement('div');
+        nodeElement.classList.add('bst-node');
+        nodeElement.textContent = node.data;
+        const level = this.getNodeLevel(node);
+        let row = container.querySelector(`.level-${level}`);
+        if (!row) {
+            row = document.createElement('div');
+            row.classList.add('level', `level-${level}`);
+            container.appendChild(row);
+        }
+        row.appendChild(nodeElement);
+    }
+
+    getNodeLevel(node) {
+        let level = 0;
+        while (node.nodeParent) {
+            level++;
+            node = node.nodeParent;
+        }
+        return level;
+    }
 }
-export{Comparison,NodeBST,BinarySearchTree};
+export { Comparison, NodeBST, BinarySearchTree };
