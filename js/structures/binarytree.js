@@ -35,20 +35,18 @@ class BinarySearchTree extends NodeBST {
         super();
         this.root = null; //initialize the root as null
         this.compare = compare;
+        this.size = 0;
     }
 
     Insert(data) {
-            const newNode = new NodeBST(data);
-            if (this.root === null) {
-                this.root = newNode;
-                this.createNodeElement(newNode);
-            } else {
-                this.insertionNode(this.root, newNode);
-                this.createNodeElement(newNode);
-                // Update the entire tree UI after insertion
-                this.renderTree();
-            }
+        const newNode = new NodeBST(data);
+        if (this.root === null) {
+            this.root = newNode;
+        } else {
+            this.insertionNode(this.root, newNode);
         }
+        this.createNodeElement(newNode);
+    }
 
     insertionNode(node, newNode) {
         if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
@@ -168,33 +166,32 @@ class BinarySearchTree extends NodeBST {
             this.preOrderTraverse(node.nodeRight, call);
         }
     }
+
     preOrder(call) {
         this.preOrderTraverse(this.root, call);
     }
-
     createNodeElement(node) {
         const container = document.querySelector('section.binarytree-container');
+        // Calculate the level based on the position of the current node
+        let level = 0;
+        let currentNode = node;
+        while (currentNode.nodeParent) {
+            currentNode = currentNode.nodeParent;
+            level++;
+        }
+        let row = container.querySelector(`.level-${level}`);
+        if (!row) {
+            row = document.createElement('div');
+            row.classList.add('level', `level-${level}`);
+            container.appendChild(row);
+        }
+        const maxNodes = Math.pow(2, level); // Maximum nodes at this level
+        const columnWidthPercentage = 100 / maxNodes;
         const nodeElement = document.createElement('div');
         nodeElement.classList.add('bst-node');
         nodeElement.textContent = node.data;
-    
-        const level = this.getNodeLevel(node);
-        const horizontalSpacing = 50; // Adjust this value based on your preference
-    
-        nodeElement.style.left = level * horizontalSpacing + 'px'; // Position based on level
-        nodeElement.style.top = level * 50 + 'px'; // Adjust vertical spacing
-    
-        container.appendChild(nodeElement);
-    }
-    
-
-    getNodeLevel(node) {
-        let level = 0;
-        while (node.nodeParent) {
-            level++;
-            node = node.nodeParent;
-        }
-        return level;
+        row.appendChild(nodeElement);
+        row.style.gridTemplateColumns = `repeat(${maxNodes}, minmax(${columnWidthPercentage}%, 1fr))`;
     }
 }
 export { Comparison, NodeBST, BinarySearchTree };
