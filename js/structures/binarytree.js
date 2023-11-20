@@ -38,7 +38,6 @@ class BinarySearchTree extends NodeBST {
     }
 
     Insert(data) {
-        Insert(data) {
             const newNode = new NodeBST(data);
             if (this.root === null) {
                 this.root = newNode;
