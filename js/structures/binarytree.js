@@ -47,26 +47,31 @@ class BinarySearchTree extends NodeBST {
         }
         this.createNodeElement(newNode);
     }
-
     insertionNode(node, newNode) {
-        if (this.compare(newNode.data, node.data) === Comparison.SMALLER) {
+        const comparisonResult = this.compare(newNode.data, node.data);
+    
+        if (comparisonResult === Comparison.SMALLER) {
             if (node.nodeLeft === null) {
                 node.nodeLeft = newNode;
                 newNode.nodeParent = node;
             } else {
                 this.insertionNode(node.nodeLeft, newNode);
             }
-        } else if (this.compare(newNode.data, node.data) === Comparison.GREATER) {
+        } else if (comparisonResult === Comparison.GREATER) {
             if (node.nodeRight === null) {
                 node.nodeRight = newNode;
                 newNode.nodeParent = node;
             } else {
                 this.insertionNode(node.nodeRight, newNode);
             }
+        } else {
+            // Handle the case when newNode.data is equal to node.data.
+            // You can choose to ignore, update, or handle it based on your requirements.
+            // For now, we'll ignore equal values.
+            console.log("Ignoring equal values:", newNode.data);
         }
-        // If the values are equal, you can choose what to do (e.g., ignore, update, etc.)
-        // For simplicity, let's ignore equal values for now.
     }
+    
     
 
     Remove(data) {
