@@ -49,30 +49,25 @@ class BinarySearchTree extends NodeBST {
     }
 
     insertionNode(node, newNode) {
-        const comparisonResult = this.compare(newNode.data, node.data);
-    
-        if (comparisonResult === Comparison.SMALLER) {
-            if (node.nodeLeft === null) {
-                node.nodeLeft = newNode;
-                newNode.nodeParent = node;
-            } else {
-                this.insertionNode(node.nodeLeft, newNode);
+        if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
+            if (node.nodeLeft === null) { //checks to see if left of the node is empty
+                node.nodeLeft = newNode; //insert new node on the left if smaller than current node
+                newNode.nodeParent = node; //setting the parent of the new node
             }
-        } else if (comparisonResult === Comparison.GREATER) {
-            if (node.nodeRight === null) {
-                node.nodeRight = newNode;
-                newNode.nodeParent = node;
-            } else {
-                this.insertionNode(node.nodeRight, newNode);
+            else {
+                this.insertionNode(node.nodeLeft, newNode); //traverse the left subtree 
             }
-        } else {
-            // Handle the case when newNode.data is equal to node.data.
-            // You can choose to ignore, update, or handle it based on your requirements.
-            // For now, we'll ignore equal values.
-            console.log("Ignoring equal values:", newNode.data);
+        }
+        else if (this.compare(newNode.data, node.data) === Comparison.GREATER) { //if the new node is greater than the current node 
+            if (node.nodeRight === null) { //checks to see if right of the node is empty 
+                node.nodeRight = newNode; //insert new node on the right 
+                newNode.nodeParent = node; //setting the parent of the new node 
+            }
+            else {
+                this.insertionNode(node.nodeRight, newNode); //traverse the right subtree 
+            }
         }
     }
-    
 
     Remove(data) {
         this.root = this.removeNode(this.root, data);
@@ -177,34 +172,26 @@ class BinarySearchTree extends NodeBST {
     }
     createNodeElement(node) {
         const container = document.querySelector('section.binarytree-container');
-        const level = this.calculateNodeLevel(node);
-    
-        console.log(`Node: ${node.data}, Depth: ${level}`);
-    
-        let row = container.querySelector(`.level-${level}`);
-        if (!row) {
-            row = document.createElement('div');
-            row.classList.add('level', `level-${level}`);
-            container.appendChild(row);
-        }
-    
-        const nodeElement = document.createElement('div');
-        nodeElement.classList.add('bst-node');
-        nodeElement.textContent = node.data;
-        row.appendChild(nodeElement);
-    }
-    
-    
-    
-    calculateNodeLevel(node) {
+        // Calculate the level based on the position of the current node
         let level = 0;
         let currentNode = node;
         while (currentNode.nodeParent) {
             currentNode = currentNode.nodeParent;
             level++;
         }
-        return level;
+        let row = container.querySelector(`.level-${level}`);
+        if (!row) {
+            row = document.createElement('div');
+            row.classList.add('level', `level-${level}`);
+            container.appendChild(row);
+        }
+        const maxNodes = Math.pow(2, level); // Maximum nodes at this level
+        const columnWidthPercentage = 100 / maxNodes;
+        const nodeElement = document.createElement('div');
+        nodeElement.classList.add('bst-node');
+        nodeElement.textContent = node.data;
+        row.appendChild(nodeElement);
+        row.style.gridTemplateColumns = `repeat(${maxNodes}, minmax(${columnWidthPercentage}%, 1fr))`;
     }
-    
 }
 export { Comparison, NodeBST, BinarySearchTree };

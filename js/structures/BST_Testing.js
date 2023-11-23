@@ -7,8 +7,8 @@ import {Comparison,NodeBST,BinarySearchTree} from "./binarytree.js";
     tree.Insert(7);
     tree.Insert(2);
     tree.Insert(4);
-    tree.Insert(6);
     tree.Insert(8);
+    tree.Insert(6);
 
     // Print in-order traversal
     console.log("In-Order Traversal:");
