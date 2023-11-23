@@ -39,13 +39,21 @@ class BinarySearchTree extends NodeBST {
     }
 
     Insert(data) {
-        const newNode = new NodeBST(data);
-        if (this.root === null) {
-            this.root = newNode;
-        } else {
-            this.insertionNode(this.root, newNode);
+        try {
+            if(isNaN(data)) {
+                throw new Error("Cannot insert null values");
+            }
+            const newNode = new NodeBST(data);
+            if (this.root === null) {
+                this.root = newNode;
+            } else {
+                this.insertionNode(this.root, newNode);
+            }
+            this.createNodeElement(newNode);
+            errorMessageContainer.textContent = '';
+        }catch(error) {
+            errorMessageContainer.textContent = error.message;
         }
-        this.createNodeElement(newNode);
     }
 
     insertionNode(node, newNode) {
