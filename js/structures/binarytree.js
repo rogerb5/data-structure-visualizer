@@ -39,10 +39,13 @@ class BinarySearchTree extends NodeBST {
     }
 
     Insert(data) {
+        const errorMessageContainer = document.getElementById('error-message');
+    
         try {
-            if(isNaN(data)) {
+            if (isNaN(data)) {
                 throw new Error("Cannot insert null values");
             }
+    
             const newNode = new NodeBST(data);
             if (this.root === null) {
                 this.root = newNode;
@@ -50,11 +53,12 @@ class BinarySearchTree extends NodeBST {
                 this.insertionNode(this.root, newNode);
             }
             this.createNodeElement(newNode);
-            errorMessageContainer.textContent = 'error cannot insert null values';
-        }catch(error) {
+            errorMessageContainer.textContent = ''; // Clear any previous error messages
+        } catch (error) {
             errorMessageContainer.textContent = error.message;
         }
     }
+    
 
     insertionNode(node, newNode) {
         if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
