@@ -6,7 +6,8 @@ const addInput = document.querySelector('input.add-input-val');
 const deleteNodeBtn = document.querySelector('button.delete-node-btn');
 const deleteInput = document.querySelector('input.delete-input-val');
 const searchNodeBtn = document.querySelector('button.search-node-btn');
-const searchInput = document.querySelector('input.search-input');
+const searchInput = document.querySelector('input.search-input-val');
+
 
 // event listener for add button
 addNodeBtn.addEventListener('click', function () {
@@ -19,10 +20,10 @@ searchNodeBtn.addEventListener('click', function () {
     const searchResult = bst.lookup(searchValue);
 
     if (searchResult) {
-        markNodeWithRedCircle(searchResult);
+        bst.markNodeWithRedCircle(searchResult);
     } else {
         // Clear any previous red circles
-        clearRedCircle();
+        bst.clearRedCircle();
         errorMessageContainer.textContent = 'Node not found';
     }
 

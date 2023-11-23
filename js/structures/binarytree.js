@@ -205,16 +205,46 @@ class BinarySearchTree extends NodeBST {
         row.appendChild(nodeElement);
         row.style.gridTemplateColumns = `repeat(${maxNodes}, minmax(${columnWidthPercentage}%, 1fr))`;
     }
+
+    // Function to mark a node with a red circle
     // Function to mark a node with a red circle
     markNodeWithRedCircle(node) {
         // Clear any previous red circles
-        clearRedCircle();
-
-        // Create a red circle and append it to the node element
-        const redCircle = document.createElement('div');
-        redCircle.classList.add('red-circle');
-        nodeElement.appendChild(redCircle);
+        this.clearRedCircle();
+    
+        // Find the corresponding node element in the DOM
+        const container = document.querySelector('section.binarytree-container');
+        const level = this.getLevel(node);
+        const row = container.querySelector(`.level-${level}`);
+        
+        if (row) {
+            const nodes = row.getElementsByClassName('bst-node');
+            
+            for (const nodeElement of nodes) {
+                if (nodeElement.textContent === node.data) {
+                    // Create a red circle and append it to the node element
+                    const redCircle = document.createElement('div');
+                    redCircle.classList.add('red-circle');
+                    nodeElement.appendChild(redCircle);
+                    break; // Stop the loop once the node is found
+                }
+            }
+        }
     }
+    
+    getLevel(node) {
+        let level = 0;
+        let currentNode = node;
+        
+        while (currentNode.nodeParent) {
+            currentNode = currentNode.nodeParent;
+            level++;
+        }
+    
+        return level;
+    }
+    
+
 
     // Function to clear any red circles
     clearRedCircle() {
@@ -224,4 +254,5 @@ class BinarySearchTree extends NodeBST {
         }
     }
 }
+
 export { Comparison, NodeBST, BinarySearchTree };

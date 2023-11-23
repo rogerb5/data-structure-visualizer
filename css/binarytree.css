@@ -126,13 +126,16 @@ section.binarytree-container {
 }
 /* Add this style for red circle */
 .red-circle {
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     position: absolute;
-    background-color: red;
+    border: 2px solid red;
     border-radius: 50%;
-    opacity: 0.5;
+    box-sizing: border-box;
+    pointer-events: none; /* Ensures the red circle does not interfere with mouse interactions */
 }
+
+
 
 
 
