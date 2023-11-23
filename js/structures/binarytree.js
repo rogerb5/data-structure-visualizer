@@ -205,5 +205,23 @@ class BinarySearchTree extends NodeBST {
         row.appendChild(nodeElement);
         row.style.gridTemplateColumns = `repeat(${maxNodes}, minmax(${columnWidthPercentage}%, 1fr))`;
     }
+    // Function to mark a node with a red circle
+    markNodeWithRedCircle(node) {
+        // Clear any previous red circles
+        clearRedCircle();
+
+        // Create a red circle and append it to the node element
+        const redCircle = document.createElement('div');
+        redCircle.classList.add('red-circle');
+        nodeElement.appendChild(redCircle);
+    }
+
+    // Function to clear any red circles
+    clearRedCircle() {
+        const existingRedCircle = document.querySelector('.red-circle');
+        if (existingRedCircle) {
+            existingRedCircle.remove();
+        }
+    }
 }
 export { Comparison, NodeBST, BinarySearchTree };
