@@ -50,7 +50,7 @@ class BinarySearchTree extends NodeBST {
                 this.insertionNode(this.root, newNode);
             }
             this.createNodeElement(newNode);
-            errorMessageContainer.textContent = '';
+            errorMessageContainer.textContent = 'error cannot insert null values';
         }catch(error) {
             errorMessageContainer.textContent = error.message;
         }

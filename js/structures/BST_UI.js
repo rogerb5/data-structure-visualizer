@@ -5,6 +5,7 @@ const addNodeBtn = document.querySelector('button.add-node-btn');
 const addInput = document.querySelector('input.add-input-val');
 const deleteNodeBtn = document.querySelector('button.delete-node-btn');
 const deleteInput = document.querySelector('input.delete-input-val');
+const errorMessageContainer = document.getElementById('error-message');
 
 // event listener for add button
 addNodeBtn.addEventListener('click', function () {
