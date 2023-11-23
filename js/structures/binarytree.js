@@ -207,7 +207,6 @@ class BinarySearchTree extends NodeBST {
     }
 
     // Function to mark a node with a red circle
-    // Function to mark a node with a red circle
     markNodeWithRedCircle(node) {
         // Clear any previous red circles
         this.clearRedCircle();
