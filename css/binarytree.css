@@ -28,6 +28,9 @@ h1 {
     color: #f1faee;
     position: relative;
 }
+div.error-message {
+    padding-left: 1%;
+}
 
 a.home-button {
     z-index: 1;
