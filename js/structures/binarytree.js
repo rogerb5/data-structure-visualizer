@@ -49,25 +49,25 @@ class BinarySearchTree extends NodeBST {
     }
 
     insertionNode(node, newNode) {
-        if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
-            if (node.nodeLeft === null) { //checks to see if left of the node is empty
-                node.nodeLeft = newNode; //insert new node on the left if smaller than current node
-                newNode.nodeParent = node; //setting the parent of the new node
+        if (this.compare(newNode.data, node.data) === Comparison.SMALLER) {
+            if (node.nodeLeft === null) {
+                node.nodeLeft = newNode;
+                newNode.nodeParent = node;
+            } else {
+                this.insertionNode(node.nodeLeft, newNode);
             }
-            else {
-                this.insertionNode(node.nodeLeft, newNode); //traverse the left subtree 
-            }
-        }
-        else if (this.compare(newNode.data, node.data) === Comparison.GREATER) { //if the new node is greater than the current node 
-            if (node.nodeRight === null) { //checks to see if right of the node is empty 
-                node.nodeRight = newNode; //insert new node on the right 
-                newNode.nodeParent = node; //setting the parent of the new node 
-            }
-            else {
-                this.insertionNode(node.nodeRight, newNode); //traverse the right subtree 
+        } else if (this.compare(newNode.data, node.data) === Comparison.GREATER) {
+            if (node.nodeRight === null) {
+                node.nodeRight = newNode;
+                newNode.nodeParent = node;
+            } else {
+                this.insertionNode(node.nodeRight, newNode);
             }
         }
+        // If the values are equal, you can choose what to do (e.g., ignore, update, etc.)
+        // For simplicity, let's ignore equal values for now.
     }
+    
 
     Remove(data) {
         this.root = this.removeNode(this.root, data);
