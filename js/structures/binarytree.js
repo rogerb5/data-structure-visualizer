@@ -172,19 +172,15 @@ class BinarySearchTree extends NodeBST {
     }
     createNodeElement(node) {
         const container = document.querySelector('section.binarytree-container');
-        // Calculate the level based on the position of the current node
-        let level = 0;
-        let currentNode = node;
-        while (currentNode.nodeParent) {
-            currentNode = currentNode.nodeParent;
-            level++;
-        }
+        const level = this.calculateNodeLevel(node);
+    
         let row = container.querySelector(`.level-${level}`);
         if (!row) {
             row = document.createElement('div');
             row.classList.add('level', `level-${level}`);
             container.appendChild(row);
         }
+    
         const maxNodes = Math.pow(2, level); // Maximum nodes at this level
         const columnWidthPercentage = 100 / maxNodes;
         const nodeElement = document.createElement('div');
@@ -193,5 +189,16 @@ class BinarySearchTree extends NodeBST {
         row.appendChild(nodeElement);
         row.style.gridTemplateColumns = `repeat(${maxNodes}, minmax(${columnWidthPercentage}%, 1fr))`;
     }
+    
+    calculateNodeLevel(node) {
+        let level = 0;
+        let currentNode = node;
+        while (currentNode.nodeParent) {
+            currentNode = currentNode.nodeParent;
+            level++;
+        }
+        return level;
+    }
+    
 }
 export { Comparison, NodeBST, BinarySearchTree };
