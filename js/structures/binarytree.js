@@ -171,8 +171,24 @@ class BinarySearchTree extends NodeBST {
         this.preOrderTraverse(this.root, call);
     }
     createNodeElement(node) {
-        console.log(`Node: ${node.data}, Depth: ${this.calculateNodeLevel(node)}`);
+        const container = document.querySelector('section.binarytree-container');
+        const level = this.calculateNodeLevel(node);
+    
+        console.log(`Node: ${node.data}, Depth: ${level}`);
+    
+        let row = container.querySelector(`.level-${level}`);
+        if (!row) {
+            row = document.createElement('div');
+            row.classList.add('level', `level-${level}`);
+            container.appendChild(row);
+        }
+    
+        const nodeElement = document.createElement('div');
+        nodeElement.classList.add('bst-node');
+        nodeElement.textContent = node.data;
+        row.appendChild(nodeElement);
     }
+    
     
     
     calculateNodeLevel(node) {
