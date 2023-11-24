@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if(isNaN(value))
             alert(`Please enter a value`);
         else {
-            alert(`Pushing ${value} to the Stack`);
             values.push(value);
             size++;
             updateStack();
@@ -71,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function () {
             values.pop();
             size--;
         }
-        updateStack();
         alert(`Stack is now empty!`);
+        updateStack();
     }
 
     /******* On-Click Events *******/
