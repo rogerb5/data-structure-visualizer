@@ -100,9 +100,11 @@ a {
 }
 
 .stack-box {
-  width: 50px;
+  width: 500px;
   height: 50px;
-  border: 1px solid rgba(9, 255, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.76);
+  background-color: #ff6b90;
+  font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -4,7 +4,7 @@ console.log('stackvisualizer code output test');
 document.addEventListener('DOMContentLoaded', function () {
     
     const values = [];
-    const size = 0;
+    let size = 0;
 
     const stackContainer = document.getElementById('stack-container');
 
@@ -22,10 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     function stackIsEmpty() {
-        if(size < 0 ) 
-            throw new Error("InvalidArgumentExcpetion - size cannot be less than 0!");
-
-        else if(size === 0) {
+        if(size === 0) {
             alert(`The stack is empty.`);
         }
         else
@@ -34,38 +31,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function stackPush() {
         const value = parseInt(document.getElementById('push-input').value, 10);
-        alert(`Pushing ${value} to the Stack`);
-        values.push(value);
-        size++;
-        updateStack();
+        if(isNaN(value))
+            alert(`Please enter a value`);
+        else {
+            alert(`Pushing ${value} to the Stack`);
+            values.push(value);
+            size++;
+            updateStack();
+        }
     }
 
     function stackPop() {
-        if(size < 0 ) 
-            throw new Error("InvalidArgumentExcpetion - size cannot be less than 0!");
-
-        else if(size === 0) {
+        if(size === 0) {
             alert('Stack is empty!');
         }
         else {
-            values.pop;
+            values.pop();
             size--;
             updateStack();
         }
     }
 
     function stackGetSize() {
-        if(size < 0 )
-            throw new Error("InvalidArgumentExcpetion - size cannot be less than 0!");
-        
         alert(`Stack size: ${size}`);
     }
 
     function stackPeek() {
-        if(size < 0 )
-            throw new Error("InvalidArgumentExcpetion - size cannot be less than 0!");
-
-        else if(!(size === 0)) {
+        if(!(size === 0)) {
             alert(`Top of the stack: ${values[size - 1]}`);
         }
         else {
@@ -75,12 +67,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stackClear() {
-        if(size < 0 )
-            throw new Error("InvalidArgumentExcpetion - size cannot be less than 0!");
-
         while (size > 0) {
-            values.stackPop();
+            values.pop();
+            size--;
         }
+        updateStack();
         alert(`Stack is now empty!`);
     }
 
