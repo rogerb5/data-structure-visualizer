@@ -4,4 +4,45 @@
     box-sizing: border-box; /*blerg testing out push and pull attempt*/
 }
 
+/* default style */
+body {
+    background-color: #F0EAD6;
+}
+
 /* Styles Go Here */
+header{
+    background-color: #40826D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1{
+    text-align: center;
+    color: #f1faee;
+    position: relative;
+}
+
+a.home-button{
+    z-index: 1;
+    color: black;
+    background-color: whitesmoke;
+    position: absolute;
+    border: 1px solid black;
+    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
+    top: 0.3rem;
+    left: 0.3rem;
+    transition: background-color 0.5s ease;
+}
+
+a.home-button:hover{
+    cursor: pointer;
+    color: black;
+    background-color: black;
+}
+
