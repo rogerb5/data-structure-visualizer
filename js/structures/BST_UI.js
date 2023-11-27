@@ -10,6 +10,7 @@ const searchInput = document.querySelector('input.search-input-val');
 const searchminNodeBtn = document.querySelector('button.searchmin-node-btn');
 const searchmaxNodeBtn = document.querySelector('button.searchmax-node-btn');
 const inordertraversalBtn = document.querySelector('.inorder-node-btn');
+const postordertraversalBtn = document.querySelector('.postorder-node-btn')
 
 
 // event listener for add button
@@ -100,7 +101,7 @@ searchmaxNodeBtn.addEventListener('click', function() {
 });
 
 inordertraversalBtn.addEventListener('click', function () {
-    // Clear any previous red circles
+    // Clear any previous circles
     bst.clearRedCircle();
     bst.clearGreenCircle();
 
@@ -112,13 +113,13 @@ inordertraversalBtn.addEventListener('click', function () {
     // Create a function to be called during the inorder traversal with a delay
     const appendDataAndCreateGreenButtonWithDelay = (data, index) => {
         setTimeout(() => {
-            // Create a red circle for the current node
+            // Create a circle for the current node
             const currentNode = bst.lookupNode(bst.root, data);
             if (currentNode) {
                 bst.markNodeWithGreenCircle(currentNode);
             }
 
-            // If it's the last node in the traversal, clear the red circle after a delay
+            // If it's the last node in the traversal, clear the circle after a delay
             if (index === nodesInOrder.length - 1) {
                 setTimeout(() => {
                     bst.clearGreenCircle();
@@ -130,9 +131,34 @@ inordertraversalBtn.addEventListener('click', function () {
     // Start the inorder traversal from the root with a delay
     nodesInOrder.forEach((data, index) => appendDataAndCreateGreenButtonWithDelay(data, index));
 });
+postordertraversalBtn.addEventListener('click', function () {
+    // Clear any previous circles
+    bst.clearRedCircle();
+    bst.clearGreenCircle();
 
+    // Get the nodes in postorder traversal order
+    const nodesPostOrder = [];
+    const collectNodesInOrder = (data) => nodesPostOrder.push(data);
+    bst.postOrderTraverse(bst.root, collectNodesInOrder);
 
+    // Create a function to be called during the postorder traversal with a delay
+    const appendDataAndCreateGreenButtonWithDelay = (data, index) => {
+        setTimeout(() => {
+            // Create a circle for the current node
+            const currentNode = bst.lookupNode(bst.root, data);
+            if (currentNode) {
+                bst.markNodeWithGreenCircle(currentNode);
+            }
 
+            // If it's the last node in the traversal, clear the circle after a delay
+            if (index === nodesPostOrder.length - 1) {
+                setTimeout(() => {
+                    bst.clearGreenCircle();
+                }, 1000); // Adjust the delay as needed
+            }
+        }, index * 1000); // Adjust the delay between nodes as needed
+    };
 
-
-
+    // Start the postorder traversal from the root with a delay
+    nodesPostOrder.forEach((data, index) => appendDataAndCreateGreenButtonWithDelay(data, index));
+});
