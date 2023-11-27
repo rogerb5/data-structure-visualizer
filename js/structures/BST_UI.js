@@ -7,6 +7,7 @@ const deleteNodeBtn = document.querySelector('button.delete-node-btn');
 const deleteInput = document.querySelector('input.delete-input-val');
 const searchNodeBtn = document.querySelector('button.search-node-btn');
 const searchInput = document.querySelector('input.search-input-val');
+const searchminNodeBtn = document.querySelector('button.searchmin-node-btn');
 
 
 // event listener for add button
@@ -30,3 +31,16 @@ searchNodeBtn.addEventListener('click', function () {
     // Clear the search input
     searchInput.value = '';
 });
+
+searchminNodeBtn.addEventListener('click', function () {
+    const minNode = bst.lookupMinNode(bst.root); //perform the lookup for the min. node in the bst 
+
+    if(minNode) {
+        bst.markNodeWithRedCircle(minNode);
+    }
+    else {
+        bst.clearRedCircle();
+        errorMessageContainer.textContent = "No minimum node found";
+    }
+});
+
