@@ -8,7 +8,7 @@ const deleteInput = document.querySelector('input.delete-input-val');
 const searchNodeBtn = document.querySelector('button.search-node-btn');
 const searchInput = document.querySelector('input.search-input-val');
 const searchminNodeBtn = document.querySelector('button.searchmin-node-btn');
-
+const searchmaxNodeBtn = document.querySelector('button.searchmax-node-btn');
 
 // event listener for add button
 addNodeBtn.addEventListener('click', function () {
@@ -41,6 +41,18 @@ searchminNodeBtn.addEventListener('click', function () {
     else {
         bst.clearRedCircle();
         errorMessageContainer.textContent = "No minimum node found";
+    }
+});
+
+searchmaxNodeBtn.addEventListener('click', function() {
+    const maxNode = bst.lookupMaxNode(bst.root);
+
+    if(maxNode) {
+        bst.markNodeWithRedCircle(maxNode);
+    }
+    else {
+        bst.clearRedCircle();
+        errorMessageContainer.textContent = "No maximum node found";
     }
 });
 
