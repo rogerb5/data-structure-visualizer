@@ -60,6 +60,8 @@ class MaxHeap extends MaxHeapUI {
         this.size++;
         this.heapifyUp();
         this.createHeapLevels();
+        this.getSize();
+        this.isEmpty();
     }
 
     extractMax() {
@@ -106,10 +108,14 @@ class MaxHeap extends MaxHeapUI {
     }
 
     getSize() {
+        const sizeOutput = document.querySelector('p.size-output');
+        sizeOutput.textContent = `Size: ${this.size}`;
         return this.size;
     }
 
     isEmpty() {
+        const isEmptyOutput = document.querySelector('p.isEmpty-output');
+        isEmptyOutput.textContent = `isEmpty: ${this.size === 0}`;
         return this.size === 0;
     }
 

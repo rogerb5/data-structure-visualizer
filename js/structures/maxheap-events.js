@@ -1,4 +1,4 @@
-import { MaxHeapUI, MaxHeap } from './maxheap.js';
+import { MaxHeap } from './maxheap.js';
 
 const maxHeap = new MaxHeap();
 const addBtn = document.querySelector('button.add-btn');
