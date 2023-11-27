@@ -231,6 +231,7 @@ class BinarySearchTree extends NodeBST {
         }
     }
     
+    
     getLevel(node) {
         let level = 0;
         let currentNode = node;
@@ -252,6 +253,39 @@ class BinarySearchTree extends NodeBST {
             existingRedCircle.remove();
         }
     }
+       // Function to mark a node with a red circle
+       markNodeWithGreenCircle(node) {
+        // Clear any previous red circles
+        this.clearGreenCircle();
+    
+        // Find the corresponding node element in the DOM
+        const container = document.querySelector('section.binarytree-container');
+        const level = this.getLevel(node);
+        const row = container.querySelector(`.level-${level}`);
+        
+        if (row) {
+            const nodes = row.getElementsByClassName('bst-node');
+            
+            for (const nodeElement of nodes) {
+                if (nodeElement.textContent === node.data) {
+                    // Create a red circle and append it to the node element
+                    const greenCircle = document.createElement('div');
+                    greenCircle.classList.add('green-circle');
+                    nodeElement.appendChild(greenCircle);
+                    break; // Stop the loop once the node is found
+                }
+            }
+        }
+    }
+    // Function to clear any red circles
+    clearGreenCircle() {
+        const existingGreenCircle = document.querySelector('.green-circle');
+        if (existingGreenCircle) {
+            existingGreenCircle.remove();
+        }
+    }
+
 }
+
 
 export { Comparison, NodeBST, BinarySearchTree };
