@@ -13,6 +13,7 @@ const inordertraversalBtn = document.querySelector('.inorder-node-btn');
 const postordertraversalBtn = document.querySelector('.postorder-node-btn');
 const preordertraversalBtn = document.querySelector('.preorder-node-btn');
 const cleartreeBtn = document.querySelector('.clear-node-btn');
+const errorMessageContainer = document.getElementById('error-message'); 
 
 
 // event listener for add button
@@ -197,18 +198,20 @@ preordertraversalBtn.addEventListener('click', function () {
 });
 
 cleartreeBtn.addEventListener('click', function () {
-    // Clear any previous red circles and green circles
+
+    // Clear any previous red or green circles
     bst.clearRedCircle();
     bst.clearGreenCircle();
 
-    // Clear the error message
-    errorMessageContainer.textContent = '';
+     // Clear the error message
+     errorMessageContainer.textContent = '';
+
+     // Clear the entire binary search tree
+     bst.clear();
 
     // Clear the binary tree visualization
     const container = document.querySelector('section.binarytree-container');
     container.innerHTML = ''; // Remove all child elements
-
-    // Reset the Binary Search Tree
-    bst.root = null;
-    bst.size = 0;
 });
+
+
