@@ -12,6 +12,7 @@ const searchmaxNodeBtn = document.querySelector('button.searchmax-node-btn');
 const inordertraversalBtn = document.querySelector('.inorder-node-btn');
 const postordertraversalBtn = document.querySelector('.postorder-node-btn');
 const preordertraversalBtn = document.querySelector('.preorder-node-btn');
+const cleartreeBtn = document.querySelector('.clear-node-btn');
 
 
 // event listener for add button
@@ -193,4 +194,21 @@ preordertraversalBtn.addEventListener('click', function () {
 
     // Start the postorder traversal from the root with a delay
     nodesPreOrder.forEach((data, index) => appendDataAndCreateGreenButtonWithDelay(data, index));
+});
+
+cleartreeBtn.addEventListener('click', function () {
+    // Clear any previous red circles and green circles
+    bst.clearRedCircle();
+    bst.clearGreenCircle();
+
+    // Clear the error message
+    errorMessageContainer.textContent = '';
+
+    // Clear the binary tree visualization
+    const container = document.querySelector('section.binarytree-container');
+    container.innerHTML = ''; // Remove all child elements
+
+    // Reset the Binary Search Tree
+    bst.root = null;
+    bst.size = 0;
 });

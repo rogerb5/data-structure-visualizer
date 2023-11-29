@@ -37,6 +37,10 @@ class BinarySearchTree extends NodeBST {
         this.compare = compare;
         this.size = 0;
     }
+    clear() {
+        this.root = null;
+        this.size = 0;
+    }
 
     Insert(data) {
         const errorMessageContainer = document.getElementById('error-message');
