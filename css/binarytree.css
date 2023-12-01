@@ -5,6 +5,7 @@
     font-family: system-ui;
 }
 
+
 /* Default Styles */
 body {
     background-color: #a8dadc;
@@ -118,7 +119,7 @@ article.holder {
 }
 
 section.binarytree-container {
-    display: grid;
+    /* display: grid; */
     gap: 0.2rem;
     /* background-color: #f0e68c;
     border: 2px solid #d4af37; */
@@ -126,9 +127,9 @@ section.binarytree-container {
 }
 
 .level {
-    display: flex;
+    display: grid;
     justify-content: center;
-    /* border: 2px solid red; */
+    border: 2px solid red;
 }
 
 .bst-node {

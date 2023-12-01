@@ -38,8 +38,8 @@ class BinarySearchTree extends NodeBST {
         this.size = 0;
     }
     clear() {
-        this.root = null;
-        this.size = 0;
+        this.root = null; 
+        this.size = 0; 
     }
 
     Insert(data) {
@@ -188,6 +188,7 @@ class BinarySearchTree extends NodeBST {
     }
     createNodeElement(node) {
         const container = document.querySelector('section.binarytree-container');
+        
         // Calculate the level based on the position of the current node
         let level = 0;
         let currentNode = node;
@@ -201,14 +202,37 @@ class BinarySearchTree extends NodeBST {
             row.classList.add('level', `level-${level}`);
             container.appendChild(row);
         }
+    
         const maxNodes = Math.pow(2, level); // Maximum nodes at this level
         const columnWidthPercentage = 100 / maxNodes;
         const nodeElement = document.createElement('div');
         nodeElement.classList.add('bst-node');
         nodeElement.textContent = node.data;
-        row.appendChild(nodeElement);
+    
+        // Get all child nodes at the same level
+        const childNodes = Array.from(row.getElementsByClassName('bst-node'));
+    
+        // Conditionally insert the new node based on comparisons with existing child nodes
+        let inserted = false;
+        for (const childNode of childNodes) {
+            const compareChild = this.compare(node.data, childNode.textContent);
+            if (compareChild === Comparison.SMALLER) {
+                row.insertBefore(nodeElement, childNode);
+                inserted = true;
+                break;
+            }
+        }
+    
+        // If the new node is greater than all existing child nodes, append it
+        if (!inserted) {
+            row.appendChild(nodeElement);
+        }
+    
         row.style.gridTemplateColumns = `repeat(${maxNodes}, minmax(${columnWidthPercentage}%, 1fr))`;
     }
+    
+    
+    
 
     // Function to mark a node with a red circle
     markNodeWithRedCircle(node) {

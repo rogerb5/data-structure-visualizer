@@ -2,13 +2,13 @@ import {Comparison,NodeBST,BinarySearchTree} from "./binarytree.js";
     const tree = new BinarySearchTree();
 
     // Insert some data
-    tree.Insert(5);
-    tree.Insert(3);
-    tree.Insert(7);
-    tree.Insert(2);
-    tree.Insert(4);
-    tree.Insert(8);
-    tree.Insert(6);
+    tree.Insert(20);
+    tree.Insert(9);
+    tree.Insert(30);
+    tree.Insert(27);
+    tree.Insert(0);
+    tree.Insert(10);
+    tree.Insert(35);
 
     // Print in-order traversal
     console.log("In-Order Traversal:");
