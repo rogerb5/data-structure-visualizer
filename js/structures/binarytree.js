@@ -17,6 +17,7 @@ class NodeBST {
         this.nodeLeft = null; //initialize left child node
         this.nodeRight = null; //initialize right child node 
         this.nodeParent = nodeParent || null; //set parent node or null if not provided
+        this.bstContainer = document.querySelector('section.bst-container');
     }
 
     get children() {
@@ -42,48 +43,48 @@ class BinarySearchTree extends NodeBST {
         this.size = 0; 
     }
 
-    Insert(data) {
-        const errorMessageContainer = document.getElementById('error-message');
+    // Insert(data) {
+    //     const errorMessageContainer = document.getElementById('error-message');
     
-        try {
-            if (isNaN(data)) {
-                throw new Error("Cannot insert null values");
-            }
+    //     try {
+    //         if (isNaN(data)) {
+    //             throw new Error("Cannot insert null values");
+    //         }
     
-            const newNode = new NodeBST(data);
-            if (this.root === null) {
-                this.root = newNode;
-            } else {
-                this.insertionNode(this.root, newNode);
-            }
-            this.createNodeElement(newNode);
-            errorMessageContainer.textContent = ''; // Clear any previous error messages
-        } catch (error) {
-            errorMessageContainer.textContent = error.message;
-        }
-    }
+    //         const newNode = new NodeBST(data);
+    //         if (this.root === null) {
+    //             this.root = newNode;
+    //         } else {
+    //             this.insertionNode(this.root, newNode);
+    //         }
+    //         this.createNodeElement(newNode);
+    //         errorMessageContainer.textContent = ''; // Clear any previous error messages
+    //     } catch (error) {
+    //         errorMessageContainer.textContent = error.message;
+    //     }
+    // }
     
 
-    insertionNode(node, newNode) {
-        if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
-            if (node.nodeLeft === null) { //checks to see if left of the node is empty
-                node.nodeLeft = newNode; //insert new node on the left if smaller than current node
-                newNode.nodeParent = node; //setting the parent of the new node
-            }
-            else {
-                this.insertionNode(node.nodeLeft, newNode); //traverse the left subtree 
-            }
-        }
-        else if (this.compare(newNode.data, node.data) === Comparison.GREATER) { //if the new node is greater than the current node 
-            if (node.nodeRight === null) { //checks to see if right of the node is empty 
-                node.nodeRight = newNode; //insert new node on the right 
-                newNode.nodeParent = node; //setting the parent of the new node 
-            }
-            else {
-                this.insertionNode(node.nodeRight, newNode); //traverse the right subtree 
-            }
-        }
-    }
+    // insertionNode(node, newNode) {
+    //     if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
+    //         if (node.nodeLeft === null) { //checks to see if left of the node is empty
+    //             node.nodeLeft = newNode; //insert new node on the left if smaller than current node
+    //             newNode.nodeParent = node; //setting the parent of the new node
+    //         }
+    //         else {
+    //             this.insertionNode(node.nodeLeft, newNode); //traverse the left subtree 
+    //         }
+    //     }
+    //     else if (this.compare(newNode.data, node.data) === Comparison.GREATER) { //if the new node is greater than the current node 
+    //         if (node.nodeRight === null) { //checks to see if right of the node is empty 
+    //             node.nodeRight = newNode; //insert new node on the right 
+    //             newNode.nodeParent = node; //setting the parent of the new node 
+    //         }
+    //         else {
+    //             this.insertionNode(node.nodeRight, newNode); //traverse the right subtree 
+    //         }
+    //     }
+    // }
 
     Remove(data) {
         this.root = this.removeNode(this.root, data);
@@ -121,33 +122,51 @@ class BinarySearchTree extends NodeBST {
         return node;
     }
 
-    lookupMinNode(node) {
-        if (node.nodeLeft === null) { //if left child is null it means the current node is the min. value
-            return node;
-        }
-        return this.lookupMinNode(node.nodeLeft); //if not null then there is smaller value in the left so keep searching
+    getminValue() {
+        const minimum = this.minValue(this.root);
+        const nodes = this.bstContainer.querySelectorAll('.node');
+        nodes.forEach(node => {
+            if (node.textContent === minimum.toString()) {
+                node.style.animation = 'colorMin 3s';
+                setTimeout(() => {
+                    node.style.animation = '';
+                }, 3000); // should be equal to 3s = 3000ms, 1s = 1000ms, etc...
+            }
+        });
+        return minimum;
     }
 
-    lookupMaxNode(node) {
-        if (node.nodeRight === null) { //if left child is null it means the current node is the min. value
-            return node;
-        }
-        return this.lookupMaxNode(node.nodeRight); //if not null then there is smaller value in the left so keep searching
-    }
-
-    lookup(node) {
-        return this.lookupNode(this.root, node); // <-- pass 'node' instead of 'data'
-    }
-
-    lookupNode(node, k) {
-        if (node === null) {
-            return null;
-        } else if (this.compare(k, node.data) === Comparison.EQUAL) {
-            return node;
-        } else if (this.compare(k, node.data) === Comparison.SMALLER) {
-            return this.lookupNode(node.nodeLeft, k);
+    minValue(current) {
+        if (current === null) {
+            throw new Error('No Such Element Exception');
+        } else if (current.nodeLeft !== null) {
+            return this.minValue(current.nodeLeft);
         } else {
-            return this.lookupNode(node.nodeRight, k);
+            return current.data;
+        }
+    }
+
+    getmaxValue() {
+        const maximum = this.maxValue(this.root);
+        const nodes = this.bstContainer.querySelectorAll('.node');
+        nodes.forEach(node => {
+            if (node.textContent === maximum.toString()) {
+                node.style.animation = 'colorMax 3s';
+                setTimeout(() => {
+                    node.style.animation = '';
+                }, 3000);
+            }
+        });
+        return maximum;
+    }
+
+    maxValue(current) {
+        if (current === null) {
+            throw new Error('No Such Element Exception');
+        } else if (current.nodeRight !== null) {
+            return this.maxValue(current.nodeRight);
+        } else {
+            return current.data;
         }
     }
 
@@ -186,50 +205,62 @@ class BinarySearchTree extends NodeBST {
     preOrder(call) {
         this.preOrderTraverse(this.root, call);
     }
-    createNodeElement(node) {
-        const container = document.querySelector('section.binarytree-container');
-        
-        // Calculate the level based on the position of the current node
-        let level = 0;
-        let currentNode = node;
-        while (currentNode.nodeParent) {
-            currentNode = currentNode.nodeParent;
-            level++;
-        }
-        let row = container.querySelector(`.level-${level}`);
-        if (!row) {
-            row = document.createElement('div');
-            row.classList.add('level', `level-${level}`);
-            container.appendChild(row);
-        }
-    
-        const maxNodes = Math.pow(2, level); // Maximum nodes at this level
-        const columnWidthPercentage = 100 / maxNodes;
-        const nodeElement = document.createElement('div');
-        nodeElement.classList.add('bst-node');
-        nodeElement.textContent = node.data;
-    
-        // Get all child nodes at the same level
-        const childNodes = Array.from(row.getElementsByClassName('bst-node'));
-    
-        // Conditionally insert the new node based on comparisons with existing child nodes
-        let inserted = false;
-        for (const childNode of childNodes) {
-            const compareChild = this.compare(node.data, childNode.textContent);
-            if (compareChild === Comparison.SMALLER) {
-                row.insertBefore(nodeElement, childNode);
-                inserted = true;
-                break;
-            }
-        }
-    
-        // If the new node is greater than all existing child nodes, append it
-        if (!inserted) {
-            row.appendChild(nodeElement);
-        }
-    
-        row.style.gridTemplateColumns = `repeat(${maxNodes}, minmax(${columnWidthPercentage}%, 1fr))`;
+add(value) {
+    this.root = this.addNode(this.root, value);
+    this.size++;
+    this.insertNewValue(this.bstContainer, value);
+}
+
+addNode(root, value) {
+    if (root === null) {
+        return new NodeBST(value);
     }
+
+    if (value <= root.data) {
+        root.nodeLeft = this.addNode(root.nodeLeft, value);
+        root.nodeLeft.nodeParent = root; // Set the parent of the left child
+    } else {
+        root.nodeRight = this.addNode(root.nodeRight, value);
+        root.nodeRight.nodeParent = root; // Set the parent of the right child
+    }
+
+    return root;
+}
+
+  // create domElement for node
+  newNodeElement(value) {
+    const elem = document.createElement('div');
+    elem.classList.add('row');
+    elem.innerHTML = `<div class="node">${value}</div>`;
+    return elem;
+}
+
+// recursive insertion
+insertNewValue(tree, newValue) {
+    const currentNode = tree.querySelector('.node');
+    if (currentNode) {
+        const currentValue = Number(currentNode.textContent);
+        if (newValue > currentValue) {
+            if (!tree.querySelector('.right')) {
+                const rightContainer = document.createElement('section');
+                rightContainer.classList.add('bst-container', 'right');
+                tree.appendChild(rightContainer);
+            }
+            this.insertNewValue(tree.querySelector('.right'), newValue);
+        } else {
+            if (!tree.querySelector('.left')) {
+                const leftContainer = document.createElement('section');
+                leftContainer.classList.add('bst-container', 'left');
+                tree.appendChild(leftContainer);
+            }
+            this.insertNewValue(tree.querySelector('.left'), newValue);
+        }
+    } else {
+        tree.appendChild(this.newNodeElement(newValue));
+    }
+}
+
+
     
     
     

@@ -11,44 +11,34 @@
 </head>
 
 <body>
-    <main>
         <header>
             <h1>Binary Search Tree Visualizer</h1>
         </header>
 
         <nav class="nav">
-            <section class="button-section">
-                <input type="text" class="add-input-val" placeholder="Insert Node Value" required>
+            <article class="add-container">
+                <input type="text" placeholder="Insert Node Value" class="add-input-val" required>
                 <button class="add-node-btn">Insert Node</button>
-            </section>
-            <section class="button-section">
-                <input type="text" class="delete-input-val" placeholder="Delete Node Value">
+            </article>
+    
+            <article class="delete-container">
+                <input type="text" placeholder="Delete Node Value" class="delete-input-val" required>
                 <button class="delete-node-btn">Delete Node</button>
-            </section>
-            <section class="button-section">
-                <input type="text" class="search-input-val" placeholder="Search Node Value">
+            </article>
+    
+            <article class="search-container">
+                <input type="text" placeholder="Search Node" class="search-input-val">
                 <button class="search-node-btn">Search Node</button>
-            </section>
-            <section>
-                <button class="searchmin-node-btn">Search Min Node</button>
-            </section>
-            <section>
-                <button class="searchmax-node-btn">Search Max Node</button>
-            </section>
-            <section>
-                <button class="inorder-node-btn">Inorder Traversal</button>
-            </section>
-            <section>
-                <button class="postorder-node-btn">Postorder Traversal</button>
-            </section>
-            <section>
-                <button class="preorder-node-btn">Preorder Traversal</button>
-            </section>
-            <section>
-                <button class="clear-node-btn">Clear Tree</button>
-            </section>
-
+            </article>
         </nav>
+        <section class="button-section">
+            <button class="searchmin-node-btn">Search Min Node</button>
+            <button class="searchmax-node-btn">Search Max Node</button>
+            <button class="inorder-node-btn">Inorder Traversal</button>
+            <button class="postorder-node-btn">Postorder Traversal</button>
+            <button class="preorder-node-btn">Preorder Traversal</button>
+            <button class="clear-btn">Clear</button>
+        </section>
 
         <div class="home-container">
             <a href="index.html" class="home-button" id="home-button">Home</a>
@@ -67,7 +57,9 @@
 
         <!-- Cursor Icon-->
         <div class="icon"></div>
-    </main>
+        <main class="bst-main">
+            <section class="bst-container"></section>
+        </main>
     <script type="module" src="js/structures/BST_UI.js"></script>
 </body>
 

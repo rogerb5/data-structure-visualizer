@@ -1,8 +1,12 @@
 import { Comparison, NodeBST, BinarySearchTree } from "./binarytree.js";
 
 const bst = new BinarySearchTree();
-const addNodeBtn = document.querySelector('button.add-node-btn');
+// const addNodeBtn = document.querySelector('button.add-node-btn');
+// const addInput = document.querySelector('input.add-input-val');
+const bstContainer = document.querySelector('.bst-container'); // Corrected selector
+const addNodeBtn = document.querySelector('.add-node-btn');
 const addInput = document.querySelector('input.add-input-val');
+
 const deleteNodeBtn = document.querySelector('button.delete-node-btn');
 const deleteInput = document.querySelector('input.delete-input-val');
 const searchNodeBtn = document.querySelector('button.search-node-btn');
@@ -17,11 +21,16 @@ const errorMessageContainer = document.getElementById('error-message');
 
 
 // event listener for add button
+// addNodeBtn.addEventListener('click', function () {
+//     const addInputNumericValue = parseInt(document.querySelector('input.add-input-val').value);
+//     bst.Insert(addInputNumericValue);
+//     addInput.value = '';
+// })
 addNodeBtn.addEventListener('click', function () {
     const addInputNumericValue = parseInt(document.querySelector('input.add-input-val').value);
-    bst.Insert(addInputNumericValue);
+    bst.add(addInputNumericValue);
     addInput.value = '';
-})
+});
 searchNodeBtn.addEventListener('click', function () {
     // Clear any previous red circles
     bst.clearRedCircle();
@@ -53,54 +62,11 @@ searchNodeBtn.addEventListener('click', function () {
 
 
 searchminNodeBtn.addEventListener('click', function () {
-     // Clear any previous red circles
-     bst.clearRedCircle();
-    const minNode = bst.lookupMinNode(bst.root); //perform the lookup for the min. node in the bst 
-
-    if(minNode) {
-        bst.markNodeWithRedCircle(minNode);
-        // Set a timeout to clear the red circle after a certain amount of time (e.g., 2000 milliseconds)
-        setTimeout(() => {
-            bst.clearRedCircle();
-        }, 2000);
-    }
-    else {
-        bst.clearRedCircle();
-        errorMessageContainer.textContent = "No minimum node found";
-
-        // Clear the error message after a certain amount of time (e.g., 2000 milliseconds)
-        setTimeout(() => {
-            errorMessageContainer.textContent = '';
-        }, 2000);
-    }
+    bst.getminValue();
 });
 
 searchmaxNodeBtn.addEventListener('click', function() {
-    // Clear any previous red circles
-    bst.clearRedCircle();
-    const maxNode = bst.lookupMaxNode(bst.root);
-
-    if (maxNode) {
-        bst.markNodeWithRedCircle(maxNode);
-
-        // Set a timeout to clear the red circle after a certain amount of time (e.g., 2000 milliseconds)
-        setTimeout(() => {
-            bst.clearRedCircle();
-
-            // Clear the error message after a certain amount of time (e.g., 2000 milliseconds)
-            setTimeout(() => {
-                errorMessageContainer.textContent = '';
-            }, 2000);
-        }, 2000);
-    } else {
-        bst.clearRedCircle();
-        errorMessageContainer.textContent = "No maximum node found";
-
-        // Set a timeout to clear the error message after a certain amount of time (e.g., 2000 milliseconds)
-        setTimeout(() => {
-            errorMessageContainer.textContent = '';
-        }, 2000);
-    }
+    bst.getmaxValue();
 });
 
 inordertraversalBtn.addEventListener('click', function () {
@@ -197,21 +163,21 @@ preordertraversalBtn.addEventListener('click', function () {
     nodesPreOrder.forEach((data, index) => appendDataAndCreateGreenButtonWithDelay(data, index));
 });
 
-cleartreeBtn.addEventListener('click', function () {
+// cleartreeBtn.addEventListener('click', function () {
 
-    // Clear any previous red or green circles
-    bst.clearRedCircle();
-    bst.clearGreenCircle();
+//     // Clear any previous red or green circles
+//     bst.clearRedCircle();
+//     bst.clearGreenCircle();
 
-     // Clear the error message
-     errorMessageContainer.textContent = '';
+//      // Clear the error message
+//      errorMessageContainer.textContent = '';
 
-     // Clear the entire binary search tree
-     bst.clear();
+//      // Clear the entire binary search tree
+//      bst.clear();
 
-    // Clear the binary tree visualization
-    const container = document.querySelector('section.binarytree-container');
-    container.innerHTML = ''; // Remove all child elements
-});
+//     // Clear the binary tree visualization
+//     const container = document.querySelector('section.binarytree-container');
+//     container.innerHTML = ''; // Remove all child elements
+// });
 
 

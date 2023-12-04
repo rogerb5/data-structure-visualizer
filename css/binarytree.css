@@ -1,3 +1,34 @@
+@keyframes colorMin {
+    0% {
+        background-color: whitesmoke;
+    }
+
+    50% {
+        border: 2px solid red;
+        background-color: #edafb2;
+    }
+
+    100% {
+        background-color: whitesmoke;
+    }
+}
+
+@keyframes colorMax {
+    0% {
+        background-color: whitesmoke;
+    }
+
+    50% {
+        border: 2px solid blue;
+        background-color: #6684e7;
+    }
+
+    100% {
+        background-color: whitesmoke;
+    }
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -5,19 +36,26 @@
     font-family: system-ui;
 }
 
+:root {
+    --header-bg-color: #e96a70;
+    --header-txt-color: whitesmoke;
+    --button-bg-color: whitesmoke;
+    --button-border-color: #333;
+    --main-body-bg-color: #a8dadc;
+    --main-padding: 1rem;
+}
 
-/* Default Styles */
 body {
-    background-color: #a8dadc;
+    background-color: var(--main-body-bg-color);
 }
 
 /* Styles Go Here */
 header {
-    background-color: #e96a70;
+    background-color: var(--header-bg-color);
+    color: var(--header-txt-color);
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100px;
+    padding: var(--main-padding);
 }
 
 a {
@@ -59,19 +97,22 @@ main {
 /*********************************** Nav styling *****/
 nav.nav {
     display: flex;
-    justify-content: space-between;
-    padding: 0.3rem;
+    padding: var(--main-padding);
 }
 
 /************************** Insert and Button styling ****/
 button {
-    padding: 0.4rem 1rem 0.4rem 1rem;
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    border: none;
+    background-color: var(--button-bg-color);
+    border: 2px solid var(--button-border-color);
     font-size: 1rem;
-    background-color: whitesmoke;
 }
 
 button:hover {
     cursor: pointer;
+    background-color: #333;
+    color: whitesmoke;
 }
 button.button{
 
@@ -81,58 +122,46 @@ border: 2px solid black;
 button.add-node-btn {
     border: 2px solid black;
 }
-
-button.delete-node-btn {
-    border: 2px solid black;
-}
-button.search-node-btn {
-    border: 2px solid black;
-}
-button.searchmin-node-btn {
-    border: 2px solid black;
-}
-button.searchmax-node-btn {
-    border: 2px solid black;
-}
-button.inorder-node-btn {
-    border: 2px solid black;
-}
-button.postorder-node-btn {
-    border: 2px solid black;
-}
-button.preorder-node-btn {
-    border: 2px solid black;
-}
-button.clear-node-btn {
-    border: 2px solid black;
-}
 input[type=text] {
-    padding: 0.4rem 1rem 0.4rem 1rem;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    margin: 0.3rem;
     font-size: 1rem;
 }
+section.button-section {
+    padding: var(--main-padding);
+}
 
-/***************************** Binary Tree Section *********/
-article.holder {
+main.bst-main {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 40vh;
 }
 
-section.binarytree-container {
-    /* display: grid; */
-    gap: 0.2rem;
-    /* background-color: #f0e68c;
-    border: 2px solid #d4af37; */
-    padding: 1rem;
-}
-
-.level {
+.bst-container {
     display: grid;
-    justify-content: center;
-    border: 2px solid red;
+    grid-template-columns: 50% 50%;
+}
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    grid-row: 1;
+    grid-column: 1 / 3;
+    margin: 1rem;
 }
 
-.bst-node {
+.left {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.right {
+    grid-row: 2;
+    grid-column: 2;
+}
+div.node { 
     border: 2px solid black;
     width: 40px;
     height: 40px;
@@ -140,14 +169,30 @@ section.binarytree-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.3rem;
     background-color: whitesmoke;
     color: black;
-    margin: 0.3rem;
-    transition: background-color 1s ease;
+    margin: 1rem;
+    /* Control Node Margin for spacing */
 }
+
+/* .level {
+    display: flex;
+    border: 2px solid red;
+    justify-content: flex-end;
+} */
+/* .bst-node {
+    border: 4px solid var(--primary-border-color);
+    border-radius: 0.4rem;
+    background-color: var(--node-color);
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    font-weight: bold;
+    color: var(--node-txt-color);
+    transition: background-color 1s;
+    text-align: center;
+} */
 /* Add this style for red circle */
-.red-circle {
+/* .red-circle {
     width: 40px;
     height: 40px;
     position: absolute;
@@ -155,10 +200,10 @@ section.binarytree-container {
     background-color: red;
     opacity: 40%;
     border-radius: 50%;
-    box-sizing: border-box;
-    pointer-events: none; /* Ensures the red circle does not interfere with mouse interactions */
-}
-/* Add this style for red circle */
+    box-sizing: border-box; 
+    pointer-events: none;  Ensures the red circle does not interfere with mouse interactions 
+} 
+Add this style for red circle 
 .green-circle {
     width: 40px;
     height: 40px;
@@ -168,10 +213,10 @@ section.binarytree-container {
     opacity: 40%;
     border-radius: 50%;
     box-sizing: border-box;
-    pointer-events: none; /* Ensures the red circle does not interfere with mouse interactions */
+    pointer-events: none; Ensures the red circle does not interfere with mouse interactions 
 }
 
-
+*/
 
 
 
