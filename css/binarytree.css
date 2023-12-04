@@ -4,8 +4,8 @@
     }
 
     50% {
-        border: 2px solid red;
-        background-color: #edafb2;
+        border: 2px solid black;
+        background-color: rgb(28, 172, 28);
     }
 
     100% {
@@ -19,8 +19,22 @@
     }
 
     50% {
-        border: 2px solid blue;
-        background-color: #6684e7;
+        border: 2px solid black;
+        background-color: rgba(113, 113, 230, 0.842)
+    }
+
+    100% {
+        background-color: whitesmoke;
+    }
+}
+@keyframes colorSearch {
+    0% {
+        background-color: whitesmoke;
+    }
+
+    50% {
+        border: 2px solid red;
+        background-color: #edafb2;
     }
 
     100% {
@@ -174,6 +188,22 @@ div.node {
     color: black;
     margin: 1rem;
     /* Control Node Margin for spacing */
+}
+.red-circle {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border: 5px solid red;
+    background-color: red;
+    opacity: 40%;
+    border-radius: 50%;
+    box-sizing: border-box; 
+    pointer-events: none; 
+} 
+.level {
+    display: flex;
+    border: 2px solid red;
+    justify-content: flex-end;
 }
 
 /* .level {

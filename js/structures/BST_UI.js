@@ -32,23 +32,19 @@ addNodeBtn.addEventListener('click', function () {
     addInput.value = '';
 });
 searchNodeBtn.addEventListener('click', function () {
-    // Clear any previous red circles
     bst.clearRedCircle();
+    const minNode = bst.minValue(bst.root); //perform the lookup for the min. node in the bst 
 
-    const searchValue = parseInt(searchInput.value);
-    const searchResult = bst.lookup(searchValue);
-
-    if (searchResult) {
-        bst.markNodeWithRedCircle(searchResult);
-
+    if(minNode) {
+        bst.markNodeWithRedCircle(minNode);
         // Set a timeout to clear the red circle after a certain amount of time (e.g., 2000 milliseconds)
         setTimeout(() => {
             bst.clearRedCircle();
         }, 2000);
-    } else {
-        // Clear any previous red circles
+    }
+    else {
         bst.clearRedCircle();
-        errorMessageContainer.textContent = 'Node not found';
+        errorMessageContainer.textContent = "No minimum node found";
 
         // Clear the error message after a certain amount of time (e.g., 2000 milliseconds)
         setTimeout(() => {
@@ -56,9 +52,8 @@ searchNodeBtn.addEventListener('click', function () {
         }, 2000);
     }
 
-    // Clear the search input
-    searchInput.value = '';
 });
+
 
 
 searchminNodeBtn.addEventListener('click', function () {

@@ -43,49 +43,6 @@ class BinarySearchTree extends NodeBST {
         this.size = 0; 
     }
 
-    // Insert(data) {
-    //     const errorMessageContainer = document.getElementById('error-message');
-    
-    //     try {
-    //         if (isNaN(data)) {
-    //             throw new Error("Cannot insert null values");
-    //         }
-    
-    //         const newNode = new NodeBST(data);
-    //         if (this.root === null) {
-    //             this.root = newNode;
-    //         } else {
-    //             this.insertionNode(this.root, newNode);
-    //         }
-    //         this.createNodeElement(newNode);
-    //         errorMessageContainer.textContent = ''; // Clear any previous error messages
-    //     } catch (error) {
-    //         errorMessageContainer.textContent = error.message;
-    //     }
-    // }
-    
-
-    // insertionNode(node, newNode) {
-    //     if (this.compare(newNode.data, node.data) === Comparison.SMALLER) { //if the new node is smaller that the current node
-    //         if (node.nodeLeft === null) { //checks to see if left of the node is empty
-    //             node.nodeLeft = newNode; //insert new node on the left if smaller than current node
-    //             newNode.nodeParent = node; //setting the parent of the new node
-    //         }
-    //         else {
-    //             this.insertionNode(node.nodeLeft, newNode); //traverse the left subtree 
-    //         }
-    //     }
-    //     else if (this.compare(newNode.data, node.data) === Comparison.GREATER) { //if the new node is greater than the current node 
-    //         if (node.nodeRight === null) { //checks to see if right of the node is empty 
-    //             node.nodeRight = newNode; //insert new node on the right 
-    //             newNode.nodeParent = node; //setting the parent of the new node 
-    //         }
-    //         else {
-    //             this.insertionNode(node.nodeRight, newNode); //traverse the right subtree 
-    //         }
-    //     }
-    // }
-
     Remove(data) {
         this.root = this.removeNode(this.root, data);
     }
@@ -167,6 +124,38 @@ class BinarySearchTree extends NodeBST {
             return this.maxValue(current.nodeRight);
         } else {
             return current.data;
+        }
+    }
+    getsearch(value) {
+        const foundNode = this.searchNode(this.root, value);
+    
+        if (foundNode) {
+            console.log(typeof value);
+            foundNode.style.animation = 'colorSearch 3s';
+            setTimeout(() => {
+                foundNode.style.animation = '';
+            }, 3000);
+        }
+    
+        return foundNode;
+    }
+    
+    
+    
+    
+    lookup(node) {
+        return this.lookupNode(this.root, node); // <-- pass 'node' instead of 'data'
+    }
+
+    lookupNode(node, k) {
+        if (node === null) {
+            return null;
+        } else if (this.compare(k, node.data) === Comparison.EQUAL) {
+            return node;
+        } else if (this.compare(k, node.data) === Comparison.SMALLER) {
+            return this.lookupNode(node.nodeLeft, k);
+        } else {
+            return this.lookupNode(node.nodeRight, k);
         }
     }
 
