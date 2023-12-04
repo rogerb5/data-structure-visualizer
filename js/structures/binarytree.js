@@ -1,16 +1,3 @@
-class Comparison {
-    static SMALLER = -1;
-    static GREATER = 1;
-    static EQUAL = 0;
-
-    static defaultCompareNumberFn(x, y) {
-        if (Number(x) == Number(y)) {
-            return Comparison.EQUAL;
-        }
-        return Number(x) < Number(y) ? Comparison.SMALLER : Comparison.GREATER;
-    }
-}
-
 class NodeBST {
     constructor(data, nodeParent) { //constructor 
         this.data = data !== undefined ? data.toString() : ''; // storing the data
@@ -32,16 +19,71 @@ class NodeBST {
 }
 
 class BinarySearchTree extends NodeBST {
-    constructor(compare = Comparison.defaultCompareNumberFn) {
+    constructor() {
         super();
         this.root = null; //initialize the root as null
-        this.compare = compare;
         this.size = 0;
     }
     clear() {
         this.root = null; 
         this.size = 0; 
+        this.bstContainer.innerHTML = '';
     }
+    add(value) {
+        this.root = this.addNode(this.root, value);
+        this.size++;
+        this.insertNewValue(this.bstContainer, value);
+    }
+    
+    addNode(root, value) {
+        if (root === null) {
+            return new NodeBST(value);
+        }
+    
+        if (value <= root.data) {
+            root.nodeLeft = this.addNode(root.nodeLeft, value);
+            root.nodeLeft.nodeParent = root; // Set the parent of the left child
+        } else {
+            root.nodeRight = this.addNode(root.nodeRight, value);
+            root.nodeRight.nodeParent = root; // Set the parent of the right child
+        }
+    
+        return root;
+    }
+    
+      // create domElement for node
+    newNodeElement(value) {
+        const elem = document.createElement('div');
+        elem.classList.add('row');
+        elem.innerHTML = `<div class="node">${value}</div>`;
+        return elem;
+    }
+    
+    // recursive insertion
+    insertNewValue(tree, newValue) {
+        const currentNode = tree.querySelector('.node');
+        if (currentNode) {
+            const currentValue = Number(currentNode.textContent);
+            if (newValue > currentValue) {
+                if (!tree.querySelector('.right')) {
+                    const rightContainer = document.createElement('section');
+                    rightContainer.classList.add('bst-container', 'right');
+                    tree.appendChild(rightContainer);
+                }
+                this.insertNewValue(tree.querySelector('.right'), newValue);
+            } else {
+                if (!tree.querySelector('.left')) {
+                    const leftContainer = document.createElement('section');
+                    leftContainer.classList.add('bst-container', 'left');
+                    tree.appendChild(leftContainer);
+                }
+                this.insertNewValue(tree.querySelector('.left'), newValue);
+            }
+        } else {
+            tree.appendChild(this.newNodeElement(newValue));
+        }
+    }
+
 
     Remove(data) {
         this.root = this.removeNode(this.root, data);
@@ -78,6 +120,7 @@ class BinarySearchTree extends NodeBST {
         }
         return node;
     }
+
 
     getminValue() {
         const minimum = this.minValue(this.root);
@@ -126,214 +169,103 @@ class BinarySearchTree extends NodeBST {
             return current.data;
         }
     }
-    getsearch(value) {
-        const foundNode = this.searchNode(this.root, value);
     
-        if (foundNode) {
-            console.log(typeof value);
-            foundNode.style.animation = 'colorSearch 3s';
-            setTimeout(() => {
-                foundNode.style.animation = '';
-            }, 3000);
-        }
-    
-        return foundNode;
-    }
-    
-    
-    
-    
-    lookup(node) {
-        return this.lookupNode(this.root, node); // <-- pass 'node' instead of 'data'
+    highlightNode(value) {
+        const nodes = this.bstContainer.querySelectorAll('.node');
+        nodes.forEach(node => {
+            // Ensure both values are integers for accurate comparison
+            if (parseInt(node.textContent) === parseInt(value)) {
+                node.style.animation = 'colorSearch 3s';
+                setTimeout(() => {
+                    node.style.animation = '';
+                }, 3000);
+            }
+        });
     }
 
-    lookupNode(node, k) {
-        if (node === null) {
-            return null;
-        } else if (this.compare(k, node.data) === Comparison.EQUAL) {
-            return node;
-        } else if (this.compare(k, node.data) === Comparison.SMALLER) {
-            return this.lookupNode(node.nodeLeft, k);
+    
+    contains(value) {
+        return this.containsNode(this.root, value);
+    }
+    
+    containsNode(current, value) {
+        if (current === null) {
+            return false;
+        } else if (parseInt(current.data) === parseInt(value)) {
+            return true;
+        } else if (parseInt(current.data) < parseInt(value)) {
+            return this.containsNode(current.nodeRight, value);
         } else {
-            return this.lookupNode(node.nodeRight, k);
+            return this.containsNode(current.nodeLeft, value);
         }
     }
 
-    inOrderTraverse(node, call) {
+
+    highlightInOrder(value) {
+        const nodes = this.bstContainer.querySelectorAll('.node');
+        nodes.forEach(node => {
+            if (parseInt(node.textContent) === parseInt(value)) {
+                node.style.animation = 'colorinOrder 3s';
+                setTimeout(() => {
+                    node.style.animation = '';
+                }, 3000);
+            }
+        });
+    }
+
+    highlightPreOrder(value) {
+        const nodes = this.bstContainer.querySelectorAll('.node');
+        nodes.forEach(node => {
+            if (parseInt(node.textContent) === parseInt(value)) {
+                node.style.animation = 'colorpreOrder 3s';
+                setTimeout(() => {
+                    node.style.animation = '';
+                }, 3000);
+            }
+        });
+    }
+
+    highlightPostOrder(value) {
+        const nodes = this.bstContainer.querySelectorAll('.node');
+        nodes.forEach(node => {
+            if (parseInt(node.textContent) === parseInt(value)) {
+                node.style.animation = 'colorpostOrder 3s';
+                setTimeout(() => {
+                    node.style.animation = '';
+                }, 3000);
+            }
+        });
+    }
+
+    async inOrderTraverse(node) {
         if (node != null) {
-            this.inOrderTraverse(node.nodeLeft, call);
-            call(node.data);
-            this.inOrderTraverse(node.nodeRight, call);
+            await this.inOrderTraverse(node.nodeLeft);
+            this.highlightInOrder(node.data);
+            await this.wait(3000);
+            await this.inOrderTraverse(node.nodeRight);
         }
     }
 
-    inOrder(call) {
-        this.inOrderTraverse(this.root, call);
-    }
-
-    postOrderTraverse(node, call) {
+    async postOrderTraverse(node) {
         if (node != null) {
-            this.postOrderTraverse(node.nodeLeft, call);
-            this.postOrderTraverse(node.nodeRight, call);
-            call(node.data);
+            await this.postOrderTraverse(node.nodeLeft);
+            await this.postOrderTraverse(node.nodeRight);
+            this.highlightPostOrder(node.data);
+            await this.wait(3000);
         }
     }
 
-    postOrder(call) {
-        this.postOrderTraverse(this.root, call);
-    }
-
-    preOrderTraverse(node, call) {
+    async preOrderTraverse(node) {
         if (node != null) {
-            call(node.data);
-            this.preOrderTraverse(node.nodeLeft, call);
-            this.preOrderTraverse(node.nodeRight, call);
+            this.highlightPreOrder(node.data);
+            await this.wait(3000);
+            await this.preOrderTraverse(node.nodeLeft);
+            await this.preOrderTraverse(node.nodeRight);
         }
     }
-
-    preOrder(call) {
-        this.preOrderTraverse(this.root, call);
-    }
-add(value) {
-    this.root = this.addNode(this.root, value);
-    this.size++;
-    this.insertNewValue(this.bstContainer, value);
-}
-
-addNode(root, value) {
-    if (root === null) {
-        return new NodeBST(value);
-    }
-
-    if (value <= root.data) {
-        root.nodeLeft = this.addNode(root.nodeLeft, value);
-        root.nodeLeft.nodeParent = root; // Set the parent of the left child
-    } else {
-        root.nodeRight = this.addNode(root.nodeRight, value);
-        root.nodeRight.nodeParent = root; // Set the parent of the right child
-    }
-
-    return root;
-}
-
-  // create domElement for node
-  newNodeElement(value) {
-    const elem = document.createElement('div');
-    elem.classList.add('row');
-    elem.innerHTML = `<div class="node">${value}</div>`;
-    return elem;
-}
-
-// recursive insertion
-insertNewValue(tree, newValue) {
-    const currentNode = tree.querySelector('.node');
-    if (currentNode) {
-        const currentValue = Number(currentNode.textContent);
-        if (newValue > currentValue) {
-            if (!tree.querySelector('.right')) {
-                const rightContainer = document.createElement('section');
-                rightContainer.classList.add('bst-container', 'right');
-                tree.appendChild(rightContainer);
-            }
-            this.insertNewValue(tree.querySelector('.right'), newValue);
-        } else {
-            if (!tree.querySelector('.left')) {
-                const leftContainer = document.createElement('section');
-                leftContainer.classList.add('bst-container', 'left');
-                tree.appendChild(leftContainer);
-            }
-            this.insertNewValue(tree.querySelector('.left'), newValue);
-        }
-    } else {
-        tree.appendChild(this.newNodeElement(newValue));
-    }
-}
-
-
-    
-    
-    
-
-    // Function to mark a node with a red circle
-    markNodeWithRedCircle(node) {
-        // Clear any previous red circles
-        this.clearRedCircle();
-    
-        // Find the corresponding node element in the DOM
-        const container = document.querySelector('section.binarytree-container');
-        const level = this.getLevel(node);
-        const row = container.querySelector(`.level-${level}`);
-        
-        if (row) {
-            const nodes = row.getElementsByClassName('bst-node');
-            
-            for (const nodeElement of nodes) {
-                if (nodeElement.textContent === node.data) {
-                    // Create a red circle and append it to the node element
-                    const redCircle = document.createElement('div');
-                    redCircle.classList.add('red-circle');
-                    nodeElement.appendChild(redCircle);
-                    break; // Stop the loop once the node is found
-                }
-            }
-        }
-    }
-    
-    
-    getLevel(node) {
-        let level = 0;
-        let currentNode = node;
-        
-        while (currentNode.nodeParent) {
-            currentNode = currentNode.nodeParent;
-            level++;
-        }
-    
-        return level;
-    }
-    
-
-
-    // Function to clear any red circles
-    clearRedCircle() {
-        const existingRedCircle = document.querySelector('.red-circle');
-        if (existingRedCircle) {
-            existingRedCircle.remove();
-        }
-    }
-       // Function to mark a node with a red circle
-       markNodeWithGreenCircle(node) {
-        // Clear any previous red circles
-        this.clearGreenCircle();
-    
-        // Find the corresponding node element in the DOM
-        const container = document.querySelector('section.binarytree-container');
-        const level = this.getLevel(node);
-        const row = container.querySelector(`.level-${level}`);
-        
-        if (row) {
-            const nodes = row.getElementsByClassName('bst-node');
-            
-            for (const nodeElement of nodes) {
-                if (nodeElement.textContent === node.data) {
-                    // Create a red circle and append it to the node element
-                    const greenCircle = document.createElement('div');
-                    greenCircle.classList.add('green-circle');
-                    nodeElement.appendChild(greenCircle);
-                    break; // Stop the loop once the node is found
-                }
-            }
-        }
-    }
-    // Function to clear any red circles
-    clearGreenCircle() {
-        const existingGreenCircle = document.querySelector('.green-circle');
-        if (existingGreenCircle) {
-            existingGreenCircle.remove();
-        }
+    async wait(duration) {
+        return new Promise(resolve => setTimeout(resolve, duration));
     }
 
 }
-
-
-export { Comparison, NodeBST, BinarySearchTree };
+export {NodeBST, BinarySearchTree };

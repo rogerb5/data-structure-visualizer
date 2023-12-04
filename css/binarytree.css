@@ -41,6 +41,26 @@
         background-color: whitesmoke;
     }
 }
+@keyframes colorinOrder {
+    50% {
+        border: 2px solid rgb(21, 111, 51);
+        background-color: rgb(132, 237, 205);
+    }
+}
+
+@keyframes colorpreOrder {
+    50% {
+        border: 2px solid rgb(15, 16, 14);
+        background-color: rgb(165, 145, 244);
+    }
+}
+
+@keyframes colorpostOrder {
+    50% {
+        border: 2px solid rgb(15, 16, 14);
+        background-color: rgb(245, 130, 68);
+    }
+}
 
 
 * {
@@ -189,22 +209,7 @@ div.node {
     margin: 1rem;
     /* Control Node Margin for spacing */
 }
-.red-circle {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    border: 5px solid red;
-    background-color: red;
-    opacity: 40%;
-    border-radius: 50%;
-    box-sizing: border-box; 
-    pointer-events: none; 
-} 
-.level {
-    display: flex;
-    border: 2px solid red;
-    justify-content: flex-end;
-}
+
 
 /* .level {
     display: flex;
