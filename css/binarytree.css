@@ -174,7 +174,7 @@ main.bst-main {
 
 .bst-container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
 }
 .row {
     display: flex;
@@ -183,7 +183,6 @@ main.bst-main {
     position: relative;
     grid-row: 1;
     grid-column: 1 / 3;
-    margin: 1rem;
 }
 
 .left {
@@ -194,8 +193,8 @@ main.bst-main {
 .right {
     grid-row: 2;
     grid-column: 2;
-}
-div.node { 
+} 
+div.node {
     border: 2px solid black;
     width: 40px;
     height: 40px;
@@ -206,52 +205,9 @@ div.node {
     font-size: 1.3rem;
     background-color: whitesmoke;
     color: black;
-    margin: 1rem;
+    margin: 1.4rem 0.9rem 1.4rem 0.9rem;
     /* Control Node Margin for spacing */
 }
-
-
-/* .level {
-    display: flex;
-    border: 2px solid red;
-    justify-content: flex-end;
-} */
-/* .bst-node {
-    border: 4px solid var(--primary-border-color);
-    border-radius: 0.4rem;
-    background-color: var(--node-color);
-    padding: 0.4rem 1rem 0.4rem 1rem;
-    font-weight: bold;
-    color: var(--node-txt-color);
-    transition: background-color 1s;
-    text-align: center;
-} */
-/* Add this style for red circle */
-/* .red-circle {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    border: 5px solid red;
-    background-color: red;
-    opacity: 40%;
-    border-radius: 50%;
-    box-sizing: border-box; 
-    pointer-events: none;  Ensures the red circle does not interfere with mouse interactions 
-} 
-Add this style for red circle 
-.green-circle {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    border: 5px solid green;
-    background-color: green;
-    opacity: 40%;
-    border-radius: 50%;
-    box-sizing: border-box;
-    pointer-events: none; Ensures the red circle does not interfere with mouse interactions 
-}
-
-*/
 
 
 

@@ -20,13 +20,6 @@ const preordertraversalBtn = document.querySelector('.preorder-node-btn');
 const cleartreeBtn = document.querySelector('.clear-btn');
 const errorMessageContainer = document.getElementById('error-message'); 
 
-
-// event listener for add button
-// addNodeBtn.addEventListener('click', function () {
-//     const addInputNumericValue = parseInt(document.querySelector('input.add-input-val').value);
-//     bst.Insert(addInputNumericValue);
-//     addInput.value = '';
-// })
 addNodeBtn.addEventListener('click', function () {
     const addInputNumericValue = parseInt(document.querySelector('input.add-input-val').value);
     bst.add(addInputNumericValue);

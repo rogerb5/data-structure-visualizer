@@ -32,55 +32,52 @@ class BinarySearchTree extends NodeBST {
     add(value) {
         this.root = this.addNode(this.root, value);
         this.size++;
-        this.insertNewValue(this.bstContainer, value);
+        this.updateDOM();
     }
     
     addNode(root, value) {
         if (root === null) {
             return new NodeBST(value);
-        }
-    
-        if (value <= root.data) {
+        } else if (value <= root.data) {
             root.nodeLeft = this.addNode(root.nodeLeft, value);
-            root.nodeLeft.nodeParent = root; // Set the parent of the left child
         } else {
             root.nodeRight = this.addNode(root.nodeRight, value);
-            root.nodeRight.nodeParent = root; // Set the parent of the right child
         }
-    
         return root;
     }
     
-      // create domElement for node
-    newNodeElement(value) {
-        const elem = document.createElement('div');
-        elem.classList.add('row');
-        elem.innerHTML = `<div class="node">${value}</div>`;
-        return elem;
-    }
+ // create domElement for node
+ newNodeElement(value) {
+    const elem = document.createElement('div');
+    elem.classList.add('row');
+    elem.innerHTML = `<div class="node">${value}</div>`;
+    return elem;
+}
+updateDOM() {
+    this.bstContainer.innerHTML = '';
+    this.buildTreeDOM(this.root, this.bstContainer);
+}
     
-    // recursive insertion
-    insertNewValue(tree, newValue) {
-        const currentNode = tree.querySelector('.node');
-        if (currentNode) {
-            const currentValue = Number(currentNode.textContent);
-            if (newValue > currentValue) {
-                if (!tree.querySelector('.right')) {
-                    const rightContainer = document.createElement('section');
-                    rightContainer.classList.add('bst-container', 'right');
-                    tree.appendChild(rightContainer);
-                }
-                this.insertNewValue(tree.querySelector('.right'), newValue);
-            } else {
-                if (!tree.querySelector('.left')) {
-                    const leftContainer = document.createElement('section');
-                    leftContainer.classList.add('bst-container', 'left');
-                    tree.appendChild(leftContainer);
-                }
-                this.insertNewValue(tree.querySelector('.left'), newValue);
+     // Recursive
+     buildTreeDOM(node, parentElement) {
+        if (node !== null) {
+            const container = document.createElement('section');
+            container.classList.add('bst-container');
+            const row = this.newNodeElement(node.data);
+            container.appendChild(row);
+            if (node.left !== null) {
+                const leftDiv = document.createElement('div');
+                leftDiv.classList.add('left'); // left subtree
+                container.appendChild(leftDiv);
+                this.buildTreeDOM(node.nodeLeft, leftDiv);
             }
-        } else {
-            tree.appendChild(this.newNodeElement(newValue));
+            if (node.right !== null) {
+                const rightDiv = document.createElement('div');
+                rightDiv.classList.add('right'); // right subtree
+                container.appendChild(rightDiv);
+                this.buildTreeDOM(node.nodeRight, rightDiv);
+            }
+            parentElement.appendChild(container);
         }
     }
 
