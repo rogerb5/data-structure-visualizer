@@ -142,7 +142,7 @@ class MaxHeap extends MaxHeapUI {
 
     isEmpty() {
         const isEmptyOutput = document.querySelector('p.isEmpty-output');
-        isEmptyOutput.textContent = `isEmpty: ${this.size === 0}`;
+        isEmptyOutput.textContent = `isEmpty? ${this.size === 0}`;
         return this.size === 0;
     }
 
