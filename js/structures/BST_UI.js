@@ -25,6 +25,20 @@ addNodeBtn.addEventListener('click', function () {
     bst.add(addInputNumericValue);
     addInput.value = '';
 });
+
+/// Update the existing event listener for the delete button
+deleteNodeBtn.addEventListener('click', function () {
+    const deleteInputValue = parseInt(deleteInput.value);
+    if (!isNaN(deleteInputValue)) {
+        bst.Remove(deleteInputValue);
+        deleteInput.value = '';
+        bst.updateDOM(); // Make sure to update the DOM after removing a node
+    } else {
+        errorMessageContainer.textContent = 'Please enter a valid numeric value.';
+    }
+});
+
+
 searchNodeBtn.addEventListener('click', function () {
     const searchInputValue = parseInt(document.querySelector('input.search-input-val').value);
     const isNodeInTree = bst.contains(searchInputValue); // holds boolean

@@ -87,36 +87,57 @@ updateDOM() {
     }
 
     removeNode(node, k) {
-        if (node === null) { //if node not found or tree empty return null 
+        if (node === null) {
             return null;
         }
-        if (this.compare(k, node.data) === Comparison.SMALLER) { //if the value is smaller than current node then the node to remove is on the left subtree
+    
+        if (k < node.data) {
             node.nodeLeft = this.removeNode(node.nodeLeft, k);
-        }
-        else if (this.compare(k, node.data) === Comparison.GREATER) { //if the value is greater than current node then the node to remove is on the right subtree
+        } else if (k > node.data) {
             node.nodeRight = this.removeNode(node.nodeRight, k);
-        }
-        else {
-            if (node.isLeaf) { //if node is leaf(no children), node is set to null 
+        } else {
+            if (node.isLeaf) {
+                // Node is a leaf (no children)
                 return null;
             }
-            if (node.nodeRight === null) { //if node has one children. Update node with the non-null child
+    
+            if (node.nodeRight === null) {
+                // Node has one child (left child)
                 return node.nodeLeft;
-            }
-            else if (node.nodeLeft === null) {
+            } else if (node.nodeLeft === null) {
+                // Node has one child (right child)
                 return node.nodeRight;
-            }
-            else {
-
-                //if node has 2 children. Find the min. value node in the right subtree 
-                //copy the data to the current node and remove the min.value node
-                const minNode = this.lookupMinNode(node.nodeRight);
-                node.data = minNode.data;
-                node.nodeRight = this.removeNode(node.nodeRight, minNode.data);
+            } else {
+                // Node has two children
+                // Find the max. value node in the left subtree
+                const maxNode = this.findMaxValueNode(node.nodeLeft);
+                // Copy the data to the current node
+                node.data = maxNode.data;
+                // Remove the max.value node from the left subtree
+                node.nodeLeft = this.removeNode(node.nodeLeft, maxNode.data);
             }
         }
+    
         return node;
     }
+    
+    findMaxValueNode(node) {
+        // Helper method to find the max. value node in a given subtree
+        if (node === null) {
+            return null;
+        }
+    
+        while (node.nodeRight !== null) {
+            node = node.nodeRight;
+        }
+    
+        return node;
+    }
+    
+    
+    
+    
+    
 
 
     getminValue() {
