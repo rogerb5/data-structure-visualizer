@@ -217,10 +217,10 @@ updateDOM() {
         const nodes = this.bstContainer.querySelectorAll('.node');
         nodes.forEach(node => {
             if (parseInt(node.textContent) === parseInt(value)) {
-                node.style.animation = 'colorinOrder 3s';
+                node.style.animation = 'colorinOrder 2s';
                 setTimeout(() => {
                     node.style.animation = '';
-                }, 3000);
+                }, 2000);
             }
         });
     }
@@ -229,10 +229,10 @@ updateDOM() {
         const nodes = this.bstContainer.querySelectorAll('.node');
         nodes.forEach(node => {
             if (parseInt(node.textContent) === parseInt(value)) {
-                node.style.animation = 'colorpreOrder 3s';
+                node.style.animation = 'colorpreOrder 2s';
                 setTimeout(() => {
                     node.style.animation = '';
-                }, 3000);
+                }, 2000);
             }
         });
     }
@@ -241,10 +241,10 @@ updateDOM() {
         const nodes = this.bstContainer.querySelectorAll('.node');
         nodes.forEach(node => {
             if (parseInt(node.textContent) === parseInt(value)) {
-                node.style.animation = 'colorpostOrder 3s';
+                node.style.animation = 'colorpostOrder 2s';
                 setTimeout(() => {
                     node.style.animation = '';
-                }, 3000);
+                }, 2000);
             }
         });
     }
@@ -253,7 +253,7 @@ updateDOM() {
         if (node != null) {
             await this.inOrderTraverse(node.nodeLeft);
             this.highlightInOrder(node.data);
-            await this.wait(3000);
+            await this.wait(2000);
             await this.inOrderTraverse(node.nodeRight);
         }
     }
@@ -263,14 +263,14 @@ updateDOM() {
             await this.postOrderTraverse(node.nodeLeft);
             await this.postOrderTraverse(node.nodeRight);
             this.highlightPostOrder(node.data);
-            await this.wait(3000);
+            await this.wait(2000);
         }
     }
 
     async preOrderTraverse(node) {
         if (node != null) {
             this.highlightPreOrder(node.data);
-            await this.wait(3000);
+            await this.wait(2000);
             await this.preOrderTraverse(node.nodeLeft);
             await this.preOrderTraverse(node.nodeRight);
         }
