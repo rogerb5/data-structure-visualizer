@@ -134,12 +134,6 @@ updateDOM() {
         return node;
     }
     
-    
-    
-    
-    
-
-
     getminValue() {
         const minimum = this.minValue(this.root);
         const nodes = this.bstContainer.querySelectorAll('.node');
