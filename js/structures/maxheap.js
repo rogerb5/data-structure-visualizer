@@ -2,8 +2,17 @@ class MaxHeapUI {
     constructor() {
     }
 
-    createSwapAnimation() {
-
+    startSwapAnimation(index1, index2) {
+        const node1 = document.querySelectorAll('.node')[index1];
+        const node2 = document.querySelectorAll('.node')[index2];
+        node1.classList.add('node-swapping');
+        node2.classList.add('node-swapping');
+        node1.textContent = this.data[index1];
+        node2.textContent = this.data[index2];
+        setTimeout(() => {
+            node1.classList.remove('node-swapping');
+            node2.classList.remove('node-swapping');
+        }, 1000);
     }
 
     createHeapLevels() {
@@ -56,12 +65,14 @@ class MaxHeap extends MaxHeapUI {
     }
 
     add(value) {
-        this.data[this.size] = value;
-        this.size++;
-        this.heapifyUp();
-        this.createHeapLevels();
-        this.getSize();
-        this.isEmpty();
+        if (!this.data.includes(value)) {
+            this.data[this.size] = value;
+            this.size++;
+            this.createHeapLevels();
+            this.isEmpty();
+            this.getSize();
+            this.heapifyUp();
+        }
     }
 
     extractMax() {
@@ -76,10 +87,11 @@ class MaxHeap extends MaxHeapUI {
         return max;
     }
 
-    swap(index1, index2) { //todo add css keyframe triggered swap animation
+    swap(index1, index2) {
         const temp = this.data[index1];
         this.data[index1] = this.data[index2];
         this.data[index2] = temp;
+        this.startSwapAnimation(index1, index2);
     }
 
     heapifyUp() {
@@ -145,6 +157,31 @@ class MaxHeap extends MaxHeapUI {
         }
         result += ']';
         return result;
+    }
+
+    createHeapLevels() {
+        const baseFontSize = 10;
+        const container = document.querySelector('div.maxheap-container');
+        container.innerHTML = '';
+        for (let i = 0; i < this.size; i++) {
+            const level = Math.floor(Math.log2(i + 1));
+            const elementsInRow = Math.pow(2, level);
+            const row = document.createElement('div');
+            row.classList.add('level'); // add css 
+            container.appendChild(row);
+            const columnWidthPercentage = 100 / elementsInRow;
+            const fontSize = (baseFontSize * (11 - 1 * level) / 100) + 'rem';
+            for (let j = 0; j < elementsInRow && i < this.size; j++) {
+                const node = document.createElement('div');
+                node.classList.add('node');
+                node.textContent = this.data[i];
+                node.style.fontSize = fontSize;
+                row.appendChild(node);
+                i++;
+            }
+            i--;
+            row.style.gridTemplateColumns = `repeat(${elementsInRow}, minmax(${columnWidthPercentage}%, 1fr))`;
+        }
     }
 }
 

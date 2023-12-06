@@ -1,4 +1,4 @@
-import { MaxHeapUI, MaxHeap } from './maxheap.js'; // IMPORT
+import { MaxHeap } from './maxheap.js'; // IMPORT
 
 /*
    TEST FILE ---------------------------------------------------------------------

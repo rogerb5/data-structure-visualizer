@@ -1,15 +1,7 @@
-/** CSS and JavaScript triggered animations */
+/* KeyFrames *******/
 @keyframes swapAnimation {
-    0% {
-        transform: scale(1);
-    }
-
     50% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
+        transform: scale(1.4);
     }
 }
 
@@ -133,4 +125,11 @@ section.info-section p {
         flex-wrap: wrap;
         min-height: 20vh;
     }
+}
+
+/****** Keyframes applies as css classes ****/
+.node-swapping {
+    animation: swapAnimation 1s;
+    transition: background-color 1s;
+    background-color: var(--swap-color);
 }
