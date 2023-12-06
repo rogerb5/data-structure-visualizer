@@ -92,5 +92,3 @@ cleartreeBtn.addEventListener('click', function () {
      // Clear the entire binary search tree
      bst.clear();
 });
-
-
