@@ -23,8 +23,8 @@ body::before {
     }
 
     50% {
-        border: 2px solid black;
-        background-color: rgb(28, 172, 28);
+        border: 2px solid #36593e;
+        background-color: #5cab7d;
     }
 
     100% {
@@ -38,8 +38,8 @@ body::before {
     }
 
     50% {
-        border: 2px solid black;
-        background-color: rgba(113, 113, 230, 0.842)
+        border: 2px solid #5390d9;
+        background-color: #48bfe3
     }
 
     100% {
@@ -52,8 +52,8 @@ body::before {
     }
 
     50% {
-        border: 2px solid red;
-        background-color: #edafb2;
+        border: 2px solid #f28d8d;
+        background-color: #f8c7cc;
     }
 
     100% {
@@ -62,22 +62,22 @@ body::before {
 }
 @keyframes colorinOrder {
     50% {
-        border: 2px solid rgb(21, 111, 51);
-        background-color: rgb(132, 237, 205);
+        border: 2px solid #ad2b35;
+        background-color: #e63946;
     }
 }
 
 @keyframes colorpreOrder {
     50% {
-        border: 2px solid rgb(15, 16, 14);
-        background-color: rgb(165, 145, 244);
+        border: 2px solid #f4a261;
+        background-color: #e9c46a;
     }
 }
 
 @keyframes colorpostOrder {
     50% {
-        border: 2px solid rgb(15, 16, 14);
-        background-color: rgb(245, 130, 68);
+        border: 2px solid #63372c;
+        background-color: #c97d60;
     }
 }
 * {
@@ -88,7 +88,7 @@ body::before {
 }
 
 :root {
-    --header-bg-color: #5390d9;
+    --header-bg-color: black;
     --header-txt-color: whitesmoke;
     --button-bg-color: whitesmoke;
     --button-border-color: #333;
