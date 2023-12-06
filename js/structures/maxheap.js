@@ -156,12 +156,20 @@ class MaxHeap extends MaxHeapUI {
     }
 
     clear() {
-        const maxHeapContainer = document.querySelector('div.maxheap-container');
+        // const maxHeapContainer = document.querySelector('div.maxheap-container');
+        const allNodes = document.querySelectorAll('.node');
+        allNodes.forEach((node, index) => {
+            setTimeout(() => {
+                node.classList.add('clear');
+            }, index * 100)
+        })
+
         this.data = [];
         this.size = 0;
         this.isEmpty();
         this.getSize();
-        maxHeapContainer.innerHTML = '';
+
+        // maxHeapContainer.innerHTML = '';
     }
 
     // buildMaxHeap() { 
