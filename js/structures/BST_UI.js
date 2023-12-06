@@ -21,13 +21,20 @@ const cleartreeBtn = document.querySelector('.clear-btn');
 const errorMessageContainer = document.getElementById('error-message'); 
 
 addNodeBtn.addEventListener('click', function () {
+    errorMessageContainer.textContent = '';
     const addInputNumericValue = parseInt(document.querySelector('input.add-input-val').value);
-    bst.add(addInputNumericValue);
-    addInput.value = '';
+    if(!isNaN(addInputNumericValue)) {
+        bst.add(addInputNumericValue);
+        addInput.value = '';
+    }
+    else { 
+        errorMessageContainer.textContent = 'Please enter a valid numeric value.';
+    }
 });
 
-/// Update the existing event listener for the delete button
+//Update the existing event listener for the delete button
 deleteNodeBtn.addEventListener('click', function () {
+    errorMessageContainer.textContent = '';
     const deleteInputValue = parseInt(deleteInput.value);
     if (!isNaN(deleteInputValue)) {
         bst.Remove(deleteInputValue);
@@ -40,6 +47,7 @@ deleteNodeBtn.addEventListener('click', function () {
 
 
 searchNodeBtn.addEventListener('click', function () {
+    errorMessageContainer.textContent = '';
     const searchInputValue = parseInt(document.querySelector('input.search-input-val').value);
     const isNodeInTree = bst.contains(searchInputValue); // holds boolean
     console.log(isNodeInTree);
@@ -54,20 +62,25 @@ searchNodeBtn.addEventListener('click', function () {
 
 
 searchminNodeBtn.addEventListener('click', function () {
+    errorMessageContainer.textContent = '';
     bst.getminValue();
 });
 
 searchmaxNodeBtn.addEventListener('click', function() {
+    errorMessageContainer.textContent = '';
     bst.getmaxValue();
 });
 
 inordertraversalBtn.addEventListener('click', async function () {
+    errorMessageContainer.textContent = '';
     await bst.inOrderTraverse(bst.root);
 });
 postordertraversalBtn.addEventListener('click', async function () {
+    errorMessageContainer.textContent = '';
     await bst.postOrderTraverse(bst.root);
 });
 preordertraversalBtn.addEventListener('click', async function () {
+    errorMessageContainer.textContent = '';
     await bst.preOrderTraverse(bst.root);
 });
 
