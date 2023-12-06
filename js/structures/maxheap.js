@@ -19,16 +19,16 @@ class MaxHeapUI {
         const nodeTwo = document.querySelectorAll('.node')[indexTwo];
         nodeOne.classList.add('node-swapping');
         nodeTwo.classList.add('node-swapping');
-        nodeOne.textContent = this.data[index1];
-        nodeTwo.textContent = this.data[index2];
+        nodeOne.textContent = this.data[indexOne];
+        nodeTwo.textContent = this.data[indexTwo];
         setTimeout(() => {
-            node1.classList.remove('node-swapping');
-            node2.classList.remove('node-swapping');
+            nodeOne.classList.remove('node-swapping');
+            nodeTwo.classList.remove('node-swapping');
         }, 1000);
     }
 
     createHeapLevels() {
-        const baseFontSize = 10;
+        const baseFontSize = 12;
         const container = document.querySelector('div.maxheap-container');
         container.innerHTML = '';
         for (let i = 0; i < this.size; i++) {
@@ -96,6 +96,8 @@ class MaxHeap extends MaxHeapUI {
         const max = this.data.pop();
         this.startExtractMaxAnimation(firstIndex, this.size - 1);
         this.size--;
+        this.getSize();
+        this.isEmpty();
         this.heapifyDown(firstIndex);
         return max;
     }
@@ -153,6 +155,15 @@ class MaxHeap extends MaxHeapUI {
         return false;
     }
 
+    clear() {
+        const maxHeapContainer = document.querySelector('div.maxheap-container');
+        this.data = [];
+        this.size = 0;
+        this.isEmpty();
+        this.getSize();
+        maxHeapContainer.innerHTML = '';
+    }
+
     // buildMaxHeap() { 
     //     const lastNonLeafIndex = Math.floor(this.size / 2) - 1;
     //     for (let i = lastNonLeafIndex; i >= 0; i--) {
@@ -170,31 +181,6 @@ class MaxHeap extends MaxHeapUI {
         }
         result += ']';
         return result;
-    }
-
-    createHeapLevels() {
-        const baseFontSize = 10;
-        const container = document.querySelector('div.maxheap-container');
-        container.innerHTML = '';
-        for (let i = 0; i < this.size; i++) {
-            const level = Math.floor(Math.log2(i + 1));
-            const elementsInRow = Math.pow(2, level);
-            const row = document.createElement('div');
-            row.classList.add('level'); // add css 
-            container.appendChild(row);
-            const columnWidthPercentage = 100 / elementsInRow;
-            const fontSize = (baseFontSize * (11 - 1 * level) / 100) + 'rem';
-            for (let j = 0; j < elementsInRow && i < this.size; j++) {
-                const node = document.createElement('div');
-                node.classList.add('node');
-                node.textContent = this.data[i];
-                node.style.fontSize = fontSize;
-                row.appendChild(node);
-                i++;
-            }
-            i--;
-            row.style.gridTemplateColumns = `repeat(${elementsInRow}, minmax(${columnWidthPercentage}%, 1fr))`;
-        }
     }
 }
 

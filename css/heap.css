@@ -1,13 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
 /* KeyFrames *******/
 @keyframes swapAnimation {
     50% {
-        transform: scale(1.4);
-    }
-}
-
-@keyframes removeMaxAnimation {
-    50% {
-        transform: scale(0.8);
+        color: #FEF08A;
+        transform: scale(1.2);
     }
 }
 
@@ -15,7 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui;
+    font-family: 'Nova Square', sans-serif;
 }
 
 a {
@@ -24,20 +21,29 @@ a {
 
 /* CSS variables */
 :root {
-    --node-color: whitesmoke;
-    --swap-color: #F9DA8B;
-    --max-color: #bbf3cd;
-    --lastnode-color: #E66A6A;
-    --node-txt-color: #333;
+    --node-color: #44403c;
+    --swap-color: #fcbe057b;
+    --max-color: #0bf2548b;
+    --lastnode-color: #fc4f057b;
+    --node-txt-color: whitesmoke;
     --nav-txt-color: whitesmoke;
-    --nav-bg-color: #35469C;
-    --main-bg-color: #E0E8F9;
+    --nav-bg-color: #171717;
+    --main-bg-color: #171717;
     --primary-border-color: #D9E2EC;
     --input-bg-color: #D9E2EC;
     --primary-padding: 0.7rem;
+    --btn-bg-color: #4F46E5;
+    --second-btn-bg-color: #44403C;
+    --second-btn-border: #929598;
 }
 
 /******************************** Navigation Bar Styling */
+a.link {
+    color: var(--node-txt-color);
+    margin-right: 0.3rem;
+    text-decoration: underline;
+}
+
 nav.navigation-bar {
     background-color: var(--nav-bg-color);
     padding: var(--primary-padding);
@@ -51,38 +57,43 @@ nav.navigation-bar h1 {
 }
 
 section.input-section {
-    background-color: var(--nav-txt-color);
+    background-color: var(--main-bg-color);
     padding: var(--primary-padding);
     display: flex;
     gap: 0.2rem;
 }
 
 input[type=text] {
-    background-color: var(--input-bg-color);
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--primary-border-color);
     padding: 0.4rem;
-    border: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    color: var(--input-bg-color);
 }
 
 button {
-    padding: 0.3rem 0.9rem 0.3rem 0.9rem;
+    color: var(--primary-border-color);
+    padding: 0.5rem 1.1rem 0.5rem 1.1rem;
+    font-size: 1.1rem;
     border: none;
-    flex-shrink: 33%;
-    font-size: 14px;
-    background-color: #E0E8F9;
-    transition: color 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+    background-color: var(--second-btn-bg-color);
+    border: 2px solid var(--second-btn-border);
+    border-radius: 0.3rem;
+}
+
+button:last-child {
+    background-color: var(--btn-bg-color);
     border: 2px solid var(--primary-border-color);
 }
 
 button:hover {
     cursor: pointer;
-    border: 2px solid var(--nav-bg-color);
 }
 
 /************************************ Main Styling */
 main {
     background-color: var(--main-bg-color);
-    min-height: 100vh;
+    min-height: 90vh;
     padding: var(--primary-padding);
     display: flex;
     align-items: center;
@@ -92,7 +103,6 @@ main {
 div.maxheap-container {
     display: grid;
     margin: 3rem auto;
-    gap: 0.2rem;
 }
 
 .level {
@@ -100,15 +110,27 @@ div.maxheap-container {
 }
 
 /*********************************** Section output ***/
-section.info-section {
-    background-color: var(--node-txt-color);
-    color: whitesmoke;
-    padding: 0.7rem;
+section.parent-section {
     display: flex;
+    justify-content: space-around;
+    background-color: var(--main-bg-color);
+    padding: var(--primary-padding);
+}
+
+section.info-section {
+    border: 4px solid #747474;
+    padding: 0.9rem;
+    border-radius: 0.33rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
 }
 
 section.info-section p {
     margin: 0.3rem;
+    color: #d4d2d2;
 }
 
 /*************************** Node Styling ************/
@@ -119,17 +141,13 @@ section.info-section p {
     padding: 0.4rem 1rem 0.4rem 1rem;
     font-weight: bold;
     color: var(--node-txt-color);
-    transition: background-color 1s;
+    transition: background-color 500ms;
     text-align: center;
+    margin: 0.2rem;
 }
 
-/* Mobile Screen Settings ******************/
-@media screen and (max-width: 500px) {
-    nav.navigation-bar {
-        flex-direction: column;
-        flex-wrap: wrap;
-        min-height: 20vh;
-    }
+.node:hover {
+    background-color: var(--primary-border-color);
 }
 
 /****** Keyframes applies as css classes ****/
@@ -146,4 +164,14 @@ section.info-section p {
 .node-last {
     background-color: var(--lastnode-color);
     transition: background-color 1s;
+}
+
+/* Mobile Screen Settings ******************/
+@media screen and (max-width: 500px) {
+    nav.navigation-bar {
+        flex-direction: column;
+        flex-wrap: wrap;
+        min-height: 20vh;
+        padding: 1rem;
+    }
 }
