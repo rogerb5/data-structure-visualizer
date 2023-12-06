@@ -2,13 +2,25 @@ class MaxHeapUI {
     constructor() {
     }
 
-    startSwapAnimation(index1, index2) {
-        const node1 = document.querySelectorAll('.node')[index1];
-        const node2 = document.querySelectorAll('.node')[index2];
-        node1.classList.add('node-swapping');
-        node2.classList.add('node-swapping');
-        node1.textContent = this.data[index1];
-        node2.textContent = this.data[index2];
+    startExtractMaxAnimation(firstHeapIndex, lastHeapIndex) {
+        const lastNode = document.querySelectorAll('.node')[lastHeapIndex];
+        lastNode.classList.add('node-last');
+        const maxNode = document.querySelectorAll('.node')[firstHeapIndex];
+        maxNode.classList.add('node-max');
+        setTimeout(() => {
+            lastNode.classList.remove('node-last');
+            maxNode.classList.remove('node-max');
+            lastNode.remove();
+        }, 1000);
+    }
+
+    startSwapAnimation(indexOne, indexTwo) {
+        const nodeOne = document.querySelectorAll('.node')[indexOne];
+        const nodeTwo = document.querySelectorAll('.node')[indexTwo];
+        nodeOne.classList.add('node-swapping');
+        nodeTwo.classList.add('node-swapping');
+        nodeOne.textContent = this.data[index1];
+        nodeTwo.textContent = this.data[index2];
         setTimeout(() => {
             node1.classList.remove('node-swapping');
             node2.classList.remove('node-swapping');
@@ -82,6 +94,7 @@ class MaxHeap extends MaxHeapUI {
         const firstIndex = 0;
         this.swap(firstIndex, this.size - 1);
         const max = this.data.pop();
+        this.startExtractMaxAnimation(firstIndex, this.size - 1);
         this.size--;
         this.heapifyDown(firstIndex);
         return max;
@@ -140,7 +153,7 @@ class MaxHeap extends MaxHeapUI {
         return false;
     }
 
-    // buildMaxHeap() {
+    // buildMaxHeap() { 
     //     const lastNonLeafIndex = Math.floor(this.size / 2) - 1;
     //     for (let i = lastNonLeafIndex; i >= 0; i--) {
     //         this.heapifyDown(i);

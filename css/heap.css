@@ -5,6 +5,12 @@
     }
 }
 
+@keyframes removeMaxAnimation {
+    50% {
+        transform: scale(0.8);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -20,8 +26,8 @@ a {
 :root {
     --node-color: whitesmoke;
     --swap-color: #F9DA8B;
-    --max-color: #E66A6A;
-    --lastnode-color: #FAB8D9;
+    --max-color: #bbf3cd;
+    --lastnode-color: #E66A6A;
     --node-txt-color: #333;
     --nav-txt-color: whitesmoke;
     --nav-bg-color: #35469C;
@@ -93,7 +99,6 @@ div.maxheap-container {
     display: grid;
 }
 
-
 /*********************************** Section output ***/
 section.info-section {
     background-color: var(--node-txt-color);
@@ -132,4 +137,13 @@ section.info-section p {
     animation: swapAnimation 1s;
     transition: background-color 1s;
     background-color: var(--swap-color);
+}
+
+.node-max {
+    background-color: var(--max-color);
+}
+
+.node-last {
+    background-color: var(--lastnode-color);
+    transition: background-color 1s;
 }
