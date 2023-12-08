@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stackPush() {
-        const value = parseInt(document.getElementById('push-input').value, 10);
+        const value = parseInt(document.getElementById('push-input').value);
         if(isNaN(value))
             alert(`Please enter a value`);
         else {
