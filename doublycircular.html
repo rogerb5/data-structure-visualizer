@@ -1,52 +1,64 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Doubly Circular Linked List Visualizer</title>
+    <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/doublycircular.css">
 </head>
 
 <body>
-    <main>
-        <header>
-            <h1>Doubly Circular Linked List Concept</h1>
-        </header>
-    </main>
 
-    <nav class ="nav">
-        <section class = "button=section">
-            <input type="text" class="insert" placeholder="Enter a value">
-            <button class="button">Insert</button>
+    <header>
+        <h1>Doubly Circular Linked List</h1>
+    </header>
+
+    <nav>
+        <section class="operations">
+            <!-- <h2 class="operation-title">Primary Operations:</h2> -->
+            <article class="add-container">
+                <input type="text" placeholder="Append Node" class="append-input" required>
+                <button class="append-btn">Append</button>
+            </article>
+
+            <article class="add-container">
+                <input type="text" placeholder="Prepend Node" class="prepend-input" required>
+                <button class="prepend-btn">Prepend</button>
+            </article>
+
+            <article class="remove-container">
+                <input type="text" placeholder="Remove Node" class="remove-input">
+                <button class="remove-btn">Remove</button>
+            </article>
+
+            <article class="search-container">
+                <input type="text" placeholder="Search Node" class="search-input">
+                <button class="search-btn">Search</button>
+            </article>
+
         </section>
-        <section class = "button=section">
-            <input type="text" class="delete" placeholder="Enter a value">
-            <button class="button" >Delete</button>
-        </section>
-        <section class = "button=section">
-            <input type="text" class="search" placeholder="Enter a value">
-            <button class="button" >Search</button>
-        </section>
-        <section class = "button=section">
-            <input type="text" class="update to beginning" placeholder="Enter a value">
-            <button class="button" >Add First</button>
-        </section>
-        <section class = "button=section">
-            <input type="text" class="update to end" placeholder="Enter a value">
-            <button class="button" >Add Last</button>
+
+        <section class="secondary-operations">
+            <h2 class="operation-title">Other Operations:</h2>
+            <button class="clear-btn">Clear List</button>
+            <button class="reverse-btn">Reverse List</button>
         </section>
     </nav>
 
-    <div class="home-container"> 
-        <a href="index.html" class="home-button" id="home-button">Home</a>
-    </div>
-    
-    
-    
-    <script type="module" src="js/structures/doublycirculartest.js"></script>
+    <section class="list-info-section">
+        <article class="size-article">
+            <p class="size-p">List Size: 0</p>
+            <p class="reverse-p">The list is not reversed!</p>
+        </article>
+    </section>
+
+    <!-- All nodes will be rendered here with JavaScript-->
+    <main class="list-container"></main>
+
+    <script type="module" src="js/structures/doublycircularUI.js" async defer></script>
 </body>
 
 </html>
