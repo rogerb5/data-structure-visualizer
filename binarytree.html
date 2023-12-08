@@ -11,28 +11,17 @@
 </head>
 
 <body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
     <header>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
         <h1>Binary Search Tree Visualizer</h1>
-        <span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776; open</span>
+        <span class="openbtn" onclick="openNav()">&#9776;</span>
     </header>
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "100%";
-        }
-    
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
-    
-
         <nav class="nav">
             <article class="add-container">
                 <input type="text" placeholder="Insert Node Value" class="add-input-val" required>
@@ -61,6 +50,7 @@
         <div class="home-container">
             <a href="index.html" class="home-button" id="home-button">Home</a>
         </div>
+
         
         <div id="error-message" class="error-message" style="color: red;"></div>
 

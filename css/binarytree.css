@@ -134,6 +134,18 @@ body {
     margin-left: 50px;
 }
 
+/* .open-nav-button:hover {
+    color: #f1f1f1;
+    
+} */
+.openbtn {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 10px; /* Adjust the value based on your preference */
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {
         padding-top: 15px;
