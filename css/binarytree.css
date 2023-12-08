@@ -121,6 +121,21 @@ body {
     display: block;
     transition: 0.3s;
 }
+.sidenav img {
+    width: 500px; /* Adjust the value based on your preference */
+    height: auto; /* Maintain the aspect ratio */
+    margin-bottom: 20px;
+}
+.sidenav h2 {
+    color: whitesmoke;
+    margin-bottom: 20px;
+}
+.sidenav p {
+    color: whitesmoke;
+    max-width: 50%;   /* Set maximum width to 100% of the container */
+    margin: 0 auto;    /* Center the paragraph */
+    margin-bottom: 20px;
+}
 
 .sidenav a:hover {
     color: #f1f1f1;
