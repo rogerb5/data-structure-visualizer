@@ -13,7 +13,7 @@ body::before {
 }
 @font-face {
     font-family: 'knewave';
-    src: url('../assets/knewave-outline.otf') format('opentype');
+    src: url('../assets/fonts/knewave-outline.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -114,13 +114,32 @@ body {
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
     display: block;
-    transition: 0.3s;
+    margin-bottom: 15px; /* Adjust the margin based on your design */
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
 }
+.sidenav a[href="#sourceCode"] {
+    position: fixed;
+    left: 0;
+    top: 20%; 
+    transform: translateY(-50%);
+    margin-left: 10px; /* Adjust the left margin based on your design */
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    background-color: whitesmoke; /* Adjust the background color based on your design */
+    padding: 10px;
+    border-radius: 5px; /* Optional: Add border-radius for a rounded appearance */
+    z-index: 2; /* Ensure the link stays on top of the sidebar */
+}
+.sidenav a[href="#sourceCode"]:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: black;
+}
+
 .sidenav img {
     width: 500px; /* Adjust the value based on your preference */
     height: auto; /* Maintain the aspect ratio */
@@ -135,6 +154,7 @@ body {
     max-width: 50%;   /* Set maximum width to 100% of the container */
     margin: 0 auto;    /* Center the paragraph */
     margin-bottom: 20px;
+    line-height: 2;
 }
 
 .sidenav a:hover {
@@ -155,6 +175,11 @@ body {
     position: absolute;
     top: 0;
     right: 10px; /* Adjust the value based on your preference */
+}
+#sourceCode pre {
+    max-width: 60%;
+    margin: 0 auto;
+    background: #f8f8f8;
 }
 
 @media screen and (max-height: 450px) {

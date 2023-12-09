@@ -8,27 +8,52 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/binarytree.css">
+
+ <!-- Include Prism.css theme -->
+ <link rel="stylesheet" href="./assets/library/prism.css">
 </head>
 
 <body>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <img src="./assets/InsertNaive.gif">
+        <img src="./assets/img/InsertNaive.gif">
+        <a href="#sourceCode">Code</a>
         <h2>What is a Binary Search Tree?</h2>
         <p>A binary search tree (BST) is a hierarchical data structure widely used in computer science 
         for efficient searching, insertion, and deletion operations. In a binary search tree, each node has at most two children, 
         referred to as the left child and the right child. The structure of the tree is such that for each node, all elements in its left subtree are less than or equal to the node, while all elements in its right subtree are greater than the node.
         </p>
-        <h2>How to insert?</h2>
+        <h2>How To insert?</h2>
         <p>When inserting a new node, if the tree is initially empty, the first node becomes the root. 
             Subsequent nodes are added based on a comparison with the existing nodes: if the value is less than or equal to the parent, it goes to the left; 
             if greater, it goes to the right. 
         </p>
-        <h2>How to remove?</h2>
+        <h2>How To remove?</h2>
         <p>In the removal process, if a node is a leaf <mark>(has no children)</mark>, it is simply deleted. 
             If a node has one child, the child's value replaces the parent's value. 
             When a node has two children, the maximum node in the leftmost subtree becomes the parent, ensuring the integrity of the BST.
         </p>
+        <h2>What Are Traversals?</h2>
+        <p>In the realm of binary search trees (BSTs), traversals play a crucial role in understanding the organization and relationships among nodes. 
+            <mark>The inorder traversal</mark>, a cornerstone operation, starts from the leftmost node, progressing to the root, and then moves to the right subtree. 
+            Notably, this traversal yields a sorted sequence of nodes, offering a convenient means of obtaining elements in ascending order. 
+            In contrast, <mark>the preorder traversal</mark> initiates from the root, extends to the left subtree, and concludes with the right subtree. 
+            This traversal aids in constructing prefix expressions and facilitates deep copying of the tree. 
+        <mark>The postorder traversal</mark>, commencing from the leftmost node, proceeds to the right subtree, and ultimately reaches the root. 
+            Its utility lies in bottom-up operations, such as node deletion or expression evaluation in postfix expression trees. 
+            These traversals collectively provide distinct perspectives on the hierarchical structure of a BST, each serving specific purposes in various applications.
+        </p>
+        <section id="sourceCode">
+            <h2>Code</h2>
+            <!-- Inline code snippet -->
+            <p>Here is a simple Java method:</p>
+            <pre><code class="language-java">
+                public class HelloWorld {
+                    public static void main(String[] args) {
+                        System.out.println("Hello, World!");
+                    }
+                }</code></pre>
+        </section>
     </div>
     <header>
         <h1>Binary Search Tree Visualizer</h1>
@@ -79,6 +104,8 @@
             <section class="bst-container"></section>
         </main>
     <script type="module" src="js/structures/BST_UI.js" async></script>
+     <!-- Include Prism.js script -->
+    <script src="./assets/library/prism.js"></script>
 
 </body>
 
