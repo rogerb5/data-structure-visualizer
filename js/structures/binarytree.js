@@ -1,20 +1,8 @@
 class NodeBST {
-    constructor(data, nodeParent) { //constructor 
-        this.data = data !== undefined ? data.toString() : ''; // storing the data
-        this.nodeLeft = null; //initialize left child node
-        this.nodeRight = null; //initialize right child node 
-        this.nodeParent = nodeParent || null; //set parent node or null if not provided
-        this.bstContainer = document.querySelector('section.bst-container');
-    }
-
-    get children() {
-        return this.nodeLeft != null || this.nodeRight != null;
-        //returns true if either the left or right child is not null 
-    }
-
-    get isLeaf() { //leaf means it has no children 
-        return this.nodeLeft === null && this.nodeRight === null;
-        //returns true if both left and right children are null(no children)
+    constructor(data, nodeLeft = null, nodeRight = null) { //constructor
+        this.data = data;
+        this.nodeLeft = nodeLeft; //initialize left child node
+        this.nodeRight = nodeRight; //initialize right child node 
     }
 }
 
@@ -23,6 +11,7 @@ class BinarySearchTree extends NodeBST {
         super();
         this.root = null; //initialize the root as null
         this.size = 0;
+        this.bstContainer = document.querySelector('section.bst-container');
     }
     clear() {
         this.root = null; 
@@ -81,59 +70,50 @@ updateDOM() {
         }
     }
 
-
-    Remove(data) {
-        this.root = this.removeNode(this.root, data);
+    remove(value) {
+        this.root = this.removeNode(this.root, value);
+        this.updateDOM();
     }
 
-    removeNode(node, k) {
-        if (node === null) {
+    removeNode(current, value) {
+        if (current === null) {
             return null;
         }
     
-        if (k < node.data) {
-            node.nodeLeft = this.removeNode(node.nodeLeft, k);
-        } else if (k > node.data) {
-            node.nodeRight = this.removeNode(node.nodeRight, k);
+        if (value < current.data) {
+            current.nodeLeft = this.removeNode(current.nodeLeft, value);
+        } else if (value > current.data) {
+            current.nodeRight = this.removeNode(current.nodeRight, value);
         } else {
-            if (node.isLeaf) {
-                // Node is a leaf (no children)
+            if (this.isLeaf(current)) {
                 return null;
             }
-    
-            if (node.nodeRight === null) {
-                // Node has one child (left child)
-                return node.nodeLeft;
-            } else if (node.nodeLeft === null) {
-                // Node has one child (right child)
-                return node.nodeRight;
+            if (current.nodeLeft === null) {
+                return current.nodeRight;
+            } else if (current.nodeRight === null) {
+                return current.nodeLeft;
             } else {
-                // Node has two children
-                // Find the max. value node in the left subtree
-                const maxNode = this.findMaxValueNode(node.nodeLeft);
-                // Copy the data to the current node
-                node.data = maxNode.data;
-                // Remove the max.value node from the left subtree
-                node.nodeLeft = this.removeNode(node.nodeLeft, maxNode.data);
+                const maxNode = this.findMaxValueNode(current.nodeLeft);
+                current.data = maxNode.data;
+                current.nodeLeft = this.removeNode(current.nodeLeft, maxNode.data);
             }
         }
-    
-        return node;
+        return current;
     }
     
+
     findMaxValueNode(node) {
-        // Helper method to find the max. value node in a given subtree
         if (node === null) {
             return null;
         }
-    
         while (node.nodeRight !== null) {
             node = node.nodeRight;
         }
-    
         return node;
     }
-    
+    isLeaf(node) {
+        return node.left === null && node.right === null;
+    }
     getminValue() {
         const minimum = this.minValue(this.root);
         const nodes = this.bstContainer.querySelectorAll('.node');
@@ -186,7 +166,7 @@ updateDOM() {
         const nodes = this.bstContainer.querySelectorAll('.node');
         nodes.forEach(node => {
             // Ensure both values are integers for accurate comparison
-            if (parseInt(node.textContent) === parseInt(value)) {
+            if (parseInt(node.textContent) === value) {
                 node.style.animation = 'colorSearch 3s';
                 setTimeout(() => {
                     node.style.animation = '';
@@ -203,9 +183,9 @@ updateDOM() {
     containsNode(current, value) {
         if (current === null) {
             return false;
-        } else if (parseInt(current.data) === parseInt(value)) {
+        } else if (current.data === value) {
             return true;
-        } else if (parseInt(current.data) < parseInt(value)) {
+        } else if (current.data < value) {
             return this.containsNode(current.nodeRight, value);
         } else {
             return this.containsNode(current.nodeLeft, value);
@@ -216,7 +196,7 @@ updateDOM() {
     highlightInOrder(value) {
         const nodes = this.bstContainer.querySelectorAll('.node');
         nodes.forEach(node => {
-            if (parseInt(node.textContent) === parseInt(value)) {
+            if (parseInt(node.textContent) === value) {
                 node.style.animation = 'colorinOrder 2s';
                 setTimeout(() => {
                     node.style.animation = '';
@@ -228,7 +208,7 @@ updateDOM() {
     highlightPreOrder(value) {
         const nodes = this.bstContainer.querySelectorAll('.node');
         nodes.forEach(node => {
-            if (parseInt(node.textContent) === parseInt(value)) {
+            if (parseInt(node.textContent) === value) {
                 node.style.animation = 'colorpreOrder 2s';
                 setTimeout(() => {
                     node.style.animation = '';
@@ -240,7 +220,7 @@ updateDOM() {
     highlightPostOrder(value) {
         const nodes = this.bstContainer.querySelectorAll('.node');
         nodes.forEach(node => {
-            if (parseInt(node.textContent) === parseInt(value)) {
+            if (parseInt(node.textContent) === value) {
                 node.style.animation = 'colorpostOrder 2s';
                 setTimeout(() => {
                     node.style.animation = '';

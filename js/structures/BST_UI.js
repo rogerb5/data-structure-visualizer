@@ -37,9 +37,8 @@ deleteNodeBtn.addEventListener('click', function () {
     errorMessageContainer.textContent = '';
     const deleteInputValue = parseInt(deleteInput.value);
     if (!isNaN(deleteInputValue)) {
-        bst.Remove(deleteInputValue);
+        bst.remove(deleteInputValue);
         deleteInput.value = '';
-        bst.updateDOM(); // Make sure to update the DOM after removing a node
     } else {
         errorMessageContainer.textContent = 'Please enter a valid numeric value.';
     }
@@ -93,13 +92,13 @@ cleartreeBtn.addEventListener('click', function () {
      bst.clear();
 });
 
-function openNav() {
-    document.getElementById("mySidenav").style.width = "100%";
-}
+// function openNav() {
+//     document.getElementById("mySidenav").style.width = "100%";
+// }
 
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-// Add event listeners after the functions are defined
-document.querySelector('.openbtn').addEventListener('click', openNav);
-document.querySelector('.closebtn').addEventListener('click', closeNav);
+// function closeNav() {
+//     document.getElementById("mySidenav").style.width = "0";
+// }
+// // Add event listeners after the functions are defined
+// document.querySelector('.openbtn').addEventListener('click', openNav);
+// document.querySelector('.closebtn').addEventListener('click', closeNav);
