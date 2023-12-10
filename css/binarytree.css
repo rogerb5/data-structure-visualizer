@@ -162,11 +162,12 @@ body {
 }
 
 .sidenav .closebtn {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    z-index: 2; /* Ensure the link stays on top of the sidebar */
 }
 
 .openbtn {
@@ -176,7 +177,7 @@ body {
     top: 0;
     right: 10px; /* Adjust the value based on your preference */
 }
-#sourceCode pre {
+#javaCode pre {
     max-width: 60%;
     margin: 0 auto;
     background: #f8f8f8;

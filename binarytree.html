@@ -46,7 +46,7 @@
         <section id="javaCode">
             <h2>Code</h2>
             <!-- Inline code snippet -->
-            <p>Java:</p>
+            <p>Java Code Sample:</p>
             <pre><code class="language-java">
                 public class bst { //Define a public class named bst
                     private Node root; //Declare a private instance variable "root" of type node
@@ -120,39 +120,6 @@
                         }
                         return node;
                     }
-                    // Public method to initiate the search for a node with the specified data in the binary search tree
-                    public void search(int data) {
-                        // Call the private search method to perform the actual search, starting from the root
-                        Node result = search(root, data);
-                
-                        // Process the search result
-                        if (result != null) {
-                            System.out.println("\nNode with data " + data + " found.");
-                        } else {
-                            System.out.println("Node with data " + data + " not found.");
-                        }
-                    }
-                
-                    // Private method to recursively search for a node with the specified data in the binary search tree
-                    private Node search(Node node, int data) {
-                        // Base case: if the current node is null or contains the desired data, return the node
-                        if (node == null || node.data == data) {
-                            return node;
-                        } else if (data < node.data) {
-                            // If the desired data is smaller, recursively search in the left subtree
-                            return search(node.left, data);
-                        } else {
-                            // If the desired data is greater, recursively search in the right subtree
-                            return search(node.right, data);
-                        }
-                    }
-                    public int findMaxValue() throws IllegalStateException { // Public method to find and return the maximum value in the binary search tree
-                        if(root == null) { // If the tree is empty, throw an IllegalStateException
-                            throw new IllegalStateException("The binary search tree is empty.");
-                        }
-                        Node maxNode = findMaxValueNode(root);  // Call the private method starting from the root
-                        return maxNode.data; // Return the maximum value
-                    }
                     private Node findMaxValueNode(Node node) { // Private method to find and return the node with the maximum value in the binary search tree
                         if(node == null) { // Base case: if the current node is null, the tree is empty, return null
                             return null;
@@ -162,63 +129,12 @@
                         }
                         return node; // Return the node with the maximum value
                     }
-                    public int findMinValue() throws IllegalStateException { // Public method to find and return the minimum value in the binary search tree
-                        if(root == null) { // If the tree is empty, throw an IllegalStateException
-                            throw new IllegalStateException("The binary search tree is empty.");
-                        }
-                        Node minNode = findMinValueNode(root);  // Call the private method starting from the root
-                        return minNode.data; // Return the minimum value
-                    }
-                    private Node findMinValueNode(Node node) { // Private method to find and return the node with the minimum value in the binary search tree
-                        if(node == null) {  // Base case: if the current node is null, the tree is empty, return null
-                            return null;
-                        }
-                        while(node.left != null) { // Traverse to the left child until the left child is null, which is the minimum value node
-                            node = node.left;
-                        }
-                        return node; // Return the node with the minimum value
-                    }
-                
-                
                     private void inOrderTraversal(Node node) {
                         if(node != null) {
                             inOrderTraversal(node.left);
                             System.out.print(node.data + " ");
                             inOrderTraversal(node.right);
                         }
-                    }
-                    private void preOrderTraversal(Node node) {
-                        if (node != null) {
-                            System.out.print(node.data + " ");
-                            preOrderTraversal(node.left);
-                            preOrderTraversal(node.right);
-                        }
-                    }
-                    private void postOrderTraversal(Node node) {
-                        if (node != null) {
-                            postOrderTraversal(node.left);
-                            postOrderTraversal(node.right);
-                            System.out.print(node.data + " ");
-                        }
-                    }
-                    // Public method to clear the binary search tree
-                    public void clear() {
-                        root = clear(root);
-                    }
-                
-                    // Private method to recursively clear the binary search tree
-                    private Node clear(Node node) {
-                        // Base case: if the current node is null, no need to do anything
-                        if (node == null) {
-                            return null;
-                        }
-                
-                        // Recursively clear the left and right subtrees
-                        node.left = clear(node.left);
-                        node.right = clear(node.right);
-                
-                        // Set the current node to null
-                        return null;
                     }
                     public static void main(String[] args) {
                         // Create an instance of the bst class
@@ -228,10 +144,6 @@
                         binarySearchTree.add(50);
                         binarySearchTree.add(30);
                         binarySearchTree.add(70);
-                        binarySearchTree.add(20);
-                        binarySearchTree.add(40);
-                        binarySearchTree.add(60);
-                        binarySearchTree.add(80);
                 
                         // Print the tree to verify the add operation
                         System.out.println("Binary Search Tree after adding elements:");
@@ -243,36 +155,6 @@
                         // Print the tree to verify the remove operation
                         System.out.println("\nBinary Search Tree after removing 30:");
                         binarySearchTree.inOrderTraversal(binarySearchTree.root);
-                
-                        //print the tree to verify traversals
-                        System.out.println("\nBinary Search tree using preorder traversal:");
-                        binarySearchTree.preOrderTraversal(binarySearchTree.root);
-                
-                        System.out.println("\nBinary Search tree using postorder traversal:");
-                        binarySearchTree.postOrderTraversal(binarySearchTree.root);
-                
-                        //search methods
-                        binarySearchTree.search(80);
-                        binarySearchTree.search(10);
-                
-                        try {
-                            // Find and print the maximum value
-                            int maxValue = binarySearchTree.findMaxValue();
-                            System.out.println("Maximum value in the BST: " + maxValue);
-                
-                            //Find the and print the minimum value
-                            int minValue = binarySearchTree.findMinValue();
-                            System.out.println("Minimum value in the BST: " + minValue);
-                        } catch (IllegalStateException e) {
-                            // Handle the exception (e.g., print an error message)
-                            System.out.println("Error: " + e.getMessage());
-                        }
-                        // Clear the binary search tree
-                        binarySearchTree.clear();
-                
-                        // Print the tree after clearing
-                        System.out.println("Binary Search Tree after clearing:");
-                        binarySearchTree.inOrderTraversal(binarySearchTree.root); // Should print nothing
                     }
                 }</code></pre>
         </section>
