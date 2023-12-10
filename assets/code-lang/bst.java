@@ -13,7 +13,7 @@ public class bst { //Define a public class named bst
         }
     }
 
-    public void bst() { //constructor for the bst class, initializes the root to null
+    public void binarySearchTree() { //constructor for the bst class, initializes the root to null
         root = null; //creates empty binary tree
     }
 
