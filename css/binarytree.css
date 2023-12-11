@@ -139,6 +139,25 @@ body {
     color: #f1faee;
     background-color: black;
 }
+.sidenav a[href="#cCode"] {
+    position: fixed;
+    left: 0;
+    top: 30%; 
+    transform: translateY(-50%);
+    margin-left: 10px; /* Adjust the left margin based on your design */
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 16px;
+    background-color: #6930c3; /* Adjust the background color based on your design */
+    padding: 10px;
+    border-radius: 5px; /* Optional: Add border-radius for a rounded appearance */
+    z-index: 2; /* Ensure the link stays on top of the sidebar */
+}
+.sidenav a[href="#cCode"]:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: black;
+}
 
 .sidenav img {
     width: 500px; /* Adjust the value based on your preference */
@@ -178,6 +197,11 @@ body {
     right: 10px; /* Adjust the value based on your preference */
 }
 #javaCode pre {
+    max-width: 60%;
+    margin: 0 auto;
+    background: #f8f8f8;
+}
+#cCode pre {
     max-width: 60%;
     margin: 0 auto;
     background: #f8f8f8;
