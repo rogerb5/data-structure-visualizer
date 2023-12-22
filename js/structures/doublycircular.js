@@ -251,7 +251,7 @@ class CircularDoublyLinkedList extends Node {
     //     } else {
     //         reverseOutput.textContent = 'The list is not reversed!';
     //     }
-    // }
+    // } couldnt get it to work
 
     clear() {
         const nodes = document.querySelectorAll('div.node');

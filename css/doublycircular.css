@@ -149,7 +149,7 @@ main.list-container {
 main.list-container.reverse {
     justify-content: flex-end;
     flex-direction: row-reverse;
-}*/
+} */ 
 
 /********************** Node styling ***********/
 div.node {

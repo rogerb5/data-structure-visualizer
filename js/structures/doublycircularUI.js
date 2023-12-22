@@ -17,7 +17,7 @@ const alertSection = document.querySelector('section.alert-section');
 
 const doublyList = new CircularDoublyLinkedList();
 
-// create modal button and modal pop up animation
+// create modal button and modal pop up animation.
 
 function isValidNumber(inputValue) {
     return !isNaN(parseFloat(inputValue)) && isFinite(inputValue);
