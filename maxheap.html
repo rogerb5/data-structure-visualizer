@@ -12,9 +12,8 @@
 
 <body>
     <nav class="navigation-bar">
-        <h1>Max Heap Visualizer</h1>
+        <h1>MaxHeap</h1>
         <section class="info-section">
-            <a class="link" href="index.html">Home Page</a>
             <p class="size-output">Size: 0</p>
             <p class="isEmpty-output">isEmpty? true</p>
         </section>
@@ -22,7 +21,9 @@
             <input type="text" class="node-value" placeholder="Enter Node Value">
             <button class="add-btn">Add</button>
             <button class="extract-btn">Extract Max</button>
+            <button class="array-btn">Toggle Array</button>
             <button class="clear-btn">Clear Heap</button>
+            <button class="#" class="modal">Info</button>
         </section>
     </nav>
 
@@ -36,6 +37,34 @@
         <!-- Heap Contents Will be rendered here-->
         <div class="maxheap-container"></div>
     </main>
+
+    <section class="modal">
+        <h2>About the Max Heap</h2>
+        <h3>A max heap must satisfy three invariants</h3>
+        <ul>
+            <li>Every node must have at most two children (Binary Tree)</li>
+            <li>Every node is greater than or equal to it's children (Max Heap Invariant)</li>
+            <li>Each level is complete meaning it has no gaps. Heaps are filled up left to right.(Max Heap Structure
+                Invariant)
+            </li>
+        </ul>
+
+        <article class="k-article">
+            <h2>About the methods</h2>
+        </article>
+
+        <article class="java-article">
+            <h2>Java Code goes here</h2>
+        </article>
+
+        <article class="c-article">
+            <h2>C Code goes here</h2>
+        </article>
+
+        <article class="p-article">
+            <h2>Python Code goes here</h2>
+        </article>
+    </section>
 
     <!--Use type=module to import/export classes and src test file-->
     <script type="module" src="js/structures/maxheap-ui.js"></script>

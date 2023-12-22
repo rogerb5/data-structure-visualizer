@@ -2,6 +2,36 @@ class MaxHeapUI {
     constructor() {
     }
 
+    highlightFamily(index) {
+        const parentNode = document.querySelectorAll('.node')[index];
+        const leftChildIndex = this.getLeftChildIndex(index);
+        const rightChildIndex = this.getRightChildIndex(index);
+        parentNode.classList.add('node-hover');
+        if (leftChildIndex < this.size) {
+            const leftChildNode = document.querySelectorAll('.node')[leftChildIndex];
+            leftChildNode.classList.add('node-hover');
+        }
+        if (rightChildIndex < this.size) {
+            const rightChildNode = document.querySelectorAll('.node')[rightChildIndex];
+            rightChildNode.classList.add('node-hover');
+        }
+    }
+
+    removeHighlight(index) {
+        const parentNode = document.querySelectorAll('.node')[index];
+        const leftChildIndex = this.getLeftChildIndex(index);
+        const rightChildIndex = this.getRightChildIndex(index);
+        parentNode.classList.remove('node-hover');
+        if (leftChildIndex < this.size) {
+            const leftChildNode = document.querySelectorAll('.node')[leftChildIndex];
+            leftChildNode.classList.remove('node-hover');
+        }
+        if (rightChildIndex < this.size) {
+            const rightChildNode = document.querySelectorAll('.node')[rightChildIndex];
+            rightChildNode.classList.remove('node-hover');
+        }
+    }
+
     startExtractMaxAnimation(firstHeapIndex, lastHeapIndex) {
         const lastNode = document.querySelectorAll('.node')[lastHeapIndex];
         lastNode.classList.add('node-last');
@@ -27,6 +57,19 @@ class MaxHeapUI {
         }, 1000);
     }
 
+    addRemoveHover() {
+        const allNodes = document.querySelectorAll('.node');
+        allNodes.forEach((node, index) => {
+            node.addEventListener('mouseenter', () => {
+                this.highlightFamily(index);
+            });
+
+            node.addEventListener('mouseleave', () => {
+                this.removeHighlight(index);
+            });
+        });
+    }
+
     createHeapLevels() {
         const baseFontSize = 12;
         const container = document.querySelector('div.maxheap-container');
@@ -48,8 +91,9 @@ class MaxHeapUI {
                 i++;
             }
             i--;
-            row.style.gridTemplateColumns = `repeat(${elementsInRow}, minmax(${columnWidthPercentage}%, 1fr))`;
+            row.style.gridTemplateColumns = `repeat(${elementsInRow}, minmax(${columnWidthPercentage / 2}%, 1fr))`;
         }
+        this.addRemoveHover();
     }
 }
 
@@ -156,28 +200,24 @@ class MaxHeap extends MaxHeapUI {
     }
 
     clear() {
-        // const maxHeapContainer = document.querySelector('div.maxheap-container');
         const allNodes = document.querySelectorAll('.node');
         allNodes.forEach((node, index) => {
             setTimeout(() => {
                 node.classList.add('clear');
             }, index * 100)
         })
-
         this.data = [];
         this.size = 0;
         this.isEmpty();
         this.getSize();
-
-        // maxHeapContainer.innerHTML = '';
     }
 
-    // buildMaxHeap() { 
-    //     const lastNonLeafIndex = Math.floor(this.size / 2) - 1;
-    //     for (let i = lastNonLeafIndex; i >= 0; i--) {
-    //         this.heapifyDown(i);
-    //     }
-    // }
+    buildMaxHeap() { // not used 
+        const lastNonLeafIndex = Math.floor(this.size / 2) - 1;
+        for (let i = lastNonLeafIndex; i >= 0; i--) {
+            this.heapifyDown(i);
+        }
+    }
 
     toString() {
         let result = '[';

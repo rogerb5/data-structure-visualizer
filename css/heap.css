@@ -5,7 +5,7 @@
 @keyframes swapAnimation {
     50% {
         color: #FEF08A;
-        transform: scale(1.2);
+        transform: scale(1.1);
     }
 }
 
@@ -64,10 +64,6 @@ a.link {
     text-decoration: underline;
 }
 
-nav h1 {
-    font-family: ;
-}
-
 nav.navigation-bar {
     background-color: var(--nav-bg-color);
     padding: var(--primary-padding);
@@ -110,6 +106,12 @@ button:last-child {
     border: 2px solid #8a84ee;
 }
 
+button:nth-last-child(2) {
+    background-color: rgb(238, 197, 34);
+    border: 2px solid var(--primary-border-color);
+    color: #333;
+}
+
 button:hover {
     cursor: pointer;
 }
@@ -121,6 +123,7 @@ main {
     padding: var(--primary-padding);
     display: flex;
     align-items: center;
+    overflow-y: scroll;
 }
 
 /*********************************** MaxHeap container */
@@ -128,6 +131,13 @@ div.maxheap-container {
     display: grid;
     margin: 3rem auto;
 }
+
+div.maxheap-container.array-version {
+    display: flex;
+    overflow-y: scroll;
+    border: 2px solid var(--primary-border-color);
+}
+
 
 .level {
     display: grid;
@@ -167,7 +177,7 @@ section.info-section p {
 
 /*************************** Node Styling ************/
 .node {
-    border: 3px solid var(--primary-border-color);
+    border: 3px solid #929598;
     border-radius: 0.4rem;
     background-color: var(--node-color);
     padding: 0.4rem 1rem 0.4rem 1rem;
@@ -176,6 +186,14 @@ section.info-section p {
     transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
     text-align: center;
     margin: 0.2rem;
+}
+
+.node:hover {
+    cursor: pointer;
+}
+
+.node.node-hover {
+    background-color: var(--btn-bg-color);
 }
 
 .node.clear {
@@ -202,12 +220,27 @@ section.info-section p {
     transition: background-color 1s;
 }
 
+
+/******** Modal Styling ********************/
+section.modal {
+    padding: var(--primary-padding);
+    width: 100%;
+    height: 100%;
+}
+
 /* Mobile Screen Settings ******************/
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 770px) {
     nav.navigation-bar {
         flex-direction: column;
         flex-wrap: wrap;
-        min-height: 20vh;
         padding: 1rem;
+    }
+
+    button {
+        padding: 0rem;
+    }
+
+    main {
+        overflow-y: scroll;
     }
 }

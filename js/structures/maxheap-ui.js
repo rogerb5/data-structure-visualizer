@@ -4,6 +4,9 @@ const maxHeap = new MaxHeap();
 const addBtn = document.querySelector('button.add-btn');
 const extractBtn = document.querySelector('button.extract-btn');
 const clearBtn = document.querySelector('button.clear-btn');
+const arrayBtn = document.querySelector('button.array-btn');
+const maxHeapContainer = document.querySelector('div.maxheap-container');
+
 const input = document.querySelector('input.node-value');
 const errorMsg = document.querySelector('p#error-msg');
 
@@ -19,6 +22,15 @@ clearBtn.addEventListener('click', () => {
     maxHeap.clear();
 });
 
+arrayBtn.addEventListener('click', () => {
+    maxHeapContainer.classList.toggle('array-version');
+    if (!maxHeapContainer.classList.contains('array-version')) {
+        arrayBtn.innerHTML = `Toggle Array`;
+    } else {
+        arrayBtn.innerHTML = `Toggle Heap`;
+    }
+})
+
 // keyboard enter event
 document.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
@@ -30,6 +42,10 @@ function addInput() {
     const inputValue = parseInt(input.value);
     if (isNaN(inputValue)) {
         errorMsg.classList.add('active');
+        setTimeout(() => {
+            console.log('hihi')
+            errorMsg.classList.remove('active');
+        }, 3000);
         return;
     } else {
         errorMsg.classList.remove('active');
