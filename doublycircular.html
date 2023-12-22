@@ -14,11 +14,17 @@
 
     <header>
         <h1>Doubly Circular Linked List</h1>
+        <div class="mini-container">
+            <a href="index.html">Home</a>
+            <a href="#">Info Menu</a>
+        </div>
     </header>
 
+    <!--- Insert Menu/Modal -->
+
     <nav>
+        <h2 class="operation-title">Primary Operations:</h2>
         <section class="operations">
-            <!-- <h2 class="operation-title">Primary Operations:</h2> -->
             <article class="add-container">
                 <input type="text" placeholder="Append Node" class="append-input" required>
                 <button class="append-btn">Append</button>
@@ -44,19 +50,24 @@
         <section class="secondary-operations">
             <h2 class="operation-title">Other Operations:</h2>
             <button class="clear-btn">Clear List</button>
-            <button class="reverse-btn">Reverse List</button>
+            <!--button class="reverse-btn">Reverse List</button-->
         </section>
     </nav>
 
+    <section class="alert-section">
+        <h3>Please enter a valid number</h3>
+    </section>
+
     <section class="list-info-section">
         <article class="size-article">
-            <p class="size-p">List Size: 0</p>
-            <p class="reverse-p">The list is not reversed!</p>
+            <!-- <p class="size-p">List Size: 0</p> -->
+            <!--<p class="reverse-p">The list is not reversed!</p>-->
         </article>
     </section>
 
     <!-- All nodes will be rendered here with JavaScript-->
-    <main class="list-container"></main>
+    <main class="list-container">
+    </main>
 
     <script type="module" src="js/structures/doublycircularUI.js" async defer></script>
 </body>

@@ -72,11 +72,10 @@ class CircularDoublyLinkedList extends Node {
             this.head = newNode;
         }
 
-        this.size(); // get dynamic size
         //make it circular
         this.tail.next = this.head;
         this.head.prev = this.tail;
-        
+        this.size();
     }
 
     // display() {
@@ -92,32 +91,47 @@ class CircularDoublyLinkedList extends Node {
     //     return result.substring(0, result.length - 4);
     // }
 
-    removeNode(value) {
+
+    removeNodesByValue(value) {
         if (this.head === null) {
             throw new Error('List is empty');
-            return;
         }
+
         let current = this.head;
-        while (current && current.data != value) {
-            current = current.next;
-            //break loop if whole list has been traversed
-            if (current === this.head) {
-                console.log('Node not found');
-                return;
+        let removedNodesCount = 0;
+
+        do {
+            if (current && current.data === value) {
+                const nodeComponents = this.findNodeComponents(current);
+                if (nodeComponents) {
+                    // Remove the corresponding DOM elements
+                    nodeComponents.forEach((nodeComponent) => {
+                        nodeComponent.remove();
+                    });
+                }
+
+                if (current === this.head) {
+                    this.head = current.next;
+                }
+                if (current === this.tail) {
+                    this.tail = current.prev;
+                }
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+                removedNodesCount++;
             }
-        }
-        //if node to be deleted is the only node in the list
-        if (current === this.head) {
-            this.head = current.next;
-            console.log("The list is now empty")
-        }
-        current.prev.next = current.next;
-        current.next.prev = current.prev;
-        //update tail if necessary
-        if (current === this.tail) {
-            this.tail = current.prev;
+            if (current) {
+                current = current.next;
+            }
+        } while (current !== this.head);
+
+        if (removedNodesCount > 0) {
+            console.log(`Removed ${removedNodesCount} nodes with value: ${value}`);
+        } else {
+            console.log(`No nodes with value ${value} found`);
         }
     }
+
 
     //add at specified position
     insertAtPosition(position, data) {
@@ -144,31 +158,35 @@ class CircularDoublyLinkedList extends Node {
         this.head.prev = this.tail;
     }
 
-    findNodeComponent(node) {
+    findNodeComponents(node) {
         const allNodes = document.querySelectorAll('.node');
+        const matchingNodes = [];
+
         for (const nodeComponent of allNodes) {
             if (parseInt(nodeComponent.textContent) === node.data) {
-                return nodeComponent;
+                matchingNodes.push(nodeComponent);
             }
         }
-        return null;
+
+        return matchingNodes.length > 0 ? matchingNodes : null;
     }
 
-    // Helper method to highlight a specific node
-    highlightNode(node) {
-        const nodeComponent = this.findNodeComponent(node);
-        if (nodeComponent) {
-            // Remove any previous highlighting
-            const allNodes = document.querySelectorAll('.node');
-            allNodes.forEach((n) => {
-                n.classList.remove('found');
-            });
-            // Highlight the found node by adding a CSS class
-            nodeComponent.classList.add('found');
-            setTimeout(() => {
-                nodeComponent.classList.remove('found');
-            }, 3000);
-        }
+    highlightNodes(nodes) {
+        const allNodes = document.querySelectorAll('.node');
+        allNodes.forEach((n) => {
+            n.classList.remove('found');
+        });
+        nodes.forEach((node) => {
+            const nodeComponents = this.findNodeComponents(node);
+            if (nodeComponents) {
+                nodeComponents.forEach((nodeComponent) => {
+                    nodeComponent.classList.add('found');
+                    setTimeout(() => {
+                        nodeComponent.classList.remove('found');
+                    }, 3000);
+                });
+            }
+        });
     }
 
     search(value) {
@@ -176,31 +194,27 @@ class CircularDoublyLinkedList extends Node {
             throw new Error('List is empty');
             return;
         }
+
         let current = this.head;
-        let foundNode = null;
+        let foundNodes = [];
+
         do {
             if (current.data === value) {
                 console.log('Node found: ' + value);
-                foundNode = current;
-                break;
+                foundNodes.push(current);
             }
             current = current.next;
         } while (current !== this.head);
 
-        if (foundNode) {
-            // Highlight only the found node by adding a CSS class
-            this.highlightNode(foundNode);
+        if (foundNodes.length > 0) {
+            this.highlightNodes(foundNodes);
         } else {
             console.log('Node not found');
         }
     }
-
-
     //get the size of the list
     size() {
-        const sizeOutput = document.querySelector('p.size-p');
         if (!this.head) {
-            sizeOutput.textContent = 'List Size: 0';
             return 0;
         }
         let count = 0;
@@ -209,37 +223,36 @@ class CircularDoublyLinkedList extends Node {
             current = current.next;
             count++;
         }
-        sizeOutput.textContent = `List Size: ${count}`;
-        return count++;
+        return count + 1;
     }
 
     //reverse the list
-    reverse() {
-        if (!this.head) {
-            throw new Error('List is empty');
-            return;
-        }
-        let current = this.head;
-        let previous = null;
-        let next = null;
-        while (current && current.next != this.head) {
-            next = current.next;
-            current.next = previous;
-            current.prev = next;
-            previous = current;
-            current = next;
-        }
-        this.head = previous;
-        const reverseOutput = document.querySelector('p.reverse-p');
-        const isReversed = this.listContainer.classList.toggle('reverse');
+    // reverse() {
+    //     if (!this.head) {
+    //         throw new Error('List is empty');
+    //         return;
+    //     }
+    //     let current = this.head;
+    //     let previous = null;
+    //     let next = null;
+    //     while (current && current.next != this.head) {
+    //         next = current.next;
+    //         current.next = previous;
+    //         current.prev = next;
+    //         previous = current;
+    //         current = next;
+    //     }
+    //     this.head = previous;
+    //     const reverseOutput = document.querySelector('p.reverse-p');
+    //     const isReversed = this.listContainer.classList.toggle('reverse');
 
-        if (isReversed) {
-            reverseOutput.textContent = 'The list is reversed!';
-        } else {
-            reverseOutput.textContent = 'The list is not reversed!';
-        }
-    }
-    //clear the list
+    //     if (isReversed) {
+    //         reverseOutput.textContent = 'The list is reversed!';
+    //     } else {
+    //         reverseOutput.textContent = 'The list is not reversed!';
+    //     }
+    // }
+
     clear() {
         const nodes = document.querySelectorAll('div.node');
         nodes.forEach((node, index) => {

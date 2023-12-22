@@ -9,52 +9,68 @@ const searchButton = document.querySelector('button.search-btn');
 const searchInput = document.querySelector('input.search-input');
 
 const removeButton = document.querySelector('button.remove-btn');
+const removeInput = document.querySelector('input.remove-input');
+
+const clearButton = document.querySelector('button.clear-btn');
+const reverseButton = document.querySelector('button.reverse-btn');
+const alertSection = document.querySelector('section.alert-section');
 
 const doublyList = new CircularDoublyLinkedList();
 
-const listContainer = document.querySelector('main.list-container');
-const clearButton = document.querySelector('button.clear-btn');
-const reverseButton = document.querySelector('button.reverse-btn');
+// create modal button and modal pop up animation
 
-// input validation function 
 function isValidNumber(inputValue) {
     return !isNaN(parseFloat(inputValue)) && isFinite(inputValue);
 }
 
-// append button event listener
 appendButton.addEventListener('click', () => {
     const appendData = parseInt(document.querySelector('input.append-input').value);
     if (isValidNumber(appendData)) {
         doublyList.append(appendData);
+        alertSection.classList.remove('active');
     } else {
-        alert('Please enter a valid number!');
+        alertSection.classList.add('active');
     }
     appendInput.value = '';
-})
+});
 
-// prepend button event listener
 prependButton.addEventListener('click', () => {
     const prependData = parseInt(document.querySelector('input.prepend-input').value);
     if (isValidNumber(prependData)) {
         doublyList.prepend(prependData);
+        alertSection.classList.remove('active');
     } else {
-        alert('Please enter a valid number!');
+        alertSection.classList.add('active');
     }
     prependInput.value = '';
 });
 
-searchButton.addEventListener('click', () => {
-    const searchValue = parseInt(document.querySelector('input.search-input').value);
-    doublyList.search(searchValue);
-    searchInput.value = '';
-})
+removeButton.addEventListener('click', () => {
+    const removeData = parseInt(document.querySelector('input.remove-input').value);
+    if (isValidNumber(removeData)) {
+        doublyList.removeNodesByValue(removeData);
+        alertSection.classList.remove('active');
+    } else {
+        alertSection.classList.add('active');
+    }
+    removeInput.value = '';
+});
 
-// clear button event listener
+searchButton.addEventListener('click', () => {
+    const searchData = parseInt(document.querySelector('input.search-input').value);
+    if (isValidNumber(searchData)) {
+        doublyList.search(searchData);
+        alertSection.classList.remove('active');
+    } else {
+        alertSection.classList.add('active');
+    }
+    searchInput.value = '';
+});
+
 clearButton.addEventListener('click', () => {
     doublyList.clear();
 });
 
-// reverse button event listener 
 reverseButton.addEventListener('click', () => {
     doublyList.reverse();
 });
