@@ -220,12 +220,53 @@ section.info-section p {
     transition: background-color 1s;
 }
 
-
 /******** Modal Styling ********************/
 section.modal {
     padding: var(--primary-padding);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background-color: var(--main-bg-color);
+    color: var(--input-bg-color);
+    transition: all 300ms ease;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
+}
+
+section.all {
+    padding: var(--primary-padding);
+}
+
+section.information {
+    padding: var(--primary-padding);
+}
+
+section.about {
+    padding: var(--primary-padding);
+}
+
+section.information ul li {
+    list-style-type: none;
+}
+
+section.about ul li {
+    list-style-type: none;
+}
+
+section.modal.active {
+    opacity: 1;
+    pointer-events: all;
+    overflow: scroll;
+    transform: scale(1);
+}
+
+aside {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--primary-padding);
 }
 
 /* Mobile Screen Settings ******************/

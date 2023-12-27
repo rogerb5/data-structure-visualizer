@@ -6,6 +6,10 @@ const extractBtn = document.querySelector('button.extract-btn');
 const clearBtn = document.querySelector('button.clear-btn');
 const arrayBtn = document.querySelector('button.array-btn');
 const maxHeapContainer = document.querySelector('div.maxheap-container');
+const openBtn = document.querySelector('button.open-btn');
+const closeBtn = document.querySelector('button.close-btn');
+
+const modal = document.querySelector('section.modal');
 
 const input = document.querySelector('input.node-value');
 const errorMsg = document.querySelector('p#error-msg');
@@ -22,6 +26,14 @@ clearBtn.addEventListener('click', () => {
     maxHeap.clear();
 });
 
+openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+});
+
 arrayBtn.addEventListener('click', () => {
     maxHeapContainer.classList.toggle('array-version');
     if (!maxHeapContainer.classList.contains('array-version')) {
@@ -31,7 +43,6 @@ arrayBtn.addEventListener('click', () => {
     }
 })
 
-// keyboard enter event
 document.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
         addInput();
