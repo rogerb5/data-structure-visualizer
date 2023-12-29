@@ -27,9 +27,9 @@ class BinarySearchTree extends NodeBST {
     addNode(root, value) {
         if (root === null) {
             return new NodeBST(value);
-        } else if (value <= root.data) {
+        } else if (value < root.data) {
             root.nodeLeft = this.addNode(root.nodeLeft, value);
-        } else {
+        } else if(value > root.data) {
             root.nodeRight = this.addNode(root.nodeRight, value);
         }
         return root;
