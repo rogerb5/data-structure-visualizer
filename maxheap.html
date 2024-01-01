@@ -41,36 +41,59 @@
     </main>
 
     <section class="modal">
-        <aside>
-            <h2>Max Heap - Array Zero Based Index</h2>
-            <button class="close-btn">Close</button>
-        </aside>
+        <button class="close-btn">Close</button>
+        <article class="about-stack">
+            <h1 id="">A Binary Max Heap</h1>
+            <p>A Binary Max Heap has three invariants: </p>
 
-        <section class="information">
-            <h2>A max heap must satisfy three invariants</h2>
-            <ul>
-                <li>Every node must have at most two children (Binary Tree)</li>
-                <li>Every node is greater than or equal to it's children (Max Heap Invariant)</li>
-                <li>Each level is complete meaning it has no gaps. Heaps are filled up left to right. (Max Heap
-                    Structure
-                    Invariant)
-                </li>
-            </ul>
-        </section>
+            <p> First, it must be a binary tree which means
+                every node must have at most two children. </p>
 
-        <section class="about">
-            <h2>About the methods</h2>
-            <ul>
-                <li>add() inserts a node on the bottom level to ensure no gaps, then we fix any heap invariants
-                    with heapifyUp() which means we swap with parent until your parent is greater than you or
-                    you are the root.
-                </li>
-                <li>removeMax() returns the max node. Then we replace the bottom level right-most node. Finally,
-                    we heapifyDown() which means we recursively swap with the greatest child until parent is greater
-                    than both children or we're at a leaf.
-                </li>
-            </ul>
-        </section>
+            <p>
+                Next, that every node must be greater than or equal to
+                it's children.
+            </p>
+
+            <p>
+                Finally, each level is complete meaning it has no gaps, so heaps are filled left to right.
+            </p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Basic Max Heap Operations</h1>
+            <p>heapify down: swaps node with it's greatest child until the parent is greater than both children
+                or we are at a leaf.</p>
+            <p>heapify up: swap with the parent until your parent is greater than you or your
+                are the overall root</p>
+
+            <p>extract max: removes the max node and replaces the bottom level right most node and heapfies down. </p>
+            <p>add: insert a node on the bottom level to ensure no gaps and then you fix the heap invariant by
+                heapifying upwards. </p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Applications of Max Heaps in Computer Science</h1>
+            <p>A max heap can be used to implement the priority queue in cases where the shortest distances are
+                represented as negative values for Dijkstra's Shortest Path Algorithm</p>
+            <p>Max heaps are useful in job scheduling scenarios where tasks or jobs have associated priorities or
+                deadlines</p>
+            <p>Heap memory management in operating systems often involves the use of heaps. In some cases, max heaps can
+                be employed for efficient memory allocation.</p>
+        </article>
+
+        <article class="about-heap">
+            <h1>About the Max Heap Visualizer</h1>
+            <p>The visualizer uses an zero based array for the heap.</p>
+            <p>Duplicate values are not allowed.</p>
+            <p>Color Key:<br><br> Yellow signifies swap.</p>
+            <p>
+                Red means the prior max node that will be deleted, and is heapified down
+                to the last heap index.
+            </p>
+            <p>
+                Green showcases the new max node which has heapified upwards.
+            </p>
+        </article>
 
         <section class="all">
             <article class="java-article">
