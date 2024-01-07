@@ -60,7 +60,7 @@
 
 /*** Modal styling ****************************/
 section.modal {
-    min-height: 100vh;
+    height: 100%;
     padding: var(--main-site-padding);
     background-color: #baddd4;
     position: fixed;

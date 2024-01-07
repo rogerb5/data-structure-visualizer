@@ -110,7 +110,7 @@
                                 tail = newNode;
                             }
                             makeCircular();
-                            // Additional logic for visualization in the UI can be added here
+                            
                         }
                     
                         public void prepend(int data) {
@@ -124,7 +124,7 @@
                                 head = newNode;
                             }
                             makeCircular();
-                            // Additional logic for visualization in the UI can be added here
+                            
                         }
                     
                         public void search(int value) {
@@ -137,7 +137,7 @@
                             do {
                                 if (current.data == value) {
                                     System.out.println("Node found: " + value);
-                                    // Additional logic for visualization in the UI can be added here
+                                    
                                     return;
                                 }
                                 current = current.next;
@@ -171,7 +171,7 @@
                                         current.next.prev = current.prev;
                                     }
                     
-                                    // Additional logic for removing corresponding UI components can be added here
+                                    
                                 }
                     
                                 current = current.next;
@@ -236,7 +236,7 @@
                                 list->tail->next = newNode;
                                 list->tail = newNode;
                             }
-                            // Additional logic for visualization in the UI can be added here
+                            
                         }
                         
                         void prepend(struct CircularDoublyLinkedList* list, int data) {
@@ -251,7 +251,7 @@
                                 list->head->prev = newNode;
                                 list->head = newNode;
                             }
-                            // Additional logic for visualization in the UI can be added here
+                            
                         }
                         
                         void search(struct CircularDoublyLinkedList* list, int value) {
@@ -298,7 +298,7 @@
                                         current->next->prev = current->prev;
                                     }
                         
-                                    // Additional logic for removing corresponding UI components can be added here
+                                    
                                     free(current);
                                 }
                         
@@ -364,7 +364,7 @@
                             self.tail.next = new_node
                             self.tail = new_node
                 
-                        # Additional logic for visualization in the UI can be added here
+                        
                 
                     def prepend(self, data):
                         new_node = Node(data)
@@ -377,7 +377,7 @@
                             self.head.prev = new_node
                             self.head = new_node
                 
-                        # Additional logic for visualization in the UI can be added here
+                        
                 
                     def search(self, value):
                         if self.is_empty():
@@ -388,7 +388,7 @@
                         while current:
                             if current.data == value:
                                 print(f"Node found: {value}")
-                                # Additional logic for visualization in the UI can be added here
+                                
                                 return
                             current = current.next
                             if current == self.head:
@@ -417,7 +417,7 @@
                                 if current.next:
                                     current.next.prev = current.prev
                 
-                                # Additional logic for removing corresponding UI components can be added here
+                                
                                 return
                 
                             current = current.next
