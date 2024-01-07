@@ -58,6 +58,35 @@
     --node-border-color: #9FB3C8;
 }
 
+/*** Modal styling ****************************/
+section.modal {
+    min-height: 100vh;
+    padding: var(--main-site-padding);
+    background-color: #baddd4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+    z-index: 0;
+    overflow: scroll;
+}
+
+button.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+}
+
+section.modal.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 2;
+}
+
 /****** Header Styling **********/
 header {
     display: flex;
@@ -111,6 +140,10 @@ button {
     background-color: whitesmoke;
 }
 
+button.array-btn {
+    border: 2px solid red;
+}
+
 button:hover {
     cursor: pointer;
     background-color: #333;
@@ -145,11 +178,11 @@ main.list-container {
     background-color: var(--main-page-bg-color);
 }
 
-/* Reverse List Using FlexBox 
+/* Reverse List Using FlexBox */
 main.list-container.reverse {
     justify-content: flex-end;
     flex-direction: row-reverse;
-} */ 
+}
 
 /********************** Node styling ***********/
 div.node {

@@ -4,10 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Doubly Circuluar Linked List</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/doublycircular.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 
 <body>
@@ -16,11 +18,435 @@
         <h1>Doubly Circular Linked List</h1>
         <div class="mini-container">
             <a href="index.html">Home</a>
-            <a href="#">Info Menu</a>
+            <button class="open-btn">Info Menu</button>
         </div>
     </header>
 
     <!--- Insert Menu/Modal -->
+    <section class="modal">
+        <button class="close-btn">Close</button>
+        <article class="about-stack">
+            <h1 id="">A Circular Doubly Linked List</h1>
+            <p>add info</p>
+
+            <p></p>
+
+            <p></p>
+
+            <p></p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Basic Doubly Circular Linked List Operations</h1>
+            <p>Append: Add a node to the end of the list.
+                <br>Prepend: Add a node to the beginning of the list.
+                <br>Search: Find a node in the list. This can also be done by element value.
+                <br>Remove: Remove a node from the list. This can also be done by element value.
+                <br>Clear: Remove all nodes from the list.
+                <br>Reverse: Reverse the list.
+            </p>
+            <p></p>
+
+            <p></p>
+            <p> </p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Applications of Circular Doubly Linked List in Computer Science</h1>
+            <p>A Circular Doubly Linked List can be used in applications where the entire list is accessed one-by-one in a loop.
+            It is also used by the Operating System to share time for different users. Implementation in Day-to-day applications would be 
+            Multiplayer games where the games uses the data structure to swap between players in loop. It's implemented in a browser cache which allows you to hit the back button.
+            Circular Doubly Linked Lists also provide the undo functionality in software applications.  </p>
+            <p></p>
+            <p></p>
+        </article>
+
+        <article class="about-heap">
+            <h1>About the Doubly Circular Linked List Visualizer</h1>
+            <p>add info</p>
+            <p></p>
+            <p></p>
+        </article>
+
+        <section class="all">
+            <article class="java-article">
+                <h2>Java</h2>
+                <pre>
+                    <!-- Add Java code within code tag-->
+                <code class="language-java">
+                    class Node {
+                        int data;
+                        Node next;
+                        Node prev;
+                    
+                        public Node(int data) {
+                            this.data = data;
+                            this.next = null;
+                            this.prev = null;
+                        }
+                    }
+                    
+                    public class CircularDoublyLinkedList {
+                        private Node head;
+                        private Node tail;
+                    
+                        public CircularDoublyLinkedList() {
+                            this.head = null;
+                            this.tail = null;
+                        }
+                    
+                        public boolean isEmpty() {
+                            return head == null;
+                        }
+                    
+                        public void append(int data) {
+                            Node newNode = new Node(data);
+                            if (isEmpty()) {
+                                head = newNode;
+                                tail = newNode;
+                            } else {
+                                newNode.prev = tail;
+                                tail.next = newNode;
+                                tail = newNode;
+                            }
+                            makeCircular();
+                            // Additional logic for visualization in the UI can be added here
+                        }
+                    
+                        public void prepend(int data) {
+                            Node newNode = new Node(data);
+                            if (isEmpty()) {
+                                head = newNode;
+                                tail = newNode;
+                            } else {
+                                newNode.next = head;
+                                head.prev = newNode;
+                                head = newNode;
+                            }
+                            makeCircular();
+                            // Additional logic for visualization in the UI can be added here
+                        }
+                    
+                        public void search(int value) {
+                            if (isEmpty()) {
+                                System.out.println("List is empty");
+                                return;
+                            }
+                    
+                            Node current = head;
+                            do {
+                                if (current.data == value) {
+                                    System.out.println("Node found: " + value);
+                                    // Additional logic for visualization in the UI can be added here
+                                    return;
+                                }
+                                current = current.next;
+                            } while (current != head);
+                    
+                            System.out.println("Node not found");
+                        }
+                    
+                        public void removeNodesByValue(int value) {
+                            if (isEmpty()) {
+                                System.out.println("List is empty");
+                                return;
+                            }
+                    
+                            Node current = head;
+                            do {
+                                if (current.data == value) {
+                                    if (current == head && current == tail) {
+                                        head = null;
+                                        tail = null;
+                                    } else if (current == head) {
+                                        head = current.next;
+                                    } else if (current == tail) {
+                                        tail = current.prev;
+                                    }
+                    
+                                    if (current.prev != null) {
+                                        current.prev.next = current.next;
+                                    }
+                                    if (current.next != null) {
+                                        current.next.prev = current.prev;
+                                    }
+                    
+                                    // Additional logic for removing corresponding UI components can be added here
+                                }
+                    
+                                current = current.next;
+                            } while (current != head);
+                        }
+                    
+                        private void makeCircular() {
+                            if (head != null) {
+                                tail.next = head;
+                                head.prev = tail;
+                            }
+                        }
+                    
+                        // Other methods like insertAtPosition, findNodeComponents, highlightNodes, size, reverse, clear can be implemented similarly
+                    
+                        public static void main(String[] args) {
+                            CircularDoublyLinkedList list = new CircularDoublyLinkedList();
+                    
+                        }
+                    }
+                </code>
+                </pre>
+            </article>
+
+            <article class="c-article">
+                <h2>C</h2>
+                <pre>
+                <!-- Add c code within code tag-->
+                <code class="language-c">
+                    #include <stdio.h>
+                        #include <stdlib.h>
+                        
+                        struct Node {
+                            int data;
+                            struct Node* next;
+                            struct Node* prev;
+                        };
+                        
+                        struct CircularDoublyLinkedList {
+                            struct Node* head;
+                            struct Node* tail;
+                        };
+                        
+                        void initializeList(struct CircularDoublyLinkedList* list) {
+                            list->head = NULL;
+                            list->tail = NULL;
+                        }
+                        
+                        int isEmpty(struct CircularDoublyLinkedList* list) {
+                            return list->head == NULL;
+                        }
+                        
+                        void append(struct CircularDoublyLinkedList* list, int data) {
+                            struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+                            newNode->data = data;
+                        
+                            if (isEmpty(list)) {
+                                list->head = newNode;
+                                list->tail = newNode;
+                            } else {
+                                newNode->prev = list->tail;
+                                list->tail->next = newNode;
+                                list->tail = newNode;
+                            }
+                            // Additional logic for visualization in the UI can be added here
+                        }
+                        
+                        void prepend(struct CircularDoublyLinkedList* list, int data) {
+                            struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+                            newNode->data = data;
+                        
+                            if (isEmpty(list)) {
+                                list->head = newNode;
+                                list->tail = newNode;
+                            } else {
+                                newNode->next = list->head;
+                                list->head->prev = newNode;
+                                list->head = newNode;
+                            }
+                            // Additional logic for visualization in the UI can be added here
+                        }
+                        
+                        void search(struct CircularDoublyLinkedList* list, int value) {
+                            if (isEmpty(list)) {
+                                printf("List is empty\n");
+                                return;
+                            }
+                        
+                            struct Node* current = list->head;
+                            do {
+                                if (current->data == value) {
+                                    printf("Node found: %d\n", value);
+                                    // Additional logic for visualization in the UI can be added here
+                                    return;
+                                }
+                                current = current->next;
+                            } while (current != list->head);
+                        
+                            printf("Node not found\n");
+                        }
+                        
+                        void removeNodesByValue(struct CircularDoublyLinkedList* list, int value) {
+                            if (isEmpty(list)) {
+                                printf("List is empty\n");
+                                return;
+                            }
+                        
+                            struct Node* current = list->head;
+                            do {
+                                if (current->data == value) {
+                                    if (current == list->head && current == list->tail) {
+                                        list->head = NULL;
+                                        list->tail = NULL;
+                                    } else if (current == list->head) {
+                                        list->head = current->next;
+                                    } else if (current == list->tail) {
+                                        list->tail = current->prev;
+                                    }
+                        
+                                    if (current->prev != NULL) {
+                                        current->prev->next = current->next;
+                                    }
+                                    if (current->next != NULL) {
+                                        current->next->prev = current->prev;
+                                    }
+                        
+                                    // Additional logic for removing corresponding UI components can be added here
+                                    free(current);
+                                }
+                        
+                                current = current->next;
+                            } while (current != list->head);
+                        }
+                        
+                        void makeCircular(struct CircularDoublyLinkedList* list) {
+                            if (list->head != NULL) {
+                                list->tail->next = list->head;
+                                list->head->prev = list->tail;
+                            }
+                        }
+                        
+                        // Other methods like insertAtPosition, findNodeComponents, highlightNodes, size, reverse, clear can be implemented similarly
+                        
+                        int main() {
+                            struct CircularDoublyLinkedList list;
+                            initializeList(&list);
+                        
+                            // Example usage:
+                            append(&list, 1);
+                            append(&list, 2);
+                            prepend(&list, 0);
+                        
+                            search(&list, 2);
+                            removeNodesByValue(&list, 1);
+                            search(&list, 1); // Should print "Node not found"
+                        
+                            return 0;
+                        }
+                </code>
+                </pre>
+            </article>
+
+            <article class="p-article">
+                <h2>Python</h2>
+                <pre>
+                    <!--Add python code within code tage-->
+                <code class="language-python">
+                    class Node:
+                    def __init__(self, data):
+                        self.data = data
+                        self.next = None
+                        self.prev = None
+                
+                class CircularDoublyLinkedList:
+                    def __init__(self):
+                        self.head = None
+                        self.tail = None
+                
+                    def is_empty(self):
+                        return self.head is None
+                
+                    def append(self, data):
+                        new_node = Node(data)
+                
+                        if self.is_empty():
+                            self.head = new_node
+                            self.tail = new_node
+                        else:
+                            new_node.prev = self.tail
+                            self.tail.next = new_node
+                            self.tail = new_node
+                
+                        # Additional logic for visualization in the UI can be added here
+                
+                    def prepend(self, data):
+                        new_node = Node(data)
+                
+                        if self.is_empty():
+                            self.head = new_node
+                            self.tail = new_node
+                        else:
+                            new_node.next = self.head
+                            self.head.prev = new_node
+                            self.head = new_node
+                
+                        # Additional logic for visualization in the UI can be added here
+                
+                    def search(self, value):
+                        if self.is_empty():
+                            print("List is empty")
+                            return
+                
+                        current = self.head
+                        while current:
+                            if current.data == value:
+                                print(f"Node found: {value}")
+                                # Additional logic for visualization in the UI can be added here
+                                return
+                            current = current.next
+                            if current == self.head:
+                                break
+                
+                        print("Node not found")
+                
+                    def remove_nodes_by_value(self, value):
+                        if self.is_empty():
+                            print("List is empty")
+                            return
+                
+                        current = self.head
+                        while current:
+                            if current.data == value:
+                                if current == self.head and current == self.tail:
+                                    self.head = None
+                                    self.tail = None
+                                elif current == self.head:
+                                    self.head = current.next
+                                elif current == self.tail:
+                                    self.tail = current.prev
+                
+                                if current.prev:
+                                    current.prev.next = current.next
+                                if current.next:
+                                    current.next.prev = current.prev
+                
+                                # Additional logic for removing corresponding UI components can be added here
+                                return
+                
+                            current = current.next
+                            if current == self.head:
+                                break
+                
+                    def make_circular(self):
+                        if self.head:
+                            self.tail.next = self.head
+                            self.head.prev = self.tail
+                
+                    # Other methods like insert_at_position, find_node_components, highlight_nodes, size, reverse, clear can be implemented similarly
+                
+                if __name__ == "__main__":
+                    # Example usage:
+                    linked_list = CircularDoublyLinkedList()
+                    linked_list.append(1)
+                    linked_list.append(2)
+                    linked_list.prepend(0)
+                
+                    linked_list.search(2)
+                    linked_list.remove_nodes_by_value(1)
+                    linked_list.search(1)  # Should print "Node not found"
+                </code>
+            </pre>
+            </article>
+        </section>
+    </section>
+
 
     <nav>
         <h2 class="operation-title">Primary Operations:</h2>
@@ -50,7 +476,7 @@
         <section class="secondary-operations">
             <h2 class="operation-title">Other Operations:</h2>
             <button class="clear-btn">Clear List</button>
-            <!--button class="reverse-btn">Reverse List</button-->
+            <!-- <button class="reverse-btn">Reverse List</button> -->
         </section>
     </nav>
 
@@ -58,18 +484,22 @@
         <h3>Please enter a valid number</h3>
     </section>
 
-    <section class="list-info-section">
+    <!-- <section class="list-info-section">
         <article class="size-article">
-            <!-- <p class="size-p">List Size: 0</p>not working -->
-            <!--<p class="reverse-p">The list is not reversed!</p>not working-->
+            <p class="size-p">List Size: 0</p>
+            <p class="reverse-p">The list is not reversed!</p>
         </article>
-    </section>
+    </section> -->
 
     <!-- All nodes will be rendered here with JavaScript-->
     <main class="list-container">
     </main>
 
     <script type="module" src="js/structures/doublycircularUI.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
 </body>
 
 </html>

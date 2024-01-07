@@ -14,10 +14,24 @@ const removeInput = document.querySelector('input.remove-input');
 const clearButton = document.querySelector('button.clear-btn');
 const reverseButton = document.querySelector('button.reverse-btn');
 const alertSection = document.querySelector('section.alert-section');
+const modal = document.querySelector('section.modal');
+const openModalBtn = document.querySelector('button.open-btn');
+const closeModalBtn = document.querySelector('button.close-btn')
+
 
 const doublyList = new CircularDoublyLinkedList();
 
-// create modal button and modal pop up animation.
+// create modal button and modal pop up animation
+
+openModalBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+});
+
+closeModalBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+});
+
+
 
 function isValidNumber(inputValue) {
     return !isNaN(parseFloat(inputValue)) && isFinite(inputValue);
