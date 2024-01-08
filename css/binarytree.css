@@ -100,18 +100,23 @@ body {
     background-color: var(--main-body-bg-color);
 }
 .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    text-align: center;
-}
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        text-align: center;
+        display: flex; /* Add flex display */
+        flex-direction: column; /* Stack children vertically */
+        align-items: center; /* Center horizontally */
+        justify-content: center; /* Center vertically */
+        transition: width 0.5s ease; /* Explicitly specify the property and timing function */
+    }
 
 .sidenav a {
     display: block;
