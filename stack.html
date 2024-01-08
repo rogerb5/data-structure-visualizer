@@ -4,57 +4,88 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Stacks</title>
+    <title>Stack Visualizer</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/stack.css">
+    <link rel="stylesheet" href="css/stackvisualizer.css">
+    <link rel="stylesheet" href="prism.css">
 </head>
 
 <body>
-  <div class="header">
-    <h1>Stacks</h1>
-  </div>
-  <div class="subheader">
-      <a href="stackvisualizer.html" class="reg-button" id="Visualizer-Button">Stack Visualizer</a>
-  </div>
-
-  <div class="home-container">
-    <a href="index.html" class="home-button" id="home-button">Home</a>
-  </div>
-  
-  <script src="js/structures/stack.js"></script>
-
-
-    <div class="row">
-      <div class="column left">
-        <div class="card">
-          <div class="tempimg" style="height:200px;">Image</div>
-        </div>
-      </div>
-      
-      <div class="column right">
-        <div class="card">
-        <h2>What are Stacks</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-        </div>
-      </div>
+    <div class="header">
+      <h1>Stack Visualizer</h1>
     </div>
 
-    <div class="row">
-      <div class="column right">
-        <div class="card">
-          <h2>Operations of a Stack</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-        </div>
-      </div>
-      
-      <div class="column left">
-        <div class="card">
-          <h2>Picture</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-        </div>
-    </div>         
-  </body>
+    <div class="home-container">
+        <a href="index.html" class="home-button" id="home-button">Home</a>
+    </div>
 
+    <div class="container">
+        <div class="column column-40">
+            <div class="button-panel">
+                <h2>Operations</h2>
+                <a class="method-button" id="Pop-Button">Pop</a>
+                <a class="method-button" id="Peek-Button">Peek</a>
+                <a class="method-button" id="isEmpty-Button">isEmpty</a>
+                <a class="method-button" id="size-Button">Size</a>
+                <a class="method-button" id="Clear-Button">Clear</a>
+                <div>
+                    <a class="method-button" id="Push-Button">Push</a>
+                    <input type="number" class="custom-input" id="push-input" placeholder="Enter an integer">
+                </div>
+            </div>
+            <div class="code-panel">
+                <h2>Code</h2>
+                <a onClick="showOrHide()" class="code-button" id="Java-Button">Java</a>
+                <a class="code-button" id="C-Button">C</a>
+                <a class="code-button" id="Python-Button">Python</a>
+                <a class="code-button" id="MoreInfo-Button">More Info</a>
+                <div class="code-container">
+                    <pre><code id="code" class="language-java">
+public int pop() {
+        if (top >= 0) {
+            int poppedValue = stackArray[top--];
+            System.out.println("Popped: " + poppedValue);
+            return poppedValue;
+        } else {
+            System.out.println("Stack underflow. Cannot pop from an empty stack.");
+            return -1; // Return a sentinel value to indicate an error or empty stack
+        }
+    }
+
+    public int peek() {
+        if (top >= 0) {
+            return stackArray[top];
+        } else {
+            System.out.println("Stack is empty. Cannot peek.");
+            return -1; // Return a sentinel value to indicate an error or empty stack
+        }
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean isFull() {
+        return top == maxSize - 1;
+    }
+
+    public int size() {
+        return top + 1;
+    }
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="column column-60">
+            <div class="canvas-panel">
+                <div id="stack-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/structures/stackvisualizer.js"></script>
+    <script src="prism.js"></script>
+    
 </html>

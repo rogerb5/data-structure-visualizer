@@ -23,10 +23,12 @@ h2 {
   position: relative;
 }
 
-a {
-  text-decoration: none;
+:root{
+ --bg-color: #8d7e8c;
+ --button-color: #8182be;
+ --hover-button-color: #81a8be;
+ --clicked-button-color: #373750;
 }
-
 
 
 .header {
@@ -48,16 +50,18 @@ a {
   padding: 20px;
   margin: 0px;
 }
-.column-30 {
-  background-color: #900c3f;
-  height: flex;
+.column-40 {
+  background-color: var(--bg-color);
+  height: auto;
   justify-content: space-between;
-  flex: 30%;
+  flex: 40%;
 }
 
-.column-70 {
-  background-color: #FF5733;
-  flex: 70%;
+.column-60 {
+  background-color: var(--bg-color);
+  height: auto;
+  justify-content: space-between;
+  flex: 60%;
 }
 
 
@@ -79,7 +83,7 @@ a {
   border-radius: 15px;
   padding: 10px;
   margin-top: 20px;
-  height: 62vh;
+  height: 63.4vh;
 }
 
 /* Canvas panel */
@@ -88,6 +92,7 @@ a {
   border-radius: 15px;
   padding: 10px;
   height: 85vh;
+  overflow: auto;
 }
 
 
@@ -97,13 +102,20 @@ a {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  animation: drop 0.5s ease forwards;
+}
+
+@keyframes drop{
+  100%{transform: translateY(40px);}
+  70%{ transform: translateY(80px)}
+  0%{}
 }
 
 .stack-box {
   width: 500px;
   height: 50px;
   border: 3px solid rgba(255, 255, 255, 0.76);
-  background-color: #ff6b90;
+  background-color: #6b8eff;
   font-size: 30px;
   display: flex;
   justify-content: center;
@@ -116,17 +128,41 @@ input {
 }
 
 
+/* Normal Buttons */
+.button-set {
+  display: flex;
+}
+.button {
+  display: inline-block;
+  font-size: 20px;
+  padding: 7px 7px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  background-color: var(--button-color);
+  border-radius: 15px;
+  box-shadow: 0 6px #00000055;
+  margin-left: 11px;
+  margin-right: 11px;
+}
+.button:hover {
+  background-color: var(--hover-button-color);
+}
+.button:active {
+  background-color: var(--clicked-button-color);
+  box-shadow: 0 3px #00000075;
+  transform: translateY(3px);
+}
 
-/*-- Buttons --*/
-/* Home Button */
 .home-button {
   display: inline-block;
-  padding: 15px 25px;
   font-size: 24px;
+  padding: 15px 25px;
   cursor: pointer;
   text-align: center;
   color: #fff;
-  background-color: #FF6B6B;
+  background-color: var(--button-color);
   border-radius: 15px;
   box-shadow: 0 9px #00000055;
   position: absolute;
@@ -134,69 +170,13 @@ input {
   left: 1rem;
 }
 .home-button:hover {
-  background-color: #943f3f
+  background-color: var(--hover-button-color);
 }
 .home-button:active {
-  background-color: #943f3f;
+  background-color: var(--clicked-button-color);
   box-shadow: 0 5px #00000075;
   transform: translateY(4px);
 }
-
-
-/* Back Button */
-.back-button {
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  color: #fff;
-  background-color: #FF6B6B;
-  border-radius: 15px;
-  box-shadow: 0 9px #00000055;
-  position: absolute;
-  top: 1rem;
-  left: 9rem;
-}
-.back-button:hover {
-  background-color: #943f3f
-}
-.back-button:active {
-  background-color: #943f3f;
-  box-shadow: 0 5px #00000075;
-  transform: translateY(4px);
-}
-
-
-/* Normal Button */
-.reg-button-set {
-  display: flex;
-}
-.reg-button {
-  display: inline-block;
-  font-size: 20px;
-  padding: 7px 7px;
-  cursor: pointer;
-  text-align: center;
-  width: 100%;
-
-  color: #fff;
-  background-color: #FF6B6B;
-  border-radius: 15px;
-  box-shadow: 0 6px #00000055;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.reg-button:hover {
-  background-color: #943f3f
-}
-.reg-button:active {
-  background-color: #943f3f;
-  box-shadow: 0 3px #00000075;
-  transform: translateY(3px);
-}
-
-
 
 .method-button {
   display: inline-block;
@@ -206,28 +186,32 @@ input {
   text-align: center;
   width: 15%;
   color: #fff;
-  background-color: #FF6B6B;
+  background-color: var(--button-color);
   border-radius: 15px;
   box-shadow: 0 6px #00000055;
-  margin: 10px;
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 .method-button:hover {
-  background-color: #2b1111
+  background-color: var(--hover-button-color);
 }
 .method-button:active {
-  background-color: #943f3f;
+  background-color: var(--clicked-button-color);
   box-shadow: 0 3px #00000075;
   transform: translateY(3px);
 }
 
 .custom-input {
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 7px;
 }
+
 input[type="number"] {
   background-color:white;
   color: black;
-  width: 71%;
+  width: 76%;
   padding: 9px;
   font-size: 1.2rem;
 }
@@ -239,18 +223,18 @@ input[type="number"] {
   padding: 7px 7px;
   cursor: pointer;
   text-align: center;
-  width: 30%;
+  width: 22%;
   color: #fff;
-  background-color: #FF6B6B;
+  background-color: var(--button-color);
   border-radius: 15px;
   box-shadow: 0 6px #00000055;
-  margin: 6.5px;
+  margin: 10px;
 }
 .code-button:hover {
-  background-color: #943f3f
+  background-color: var(--hover-button-color);
 }
 .code-button:active {
-  background-color: #943f3f;
+  background-color: var(--clicked-button-color);
   box-shadow: 0 3px #00000075;
   transform: translateY(3px);
 }
@@ -258,27 +242,13 @@ input[type="number"] {
 
 /* Displaying Code */
 .code-container {
-  display: inline-block;
-  background-color: #000;
-  border-radius: 5px;
-  overflow: hidden;
+  position: relative;
+  overflow: auto;
   margin-top: 10px;
-  margin-left: 10px;
-  width: 95%;
-  height: 80%;
+  width: 100%;
+  height: 82%;
 }
 
-pre {
-  background-color: #000;
-  color: #fff;
-  margin: 0;
-  border-radius: 5px;
-  overflow-x: auto;
-}
-
-code {
-  font-family: 'Courier New', Courier, monospace;
-}
 
 .highlight {
   color: #e44d26; /* Set your desired color for highlighting */

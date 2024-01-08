@@ -1,5 +1,7 @@
 console.log('stackvisualizer code output test');
 
+
+
 /******* Stack Data strucutre *******/
 document.addEventListener('DOMContentLoaded', function () {
     
@@ -19,6 +21,14 @@ document.addEventListener('DOMContentLoaded', function () {
         stackBox.textContent = values[i];
         stackContainer.appendChild(stackBox);
       }
+      animateStack();
+    }
+
+    function animateStack() {
+        const stackBoxes = document.querySelectorAll('.stack-box');
+        stackBoxes.forEach((box, index) => {
+            box.style.transform = `translateY(${index}px)`; // Adjust the value as needed
+        });
     }
     
     function stackIsEmpty() {
