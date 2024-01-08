@@ -1,4 +1,4 @@
-import {NodeBST, BinarySearchTree } from "./binarytree.js";
+import { NodeBST, BinarySearchTree } from "./binarytree.js";
 
 const bst = new BinarySearchTree();
 //const bstContainer = document.querySelector('.bst-container'); 
@@ -18,16 +18,28 @@ const postordertraversalBtn = document.querySelector('.postorder-node-btn');
 const preordertraversalBtn = document.querySelector('.preorder-node-btn');
 
 const cleartreeBtn = document.querySelector('.clear-btn');
-const errorMessageContainer = document.getElementById('error-message'); 
+const errorMessageContainer = document.getElementById('error-message');
+
+const modal = document.querySelector('section.modal');
+const openBtn = document.querySelector('button.open-btn');
+const closeBtn = document.querySelector('button.close-btn');
+
+openBtn.addEventListener('click', function () {
+    modal.classList.add('active');
+});
+
+closeBtn.addEventListener('click', function () {
+    modal.classList.remove('active');
+})
 
 addNodeBtn.addEventListener('click', function () {
     errorMessageContainer.textContent = '';
     const addInputNumericValue = parseInt(document.querySelector('input.add-input-val').value);
-    if(!isNaN(addInputNumericValue)) {
+    if (!isNaN(addInputNumericValue)) {
         bst.add(addInputNumericValue);
         addInput.value = '';
     }
-    else { 
+    else {
         errorMessageContainer.textContent = 'Please enter a valid numeric value.';
     }
 });
@@ -65,7 +77,7 @@ searchminNodeBtn.addEventListener('click', function () {
     bst.getminValue();
 });
 
-searchmaxNodeBtn.addEventListener('click', function() {
+searchmaxNodeBtn.addEventListener('click', function () {
     errorMessageContainer.textContent = '';
     bst.getmaxValue();
 });
@@ -85,11 +97,11 @@ preordertraversalBtn.addEventListener('click', async function () {
 
 cleartreeBtn.addEventListener('click', function () {
 
-     // Clear the error message
-     errorMessageContainer.textContent = '';
+    // Clear the error message
+    errorMessageContainer.textContent = '';
 
-     // Clear the entire binary search tree
-     bst.clear();
+    // Clear the entire binary search tree
+    bst.clear();
 });
 
 // function openNav() {

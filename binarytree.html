@@ -9,53 +9,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/binarytree.css">
 
- <!-- Include Prism.css theme -->
- <link rel="stylesheet" href="./assets/library/prism.css">
+    <!-- Include Prism.css theme -->
+    <link rel="stylesheet" href="./assets/library/prism.css">
 </head>
 
 <body>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <img src="./assets/img/InsertNaive.gif">
-        <a href="#AboutBST" class="button-link">About BST</a>
-        <a href="#javaCode"class="button-link">Java Code</a>
-        <a href="#cCode"class="button-link">C Code</a>
-        <a href="#pyCode"class="button-link">Python Code</a>
-        <a href = "https://github.com/rogerb5/data-structure-visualizer"class="button-link">Source Code</a>
-        <section id="AboutBST"></section>
-        <h2>What is a Binary Search Tree?</h2>
-        <p>A binary search tree (BST) is a hierarchical data structure widely used in computer science 
-        for efficient searching, insertion, and deletion operations. In a binary search tree, each node has at most two children, 
-        referred to as the left child and the right child. The structure of the tree is such that for each node, all elements in its left subtree are less than the node, while all elements in its right subtree are greater than the node.
-        </p>
-        <h2>How To insert?</h2>
-        <p>When inserting a new node, if the tree is initially empty, the first node becomes the root. 
-            Subsequent nodes are added based on a comparison with the existing nodes: if the value is less than the parent, it goes to the left; 
-            if greater, it goes to the right. 
-        </p>
-        <h2>How To remove?</h2>
-        <p>In the removal process, if a node is a leaf <mark>(has no children)</mark>, it is simply deleted. 
-            If a node has one child, the child's value replaces the parent's value. 
-            When a node has two children, the maximum node in the leftmost subtree becomes the parent, ensuring the integrity of the BST.
-        </p>
-        <h2>What Are Traversals?</h2>
-        <p>In the realm of binary search trees (BSTs), traversals play a crucial role in understanding the organization and relationships among nodes. 
-            <mark>The inorder traversal</mark>, a cornerstone operation, starts from the leftmost node, progressing to the root, and then moves to the right subtree. 
-            Notably, this traversal yields a sorted sequence of nodes, offering a convenient means of obtaining elements in ascending order. 
-            In contrast, <mark>the preorder traversal</mark> initiates from the root, extends to the left subtree, and concludes with the right subtree. 
-            This traversal aids in constructing prefix expressions and facilitates deep copying of the tree. 
-        <mark>The postorder traversal</mark>, commencing from the leftmost node, proceeds to the right subtree, and ultimately reaches the root. 
-            Its utility lies in bottom-up operations, such as node deletion or expression evaluation in postfix expression trees. 
-            These traversals collectively provide distinct perspectives on the hierarchical structure of a BST, each serving specific purposes in various applications.
-        </p>
-        <h2>What Is The Time Complexity?</h2>
-        <p>The time complexity depends on the height of the tree. 
-            In a balanced binary search tree, the height is <mark>log(n)</mark> (where n is the number of nodes), making most operations efficient. 
-            However, in the worst case, if the tree is highly unbalanced, the height becomes n, resulting in inefficient operations.</p>
+
+    <header>
+        <h1>Binary Search Tree visualizer</h1>
+        <nav class="home-container">
+            <a href="index.html" class="homeBtn" id="homeBtn">Home</a>
+            <button class="open-btn">Info</button>
+        </nav>
+    </header>
+
+
+    <section class="modal" id="test">
+        <button class="close-btn">Close</button>
+
+        <article class="img-container">
+            <img src="./assets/img/InsertNaive.gif" id="img">
+        </article>
+
+
+        <article class="allbuttons-container">
+            <a href="https://github.com/rogerb5/data-structure-visualizer" class="button-link" id="buttonLink">Source
+                Code</a>
+            <a href="#" class="button-link" id="buttonLink">C Code</a>
+            <a href="#" class="button-link" id="buttonLink">Java Code</a>
+            <a href="#" class="button-link" id="buttonLink">Python Code</a>
+        </article>
+
+        <article id="AboutBST">
+            <h2>What is a Binary Search Tree?</h2>
+            <p>A binary search tree (BST) is a hierarchical data structure widely used in computer science
+                for efficient searching, insertion, and deletion operations. In a binary search tree, each node has at
+                most
+                two children,
+                referred to as the left child and the right child. The structure of the tree is such that for each node,
+                all
+                elements in its left subtree are less than the node, while all elements in its right subtree are greater
+                than the node.
+            </p>
+            <h2>How To insert?</h2>
+            <p>When inserting a new node, if the tree is initially empty, the first node becomes the root.
+                Subsequent nodes are added based on a comparison with the existing nodes: if the value is less than the
+                parent, it goes to the left;
+                if greater, it goes to the right.
+            </p>
+            <h2>How To remove?</h2>
+            <p>In the removal process, if a node is a leaf <mark>(has no children)</mark>, it is simply deleted.
+                If a node has one child, the child's value replaces the parent's value.
+                When a node has two children, the maximum node in the leftmost subtree becomes the parent, ensuring the
+                integrity of the BST.
+            </p>
+            <h2>What Are Traversals?</h2>
+            <p>In the realm of binary search trees (BSTs), traversals play a crucial role in understanding the
+                organization
+                and relationships among nodes.
+                <mark>The inorder traversal</mark>, a cornerstone operation, starts from the leftmost node, progressing
+                to
+                the root, and then moves to the right subtree.
+                Notably, this traversal yields a sorted sequence of nodes, offering a convenient means of obtaining
+                elements
+                in ascending order.
+                In contrast, <mark>the preorder traversal</mark> initiates from the root, extends to the left subtree,
+                and
+                concludes with the right subtree.
+                This traversal aids in constructing prefix expressions and facilitates deep copying of the tree.
+                <mark>The postorder traversal</mark>, commencing from the leftmost node, proceeds to the right subtree,
+                and
+                ultimately reaches the root.
+                Its utility lies in bottom-up operations, such as node deletion or expression evaluation in postfix
+                expression trees.
+                These traversals collectively provide distinct perspectives on the hierarchical structure of a BST, each
+                serving specific purposes in various applications.
+            </p>
+            <h2>What Is The Time Complexity?</h2>
+            <p>The time complexity depends on the height of the tree.
+                In a balanced binary search tree, the height is <mark>log(n)</mark> (where n is the number of nodes),
+                making
+                most operations efficient.
+                However, in the worst case, if the tree is highly unbalanced, the height becomes n, resulting in
+                inefficient
+                operations.</p>
+        </article>
+
         <section id="javaCode">
-            <h2>Code</h2>
-            <!-- Inline code snippet -->
-            <p>Java Code Sample:</p>
+            <article class="titles">
+                <h2>Code</h2>
+                <p>Java Code Sample:</p>
+            </article>
+
             <pre><code class="language-java">
                 public class bst { //Define a public class named bst
                     private Node root; //Declare a private instance variable "root" of type node
@@ -167,9 +212,12 @@
                     }
                 }</code></pre>
         </section>
+
         <section id="cCode">
-            <p></p>
-            <p>C Code Sample:</p>
+            <article class="titles">
+                <p>C Code Sample:</p>
+            </article>
+
             <pre><code class="language-c">
                 #include  &lt;stdio.h&gt;
                     #include &lt;stdlib.h&gt;
@@ -298,9 +346,13 @@
                         return 0;
                     }</code></pre>
         </section>
+
         <section id="pyCode">
             <p></p>
-            <p>Python Code Sample:</p>
+
+            <article class="titles">
+                <p>Python Code Sample:</p>
+            </article>
             <pre><code class="language-python">
                 # Define a class representing a Node in the binary search tree
 class Node:
@@ -400,68 +452,53 @@ if __name__ == "__main__":
     print("\nBinary Search Tree after removing 30:")
     binary_search_tree._in_order_traversal(binary_search_tree.root)  # Use _in_order_traversal for this verification</code></pre>
 
-        
-    </div>
-    <header>
-        <h1>Binary Search Tree Visualizer</h1>
-        <span class="openbtn" onclick="openNav()">&#9776;</span>
-    </header>
-    <script>function openNav() {
-        document.getElementById("mySidenav").style.width = "100%";
-    }
-    
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-    // Add event listeners after the functions are defined
-    document.querySelector('.openbtn').addEventListener('click', openNav);
-    document.querySelector('.closebtn').addEventListener('click', closeNav);</script>
-        <nav class="nav">
-            <article class="add-container">
-                <input type="text" placeholder="Insert Node Value" class="add-input-val" required>
-                <button class="add-node-btn">Insert Node</button>
-            </article>
-    
-            <article class="delete-container">
-                <input type="text" placeholder="Delete Node Value" class="delete-input-val" required>
-                <button class="delete-node-btn">Delete Node</button>
-            </article>
-    
-            <article class="search-container">
-                <input type="text" placeholder="Search Node" class="search-input-val">
-                <button class="search-node-btn">Search Node</button>
-            </article>
-        </nav>
-        <section class="button-section">
-            <button class="searchmin-node-btn">Search Min Node</button>
-            <button class="searchmax-node-btn">Search Max Node</button>
-            <button class="inorder-node-btn">Inorder Traversal</button>
-            <button class="postorder-node-btn">Postorder Traversal</button>
-            <button class="preorder-node-btn">Preorder Traversal</button>
-            <button class="clear-btn">Clear</button>
+
         </section>
+    </section>
 
-        <div class="home-container">
-            <a href="index.html" class="home-button" id="home-button">Home</a>
-        </div>
 
-        
-        <div id="error-message" class="error-message" style="color: red;"></div>
-
-        <article class="holder">
-            <!---Binary Tree Results go here-->
-            <section class="binarytree-container">
-                <!-- <div class="bst-node">1</div>
-            <div class="bst-node">3</div>
-            <div class="bst-node">4</div> -->
-            </section>
+    <nav class="nav">
+        <article class="add-container">
+            <input type="text" placeholder="Insert Node Value" class="add-input-val" required>
+            <button class="add-node-btn">Insert Node</button>
         </article>
 
-        <main class="bst-main">
-            <section class="bst-container"></section>
-        </main>
+        <article class="delete-container">
+            <input type="text" placeholder="Delete Node Value" class="delete-input-val" required>
+            <button class="delete-node-btn">Delete Node</button>
+        </article>
+
+        <article class="search-container">
+            <input type="text" placeholder="Search Node" class="search-input-val">
+            <button class="search-node-btn">Search Node</button>
+        </article>
+    </nav>
+    <section class="button-section">
+        <button class="searchmin-node-btn">Search Min Node</button>
+        <button class="searchmax-node-btn">Search Max Node</button>
+        <button class="inorder-node-btn">Inorder Traversal</button>
+        <button class="postorder-node-btn">Postorder Traversal</button>
+        <button class="preorder-node-btn">Preorder Traversal</button>
+        <button class="clear-btn">Clear</button>
+    </section>
+
+
+    <div id="error-message" class="error-message" style="color: red;"></div>
+
+    <article class="holder">
+        <!---Binary Tree Results go here-->
+        <section class="binarytree-container">
+            <!-- <div class="bst-node">1</div>
+            <div class="bst-node">3</div>
+            <div class="bst-node">4</div> -->
+        </section>
+    </article>
+
+    <main class="bst-main">
+        <section class="bst-container"></section>
+    </main>
     <script type="module" src="js/structures/BST_UI.js" async></script>
-     <!-- Include Prism.js script -->
+    <!-- Include Prism.js script -->
     <script src="./assets/library/prism.js"></script>
 
 </body>
