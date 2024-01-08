@@ -406,6 +406,16 @@ if __name__ == "__main__":
         <h1>Binary Search Tree Visualizer</h1>
         <span class="openbtn" onclick="openNav()">&#9776;</span>
     </header>
+    <script>function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    // Add event listeners after the functions are defined
+    document.querySelector('.openbtn').addEventListener('click', openNav);
+    document.querySelector('.closebtn').addEventListener('click', closeNav);</script>
         <nav class="nav">
             <article class="add-container">
                 <input type="text" placeholder="Insert Node Value" class="add-input-val" required>

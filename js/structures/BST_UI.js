@@ -92,13 +92,13 @@ cleartreeBtn.addEventListener('click', function () {
      bst.clear();
 });
 
-function openNav() {
-    document.getElementById("mySidenav").style.width = "100%";
-}
+// function openNav() {
+//     document.getElementById("mySidenav").style.width = "100%";
+// }
 
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-// Add event listeners after the functions are defined
-document.querySelector('.openbtn').addEventListener('click', openNav);
-document.querySelector('.closebtn').addEventListener('click', closeNav);
+// function closeNav() {
+//     document.getElementById("mySidenav").style.width = "0";
+// }
+// // Add event listeners after the functions are defined
+// document.querySelector('.openbtn').addEventListener('click', openNav);
+// document.querySelector('.closebtn').addEventListener('click', closeNav);
