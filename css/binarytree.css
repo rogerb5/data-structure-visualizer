@@ -124,8 +124,9 @@ section.modal {
 
 section.modal article {
     font-size: 1.3rem;
-    padding: 7rem;
+    /* padding: 7rem; */
     text-align: center;
+    margin-bottom: 50px;
 }
 
 section.modal article h2 {
@@ -134,11 +135,29 @@ section.modal article h2 {
     text-align: center;
 }
 
-article.img-container {
+section.modal article.img-container { 
     display: flex;
     justify-content: center;
+    padding: 7rem; /* new thing I added*/
+}
+section.modal article.allbuttons-container {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 200px; /* Adjust the distance from the top as needed */
+    left: 15px;
+    width: 100%;
 }
 
+section.modal article.allbuttons-container a {
+    margin-bottom: 15px;
+    width: 13%;
+    box-sizing: border-box;
+}
+section.modal article.allbuttons-container a[href=#AboutBST]:hover {
+    background-color: purple;
+}
 section.modal.active {
     display: block;
     z-index: 3;
@@ -148,46 +167,12 @@ article.titles {
     text-align: center;
 }
 
-.sidenav a[href="https://github.com/rogerb5/data-structure-visualizer"]:hover {
-    cursor: pointer;
-    color: #f1faee;
-    background-color: black;
-}
-
-.sidenav img {
-    width: 500px;
-    /* Adjust the value based on your preference */
-    height: auto;
-    /* Maintain the aspect ratio */
-    margin-bottom: 20px;
-}
-
-.sidenav h2 {
-    color: whitesmoke;
-    margin-bottom: 20px;
-}
-
-.sidenav p {
-    color: whitesmoke;
-    max-width: 50%;
-    /* Set maximum width to 100% of the container */
-    margin: 0 auto;
-    /* Center the paragraph */
+section.modal p {
+    max-width: 60%; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the paragraph */
     margin-bottom: 20px;
     line-height: 2;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: fixed;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    z-index: 3;
+    word-wrap: break-word; /* Allow text to wrap onto the next line */
 }
 
 .openbtn {
@@ -206,15 +191,6 @@ article.titles {
     background: #f8f8f8;
 }
 
- @media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
-    .sidenav a {
-        font-size: 18px;
-    }
-}
 
 /* Styles Go Here */
 header {
@@ -272,11 +248,17 @@ nav.home-container {
 }
 
 #buttonLink {
-    border: 2px solid red;
+    z-index: 1;
+    color: whitesmoke;
+    background-color: #6930c3;
+    border: 1px solid white;
+    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
+    top: 0.3rem;
+    left: 0.3rem;
+    transition: background-color 0.5s ease;
 }
 
 nav.home-container button,
-#buttonLink,
 #homeBtn {
     z-index: 1;
     color: black;
