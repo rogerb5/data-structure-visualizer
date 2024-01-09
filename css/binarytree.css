@@ -155,9 +155,6 @@ section.modal article.allbuttons-container a {
     width: 13%;
     box-sizing: border-box;
 }
-section.modal article.allbuttons-container a[href=#AboutBST]:hover {
-    background-color: purple;
-}
 section.modal.active {
     display: block;
     z-index: 3;
@@ -181,6 +178,7 @@ section.modal p {
     position: absolute;
     top: 0;
     right: 10px;
+    
 }
 
 #javaCode pre,
@@ -219,24 +217,6 @@ div.error-message {
     padding-left: 1%;
 }
 
-a.home-button {
-    z-index: 1;
-    color: black;
-    background-color: whitesmoke;
-    position: absolute;
-    border: 1px solid black;
-    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
-    top: 0.3rem;
-    left: 0.3rem;
-    transition: background-color 0.5s ease;
-}
-
-a.home-button:hover {
-    cursor: pointer;
-    color: #f1faee;
-    background-color: black;
-}
-
 main {
     min-height: 100vh;
 }
@@ -257,6 +237,11 @@ nav.home-container {
     left: 0.3rem;
     transition: background-color 0.5s ease;
 }
+#buttonLink:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: #333;
+}
 
 nav.home-container button,
 #homeBtn {
@@ -268,6 +253,28 @@ nav.home-container button,
     top: 0.3rem;
     left: 0.3rem;
     transition: background-color 0.5s ease;
+}
+nav.home-container button,#open-btn {
+    z-index: 1;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
+    top: 0.3rem;
+    left: 0.3rem;
+    transition: background-color 0.5s ease;
+}
+nav.home-container button,
+#homeBtn:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: #333;
+}
+nav.home-container button,
+#open-btn:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: #333;
 }
 
 /*** button code container ***/
