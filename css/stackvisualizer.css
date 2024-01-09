@@ -41,7 +41,7 @@ h2 {
 
 .container {
   display: flex;
-  height: 89vh;
+  height: 100%;
 }
 
 
@@ -49,11 +49,15 @@ h2 {
   flex: 1;
   padding: 20px;
   margin: 0px;
+  width: auto;
+  height: 100%;
 }
+
 .column-40 {
   background-color: var(--bg-color);
   height: auto;
   justify-content: space-between;
+  width: 40%;
   flex: 40%;
 }
 
@@ -61,6 +65,7 @@ h2 {
   background-color: var(--bg-color);
   height: auto;
   justify-content: space-between;
+  width: 60%;
   flex: 60%;
 }
 
@@ -72,9 +77,10 @@ h2 {
 .button-panel {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
-  padding: 10px;
-  margin-bottom: 20px;
-  height: 19vh;
+  padding: 2%;
+  margin-bottom: 2%;
+  height: auto;
+  width: auto;
 }
 
 /* Code panel */
@@ -83,7 +89,8 @@ h2 {
   border-radius: 15px;
   padding: 10px;
   margin-top: 20px;
-  height: 63.4vh;
+  height: ;
+  width: auto;
 }
 
 /* Canvas panel */
@@ -92,6 +99,7 @@ h2 {
   border-radius: 15px;
   padding: 10px;
   height: 85vh;
+  width: auto;
   overflow: auto;
 }
 
@@ -135,16 +143,16 @@ input {
 .button {
   display: inline-block;
   font-size: 20px;
-  padding: 7px 7px;
+  padding: 1% 1%;
   cursor: pointer;
   text-align: center;
-  width: 100%;
+  width: flex;
   color: #fff;
   background-color: var(--button-color);
   border-radius: 15px;
   box-shadow: 0 6px #00000055;
-  margin-left: 11px;
-  margin-right: 11px;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 .button:hover {
   background-color: var(--hover-button-color);
@@ -181,7 +189,7 @@ input {
 .method-button {
   display: inline-block;
   font-size: 20px;
-  padding: 6px 6px;
+  padding: 1% 1%;
   cursor: pointer;
   text-align: center;
   width: 15%;
@@ -189,8 +197,8 @@ input {
   background-color: var(--button-color);
   border-radius: 15px;
   box-shadow: 0 6px #00000055;
-  margin-left: 18px;
-  margin-right: 18px;
+  margin-left: 2%;
+  margin-right: 2%;
   margin-top: 12px;
   margin-bottom: 12px;
 }
@@ -239,14 +247,13 @@ input[type="number"] {
   transform: translateY(3px);
 }
 
-
 /* Displaying Code */
 .code-container {
   position: relative;
-  overflow: auto;
+  overflow: scroll;
   margin-top: 10px;
   width: 100%;
-  height: 82%;
+  height: auto;
 }
 
 
