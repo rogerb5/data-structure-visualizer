@@ -89,7 +89,7 @@ h2 {
   border-radius: 15px;
   padding: 10px;
   margin-top: 20px;
-  height: ;
+  height: auto;
   width: auto;
 }
 
@@ -231,12 +231,12 @@ input[type="number"] {
   padding: 7px 7px;
   cursor: pointer;
   text-align: center;
-  width: 22%;
+  width: 19%;
   color: #fff;
   background-color: var(--button-color);
   border-radius: 15px;
   box-shadow: 0 6px #00000055;
-  margin: 10px;
+  margin-inline: 2.7%;
 }
 .code-button:hover {
   background-color: var(--hover-button-color);
