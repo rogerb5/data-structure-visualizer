@@ -83,15 +83,7 @@ h2 {
   width: auto;
 }
 
-/* Code panel */
-.code-panel {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  padding: 10px;
-  margin-top: 20px;
-  height: auto;
-  width: auto;
-}
+
 
 /* Canvas panel */
 .canvas-panel {
@@ -224,34 +216,69 @@ input[type="number"] {
   font-size: 1.2rem;
 }
 
+.tab{
+  overflow: auto;
+  background-color: var(--bg-color);
+}
 
-.code-button {
+.tab button {
   display: inline-block;
-  font-size: 20px;
-  padding: 7px 7px;
+  font-size: 24px;
+  padding: 15px 25px;
   cursor: pointer;
   text-align: center;
-  width: 19%;
   color: #fff;
   background-color: var(--button-color);
   border-radius: 15px;
-  box-shadow: 0 6px #00000055;
-  margin-inline: 2.7%;
+  box-shadow: 0 9px #00000055;
+  position: absolute;
+  top: 16px;
+  left: 150px;
 }
-.code-button:hover {
+.tab button:hover {
   background-color: var(--hover-button-color);
 }
-.code-button:active {
+.tab button:active {
   background-color: var(--clicked-button-color);
   box-shadow: 0 3px #00000075;
   transform: translateY(3px);
+}
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  background-color: var(--bg-color);
+  height: 100%;
+  border-top: none;
+  text-align: center;
+}
+
+.tabcontent h3 {
+  font-size: xx-large;
+  color: black;
+}
+
+.tabcontent h2 {
+  text-align: left;
+  color: black;
+}
+
+.tabcontent p {
+  font-size: large;
+}
+
+.topright {
+  float: right;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.topright:hover {
+  color: red;
 }
 
 /* Displaying Code */
 .code-container {
   position: relative;
-  overflow: scroll;
-  margin-top: 10px;
   width: 100%;
   height: auto;
 }
