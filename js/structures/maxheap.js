@@ -178,5 +178,3 @@ function testGetParentIndex(heap) {
         console.log(`Index ${index}: Value = ${value}, Parent Index = ${parentIndex}, Parent Value = ${parentValue}`);
     }
 }
-
-testGetParentIndex(heap);

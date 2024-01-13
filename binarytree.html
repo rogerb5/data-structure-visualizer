@@ -8,12 +8,502 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/binarytree.css">
+
+    <!-- Include Prism.css theme -->
+    <link rel="stylesheet" href="./assets/library/prism.css">
 </head>
 
 <body>
-    <a href="index.html">Home</a>
-    <h1>Binary Search Tree Visualizer</h1>
-    <script src="js/structures/binarytree.js"></script>
+
+    <header>
+        <h1>Binary Search Tree visualizer</h1>
+        <nav class="home-container">
+            <a href="index.html" class="homeBtn" id="homeBtn">Home</a>
+            <button class="open-btn" id="open-btn">Info</button>
+        </nav>
+    </header>
+
+
+    <section class="modal" id="test">
+        <button class="close-btn">Close</button>
+
+    <div class="content-container">
+        <article class="img-container">
+            <img src="./assets/img/InsertNaive.gif" id="img">
+        </article>
+
+
+        <article class="allbuttons-container">
+            <a href="#AboutBST" class="button-link" id="buttonLink">About Section</a>
+            <a href="#javaCode" class="button-link" id="buttonLink">Java Code</a>
+            <a href="#cCode" class="button-link" id="buttonLink">C Code</a>
+            <a href="#pyCode" class="button-link" id="buttonLink">Python Code</a>
+            <a href="https://github.com/rogerb5/data-structure-visualizer" class="button-link" id="buttonLink">Source
+                Code</a>
+        </article>
+    </div>
+
+        <article id="AboutBST">
+            <h2>What is a Binary Search Tree?</h2>
+            <p>A binary search tree (BST) is a hierarchical data structure widely used in computer science
+                for efficient searching, insertion, and deletion operations. In a binary search tree, each node has at
+                most
+                two children,
+                referred to as the left child and the right child. The structure of the tree is such that for each node,
+                all
+                elements in its left subtree are less than the node, while all elements in its right subtree are greater
+                than the node.
+            </p>
+            <h2>How To insert?</h2>
+            <p>When inserting a new node, if the tree is initially empty, the first node becomes the root.
+                Subsequent nodes are added based on a comparison with the existing nodes: if the value is less than the
+                parent, it goes to the left;
+                if greater, it goes to the right.
+            </p>
+            <h2>How To remove?</h2>
+            <p>In the removal process, if a node is a leaf <mark>(has no children)</mark>, it is simply deleted.
+                If a node has one child, the child's value replaces the parent's value.
+                When a node has two children, the maximum node in the leftmost subtree becomes the parent, ensuring the
+                integrity of the BST.
+            </p>
+            <h2>What Are Traversals?</h2>
+            <p>In the realm of binary search trees (BSTs), traversals play a crucial role in understanding the
+                organization
+                and relationships among nodes.
+                <mark>The inorder traversal</mark>, a cornerstone operation, starts from the leftmost node, progressing
+                to
+                the root, and then moves to the right subtree.
+                Notably, this traversal yields a sorted sequence of nodes, offering a convenient means of obtaining
+                elements
+                in ascending order.
+                In contrast, <mark>the preorder traversal</mark> initiates from the root, extends to the left subtree,
+                and
+                concludes with the right subtree.
+                This traversal aids in constructing prefix expressions and facilitates deep copying of the tree.
+                <mark>The postorder traversal</mark>, commencing from the leftmost node, proceeds to the right subtree,
+                and
+                ultimately reaches the root.
+                Its utility lies in bottom-up operations, such as node deletion or expression evaluation in postfix
+                expression trees.
+                These traversals collectively provide distinct perspectives on the hierarchical structure of a BST, each
+                serving specific purposes in various applications.
+            </p>
+            <h2>What Is The Time Complexity?</h2>
+            <p>The time complexity depends on the height of the tree.
+                In a balanced binary search tree, the height is <mark>log(n)</mark> (where n is the number of nodes),
+                making
+                most operations efficient.
+                However, in the worst case, if the tree is highly unbalanced, the height becomes n, resulting in
+                inefficient
+                operations.</p>
+        </article>
+
+        <section id="javaCode">
+            <article class="titles">
+                <h2>Code</h2>
+                <p>Java Code Sample:</p>
+            </article>
+
+            <pre><code class="language-java">
+                public class bst { //Define a public class named bst
+                    private Node root; //Declare a private instance variable "root" of type node
+                
+                    private class Node { //Define a private inner class named "Node"
+                        Node left; //Declare a left child Node
+                        Node right; //Declare a right child Node
+                        int data; //Declare a data variable of type int
+                
+                        public Node(int newData) { //Constructor for the Node class, initializes left, right, and data
+                            left = null;
+                            right = null;
+                            data = newData;
+                        }
+                    }
+                
+                    public void binarySearchTree() { //constructor for the bst class, initializes the root to null
+                        root = null; //creates empty binary tree
+                    }
+                
+                    public void add(int data) { //public method to add a node with the given data to the bst
+                        root = add(root, data); //call the private add method with the root and the given data
+                    }
+                    private Node add(Node node, int data) { //private method to recursively add a node with the given data to the bst
+                        if(node == null) { //checks if the current node is null
+                            node = new Node(data); //create a new node with the data if so
+                        }
+                        else {
+                            if(data <= node.data) { //if the data is less than or equal to the current node's data
+                                node.left = add(node.left, data); //recursively add to the left subtree
+                            }
+                            else { //if the data is greater
+                                node.right = add(node.right, data); //recursively add to the right subtree
+                            }
+                        }
+                        return node; //return the modified code
+                    }
+                
+                    public void remove(int data) { //public method to remove a node with the given data to the bst
+                        root = remove(root, data); //call the private remove method with the root and the given data
+                    }
+                
+                    private Node remove(Node node, int data) { // Private method to remove a node with the given data from the binary search tree
+                        if(node == null) { // Base case: if the current node is null, return null (no change)
+                            return null;
+                        }
+                        if(data < node.data) {  // If the data to be deleted is smaller than the root's data, then it lies in the left subtree
+                            node.left = remove(node.left, data);  // Recursively call remove on the left subtree
+                        }
+                        else if(data > node.data) {  // If the data to be deleted is greater than the root's data, then it lies in the right subtree
+                            node.right = remove(node.right, data);  // Recursively call remove on the right subtree
+                        }
+                        // If the data to be deleted is the same as the root's data,
+                        // then this is the node to be deleted
+                        else {
+                            if(node.left == null && node.right == null) { // Case 1: Node with no children
+                                return null; // Simply remove the node by returning null
+                            }
+                            if(node.left == null) { // Case 2: Node with only a right child
+                                return node.right; // Replace the node with its right child
+                            }
+                            else if(node.right == null) { // Case 3: Node with only a left child
+                                return node.left; // Replace the node with its left child
+                            }
+                            else {  // Case 4: Node with two children
+                                Node maxNode = findMaxValueNode(node.left);  // Find the maximum value node in the left subtree
+                                node.data = maxNode.data;  // Replace the current node's data with the maxNode's data
+                                node.left = remove(node.left, maxNode.data);  // Recursively remove the maxNode from the left subtree
+                            }
+                
+                        }
+                        return node;
+                    }
+                    private Node findMaxValueNode(Node node) { // Private method to find and return the node with the maximum value in the binary search tree
+                        if(node == null) { // Base case: if the current node is null, the tree is empty, return null
+                            return null;
+                        }
+                        while(node.right != null) { // Traverse to the right child until the right child is null, which is the maximum value node
+                            node = node.right;
+                        }
+                        return node; // Return the node with the maximum value
+                    }
+                    private void inOrderTraversal(Node node) {
+                        if(node != null) {
+                            inOrderTraversal(node.left);
+                            System.out.print(node.data + " ");
+                            inOrderTraversal(node.right);
+                        }
+                    }
+                    public static void main(String[] args) {
+                        // Create an instance of the bst class
+                        bst binarySearchTree = new bst();
+                
+                        // Test the add method
+                        binarySearchTree.add(50);
+                        binarySearchTree.add(30);
+                        binarySearchTree.add(70);
+                
+                        // Print the tree to verify the add operation
+                        System.out.println("Binary Search Tree after adding elements:");
+                        binarySearchTree.inOrderTraversal(binarySearchTree.root);
+                
+                        // Test the remove method
+                        binarySearchTree.remove(30);
+                
+                        // Print the tree to verify the remove operation
+                        System.out.println("\nBinary Search Tree after removing 30:");
+                        binarySearchTree.inOrderTraversal(binarySearchTree.root);
+                    }
+                }</code></pre>
+        </section>
+
+        <section id="cCode">
+            <article class="titles">
+                <p>C Code Sample:</p>
+            </article>
+
+            <pre><code class="language-c">
+                #include  &lt;stdio.h&gt;
+                    #include &lt;stdlib.h&gt;
+                    struct Node* findMaxValueNode(struct Node* node);
+                    struct Node { //Define a structure for the Node
+                        struct Node* left; //pointer to the left child node
+                        struct Node* right; //pointer to the right child node
+                        int data; //data stored in node
+                    };
+                    
+                    struct bst { //Define a structure for the Binary Search Tree
+                        struct Node* root; //pointer to the root node of the tree
+                    };
+                    
+                    struct Node* createNode(int newData) { //Define a function to create a new Node with the given data
+                        //allocate memory for a new node structure using malloc
+                        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+                        //set the left and right pointers of the new node to NULL
+                        newNode->left = NULL;
+                        newNode->right = NULL;
+                        newNode->data = newData; //set the data of the new node to the provided newData
+                        return newNode; //return the newly created node
+                    }
+                    struct bst* createBST() {
+                        //allocate memory for a new binary search tree
+                        struct bst* newBST = (struct bst*)malloc(sizeof(struct bst));
+                        // Initialize the root pointer of the new bst to NULL (indicating an empty tree)
+                        newBST->root = NULL;
+                        return newBST; //return the newly created bst
+                    }
+                    // Private method to recursively add a node with the given data to the bst
+                    struct Node* add(struct Node* node, int data) {
+                        if(node == NULL) {
+                            return createNode(data); // If the current node is null, create a new node with the given data
+                        }
+                        else {
+                            if(data <= node->data) {
+                                node->left = add(node->left, data); // Recursively add to the left subtree
+                            }
+                            else {
+                                node->right = add(node->right, data); // Recursively add to the right subtree
+                            }
+                        }
+                        return node; // Return the modified node
+                    }
+                    void addData(struct bst* tree, int data) { // Public method to add a node with the given data to the bst
+                        tree->root = add(tree->root, data); // Call the private add method with the root and the given data
+                    }
+                    
+                    // Private method to recursively remove a node with the given data from the bst
+                    struct Node* removeNode(struct Node* node, int data) {
+                        if(node == NULL) {
+                            return NULL; // Base case: If the current node is null, no change
+                        }
+                        if(data < node->data) {
+                            node->left = removeNode(node->left, data); // Recursively call remove on the left subtree
+                        }
+                        else if(data > node->data) {
+                            node->right = removeNode(node->right, data); // Recursively call remove on the right subtree
+                        }
+                        else {
+                            if(node->left == NULL && node->right == NULL) { // Case 1: Node with no children
+                                free(node); // Simply remove the node by freeing the memory
+                                return NULL;
+                            }
+                            else if(node->left == NULL) { // Case 2: Node with only a right child
+                                struct Node* temp = node->right;
+                                free(node);
+                                return temp;  // Replace the node with its right child
+                            }
+                            if(node->right == NULL) { // Case 3: Node with only a left child
+                                struct Node* temp = node->left;
+                                free(node);
+                                return temp;  // Replace the node with its left child
+                            }
+                            else { // Case 4: Node with two children
+                                struct Node* maxNode = findMaxValueNode(node->left); // Find the maximum value node in the left subtree
+                                node->data = maxNode->data; // Replace the current node's data with the maxNode's data
+                                // Recursively remove the maxNode from the left subtree
+                                node->left = removeNode(node->left, maxNode->data);
+                            }
+                        }
+                        return node;
+                    }
+                    void removeData(struct bst* tree, int data) { // Public method to remove a node with the given data from the bst
+                        tree->root = removeNode(tree->root, data); // Call the private remove method with the root and the given data
+                    }
+                    
+                    // Private method to find and return the node with the maximum value in the binary search tree
+                    struct Node* findMaxValueNode(struct Node* node) {
+                        if(node == NULL) {
+                            return NULL; // Base case: If the current node is null, the tree is empty, return null
+                        }
+                        while(node->right != NULL) {
+                            node = node->right; // Traverse to the right child until the right child is null, which is the maximum value node
+                        }
+                        return node; // Return the node with the maximum value
+                    }
+                    
+                    void inOrderTraversal(struct Node* node) { // Private method for in-order traversal
+                        if(node != NULL) {
+                            inOrderTraversal(node->left);
+                            printf("%d ", node->data);
+                            inOrderTraversal(node->right);
+                        }
+                    }
+                    
+                    int main() {
+                        struct bst* binarySearchTree = createBST(); //create an instance of the bst struct
+                    
+                        //test the add method
+                        addData(binarySearchTree,50);
+                        addData(binarySearchTree,30);
+                        addData(binarySearchTree,70);
+                    
+                        //print the tree to verify the add operation
+                        printf("Binary Search Tree after adding elements: ");
+                        inOrderTraversal(binarySearchTree->root);
+                    
+                        //test the remove method
+                        removeData(binarySearchTree, 30);
+                    
+                        //print the tree to verify the remove operation
+                        printf("\nBinary Search Tree after removing 30: ");
+                        inOrderTraversal(binarySearchTree->root);
+                        return 0;
+                    }</code></pre>
+        </section>
+
+        <section id="pyCode">
+            <p></p>
+
+            <article class="titles">
+                <p>Python Code Sample:</p>
+            </article>
+            <pre><code class="language-python">
+                # Define a class representing a Node in the binary search tree
+class Node:
+    # Constructor to initialize a Node with data, left, and right attributes
+    def __init__(self, data):
+        self.data = data  # Initialize the data attribute with the given data value
+        self.left = None  # Initialize the left child as None
+        self.right = None  # Initialize the right child as None
+
+
+# Define a class representing a Binary Search Tree (BST)
+class BST:
+    # Constructor to initialize the BST with a root attribute
+    def __init__(self):
+        self.root = None  # Initialize the root as None
+
+    # Public method to add a node with the given data to the BST
+    def add(self, data):
+        self.root = self._add(self.root, data)  # Call the private _add method with the root and the given data
+
+    def _add(self, node, data):  # Private method to recursively add a node with the given data to the BST
+        if node is None:  # Check if the current node is None
+            return Node(data)  # Create a new node with the given data if the current node is None
+        else:
+            # If the data is less than or equal to the current node's data, recursively add to the left subtree
+            if data <= node.data:
+                node.left = self._add(node.left, data)
+            else:
+                node.right = self._add(node.right, data)  # If the data is greater, recursively add to the right subtree
+        return node
+
+    def remove(self, data):  # Public method to remove a node with the given data from the BST
+        self.root = self._remove(self.root, data)  # Call the private _remove method with the root and the given data
+
+    def _remove(self, node, data):  # Private method to recursively remove a node with the given data from the BST
+        if node is None:  # Check if the current node is None
+            return None  # Base case: if the current node is None, return None (no change)
+        # If the data to be deleted is smaller than the root's data, recursively call _remove on the left subtree
+        elif data < node.data:
+            node.left = self._remove(node.left, data)
+        # If the data to be deleted is greater than the root's data, recursively call _remove on the right subtree
+        elif data > node.data:
+            node.right = self._remove(node.right, data)
+        else:
+            # If the data to be deleted is the same as the root's data, handle different cases
+            if node.left is None and node.right is None:
+                return None  # Case 1: Node with no children, simply remove the node by returning None
+            elif node.left is None:
+                return node.right  # Case 2: Node with only a right child, replace the node with its right child
+            elif node.right is None:
+                return node.left  # Case 3: Node with only a left child, replace the node with its left child
+            else:
+                # Case 4: Node with two children, find the maximum value node in the left subtree
+                max_node = self._find_max_value_node(node.left)
+                node.data = max_node.data  # Replace the current node's data with the max_node's data
+                # Recursively remove the max_node from the left subtree
+                node.left = self._remove(node.left, max_node.data)
+        return node
+
+    @staticmethod
+    def _find_max_value_node(node):  # Private method to find and return the node with the maximum value in the BST
+        if node is None:  # Base case: if the current node is None, the tree is empty, return None
+            return None
+        # Traverse to the right child until the right child is None, which is the maximum value node
+        while node.right is not None:
+            node = node.right
+        return node
+
+    def _in_order_traversal(self, node):  # Private method for in-order traversal of the BST and print the nodes
+        if node is not None:
+            self._in_order_traversal(node.left)  # Recursively traverse the left subtree
+            print(node.data, end=" ")  # Print the current node's data
+            self._in_order_traversal(node.right)  # Recursively traverse the right subtree
+
+    def in_order_traversal(self, root):
+        pass
+
+
+# Main block executed when the script is run
+if __name__ == "__main__":
+    # Create an instance of the BST class
+    binary_search_tree = BST()
+
+    # Test the add method
+    binary_search_tree.add(50)
+    binary_search_tree.add(30)
+    binary_search_tree.add(70)
+
+    # Print the tree to verify the add operation
+    print("Binary Search Tree after adding elements:")
+    binary_search_tree._in_order_traversal(binary_search_tree.root)  # Use _in_order_traversal for this verification
+
+    # Test the remove method
+    binary_search_tree.remove(30)
+
+    # Print the tree to verify the remove operation
+    print("\nBinary Search Tree after removing 30:")
+    binary_search_tree._in_order_traversal(binary_search_tree.root)  # Use _in_order_traversal for this verification</code></pre>
+
+
+        </section>
+    </section>
+
+
+    <nav class="nav">
+        <article class="add-container">
+            <input type="text" placeholder="Insert Node Value" class="add-input-val" required>
+            <button class="add-node-btn">Insert Node</button>
+        </article>
+
+        <article class="delete-container">
+            <input type="text" placeholder="Delete Node Value" class="delete-input-val" required>
+            <button class="delete-node-btn">Delete Node</button>
+        </article>
+
+        <article class="search-container">
+            <input type="text" placeholder="Search Node" class="search-input-val">
+            <button class="search-node-btn">Search Node</button>
+        </article>
+    </nav>
+    <section class="button-section">
+        <button class="searchmin-node-btn">Search Min Node</button>
+        <button class="searchmax-node-btn">Search Max Node</button>
+        <button class="inorder-node-btn">Inorder Traversal</button>
+        <button class="postorder-node-btn">Postorder Traversal</button>
+        <button class="preorder-node-btn">Preorder Traversal</button>
+        <button class="clear-btn">Clear</button>
+    </section>
+
+
+    <div id="error-message" class="error-message" style="color: red;"></div>
+
+    <article class="holder">
+        <!---Binary Tree Results go here-->
+        <section class="binarytree-container">
+            <!-- <div class="bst-node">1</div>
+            <div class="bst-node">3</div>
+            <div class="bst-node">4</div> -->
+        </section>
+    </article>
+
+    <main class="bst-main">
+        <section class="bst-container"></section>
+    </main>
+    <script type="module" src="js/structures/BST_UI.js" async></script>
+    <!-- Include Prism.js script -->
+    <script src="./assets/library/prism.js"></script>
+
 </body>
 
 </html>
