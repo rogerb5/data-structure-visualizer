@@ -16,30 +16,22 @@ if (!isset($_POST["email"], $_POST["Passwrd"])) {
     exit("Please fill out the required fields.");
 }
 
-$stmt = $conn->prepare("SELECT user_name, Passwrd FROM registration WHERE email = ?");
-$stmt->bind_param('s', $_POST["email"]);
+$email = $_POST["email"];
+$password = $_POST["Passwrd"];
+
+$stmt = $conn->prepare("SELECT Passwrd FROM registration WHERE email = ?");
+$stmt->bind_param('s', $email);
 $stmt->execute();
-$stmt->store_result();
+$stmt->bind_result($hashed_password);
+$stmt->fetch();
 
-if ($stmt->num_rows > 0) {
-    $stmt->bind_result($user_name, $hashed_password);
-    $stmt->fetch();
-
-    if (password_verify($_POST["Passwrd"], $hashed_password)) {
-        session_regenerate_id();
-        $_SESSION["loggedin"] = true;
-        $_SESSION["email"] = $_POST["email"];
-        $_SESSION["user_name"] = $user_name;
-
-        header("Location: home.html");
-        exit();
-    } else {
-        echo "Incorrect password.";
-    }
+if (password_verify($password, $hashed_password)) {
+    echo "Password verification successful";
 } else {
-    echo "Incorrect username or email";
+    echo "Incorrect password.";
 }
 
 $stmt->close();
 $conn->close();
 ?>
+
