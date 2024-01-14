@@ -29,16 +29,16 @@ if ($stmt = $conn->prepare("SELECT user_name, Passwrd FROM registration WHERE em
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($user_name, $Passwrd);
+        $stmt->bind_result($user_name, $hashed_password);
         $stmt->fetch();
-
+    
         // verify the password
-        if (password_verify($_POST["Passwrd"], $Passwrd)) {
+        if (password_verify($_POST["Passwrd"], $hashed_password)) {
             session_regenerate_id();
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["user_name"] = $user_name;
-
+    
             // redirect user to homepage
             header("Location: home.html");
             exit();
