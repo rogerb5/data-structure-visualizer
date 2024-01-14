@@ -21,33 +21,33 @@ if(!isset($_POST["email"], $_POST["Passwrd"])){
     exit("Please fill out the required fields.");
 }
 
-//prepare sql to prevent sql injection
-if($stmt = $conn->prepare("SELECT user_name, Passwrd FROM registration WHERE email = ?")){
+// prepare SQL to prevent SQL injection
+if ($stmt = $conn->prepare("SELECT user_name, Passwrd FROM registration WHERE email = ?")) {
     $stmt->bind_param('s', $_POST["email"]);
     $stmt->execute();
-    //store results to check if exists in db
+    // store results to check if exists in db
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($user_name, $Passwrd); 
+        $stmt->bind_result($user_name, $Passwrd);
         $stmt->fetch();
 
-        //verify the password
-        if(password_verify($_POST["Passwrd"], $Passwrd)){
+        // verify the password
+        if (password_verify($_POST["Passwrd"], $Passwrd)) {
             session_regenerate_id();
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["user_name"] = $user_name;
 
-             //redirect user to homepage
+            // redirect user to homepage
             header("Location: home.html");
             exit();
-        } else{
-            //incorrect password
+        } else {
+            // incorrect password
             echo "Incorrect password.";
         }
-    } else{
-        //incorrect email
+    } else {
+        // incorrect email
         echo "Incorrect username or email";
     }
 
