@@ -37,7 +37,7 @@ if(isset($_SESSION["success_msg"])){
 
                 <div id="button-container">
                     <button>
-                        <a href="index.html">Login</a>
+                        <a href="home.html">Login</a>
                     </button>
                     <button>
                         <a href="register.html">Register</a>
