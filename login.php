@@ -25,12 +25,15 @@ if (isset($_POST["email"], $_POST["Passwrd"])) {
     $stmt->bind_result($user_name, $hashed_password);
     $stmt->fetch();
 
-    if (password_verify($password, $hashed_password)) {
-        echo "Login successful. Welcome, $user_name!";
-        // You can set session variables or redirect to the home page here
-    } else {
-        echo "Incorrect email or password.";
-    }
+    // After this line: $stmt->fetch();
+if (password_verify($password, $hashed_password)) {
+    echo "Password verification successful. Welcome, $user_name!";
+    // You can set session variables or redirect to the home page here
+} else {
+    echo "Entered Password: $password<br>";
+    echo "Stored Hash: $hashed_password<br>";
+    echo "Incorrect email or password.";
+}
 
     $stmt->close();
 } else {
