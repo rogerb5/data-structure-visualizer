@@ -15,9 +15,9 @@ if ($conn->connect_error) {
 // Debugging: Check what data is received
 var_dump($_POST);
 
-if (isset($_POST["email"], $_POST["password"])) {
+if (isset($_POST["email"], $_POST["Passwrd"])) {
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $password = $_POST["Passwrd"];
 
     $stmt = $conn->prepare("SELECT user_name, Passwrd FROM registration WHERE email = ?");
     $stmt->bind_param('s', $email);
