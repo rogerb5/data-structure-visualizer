@@ -25,7 +25,7 @@ if(isset($_SESSION["success_msg"])){
         <div id="form-content-container">
             <div id="form-content-inner-container">
                 <h2 id="form-header">Login or Register</h2>
-                <form method="POST" class="form" action="php/login.php">
+                <form method="POST" class="form" action="login.php">
                     <label for="user_name">Username:</label>
                     <input type="text" id="user_name" name="user_name" placeholder="Username">
 
