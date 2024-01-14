@@ -25,28 +25,27 @@ if(isset($_SESSION["success_msg"])){
         <div id="form-content-container">
             <div id="form-content-inner-container">
                 <h2 id="form-header">Login or Register</h2>
-            <form method="POST" class="form" action="php/login.php">
-                <label for="user_name">Username:</label>
-                <input type="text" id="user_name" placeholder="Username">
+                <form method="POST" class="form" action="php/login.php">
+                    <label for="user_name">Username:</label>
+                    <input type="text" id="user_name" name="user_name" placeholder="Username">
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="you@example.com">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com">
 
-                <label for="email">Password:</label>
-                <input type="passwrd" id="passwrd" placeholder="Password">
+                    <label for="passwrd">Password:</label>
+                    <input type="password" id="passwrd" name="Passwrd" placeholder="Password">
 
-                <div id="button-container">
-                    <button>
-                        <a href="home.html">Login</a>
-                    </button>
-                    <button>
-                        <a href="register.html">Register</a>
-                    </button>
-                    <button>
-                        <a href="forgot.html">Forgot Your Password</a>
-                    </button>
-                </div>
-            </form>
+                    <div id="button-container">
+                        <button type="submit">Login</button>
+                        <button>
+                            <a href="register.html">Register</a>
+                        </button>
+                        <button>
+                            <a href="forgot.html">Forgot Your Password</a>
+                        </button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
