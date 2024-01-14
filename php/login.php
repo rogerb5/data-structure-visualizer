@@ -34,6 +34,7 @@ if ($stmt = $conn->prepare("SELECT user_name, Passwrd FROM registration WHERE em
     
         // verify the password
         if (password_verify($_POST["Passwrd"], $hashed_password)) {
+            echo "Password verification successful";
             session_regenerate_id();
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];

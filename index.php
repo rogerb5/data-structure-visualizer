@@ -33,7 +33,7 @@ if(isset($_SESSION["success_msg"])){
                     <input type="email" id="email" name="email" placeholder="you@example.com">
 
                     <label for="passwrd">Password:</label>
-                    <input type="password" id="passwrd" name="Passwrd" placeholder="Password">
+                    <input type="password" id="Passwrd" name="Passwrd" placeholder="Password">
 
                     <div id="button-container">
                         <button type="submit">Login</button>
