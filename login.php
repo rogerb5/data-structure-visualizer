@@ -3,14 +3,17 @@ session_start();
 
 $servername = "localhost";
 $username = "root";
-$password = "SeniorProject7"; // Change this to your actual database password
-$dbname = "mydb"; // Change this to your actual database name
+$password = "YourDatabasePassword"; // Change this to your actual database password
+$dbname = "yourdb"; // Change this to your actual database name
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+// Debugging: Check what data is received
+var_dump($_POST);
 
 if (isset($_POST["email"], $_POST["password"])) {
     $email = $_POST["email"];
@@ -35,5 +38,7 @@ if (isset($_POST["email"], $_POST["password"])) {
 }
 
 $conn->close();
+?>
+
 ?>
 
