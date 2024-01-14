@@ -38,6 +38,10 @@ if($stmt = $conn->prepare("SELECT user_name, Passwrd FROM registration WHERE ema
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["user_name"] = $user_name;
+
+             //redirect user to homepage
+            header("Location: home.html");
+            exit();
         } else{
             //incorrect password
             echo "Incorrect password.";
