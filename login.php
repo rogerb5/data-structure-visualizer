@@ -3,8 +3,8 @@ session_start();
 
 $servername = "localhost";
 $username = "root";
-$password = "YourDatabasePassword"; // Change this to your actual database password
-$dbname = "yourdb"; // Change this to your actual database name
+$password = "SeniorProject7"; // Change this to your actual database password
+$dbname = "mydb"; // Change this to your actual database name
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
