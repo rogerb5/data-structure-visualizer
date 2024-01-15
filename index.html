@@ -18,8 +18,6 @@
         <div id="form-content-container">
             <div id="form-content-inner-container">
                 <h2 id="form-header">Login or Register</h2>
-                <label for="user-name">Username:</label>
-                <input type="text" id="user-name" placeholder="Username">
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" placeholder="you@example.com">
@@ -28,20 +26,18 @@
                 <input type="password" id="password" placeholder="Password">
 
                 <div id="button-container">
-                    <button>
-                        <a href="index.html">Login</a>
-                    </button>
-                    <button>
-                        <a href="register.html">Register</a>
-                    </button>
-                    <button>
-                        <a href="forgot.html">Forgot Your Password</a>
-                    </button>
+                    <button onclick="login()">Login</button>
+                    <a href="register.html"><button>Register</button></a>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+<script src="js/structures/login.js"></script>
 
 </html>

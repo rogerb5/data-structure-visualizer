@@ -50,36 +50,16 @@ div#button-container {
 }
 
 button {
-    padding: 0.4rem 1.5rem 0.4rem 1.5rem;
+    padding: 0.4rem 1.5rem;
     background-color: white;
     border: 2px solid lightgrey;
     font-size: 1rem;
     transition: all 300ms ease;
-}
-
-a.continue-btn {
-    padding: 0.4rem 1.5rem 0.4rem 1.5rem;
-    background-color: white;
-    border: 2px solid lightgrey;
-    font-size: 1rem;
-    transition: all 300ms ease;
-}
-a.continue-btn:hover {
-    border: 2px solid #2F4858;
-}
-
-button:nth-child(1):hover {
-    border: 2px solid #2F4858;
-}
-
-button:nth-child(2):hover {
-    border: 2px solid #2F4858;
-}
-button:nth-child(3):hover {
-    border: 2px solid #2F4858;
-}
-button:hover {
     cursor: pointer;
+}
+
+button:hover {
+    border: 2px solid #2F4858;
 }
 
 label {
@@ -96,23 +76,16 @@ label:after {
     color: red;
 }
 
-input[type='text'] {
+input[type='text'],
+input[type='email'],
+input[type='password'] {
     font-size: 0.9rem;
     padding: 0.9rem;
 }
 
-input[type='email'] {
-    font-size: 0.9rem;
-    padding: 0.9rem;
-}
-
-input[type='passwrd'] {
-    font-size: 0.9rem;
-    padding: 0.9rem;
-}
-
-div#form-container {
-    padding: 1rem;
-    width: 300px;
-    min-height: 100px;
+#button-container {
+    display: flex;
+    gap: 0.1rem;
+    justify-content: space-between;
+    margin-top: 0.8rem;
 }
