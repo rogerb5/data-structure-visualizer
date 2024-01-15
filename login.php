@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "SeniorProject7";
-$dbname = "mydb";
+$dbname = "myDB";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -25,13 +25,16 @@ $stmt->execute();
 $stmt->bind_result($user_name, $hashed_password);
 $stmt->fetch();
 
-// debug: print values
-echo "User Name: $user_name<br>";
-echo "Entered Password: $password<br>";
-echo "Stored Hash: $hashed_password<br>";
-
 if (password_verify($password, $hashed_password)) {
     echo "Password verification successful";
+    // Add your session and redirect logic here
+    // Example:
+    // session_regenerate_id();
+    // $_SESSION["loggedin"] = true;
+    // $_SESSION["email"] = $email;
+    // $_SESSION["user_name"] = $user_name;
+    // header("Location: home.html");
+    // exit();
 } else {
     echo "Incorrect email or password.";
 }
@@ -39,5 +42,6 @@ if (password_verify($password, $hashed_password)) {
 $stmt->close();
 $conn->close();
 ?>
+
 
 
