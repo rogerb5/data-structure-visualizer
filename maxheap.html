@@ -8,12 +8,468 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/heap.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 
 <body>
-    <a href="index.html">Home</a>
-    <h1>Max Heap Visualizer</h1>
-    <script src="js/structures/maxheap.js"></script>
+    <nav class="navigation-bar">
+        <h1>MaxHeap</h1>
+        <section class="info-section">
+            <p class="size-output">Size: 0</p>
+            <p class="isEmpty-output">isEmpty? true</p>
+        </section>
+        <section class="input-section">
+            <input type="text" class="node-value" placeholder="Enter Node Value">
+            <button class="add-btn">Add</button>
+            <button class="extract-btn">Extract Max</button>
+            <button class="array-btn">Toggle Array</button>
+            <button class="clear-btn">Clear Heap</button>
+            <button class="open-btn">Info</button>
+        </section>
+    </nav>
+
+    <section class="parent-section">
+        <section class="info-section">
+            <p class="error-msg" id="error-msg">Please Enter a Valid Number</p>
+        </section>
+    </section>
+
+    <main>
+        <!-- Heap Contents Will be rendered here-->
+        <div class="maxheap-container"></div>
+    </main>
+
+    <section class="modal">
+        <button class="close-btn">Close</button>
+        <article class="about-stack">
+            <h1 id="">A Binary Max Heap</h1>
+            <p>A Binary Max Heap has three invariants: </p>
+
+            <p> First, it must be a binary tree which means
+                every node must have at most two children. </p>
+
+            <p>
+                Next, that every node must be greater than or equal to
+                it's children.
+            </p>
+
+            <p>
+                Finally, each level is complete meaning it has no gaps, so heaps are filled left to right.
+            </p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Basic Max Heap Operations</h1>
+            <p>heapify down: swaps node with it's greatest child until the parent is greater than both children
+                or we are at a leaf.</p>
+            <p>heapify up: swap with the parent until your parent is greater than you or your
+                are the overall root</p>
+
+            <p>extract max: removes the max node and replaces the bottom level right most node and heapfies down. </p>
+            <p>add: insert a node on the bottom level to ensure no gaps and then you fix the heap invariant by
+                heapifying upwards. </p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Applications of Max Heaps in Computer Science</h1>
+            <p>A max heap can be used to implement the priority queue in cases where the shortest distances are
+                represented as negative values for Dijkstra's Shortest Path Algorithm</p>
+            <p>Max heaps are useful in job scheduling scenarios where tasks or jobs have associated priorities or
+                deadlines</p>
+            <p>Heap memory management in operating systems often involves the use of heaps. In some cases, max heaps can
+                be employed for efficient memory allocation.</p>
+        </article>
+
+        <article class="about-heap">
+            <h1>About the Max Heap Visualizer</h1>
+            <p>The visualizer uses an zero based array for the heap.</p>
+            <p>Duplicate values are not allowed.</p>
+            <p>Color Key:<br><br> Yellow signifies swap.</p>
+            <p>
+                Red means the prior max node that will be deleted, and is heapified down
+                to the last heap index.
+            </p>
+            <p>
+                Green showcases the new max node which has heapified upwards.
+            </p>
+        </article>
+
+        <section class="all">
+            <article class="java-article">
+                <h2>Java</h2>
+                <pre>
+                <code class="language-java">
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class MaxHeap {
+        private List<Integer> data;
+        private int size;
+
+        public MaxHeap() {
+            super();
+            this.data = new ArrayList<>();
+            this.size = 0;
+        }
+
+        private int getParentIndex(int index) {
+            if (index <= 0) {
+                return 0;
+            }
+            return (index - 1) / 2;
+        }
+
+        private int getLeftChildIndex(int index) {
+            return index * 2 + 1;
+        }
+
+        private int getRightChildIndex(int index) {
+            return index * 2 + 2;
+        }
+
+        public void add(int value) {
+            if (!data.contains(value)) {
+                data.add(size, value);
+                size++;
+                createHeapLevels();
+                isEmpty();
+                getSize();
+                heapifyUp();
+            }
+        }
+
+        public Integer extractMax() {
+            if (size == 0) {
+                return null;
+            }
+            int firstIndex = 0;
+            swap(firstIndex, size - 1);
+            int max = data.remove(size - 1);
+            startExtractMaxAnimation(firstIndex, size - 1);
+            size--;
+            getSize();
+            isEmpty();
+            heapifyDown(firstIndex);
+            return max;
+        }
+
+        private void swap(int index1, int index2) {
+            int temp = data.get(index1);
+            data.set(index1, data.get(index2));
+            data.set(index2, temp);
+            startSwapAnimation(index1, index2);
+        }
+
+        private void heapifyUp() {
+            int lastIndex = size - 1;
+            while (data.get(getParentIndex(lastIndex)) < data.get(lastIndex)) {
+                int parentIndex = getParentIndex(lastIndex);
+                swap(parentIndex, lastIndex);
+                lastIndex = parentIndex;
+            }
+        }
+
+        private void heapifyDown(int firstIndex) {
+            while (getLeftChildIndex(firstIndex) < size) {
+                int biggestSiblingIndex = getLeftChildIndex(firstIndex);
+                if (getRightChildIndex(firstIndex) < size
+                        && data.get(getRightChildIndex(firstIndex)) > data.get(biggestSiblingIndex)) {
+                    biggestSiblingIndex = getRightChildIndex(firstIndex);
+                }
+                if (data.get(firstIndex) < data.get(biggestSiblingIndex)) {
+                    swap(firstIndex, biggestSiblingIndex);
+                    firstIndex = biggestSiblingIndex;
+                } else {
+                    return;
+                }
+            }
+        }
+
+        public int getSize() {
+            System.out.println("Size: " + size);
+            return size;
+        }
+
+        public boolean isEmpty() {
+            System.out.println("isEmpty? " + (size == 0));
+            return size == 0;
+        }
+
+        public boolean contains(int value) {
+            return data.contains(value);
+        }
+
+        public void clear() {
+            List<Node> allNodes = getAllNodes();
+            for (int index = 0; index < allNodes.size(); index++) {
+                Node node = allNodes.get(index);
+                final int finalIndex = index;
+            }
+            data.clear();
+            size = 0;
+            isEmpty();
+            getSize();
+        }
+
+        public void buildMaxHeap() {
+            // not used
+            int lastNonLeafIndex = size / 2 - 1;
+            for (int i = lastNonLeafIndex; i >= 0; i--) {
+                heapifyDown(i);
+            }
+        }
+
+        public String toString() {
+            StringBuilder result = new StringBuilder("[");
+            for (int index = 0; index < size; index++) {
+                result.append(data.get(index));
+                if (index < size - 1) {
+                    result.append(", ");
+                }
+            }
+            result.append("]");
+            return result.toString();
+        }
+    }
+        </code>
+    </pre>
+            </article>
+
+            <article class="c-article">
+                <h2>C</h2>
+                <pre>
+                <code class="language-c">
+    #include stdio.h
+    #include stdbool.h
+    #include stdlib.h
+      
+    typedef struct {
+        int* data;
+        int size;
+    } MaxHeap;
+    
+    int getParentIndex(int index) {
+        if (index <= 0) {
+            index = 0;
+            return index;
+        }
+        return (index - 1) / 2;
+    }
+    
+    int getLeftChildIndex(int index) {
+        return index * 2 + 1;
+    }
+    
+    int getRightChildIndex(int index) {
+        return index * 2 + 2;
+    }
+    
+    void swap(MaxHeap* heap, int index1, int index2) {
+        int temp = heap->data[index1];
+        heap->data[index1] = heap->data[index2];
+        heap->data[index2] = temp;
+    }
+    
+    void heapifyUp(MaxHeap* heap) {
+        int lastIndex = heap->size - 1;
+        while (heap->data[getParentIndex(lastIndex)] < heap->data[lastIndex]) {
+            int parentIndex = getParentIndex(lastIndex);
+            swap(heap, parentIndex, lastIndex);
+            lastIndex = parentIndex;
+        }
+    }
+    
+    void heapifyDown(MaxHeap* heap, int firstIndex) {
+        while (getLeftChildIndex(firstIndex) < heap->size) {
+            int biggestSiblingIndex = getLeftChildIndex(firstIndex);
+            if (getRightChildIndex(firstIndex) < heap->size &&
+                heap->data[getRightChildIndex(firstIndex)] > heap->data[biggestSiblingIndex]) {
+                biggestSiblingIndex = getRightChildIndex(firstIndex);
+            }
+            if (heap->data[firstIndex] < heap->data[biggestSiblingIndex]) {
+                swap(heap, firstIndex, biggestSiblingIndex);
+                firstIndex = biggestSiblingIndex;
+            } else {
+                return;
+            }
+        }
+    }
+    
+    void add(MaxHeap* heap, int value) {
+        if (!contains(heap, value)) {
+            heap->data[heap->size] = value;
+            heap->size++;
+            heapifyUp(heap);
+        }
+    }
+    
+    int extractMax(MaxHeap* heap) {
+        if (heap->size == 0) {
+            return -1; // indicating an empty heap
+        }
+        int firstIndex = 0;
+        swap(heap, firstIndex, heap->size - 1);
+        int max = heap->data[heap->size - 1];
+        heap->size--;
+        heapifyDown(heap, firstIndex);
+        return max;
+    }
+    
+    void clear(MaxHeap* heap) {
+        heap->size = 0;
+    }
+    
+    bool contains(MaxHeap* heap, int value) {
+        for (int index = 0; index < heap->size; index++) {
+            if (heap->data[index] == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    void printHeap(MaxHeap* heap) {
+        printf("[");
+        for (int index = 0; index < heap->size; index++) {
+            printf("%d", heap->data[index]);
+            if (index < heap->size - 1) {
+                printf(", ");
+            }
+        }
+        printf("]\n");
+    }
+    
+    int main() {
+        MaxHeap heap;
+        heap.data = (int*)malloc(100 * sizeof(int)); // Assuming a maximum capacity of 100
+        heap.size = 0;
+    
+        add(&heap, 10);
+        add(&heap, 5);
+        add(&heap, 15);
+        printHeap(&heap); // Output: [15, 5, 10]
+    
+        int max = extractMax(&heap);
+        printf("Extracted Max: %d\n", max); // Output: 15
+        printHeap(&heap); // Output: [10, 5]
+    
+        free(heap.data);
+        return 0;
+    }
+    
+                </code>
+            </pre>
+            </article>
+
+            <article class="p-article">
+                <h2>Python</h2>
+                <pre>
+                <code class="language-python">
+    class MaxHeap:
+    def __init__(self):
+        self.data = []
+        self.size = 0
+
+    def get_parent_index(self, index):
+        if index <= 0:
+            return 0
+        return (index - 1) // 2
+
+    def get_left_child_index(self, index):
+        return index * 2 + 1
+
+    def get_right_child_index(self, index):
+        return index * 2 + 2
+
+    def add(self, value):
+        if value not in self.data:
+            self.data.append(value)
+            self.size += 1
+            self.create_heap_levels()
+            self.is_empty()
+            self.get_size()
+            self.heapify_up()
+
+    def extract_max(self):
+        if self.size == 0:
+            return None
+        first_index = 0
+        self.swap(first_index, self.size - 1)
+        max_value = self.data.pop()
+        self.start_extract_max_animation(first_index, self.size - 1)
+        self.size -= 1
+        self.get_size()
+        self.is_empty()
+        self.heapify_down(first_index)
+        return max_value
+
+    def swap(self, index1, index2):
+        self.data[index1], self.data[index2] = self.data[index2], self.data[index1]
+        self.start_swap_animation(index1, index2)
+
+    def heapify_up(self):
+        last_index = self.size - 1
+        while self.data[self.get_parent_index(last_index)] < self.data[last_index]:
+            parent_index = self.get_parent_index(last_index)
+            self.swap(parent_index, last_index)
+            last_index = parent_index
+
+    def heapify_down(self, first_index):
+        while self.get_left_child_index(first_index) < self.size:
+            biggest_sibling_index = self.get_left_child_index(first_index)
+            if (
+                self.get_right_child_index(first_index) < self.size
+                and self.data[self.get_right_child_index(first_index)] > self.data[biggest_sibling_index]
+            ):
+                biggest_sibling_index = self.get_right_child_index(first_index)
+            if self.data[first_index] < self.data[biggest_sibling_index]:
+                self.swap(first_index, biggest_sibling_index)
+                first_index = biggest_sibling_index
+            else:
+                return
+
+    def get_size(self):
+        size_output = f"Size: {self.size}"
+        print(size_output)
+        return self.size
+
+    def is_empty(self):
+        is_empty_output = f"isEmpty? {self.size == 0}"
+        print(is_empty_output)
+        return self.size == 0
+
+    def contains(self, value):
+        return value in self.data
+
+    def clear(self):
+        for index, node in enumerate(self.data):
+        self.data = []
+        self.size = 0
+        self.is_empty()
+        self.get_size()
+
+    def build_max_heap(self):
+        last_non_leaf_index = (self.size // 2) - 1
+        for i in range(last_non_leaf_index, -1, -1):
+            self.heapify_down(i)
+
+    def to_string(self):
+        result = "[" + ", ".join(map(str, self.data)) + "]"
+        return result
+
+                </code>
+            </pre>
+            </article>
+        </section>
+    </section>
+
+    <!--Use type=module to import/export classes and src test file-->
+    <script type="module" src="js/structures/maxheap-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
 </body>
 
 </html>
