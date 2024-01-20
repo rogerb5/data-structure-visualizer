@@ -84,123 +84,118 @@
                 <pre>
                     <!-- Add Java code within code tag-->
                 <code class="language-java">
-                    class Node {
+                    public class Node {
+
                         int data;
                         Node next;
                         Node prev;
-                    
-                        public Node(int data) {
+                
+                        Node(int data) {
                             this.data = data;
                             this.next = null;
                             this.prev = null;
                         }
+                
                     }
-                    
+                    //new class file
+                    import java.util.Scanner;
                     public class CircularDoublyLinkedList {
-                        private Node head;
-                        private Node tail;
-                    
-                        public CircularDoublyLinkedList() {
-                            this.head = null;
-                            this.tail = null;
-                        }
-                    
-                        public boolean isEmpty() {
-                            return head == null;
-                        }
-                    
+                        Node head;
+
+                        // Append a new node to the end of the list
                         public void append(int data) {
                             Node newNode = new Node(data);
-                            if (isEmpty()) {
+                            if (head == null) {
                                 head = newNode;
-                                tail = newNode;
+                                head.next = head;
+                                head.prev = head;
                             } else {
-                                newNode.prev = tail;
-                                tail.next = newNode;
-                                tail = newNode;
-                            }
-                            makeCircular();
-                            
-                        }
-                    
-                        public void prepend(int data) {
-                            Node newNode = new Node(data);
-                            if (isEmpty()) {
-                                head = newNode;
-                                tail = newNode;
-                            } else {
+                                Node last = head.prev;
+                                last.next = newNode;
+                                newNode.prev = last;
                                 newNode.next = head;
                                 head.prev = newNode;
+                            }
+                        }
+
+                        // Prepend a new node to the beginning of the list
+                        public void prepend(int data) {
+                            Node newNode = new Node(data);
+                            if (head == null) {
+                                head = newNode;
+                                head.next = head;
+                                head.prev = head;
+                            } else {
+                                Node last = head.prev;
+                                newNode.next = head;
+                                head.prev = newNode;
+                                newNode.prev = last;
+                                last.next = newNode;
                                 head = newNode;
                             }
-                            makeCircular();
-                            
                         }
-                    
-                        public void search(int value) {
-                            if (isEmpty()) {
-                                System.out.println("List is empty");
+
+                        // Display the elements in the circular doubly linked list
+                        public void display() {
+                            if (head == null) {
+                                System.out.println("List is empty.");
                                 return;
                             }
-                    
+
                             Node current = head;
                             do {
-                                if (current.data == value) {
-                                    System.out.println("Node found: " + value);
-                                    
-                                    return;
-                                }
+                                System.out.print(current.data + " ");
                                 current = current.next;
                             } while (current != head);
-                    
-                            System.out.println("Node not found");
+
+                            System.out.println();
                         }
-                    
-                        public void removeNodesByValue(int value) {
-                            if (isEmpty()) {
-                                System.out.println("List is empty");
-                                return;
-                            }
-                    
-                            Node current = head;
-                            do {
-                                if (current.data == value) {
-                                    if (current == head && current == tail) {
-                                        head = null;
-                                        tail = null;
-                                    } else if (current == head) {
-                                        head = current.next;
-                                    } else if (current == tail) {
-                                        tail = current.prev;
-                                    }
-                    
-                                    if (current.prev != null) {
-                                        current.prev.next = current.next;
-                                    }
-                                    if (current.next != null) {
-                                        current.next.prev = current.prev;
-                                    }
-                    
-                                    
-                                }
-                    
-                                current = current.next;
-                            } while (current != head);
-                        }
-                    
-                        private void makeCircular() {
-                            if (head != null) {
-                                tail.next = head;
-                                head.prev = tail;
-                            }
-                        }
-                    
-                        // Other methods like insertAtPosition, findNodeComponents, highlightNodes, size, reverse, clear can be implemented similarly
-                    
+
                         public static void main(String[] args) {
+                            Scanner scanner = new Scanner(System.in);
                             CircularDoublyLinkedList list = new CircularDoublyLinkedList();
-                    
+
+
+                            //menu for user
+                            int choice;
+                            do{
+                                System.out.println("1. Append to List");
+                                System.out.println("2. Prepend to List");
+                                System.out.println("3. Display Circular Doubly Linked List.");
+                                System.out.println("0. Exit");
+                                System.out.print("Enter your choice: ");
+                                choice = scanner.nextInt();
+
+                                switch(choice){
+                                    case 1:
+                                        //Appending user input
+                                        System.out.print("Enter a value to append: ");
+                                        int appendValue =  scanner.nextInt();
+                                        list.append(appendValue);
+                                        break;
+                                    //Appending user input
+                                    case 2:
+                                        System.out.print("Enter a value to prepend: ");
+                                        int prependValue = scanner.nextInt();
+                                        list.prepend(prependValue);
+                                        break;
+                                    case 3:
+                                        // Display the list
+                                        System.out.println("Circular Doubly Linked List:");
+                                        list.display();
+                                        break;
+                                    case 0:
+                                        System.out.println("Exiting the program. ");
+                                        break;
+                                    default:
+                                        System.out.println("Invalid choice. Please enter a valid option.");
+                                }
+
+                             }while (choice != 0);
+
+                             scanner.close();
                         }
+
                     }
                 </code>
                 </pre>
@@ -211,7 +206,7 @@
                 <pre>
                 <!-- Add c code within code tag-->
                 <code class="language-c">
-                    #include <stdio.h>
+                        #include <stdio.h>
                         #include <stdlib.h>
                         
                         struct Node {
@@ -220,123 +215,114 @@
                             struct Node* prev;
                         };
                         
+                        typedef struct Node Node;
+                        
                         struct CircularDoublyLinkedList {
-                            struct Node* head;
-                            struct Node* tail;
+                            Node* head;
                         };
                         
-                        void initializeList(struct CircularDoublyLinkedList* list) {
-                            list->head = NULL;
-                            list->tail = NULL;
-                        }
+                        typedef struct CircularDoublyLinkedList CircularDoublyLinkedList;
                         
-                        int isEmpty(struct CircularDoublyLinkedList* list) {
-                            return list->head == NULL;
-                        }
-                        
-                        void append(struct CircularDoublyLinkedList* list, int data) {
-                            struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+                        // Function to append a new node to the end of the list
+                        void append(CircularDoublyLinkedList* list, int data) {
+                            Node* newNode = (Node*)malloc(sizeof(Node));
                             newNode->data = data;
                         
-                            if (isEmpty(list)) {
+                            if (list->head == NULL) {
                                 list->head = newNode;
-                                list->tail = newNode;
+                                newNode->next = newNode;
+                                newNode->prev = newNode;
                             } else {
-                                newNode->prev = list->tail;
-                                list->tail->next = newNode;
-                                list->tail = newNode;
-                            }
-                            
-                        }
-                        
-                        void prepend(struct CircularDoublyLinkedList* list, int data) {
-                            struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-                            newNode->data = data;
-                        
-                            if (isEmpty(list)) {
-                                list->head = newNode;
-                                list->tail = newNode;
-                            } else {
+                                Node* last = list->head->prev;
+                                last->next = newNode;
+                                newNode->prev = last;
                                 newNode->next = list->head;
                                 list->head->prev = newNode;
+                            }
+                        }
+                        
+                        // Function to prepend a new node to the beginning of the list
+                        void prepend(CircularDoublyLinkedList* list, int data) {
+                            Node* newNode = (Node*)malloc(sizeof(Node));
+                            newNode->data = data;
+                        
+                            if (list->head == NULL) {
+                                list->head = newNode;
+                                newNode->next = newNode;
+                                newNode->prev = newNode;
+                            } else {
+                                Node* last = list->head->prev;
+                                newNode->next = list->head;
+                                list->head->prev = newNode;
+                                newNode->prev = last;
+                                last->next = newNode;
                                 list->head = newNode;
                             }
-                            
                         }
                         
-                        void search(struct CircularDoublyLinkedList* list, int value) {
-                            if (isEmpty(list)) {
-                                printf("List is empty\n");
+                        // Function to display the elements in the circular doubly linked list
+                        void display(CircularDoublyLinkedList* list) {
+                            if (list->head == NULL) {
+                                printf("List is empty.\n");
                                 return;
                             }
                         
-                            struct Node* current = list->head;
+                            Node* current = list->head;
                             do {
-                                if (current->data == value) {
-                                    printf("Node found: %d\n", value);
-                                    // Additional logic for visualization in the UI can be added here
-                                    return;
-                                }
+                                printf("%d ", current->data);
                                 current = current->next;
                             } while (current != list->head);
                         
-                            printf("Node not found\n");
+                            printf("\n");
                         }
-                        
-                        void removeNodesByValue(struct CircularDoublyLinkedList* list, int value) {
-                            if (isEmpty(list)) {
-                                printf("List is empty\n");
-                                return;
-                            }
-                        
-                            struct Node* current = list->head;
-                            do {
-                                if (current->data == value) {
-                                    if (current == list->head && current == list->tail) {
-                                        list->head = NULL;
-                                        list->tail = NULL;
-                                    } else if (current == list->head) {
-                                        list->head = current->next;
-                                    } else if (current == list->tail) {
-                                        list->tail = current->prev;
-                                    }
-                        
-                                    if (current->prev != NULL) {
-                                        current->prev->next = current->next;
-                                    }
-                                    if (current->next != NULL) {
-                                        current->next->prev = current->prev;
-                                    }
-                        
-                                    
-                                    free(current);
-                                }
-                        
-                                current = current->next;
-                            } while (current != list->head);
-                        }
-                        
-                        void makeCircular(struct CircularDoublyLinkedList* list) {
-                            if (list->head != NULL) {
-                                list->tail->next = list->head;
-                                list->head->prev = list->tail;
-                            }
-                        }
-                        
-                        // Other methods like insertAtPosition, findNodeComponents, highlightNodes, size, reverse, clear can be implemented similarly
                         
                         int main() {
-                            struct CircularDoublyLinkedList list;
-                            initializeList(&list);
+                            CircularDoublyLinkedList list;
+                            list.head = NULL;
                         
-                            // Example usage:
-                            append(&list, 1);
-                            append(&list, 2);
-                            prepend(&list, 0);
+                            int choice;
+                            do {
+                                printf("1. Append to the List\n");
+                                printf("2. Prepend to the List\n");
+                                printf("3. Display the Circular Doubly Linked List\n");
+                                printf("0. Exit\n");
+                                printf("Enter your choice: ");
+                                scanf("%d", &choice);
                         
-                            search(&list, 2);
-                            removeNodesByValue(&list, 1);
-                            search(&list, 1); // Should print "Node not found"
+                                switch (choice) {
+                                    case 1:
+                                        printf("Enter a value to append: ");
+                                        int appendValue;
+                                        scanf("%d", &appendValue);
+                                        append(&list, appendValue);
+                                        break;
+                                    case 2:
+                                        printf("Enter a value to prepend: ");
+                                        int prependValue;
+                                        scanf("%d", &prependValue);
+                                        prepend(&list, prependValue);
+                                        break;
+                                    case 3:
+                                        printf("Circular Doubly Linked List:\n");
+                                        display(&list);
+                                        break;
+                                    case 0:
+                                        printf("Exiting the program.\n");
+                                        break;
+                                    default:
+                                        printf("Invalid choice. Please enter a valid option.\n");
+                                }
+                            } while (choice != 0);
+                        
+                            // Free allocated memory before exiting
+                            Node* current = list.head;
+                            if (current != NULL) {
+                                do {
+                                    Node* nextNode = current->next;
+                                    free(current);
+                                    current = nextNode;
+                                } while (current != list.head);
+                            }
                         
                             return 0;
                         }
@@ -350,107 +336,83 @@
                     <!--Add python code within code tage-->
                 <code class="language-python">
                     class Node:
-                    def __init__(self, data):
-                        self.data = data
-                        self.next = None
-                        self.prev = None
-                
-                class CircularDoublyLinkedList:
-                    def __init__(self):
-                        self.head = None
-                        self.tail = None
-                
-                    def is_empty(self):
-                        return self.head is None
-                
-                    def append(self, data):
-                        new_node = Node(data)
-                
-                        if self.is_empty():
-                            self.head = new_node
-                            self.tail = new_node
-                        else:
-                            new_node.prev = self.tail
-                            self.tail.next = new_node
-                            self.tail = new_node
-                
-                        
-                
-                    def prepend(self, data):
-                        new_node = Node(data)
-                
-                        if self.is_empty():
-                            self.head = new_node
-                            self.tail = new_node
-                        else:
-                            new_node.next = self.head
-                            self.head.prev = new_node
-                            self.head = new_node
-                
-                        
-                
-                    def search(self, value):
-                        if self.is_empty():
-                            print("List is empty")
-                            return
-                
-                        current = self.head
-                        while current:
-                            if current.data == value:
-                                print(f"Node found: {value}")
-                                
+                        def __init__(self, data):
+                            self.data = data
+                            self.next = None
+                            self.prev = None
+
+                    class CircularDoublyLinkedList:
+                        def __init__(self):
+                            self.head = None
+
+                        # Append a new node to the end of the list
+                        def append(self, data):
+                            new_node = Node(data)
+                            if self.head is None:
+                                self.head = new_node
+                                new_node.next = new_node
+                                new_node.prev = new_node
+                            else:
+                                last = self.head.prev
+                                last.next = new_node
+                                new_node.prev = last
+                                new_node.next = self.head
+                                self.head.prev = new_node
+
+                        # Prepend a new node to the beginning of the list
+                        def prepend(self, data):
+                            new_node = Node(data)
+                            if self.head is None:
+                                self.head = new_node
+                                new_node.next = new_node
+                                new_node.prev = new_node
+                            else:
+                                last = self.head.prev
+                                new_node.next = self.head
+                                self.head.prev = new_node
+                                new_node.prev = last
+                                last.next = new_node
+                                self.head = new_node
+
+                        # Display the elements in the circular doubly linked list
+                        def display(self):
+                            if self.head is None:
+                                print("List is empty.")
                                 return
-                            current = current.next
-                            if current == self.head:
+
+                            current = self.head
+                            while True:
+                                print(current.data, end=" ")
+                                current = current.next
+                                if current == self.head:
+                                    break
+                            print()
+
+                    if __name__ == "__main__":
+                        linked_list = CircularDoublyLinkedList()
+
+                        while True:
+                            print("1. Append to the List")
+                            print("2. Prepend to the List")
+                            print("3. Display the Circular Doubly Linked List")
+                            print("0. Exit")
+
+                            choice = int(input("Enter your choice: "))
+
+                            if choice == 1:
+                                append_value = int(input("Enter a value to append: "))
+                                linked_list.append(append_value)
+                            elif choice == 2:
+                                prepend_value = int(input("Enter a value to prepend: "))
+                                linked_list.prepend(prepend_value)
+                            elif choice == 3:
+                                print("Circular Doubly Linked List:")
+                                linked_list.display()
+                            elif choice == 0:
+                                print("Exiting the program.")
                                 break
-                
-                        print("Node not found")
-                
-                    def remove_nodes_by_value(self, value):
-                        if self.is_empty():
-                            print("List is empty")
-                            return
-                
-                        current = self.head
-                        while current:
-                            if current.data == value:
-                                if current == self.head and current == self.tail:
-                                    self.head = None
-                                    self.tail = None
-                                elif current == self.head:
-                                    self.head = current.next
-                                elif current == self.tail:
-                                    self.tail = current.prev
-                
-                                if current.prev:
-                                    current.prev.next = current.next
-                                if current.next:
-                                    current.next.prev = current.prev
-                
-                                
-                                return
-                
-                            current = current.next
-                            if current == self.head:
-                                break
-                
-                    def make_circular(self):
-                        if self.head:
-                            self.tail.next = self.head
-                            self.head.prev = self.tail
-                
-                    # Other methods like insert_at_position, find_node_components, highlight_nodes, size, reverse, clear can be implemented similarly
-                
-                if __name__ == "__main__":
-                    # Example usage:
-                    linked_list = CircularDoublyLinkedList()
-                    linked_list.append(1)
-                    linked_list.append(2)
-                    linked_list.prepend(0)
-                
-                    linked_list.search(2)
-                    linked_list.remove_nodes_by_value(1)
-                    linked_list.search(1)  # Should print "Node not found"
+                            else:
+                                print("Invalid choice. Please enter a valid option.")
                 </code>
             </pre>
             </article>
