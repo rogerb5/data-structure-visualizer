@@ -47,12 +47,13 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 70px;
 }
 
 .container {
   display: flex;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 70px);
+  border-top: 8px groove rgba(189, 166, 252, 0.507);
 }
 
 
@@ -61,7 +62,7 @@ h2 {
   padding: 20px;
   margin: 0px;
   width: auto;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 70px);
 }
 
 .column-40 {
@@ -92,14 +93,22 @@ h2 {
   width: auto;
 }
 
-
+.popup-panel {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  padding: 2%;
+  margin-bottom: 2%;
+  height: auto;
+  width: auto;
+  color: white
+}
 
 /* Canvas panel */
 .canvas-panel {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 10px;
-  height: 85vh;
+  height: 88vh;
   width: auto;
   overflow: auto;
 }
@@ -116,8 +125,8 @@ h2 {
 .stack-box {
   width: 500px;
   height: 50px;
-  border: 2px solid #e27dc4;
-  background-color: rgba(255, 203, 252, 0.616);
+  border: 4px groove #e27dd18f;
+  background-color: rgba(245, 203, 255, 0.616);
   border-radius: 15px;
   font-size: 30px;
   display: flex;
@@ -160,55 +169,60 @@ h2 {
   }
 }
 
+@keyframes tabDropDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 input {
   margin-bottom: 5px;
-}
-
-
-/* Normal Buttons */
-.button-set {
-  display: flex;
-}
-.button {
-  display: inline-block;
-  font-size: 20px;
-  padding: 1% 1%;
-  cursor: pointer;
-  text-align: center;
-  width: flex;
-  color: #fff;
-  background-color: var(--button-color);
-  border-radius: 15px;
-  box-shadow: 0 6px #00000055;
-  margin-left: 4%;
-  margin-right: 4%;
-}
-.button:hover {
-  background-color: var(--hover-button-color);
-}
-.button:active {
-  background-color: var(--clicked-button-color);
-  box-shadow: 0 3px #00000075;
-  transform: translateY(3px);
 }
 
 .home-button {
   display: inline-block;
   font-size: 24px;
-  padding: 18px 25px;
+  padding: 9px 20px;
   border: 2px solid #ffffff67;
+  border-radius: 15px;
   cursor: pointer;
   text-align: center;
   color: #c0c0c0;
   background-color: #00000070;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 10px;
+  left: 10px;
 }
 .home-button:hover {
   background-color: #00303f70;
 }
 .home-button:active {
+  background-color: #70990070;
+}
+
+.tab button {
+  display: inline-block;
+  font-size: 24px;
+  padding: 9px 20px;
+  border: 2px solid #ffffff67;
+  border-radius: 15px;
+  cursor: pointer;
+  text-align: center;
+  color: #c0c0c0;
+  background-color: #00000070;
+  position: absolute;
+  top: 10px;
+  left: 130px;
+}
+.tab button:hover {
+  background-color: #00303f70;
+}
+.tab button:active {
   background-color: #70990070;
 }
 
@@ -250,33 +264,14 @@ input[type="number"] {
   font-size: 1.2rem;
 }
 
+
+
+
+
 .tab{
   overflow: auto;
-  background-color: #02006bbe;
 }
 
-.tab button {
-  display: inline-block;
-  font-size: 24px;
-  padding: 15px 25px;
-  cursor: pointer;
-  text-align: center;
-  color: #fff;
-  background-color: var(--button-color);
-  border-radius: 15px;
-  box-shadow: 0 9px #00000055;
-  position: absolute;
-  top: 16px;
-  left: 150px;
-}
-.tab button:hover {
-  background-color: var(--hover-button-color);
-}
-.tab button:active {
-  background-color: var(--clicked-button-color);
-  box-shadow: 0 3px #00000075;
-  transform: translateY(3px);
-}
 .tabcontent {
   display: none;
   padding: 6px 12px;
@@ -285,16 +280,18 @@ input[type="number"] {
   border-top: none;
   text-align: center;
   overflow: scroll;
+  color: white;
+  animation: tabDropDown 1s ease-in-out 0s 1;
 }
 
 .tabcontent h3 {
   font-size: xx-large;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .tabcontent h2 {
   text-align: left;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .tabcontent p {
