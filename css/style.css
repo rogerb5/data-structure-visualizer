@@ -14,5 +14,23 @@ article.links {
     padding: 0.7rem;
     text-align: center;
 }
-
 /* Main Page Styling */
+
+/*logout button Styling */
+.logout-button button {
+    z-index: 1;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
+    top: 0.3rem;
+    right: 0.3rem; /* Adjust as needed for the desired position */
+    position: absolute;
+    transition: background-color 0.5s ease;
+}
+
+.logout-button button:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: #333;
+}
