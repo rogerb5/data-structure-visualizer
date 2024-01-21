@@ -24,20 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const stackContainer = document.getElementById('stack-container');
 
-    function updateStack() {
-      while (stackContainer.firstChild) {
-        stackContainer.removeChild(stackContainer.firstChild);
-      }
-
-      for (let i = size - 1; i >= 0; i--) {
-        const stackBox = document.createElement('div');
-        stackBox.className = 'stack-box';
-        stackBox.textContent = values[i];
-        stackContainer.appendChild(stackBox);
-      }
-      animateStack();
-    }
-
     function animateStack() {
         const stackBoxes = document.querySelectorAll('.stack-box');
         stackBoxes.forEach((box, index) => {
@@ -57,21 +43,35 @@ document.addEventListener('DOMContentLoaded', function () {
         const value = parseInt(document.getElementById('push-input').value);
         if(isNaN(value))
             alert(`Please enter a value`);
-        else {
-            values.push(value);
+        else {   
             size++;
-            updateStack();
+            const stackBox = document.createElement('div');
+            stackBox.className = 'stack-box dropDown';
+            stackBox.textContent = value;
+            values.push(value)
+            stackContainer.insertBefore(stackBox, stackContainer.firstChild);
+            animateStack();
         }
     }
 
     function stackPop() {
-        if(size === 0) {
+        if (size === 0) {
             alert('Stack is empty!');
-        }
-        else {
-            values.pop();
+        } else {
             size--;
-            updateStack();
+    
+            // Remove the top stack element with shake and fade animation
+            const topStackBox = stackContainer.firstChild;
+    
+            // Add the "remove" class to apply the animation
+            topStackBox.classList.add('remove');
+    
+            // Wait for the animation to finish before removing the element
+            topStackBox.addEventListener('animationend', function() {
+                stackContainer.removeChild(topStackBox);
+                values.pop();
+                animateStack();
+            });
         }
     }
 
@@ -90,12 +90,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stackClear() {
-        while (size > 0) {
-            values.pop();
+        if (size > 0) {
             size--;
+    
+            // Remove the top stack element with shake and fade animation
+            const topStackBox = stackContainer.firstChild;
+    
+            // Add the "remove" class to apply the animation
+            topStackBox.classList.add('remove');
+    
+            // Wait for the animation to finish before removing the element
+            topStackBox.addEventListener('animationend', function() {
+                stackContainer.removeChild(topStackBox);
+                stackClear(); // Call the function recursively after the animation completes
+            });
+        } else {
+            // All elements are removed, perform any additional actions
+            updateStack();
+            alert('Stack is now empty!');
         }
-        alert(`Stack is now empty!`);
-        updateStack();
     }
 
     /******* On-Click Events *******/
