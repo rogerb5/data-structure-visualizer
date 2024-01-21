@@ -30,6 +30,16 @@ h2 {
  --clicked-button-color: #373750;
 }
 
+.background-image {
+  background-image: url('/assets/icons/StackBackground.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 
 .header {
   background-color: #581845;
@@ -54,7 +64,6 @@ h2 {
 }
 
 .column-40 {
-  background-color: var(--bg-color);
   height: auto;
   justify-content: space-between;
   width: 40%;
@@ -62,7 +71,6 @@ h2 {
 }
 
 .column-60 {
-  background-color: var(--bg-color);
   height: auto;
   justify-content: space-between;
   width: 60%;
@@ -107,8 +115,9 @@ h2 {
 .stack-box {
   width: 500px;
   height: 50px;
-  border: 3px solid rgba(255, 255, 255, 0.76);
-  background-color: #6b8eff;
+  border: 2px solid #e27dc4;
+  background-color: rgba(255, 203, 252, 0.616);
+  border-radius: 15px;
   font-size: 30px;
   display: flex;
   justify-content: center;
