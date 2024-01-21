@@ -6,9 +6,10 @@
 
 /* Styles Go Here */
 body {
-  height: 100%;
+  height: calc(100vh - 100px);
   background-color: lightgrey;
   font-family: system-ui;
+  
 }
 
 h1 {
@@ -25,8 +26,8 @@ h2 {
 
 :root{
  --bg-color: #8d7e8c;
- --button-color: #8182be;
- --hover-button-color: #81a8be;
+ --button-color: #df986f;
+ --hover-button-color: #013170;
  --clicked-button-color: #373750;
 }
 
@@ -42,16 +43,16 @@ h2 {
 
 
 .header {
-  background-color: #581845;
+  background-color: #02006bbe;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100px;
+  height: 100px;
 }
 
 .container {
   display: flex;
-  height: 100%;
+  height: calc(100vh - 100px);
 }
 
 
@@ -60,7 +61,7 @@ h2 {
   padding: 20px;
   margin: 0px;
   width: auto;
-  height: 100%;
+  height: calc(100vh - 100px);
 }
 
 .column-40 {
@@ -194,24 +195,21 @@ input {
 .home-button {
   display: inline-block;
   font-size: 24px;
-  padding: 15px 25px;
+  padding: 18px 25px;
+  border: 2px solid #ffffff67;
   cursor: pointer;
   text-align: center;
-  color: #fff;
-  background-color: var(--button-color);
-  border-radius: 15px;
-  box-shadow: 0 9px #00000055;
+  color: #c0c0c0;
+  background-color: #00000070;
   position: absolute;
   top: 1rem;
   left: 1rem;
 }
 .home-button:hover {
-  background-color: var(--hover-button-color);
+  background-color: #00303f70;
 }
 .home-button:active {
-  background-color: var(--clicked-button-color);
-  box-shadow: 0 5px #00000075;
-  transform: translateY(4px);
+  background-color: #70990070;
 }
 
 .method-button {
@@ -254,7 +252,7 @@ input[type="number"] {
 
 .tab{
   overflow: auto;
-  background-color: var(--bg-color);
+  background-color: #02006bbe;
 }
 
 .tab button {
@@ -282,10 +280,11 @@ input[type="number"] {
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  background-color: var(--bg-color);
+  background-color: #02006bbe;
   height: 100%;
   border-top: none;
   text-align: center;
+  overflow: scroll;
 }
 
 .tabcontent h3 {
