@@ -13,6 +13,16 @@ body {
     min-width: 100vh;
 }
 
+.background-image {
+    background-image: url('/assets/icons/StackBackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
 .registration-form {
     position: absolute;
     top: 50%;
