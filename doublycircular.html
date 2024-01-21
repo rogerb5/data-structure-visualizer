@@ -1,19 +1,477 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Doubly Circular Linked List Visualizer</title>
+    <title>Doubly Circuluar Linked List</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/doublycircular.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 
 <body>
-    <a href="index.html">Home</a>
-    <h1>Doubly Circular Linked List Visualizer</h1>
-    <script src="js/structures/doublycircular.js"></script>
+
+    <header>
+        <h1>Doubly Circular Linked List</h1>
+        <div class="mini-container">
+            <a href="index.html">Home</a>
+            <button class="open-btn">Info Menu</button>
+        </div>
+    </header>
+
+    <!--- Insert Menu/Modal -->
+    <section class="modal">
+        <button class="close-btn">Close</button>
+        <article class="about-stack">
+            <h1 id="">A Circular Doubly Linked List</h1>
+            <p> A Circular Doubly Linked List is a data structure that 
+                can be defined as a circular linked list in which each node has two 
+                links connecting it to the previous node and the next node. </p>
+
+            <p></p>
+
+            <p></p>
+
+            <p></p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Basic Doubly Circular Linked List Operations</h1>
+            <p>Append: Add a node to the end of the list.
+                <br>Prepend: Add a node to the beginning of the list.
+                <br>Search: Find a node in the list. This can also be done by element value.
+                <br>Remove: Remove a node from the list. This can also be done by element value.
+                <br>Clear: Remove all nodes from the list.
+                <br>Reverse: Reverse the list.
+            </p>
+            <p></p>
+
+            <p></p>
+            <p> </p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Applications of Circular Doubly Linked List in Computer Science</h1>
+            <p>A Circular Doubly Linked List can be used in applications where the entire list is accessed one-by-one in a loop.
+            It is also used by the Operating System to share time for different users. Implementation in Day-to-day applications would be 
+            Multiplayer games where the games uses the data structure to swap between players in loop. It's implemented in a browser cache which allows you to hit the back button.
+            Circular Doubly Linked Lists also provide the undo functionality in software applications.  </p>
+            <p></p>
+            <p></p>
+        </article>
+
+        <article class="about-heap">
+            <h1>About the Doubly Circular Linked List Visualizer</h1>
+            <p>Information: 
+                This visuallizer allows you to visualize the operations of a Doubly Circular Linked List.
+                Each node is represented by a box (the node) and a number(the element). each node has two arrows one pointing left
+                and one pointing right. The left arrow represents the connection to the previous node and the right arrow represents
+                the connection to the next node.On the first node the left arrow points to the last node and the right arrow of the 
+                last node points to the first node.
+                When using the search function the element that you are searching for will light up red. This shows the user that 
+                the elements node has been found.  
+            </p>
+            <p></p>
+            <p></p>
+        </article>
+
+        <section class="all">
+            <article class="java-article">
+                <h2>Java</h2>
+                <pre>
+                    <!-- Add Java code within code tag-->
+                <code class="language-java">
+                    public class Node {
+
+                        int data;
+                        Node next;
+                        Node prev;
+                
+                        Node(int data) {
+                            this.data = data;
+                            this.next = null;
+                            this.prev = null;
+                        }
+                
+                    }
+                    //new class file
+                    import java.util.Scanner;
+                    public class CircularDoublyLinkedList {
+                        Node head;
+
+                        // Append a new node to the end of the list
+                        public void append(int data) {
+                            Node newNode = new Node(data);
+                            if (head == null) {
+                                head = newNode;
+                                head.next = head;
+                                head.prev = head;
+                            } else {
+                                Node last = head.prev;
+                                last.next = newNode;
+                                newNode.prev = last;
+                                newNode.next = head;
+                                head.prev = newNode;
+                            }
+                        }
+
+                        // Prepend a new node to the beginning of the list
+                        public void prepend(int data) {
+                            Node newNode = new Node(data);
+                            if (head == null) {
+                                head = newNode;
+                                head.next = head;
+                                head.prev = head;
+                            } else {
+                                Node last = head.prev;
+                                newNode.next = head;
+                                head.prev = newNode;
+                                newNode.prev = last;
+                                last.next = newNode;
+                                head = newNode;
+                            }
+                        }
+
+                        // Display the elements in the circular doubly linked list
+                        public void display() {
+                            if (head == null) {
+                                System.out.println("List is empty.");
+                                return;
+                            }
+
+                            Node current = head;
+                            do {
+                                System.out.print(current.data + " ");
+                                current = current.next;
+                            } while (current != head);
+
+                            System.out.println();
+                        }
+
+                        public static void main(String[] args) {
+                            Scanner scanner = new Scanner(System.in);
+                            CircularDoublyLinkedList list = new CircularDoublyLinkedList();
+
+
+                            //menu for user
+                            int choice;
+                            do{
+                                System.out.println("1. Append to List");
+                                System.out.println("2. Prepend to List");
+                                System.out.println("3. Display Circular Doubly Linked List.");
+                                System.out.println("0. Exit");
+                                System.out.print("Enter your choice: ");
+                                choice = scanner.nextInt();
+
+                                switch(choice){
+                                    case 1:
+                                        //Appending user input
+                                        System.out.print("Enter a value to append: ");
+                                        int appendValue =  scanner.nextInt();
+                                        list.append(appendValue);
+                                        break;
+                                    //Appending user input
+                                    case 2:
+                                        System.out.print("Enter a value to prepend: ");
+                                        int prependValue = scanner.nextInt();
+                                        list.prepend(prependValue);
+                                        break;
+                                    case 3:
+                                        // Display the list
+                                        System.out.println("Circular Doubly Linked List:");
+                                        list.display();
+                                        break;
+                                    case 0:
+                                        System.out.println("Exiting the program. ");
+                                        break;
+                                    default:
+                                        System.out.println("Invalid choice. Please enter a valid option.");
+                                }
+
+                             }while (choice != 0);
+
+                             scanner.close();
+                        }
+
+                    }
+                </code>
+                </pre>
+            </article>
+
+            <article class="c-article">
+                <h2>C</h2>
+                <pre>
+                <!-- Add c code within code tag-->
+                <code class="language-c">
+                        #include <stdio.h>
+                        #include <stdlib.h>
+                        
+                        struct Node {
+                            int data;
+                            struct Node* next;
+                            struct Node* prev;
+                        };
+                        
+                        typedef struct Node Node;
+                        
+                        struct CircularDoublyLinkedList {
+                            Node* head;
+                        };
+                        
+                        typedef struct CircularDoublyLinkedList CircularDoublyLinkedList;
+                        
+                        // Function to append a new node to the end of the list
+                        void append(CircularDoublyLinkedList* list, int data) {
+                            Node* newNode = (Node*)malloc(sizeof(Node));
+                            newNode->data = data;
+                        
+                            if (list->head == NULL) {
+                                list->head = newNode;
+                                newNode->next = newNode;
+                                newNode->prev = newNode;
+                            } else {
+                                Node* last = list->head->prev;
+                                last->next = newNode;
+                                newNode->prev = last;
+                                newNode->next = list->head;
+                                list->head->prev = newNode;
+                            }
+                        }
+                        
+                        // Function to prepend a new node to the beginning of the list
+                        void prepend(CircularDoublyLinkedList* list, int data) {
+                            Node* newNode = (Node*)malloc(sizeof(Node));
+                            newNode->data = data;
+                        
+                            if (list->head == NULL) {
+                                list->head = newNode;
+                                newNode->next = newNode;
+                                newNode->prev = newNode;
+                            } else {
+                                Node* last = list->head->prev;
+                                newNode->next = list->head;
+                                list->head->prev = newNode;
+                                newNode->prev = last;
+                                last->next = newNode;
+                                list->head = newNode;
+                            }
+                        }
+                        
+                        // Function to display the elements in the circular doubly linked list
+                        void display(CircularDoublyLinkedList* list) {
+                            if (list->head == NULL) {
+                                printf("List is empty.\n");
+                                return;
+                            }
+                        
+                            Node* current = list->head;
+                            do {
+                                printf("%d ", current->data);
+                                current = current->next;
+                            } while (current != list->head);
+                        
+                            printf("\n");
+                        }
+                        
+                        int main() {
+                            CircularDoublyLinkedList list;
+                            list.head = NULL;
+                        
+                            int choice;
+                            do {
+                                printf("1. Append to the List\n");
+                                printf("2. Prepend to the List\n");
+                                printf("3. Display the Circular Doubly Linked List\n");
+                                printf("0. Exit\n");
+                                printf("Enter your choice: ");
+                                scanf("%d", &choice);
+                        
+                                switch (choice) {
+                                    case 1:
+                                        printf("Enter a value to append: ");
+                                        int appendValue;
+                                        scanf("%d", &appendValue);
+                                        append(&list, appendValue);
+                                        break;
+                                    case 2:
+                                        printf("Enter a value to prepend: ");
+                                        int prependValue;
+                                        scanf("%d", &prependValue);
+                                        prepend(&list, prependValue);
+                                        break;
+                                    case 3:
+                                        printf("Circular Doubly Linked List:\n");
+                                        display(&list);
+                                        break;
+                                    case 0:
+                                        printf("Exiting the program.\n");
+                                        break;
+                                    default:
+                                        printf("Invalid choice. Please enter a valid option.\n");
+                                }
+                            } while (choice != 0);
+                        
+                            // Free allocated memory before exiting
+                            Node* current = list.head;
+                            if (current != NULL) {
+                                do {
+                                    Node* nextNode = current->next;
+                                    free(current);
+                                    current = nextNode;
+                                } while (current != list.head);
+                            }
+                        
+                            return 0;
+                        }
+                </code>
+                </pre>
+            </article>
+
+            <article class="p-article">
+                <h2>Python</h2>
+                <pre>
+                    <!--Add python code within code tage-->
+                <code class="language-python">
+                    class Node:
+                        def __init__(self, data):
+                            self.data = data
+                            self.next = None
+                            self.prev = None
+
+                    class CircularDoublyLinkedList:
+                        def __init__(self):
+                            self.head = None
+
+                        # Append a new node to the end of the list
+                        def append(self, data):
+                            new_node = Node(data)
+                            if self.head is None:
+                                self.head = new_node
+                                new_node.next = new_node
+                                new_node.prev = new_node
+                            else:
+                                last = self.head.prev
+                                last.next = new_node
+                                new_node.prev = last
+                                new_node.next = self.head
+                                self.head.prev = new_node
+
+                        # Prepend a new node to the beginning of the list
+                        def prepend(self, data):
+                            new_node = Node(data)
+                            if self.head is None:
+                                self.head = new_node
+                                new_node.next = new_node
+                                new_node.prev = new_node
+                            else:
+                                last = self.head.prev
+                                new_node.next = self.head
+                                self.head.prev = new_node
+                                new_node.prev = last
+                                last.next = new_node
+                                self.head = new_node
+
+                        # Display the elements in the circular doubly linked list
+                        def display(self):
+                            if self.head is None:
+                                print("List is empty.")
+                                return
+
+                            current = self.head
+                            while True:
+                                print(current.data, end=" ")
+                                current = current.next
+                                if current == self.head:
+                                    break
+                            print()
+
+                    if __name__ == "__main__":
+                        linked_list = CircularDoublyLinkedList()
+
+                        while True:
+                            print("1. Append to the List")
+                            print("2. Prepend to the List")
+                            print("3. Display the Circular Doubly Linked List")
+                            print("0. Exit")
+
+                            choice = int(input("Enter your choice: "))
+
+                            if choice == 1:
+                                append_value = int(input("Enter a value to append: "))
+                                linked_list.append(append_value)
+                            elif choice == 2:
+                                prepend_value = int(input("Enter a value to prepend: "))
+                                linked_list.prepend(prepend_value)
+                            elif choice == 3:
+                                print("Circular Doubly Linked List:")
+                                linked_list.display()
+                            elif choice == 0:
+                                print("Exiting the program.")
+                                break
+                            else:
+                                print("Invalid choice. Please enter a valid option.")
+                </code>
+            </pre>
+            </article>
+        </section>
+    </section>
+
+
+    <nav>
+        <h2 class="operation-title">Primary Operations:</h2>
+        <section class="operations">
+            <article class="add-container">
+                <input type="text" placeholder="Append Node" class="append-input" required>
+                <button class="append-btn">Append</button>
+            </article>
+
+            <article class="add-container">
+                <input type="text" placeholder="Prepend Node" class="prepend-input" required>
+                <button class="prepend-btn">Prepend</button>
+            </article>
+
+            <article class="remove-container">
+                <input type="text" placeholder="Remove Node" class="remove-input">
+                <button class="remove-btn">Remove</button>
+            </article>
+
+            <article class="search-container">
+                <input type="text" placeholder="Search Node" class="search-input">
+                <button class="search-btn">Search</button>
+            </article>
+
+        </section>
+
+        <section class="secondary-operations">
+            <h2 class="operation-title">Other Operations:</h2>
+            <button class="clear-btn">Clear List</button>
+            <!-- <button class="reverse-btn">Reverse List</button> -->
+        </section>
+    </nav>
+
+    <section class="alert-section">
+        <h3>Please enter a valid number</h3>
+    </section>
+
+    <!-- <section class="list-info-section">
+        <article class="size-article">
+            <p class="size-p">List Size: 0</p>
+            <p class="reverse-p">The list is not reversed!</p>
+        </article>
+    </section> -->
+
+    <!-- All nodes will be rendered here with JavaScript-->
+    <main class="list-container">
+    </main>
+
+    <script type="module" src="js/structures/doublycircularUI.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
 </body>
 
 </html>

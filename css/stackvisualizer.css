@@ -1,0 +1,289 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styles Go Here */
+body {
+  height: 100%;
+  background-color: lightgrey;
+  font-family: system-ui;
+}
+
+h1 {
+  text-align: center;
+  color: #f1faee;
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+  color: #f1faee;
+  position: relative;
+}
+
+:root{
+ --bg-color: #8d7e8c;
+ --button-color: #8182be;
+ --hover-button-color: #81a8be;
+ --clicked-button-color: #373750;
+}
+
+
+.header {
+  background-color: #581845;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+
+.column {
+  flex: 1;
+  padding: 20px;
+  margin: 0px;
+  width: auto;
+  height: 100%;
+}
+
+.column-40 {
+  background-color: var(--bg-color);
+  height: auto;
+  justify-content: space-between;
+  width: 40%;
+  flex: 40%;
+}
+
+.column-60 {
+  background-color: var(--bg-color);
+  height: auto;
+  justify-content: space-between;
+  width: 60%;
+  flex: 60%;
+}
+
+
+
+
+/* -- Panels -- */
+/* Buttons panel */
+.button-panel {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  padding: 2%;
+  margin-bottom: 2%;
+  height: auto;
+  width: auto;
+}
+
+
+
+/* Canvas panel */
+.canvas-panel {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  padding: 10px;
+  height: 85vh;
+  width: auto;
+  overflow: auto;
+}
+
+
+/* Stack Visualizer panel */
+#stack-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  animation: drop 0.5s ease forwards;
+}
+
+@keyframes drop{
+  100%{transform: translateY(40px);}
+  70%{ transform: translateY(80px)}
+  0%{}
+}
+
+.stack-box {
+  width: 500px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.76);
+  background-color: #6b8eff;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+input {
+  margin-bottom: 5px;
+}
+
+
+/* Normal Buttons */
+.button-set {
+  display: flex;
+}
+.button {
+  display: inline-block;
+  font-size: 20px;
+  padding: 1% 1%;
+  cursor: pointer;
+  text-align: center;
+  width: flex;
+  color: #fff;
+  background-color: var(--button-color);
+  border-radius: 15px;
+  box-shadow: 0 6px #00000055;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+.button:hover {
+  background-color: var(--hover-button-color);
+}
+.button:active {
+  background-color: var(--clicked-button-color);
+  box-shadow: 0 3px #00000075;
+  transform: translateY(3px);
+}
+
+.home-button {
+  display: inline-block;
+  font-size: 24px;
+  padding: 15px 25px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  background-color: var(--button-color);
+  border-radius: 15px;
+  box-shadow: 0 9px #00000055;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+.home-button:hover {
+  background-color: var(--hover-button-color);
+}
+.home-button:active {
+  background-color: var(--clicked-button-color);
+  box-shadow: 0 5px #00000075;
+  transform: translateY(4px);
+}
+
+.method-button {
+  display: inline-block;
+  font-size: 20px;
+  padding: 1% 1%;
+  cursor: pointer;
+  text-align: center;
+  width: 15%;
+  color: #fff;
+  background-color: var(--button-color);
+  border-radius: 15px;
+  box-shadow: 0 6px #00000055;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.method-button:hover {
+  background-color: var(--hover-button-color);
+}
+.method-button:active {
+  background-color: var(--clicked-button-color);
+  box-shadow: 0 3px #00000075;
+  transform: translateY(3px);
+}
+
+.custom-input {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+}
+
+input[type="number"] {
+  background-color:white;
+  color: black;
+  width: 76%;
+  padding: 9px;
+  font-size: 1.2rem;
+}
+
+.tab{
+  overflow: auto;
+  background-color: var(--bg-color);
+}
+
+.tab button {
+  display: inline-block;
+  font-size: 24px;
+  padding: 15px 25px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  background-color: var(--button-color);
+  border-radius: 15px;
+  box-shadow: 0 9px #00000055;
+  position: absolute;
+  top: 16px;
+  left: 150px;
+}
+.tab button:hover {
+  background-color: var(--hover-button-color);
+}
+.tab button:active {
+  background-color: var(--clicked-button-color);
+  box-shadow: 0 3px #00000075;
+  transform: translateY(3px);
+}
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  background-color: var(--bg-color);
+  height: 100%;
+  border-top: none;
+  text-align: center;
+}
+
+.tabcontent h3 {
+  font-size: xx-large;
+  color: black;
+}
+
+.tabcontent h2 {
+  text-align: left;
+  color: black;
+}
+
+.tabcontent p {
+  font-size: large;
+}
+
+.topright {
+  float: right;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.topright:hover {
+  color: red;
+}
+
+/* Displaying Code */
+.code-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+
+.highlight {
+  color: #e44d26; /* Set your desired color for highlighting */
+}

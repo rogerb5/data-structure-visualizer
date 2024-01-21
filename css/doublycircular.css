@@ -1,7 +1,247 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* CSS animation settings triggered in the JavaScript */
+@keyframes prependAnimation {
+    0% {
+        transform: translate3d(-0.5rem, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0rem, 0, 0);
+    }
 }
 
-/* Styles Go Here */
+@keyframes appendAnimation {
+    0% {
+        transform: translate3d(0.7rem, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0rem, 0, 0);
+    }
+}
+
+@keyframes removeAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.5);
+    }
+}
+
+.prepend-node-animation {
+    animation: prependAnimation 200ms;
+}
+
+.append-node-animation {
+    animation: appendAnimation 200ms;
+}
+
+.remove-node-animation {
+    animation: removeAnimation 400ms;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui;
+    line-height: 1.4;
+}
+
+:root {
+    --primary-header-bg-color: #199473;
+    --main-page-bg-color: #D9E2EC;
+    --header-txt-color: #fff;
+    --main-site-padding: 1rem;
+    --main-component-bg: whitesmoke;
+    --node-border-color: #9FB3C8;
+}
+
+/*** Modal styling ****************************/
+section.modal {
+    height: 100%;
+    padding: var(--main-site-padding);
+    background-color: #baddd4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+    z-index: 0;
+    overflow: scroll;
+}
+
+button.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+}
+
+section.modal.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 2;
+}
+
+/****** Header Styling **********/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-header-bg-color);
+    padding: 1rem;
+}
+
+header a {
+    color: whitesmoke;
+    font-size: 1.333rem;
+    margin-left: 1rem;
+}
+
+header h1 {
+    color: var(--header-txt-color);
+}
+
+/*** Section Operations ******/
+section.operations {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+/*** Side nav bar styling ***********************/
+nav h2 {
+    color: var(--header-txt-color);
+    margin-bottom: 0.3rem;
+}
+
+nav {
+    background-color: var(--primary-header-bg-color);
+    padding: var(--main-site-padding);
+}
+
+nav>article {
+    display: flex;
+}
+
+input[type=text] {
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    font-size: 1rem;
+}
+
+button {
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    border: none;
+    font-size: 1rem;
+    background-color: whitesmoke;
+}
+
+button.array-btn {
+    border: 2px solid red;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #333;
+    color: whitesmoke;
+}
+
+/* List display section styling *****/
+section.list-info-section {
+    background-color: var(--main-page-bg-color);
+    padding: var(--main-site-padding);
+    display: flex;
+    justify-content: center;
+}
+
+section.list-info-section .size-article {
+    border: 3px solid var(--node-border-color);
+    border-radius: 3px;
+    padding: 0.6rem;
+    font-weight: bold;
+    background-color: var(--main-component-bg);
+}
+
+/* Main Circular Doubly Linked List container */
+main.list-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.3rem;
+    min-height: 100vh;
+    background-color: var(--main-page-bg-color);
+}
+
+/* Reverse List Using FlexBox */
+main.list-container.reverse {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+/********************** Node styling ***********/
+div.node {
+    will-change: transform;
+    border: 3px solid #9FB3C8;
+    border-radius: 3px;
+    height: 60px;
+    width: 70px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-component-bg);
+    transition: all 500ms ease;
+}
+
+div.node.found {
+    background-color: #f39c9c;
+}
+
+div.node:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+div.node p {
+    padding: 0.2rem;
+    border-radius: 3px;
+    z-index: 2;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+div.node::before {
+    content: '\2190';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    font-size: 1.7rem;
+}
+
+div.node::after {
+    content: '\2192';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 1.7rem;
+}
+
+/* Alert message *****/
+section.alert-section {
+    text-align: center;
+    background-color: #f39c9c;
+    display: none;
+    padding: 0.4rem;
+}
+
+section.alert-section.active {
+    display: block;
+}
+
+/* Modal/Menu Styling **********************/
