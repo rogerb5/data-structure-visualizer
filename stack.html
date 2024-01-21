@@ -7,7 +7,8 @@
     <title>Stack Visualizer</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/stack.css">
+    <link rel="stylesheet" href="css/stackvisualizer.css">
+    <link rel="stylesheet" href="prism.css">
 </head>
 
 <body>
@@ -16,4 +17,143 @@
     <script src="js/structures/stack.js"></script>
 </body>
 
+    <div class="header">
+      <h1>Stack Visualizer</h1>
+    </div>
+
+    <div class="home-container">
+        <a href="index.html" class="home-button" id="home-button">Home</a>
+    </div>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openMoreInfo(event, 'MoreInfo')">More Info</button>
+    </div>
+
+    <div id="MoreInfo" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Stacks</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
+        <h2>Java</h2>
+        <div class="code-container">
+            <pre><code id="code" class="language-java">
+public int pop() {
+if (top >= 0) {
+    int poppedValue = stackArray[top--];
+    System.out.println("Popped: " + poppedValue);
+    return poppedValue;
+} else {
+    System.out.println("Stack underflow. Cannot pop from an empty stack.");
+    return -1; // Return a sentinel value to indicate an error or empty stack
+}
+}
+
+public int peek() {
+if (top >= 0) {
+    return stackArray[top];
+} else {
+    System.out.println("Stack is empty. Cannot peek.");
+    return -1; // Return a sentinel value to indicate an error or empty stack
+}
+}
+
+public boolean isEmpty() {
+return top == -1;
+}
+
+public boolean isFull() {
+return top == maxSize - 1;
+}
+
+public int size() {
+return top + 1;
+}
+            </code></pre>
+        </div>
+
+        <h2>C</h2>
+        <div class="code-container">
+            <pre><code id="code" class="language-C">
+future code
+            </code></pre>
+        </div>
+
+        <h2>Python</h2>
+        <div class="code-container">
+            <pre><code id="code" class="language-python">
+future code
+            </code></pre>
+        </div>
+    </div>
+    
+
+    <div class="container">
+        <div class="column column-40">
+            <div class="button-panel">
+                <h2>Operations</h2>
+                <a class="method-button" id="Pop-Button">Pop</a>
+                <a class="method-button" id="Peek-Button">Peek</a>
+                <a class="method-button" id="isEmpty-Button">isEmpty</a>
+                <a class="method-button" id="size-Button">Size</a>
+                <a class="method-button" id="Clear-Button">Clear</a>
+                <div>
+                    <a class="method-button" id="Push-Button">Push</a>
+                    <input type="number" class="custom-input" id="push-input" placeholder="Enter an integer">
+                </div>
+            </div>
+            <!--<div class="code-panel">
+                <a onClick="showOrHide()" class="code-button" id="Java-Button">Java</a>
+                <a class="code-button" id="C-Button">C</a>
+                <a class="code-button" id="Python-Button">Python</a>
+                <div class="code-container">
+                    <pre><code id="code" class="language-java">
+public int pop() {
+        if (top >= 0) {
+            int poppedValue = stackArray[top--];
+            System.out.println("Popped: " + poppedValue);
+            return poppedValue;
+        } else {
+            System.out.println("Stack underflow. Cannot pop from an empty stack.");
+            return -1; // Return a sentinel value to indicate an error or empty stack
+        }
+    }
+
+    public int peek() {
+        if (top >= 0) {
+            return stackArray[top];
+        } else {
+            System.out.println("Stack is empty. Cannot peek.");
+            return -1; // Return a sentinel value to indicate an error or empty stack
+        }
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean isFull() {
+        return top == maxSize - 1;
+    }
+
+    public int size() {
+        return top + 1;
+    }
+                    </code></pre>
+                </div>
+            </div>
+        </div>-->
+        </div>
+
+        <div class="column column-60">
+            <div class="canvas-panel">
+                <div id="stack-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/structures/stackvisualizer.js"></script>
+    <script src="prism.js"></script>
+    
 </html>

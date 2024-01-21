@@ -1,7 +1,313 @@
+@keyframes swapAnimation {
+    50% {
+        color: #FEF08A;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes shakeAnimation {
+    0% {
+        opacity: 1;
+        transform: translate3d(0px, 0, 0);
+    }
+
+    25% {
+        transform: translate3d(-5px, 0, 0);
+    }
+
+    55% {
+        transform: translate3d(5px, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0px, 0, 0);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: system-ui;
 }
 
-/* Styles Go Here */
+html {
+    background-color: var(--main-bg-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* CSS variables */
+:root {
+    --node-color: #44403c;
+    --swap-color: #fcbe057b;
+    --max-color: #0bf2548b;
+    --lastnode-color: #fc4f057b;
+
+    --node-bg-color: #292524;
+    --node-border-color: #333;
+    --node-txt-color: #D6D3D1;
+    --header-txt-color: #D6D3D1;
+    --main-bg-color: #171717;
+    --primary-border-color: #D9E2EC;
+
+
+    --input-bg-color: #D9E2EC;
+    --primary-padding: 0.7rem;
+    --btn-bg-color: rgb(61, 91, 242);
+    --second-btn-bg-color: #44403C;
+    --second-btn-border: #989796;
+}
+
+header {
+    background-color: var(--main-bg-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--header-txt-color);
+    padding: var(--primary-padding);
+}
+
+header a {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+/******************************** Navigation Bar Styling */
+nav.navigation-bar {
+    background-color: var(--main-bg-color);
+    padding: var(--primary-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav.navigation-bar h1 {
+    color: var(--nav-txt-color);
+}
+
+input[type=text] {
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin: 0.3rem;
+    font-size: 1rem;
+    border: 2px solid #333;
+    background-color: #171717;
+    color: whitesmoke;
+}
+
+input[type=text]:hover {
+    border: 2px solid rgb(148, 147, 147)
+}
+
+button {
+    color: var(--primary-border-color);
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    font-size: 1rem;
+    background-color: var(--second-btn-bg-color);
+    border: 2px solid var(--second-btn-border);
+    margin: 0.1rem;
+}
+
+button:last-child {
+    background-color: var(--btn-bg-color);
+    border: 2px solid #869fef;
+}
+
+button:nth-last-child(2) {
+    background-color: rgb(61, 91, 242);
+    border: 2px solid #869fef;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/************************************ Main Styling */
+main {
+    background-color: var(--main-bg-color);
+    min-height: 90vh;
+    padding: var(--primary-padding);
+    display: flex;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+/*********************************** MaxHeap container */
+div.maxheap-container {
+    display: grid;
+    margin: 3rem auto;
+}
+
+div.maxheap-container.array-version {
+    display: flex;
+    overflow-y: scroll;
+    border: 2px solid var(--primary-border-color);
+}
+
+.level {
+    display: grid;
+}
+
+/*********************************** Section output ***/
+section.parent-section {
+    background-color: var(--main-bg-color);
+}
+
+#error-msg {
+    background-color: #f5530e7b;
+    padding: 0.3rem;
+    border: 2px solid #f1dfd77b;
+    opacity: 0;
+    transition: opacity 400ms ease;
+}
+
+#error-msg.active {
+    opacity: 1;
+    animation: shakeAnimation 1s;
+}
+
+section.info-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+section.info-section p {
+    margin: 0.3rem;
+    color: #d4d2d2;
+}
+
+/*************************** Node Styling ************/
+.node {
+    border: 2px solid var(--node-border-color);
+    background-color: var(--node-bg-color);
+    padding: 0.5rem;
+    color: var(--node-txt-color);
+    transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    text-align: center;
+    margin: 0.2rem;
+}
+
+.node:hover {
+    cursor: pointer;
+}
+
+.node.node-hover {
+    background-color: var(--btn-bg-color);
+}
+
+.node.clear {
+    opacity: 0;
+}
+
+/****** Keyframes applies as css classes ****/
+.node-swapping {
+    animation: swapAnimation 1s;
+    transition: background-color 1s;
+    background-color: var(--swap-color);
+}
+
+.node-max {
+    background-color: var(--max-color);
+}
+
+.node-last {
+    background-color: var(--lastnode-color);
+    transition: background-color 1s;
+}
+
+section.information {
+    padding: var(--primary-padding);
+}
+
+section.about {
+    padding: var(--primary-padding);
+}
+
+section.information ul li {
+    list-style-type: none;
+}
+
+section.about ul li {
+    list-style-type: none;
+}
+
+/************ Modal Styling ************/
+section.modal {
+    background-color: var(--main-bg-color);
+    padding: 3rem;
+    line-height: 1.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1000%;
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 500ms ease;
+}
+
+section.modal.active {
+    opacity: 1;
+    display: block;
+    pointer-events: all;
+}
+
+section.modal article {
+    border: 2px solid rgb(61, 91, 242);
+    background-color: #333;
+    padding: 1rem;
+}
+
+nav.navigation-bar h1 {
+    color: #D6D3D1;
+}
+
+section.modal article h1 {
+    color: #D6D3D1;
+}
+
+section.all {
+    color: whitesmoke;
+}
+
+button.close-btn,
+button.about-btn {
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    background-color: #44403C;
+    color: #D6D3D1;
+    border: 2px solid #989796;
+    font-size: 1rem;
+}
+
+
+section.modal article {
+    margin-bottom: 1rem;
+}
+
+section.modal p {
+    color: #D6D3D1;
+}
+
+
+/* Mobile Screen Settings ******************/
+@media screen and (max-width: 770px) {
+    nav.navigation-bar {
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    button {
+        padding: 0rem;
+    }
+
+    main {
+        overflow-y: scroll;
+    }
+}
