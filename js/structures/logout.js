@@ -19,7 +19,7 @@ function logout() {
         // Sign-out successful.
         alert("User logged out");
         // Redirect to another page after logout
-        location.replace("login.html"); // Replace with the desired page
+        location.replace("index.html"); // Replace with the desired page
     }).catch(function(error) {
         // An error happened.
         alert("Error during logout: " + error.message);
