@@ -30,7 +30,7 @@ nav a {
     justify-content: flex-end;
 }
 
-.login-register button{
+.login-register button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -38,7 +38,7 @@ nav a {
     text-align: centeer;
     text-decoration: none;
     display: inline-block;
-    font-size:16px;
+    font-size: 16px;
     margin-left: 10px;
     cursor: pointer;
     border-radius: 8px;
@@ -59,7 +59,7 @@ article.about.us {
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 20px 40px;  
+    padding: 40px 80px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -69,4 +69,56 @@ article.about.us {
     border-radius: 8px;
 }
 
+
+button#heap-bg:hover {
+    background-image: url("../assets/img/heap.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    content: "";
+}
+
+button#bst-bg:hover {
+    background-image: url("../assets/img/bst.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    content: "";
+}
+
+
+button#stack-bg:hover {
+    background-image: url("../assets/img/stack.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    content: "";
+}
+
+button#ll-bg:hover {
+    background-image: url("../assets/img/cdll.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    content: "";
+}
+
+/* The main and register button hover states */
+button#main-login-btn:hover,
+#main-register-btn:hover {
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(30, 206, 125, 1) 56%, rgba(69, 110, 252, 1) 100%);
+}
+
 /* Main Page Styling */
+
+main.main-page {
+    min-height: 100vh;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(30, 206, 125, 1) 56%, rgba(69, 110, 252, 1) 100%);
+}
+
+header.main-header {
+    background-color: white;
+}
+
+div.login-register {
+    background-color: white;
+    padding: 0.7rem;
+}
