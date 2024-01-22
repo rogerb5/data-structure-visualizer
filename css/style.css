@@ -10,6 +10,10 @@ h1.main-title {
     text-align: center;
 }
 
+h2.About.Us {
+    text-align: center;
+}
+
 nav {
     background-color: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
     text-align: center;
@@ -44,7 +48,7 @@ nav a {
     border-radius: 8px;
 }
 
-article.about.us {
+article.About.Us {
     padding: 2rem;
     text-align: center;
 }
