@@ -26,7 +26,6 @@ h2.dashboard-welcome {
 }
 
 /* Dashboard Button Styles */
-button.dashboard-home-btn,
 button.dashboard-logout-btn {
     z-index: 1;
     color: black;
@@ -37,13 +36,41 @@ button.dashboard-logout-btn {
     right: 0.3rem;
     transition: background-color 0.5s ease;
 }
-
 button:hover {
     cursor: pointer;
     color: #f1faee;
     background-color: #333;
 }
 
+/*dashboard button styling */
+a.dashboard-btn {
+    z-index: 1;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
+    position: absolute;
+    top: 0.3rem;
+    right: 2.3rem; /* Adjust as needed for the desired position */
+    transition: background-color 0.5s ease;
+}
+
+a:link { 
+    text-decoration: none; 
+} 
+a:visited { 
+    text-decoration: none; 
+} 
+a:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: #333;
+    text-decoration: none; 
+}
+a:active { 
+    text-decoration: none; 
+}
+  
 /* Dashboard Styling **********************************/
 th.table-column-title {
     font-size: 2rem;

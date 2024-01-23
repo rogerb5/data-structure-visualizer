@@ -16,6 +16,34 @@ article.links {
 }
 /* Main Page Styling */
 
+/*dashboard button styling */
+
+a.dashboard-btn {
+    z-index: 1;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
+    top: 0.3rem;
+    right: 10rem; /* Adjust as needed for the desired position */
+    transition: background-color 0.5s ease;
+}
+a.dashboard-btn:link { 
+    text-decoration: none; 
+} 
+a.dashboard-btn:visited { 
+    text-decoration: none; 
+} 
+a.dashboard-btn :hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: #333;
+    text-decoration: none; 
+}
+a.dashboard-btn:active { 
+    text-decoration: none; 
+}
+
 /*logout button Styling */
 .logout-button button {
     z-index: 1;
