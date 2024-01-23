@@ -43,13 +43,12 @@ button:hover {
 }
 
 /*dashboard button styling */
-a.dashboard-btn {
+a.dashboard-home-btn {
     z-index: 1;
     color: black;
     background-color: whitesmoke;
     border: 1px solid black;
     padding: 0.4rem 1.1rem 0.4rem 1.1rem;
-    position: absolute;
     top: 0.3rem;
     right: 2.3rem; /* Adjust as needed for the desired position */
     transition: background-color 0.5s ease;
