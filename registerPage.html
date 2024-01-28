@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,6 +51,8 @@
                 <button type="register" id="Reg" class="register" onclick="RegisterUser">Register</button>
             </form>
         </div>
+
+        <!--Need to move this to its own registerPage.js script file-->
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
             import { getDatabase } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
@@ -78,7 +81,9 @@
 
                 createUserWithEmailAndPassword(auth, Email.value, Password.value)
                 .then((credentials)=>{
+                    alert("User Created!");
                     console.log(credentials);
+                    window.location.href = 'index.html';
                 })
                 .catch((error)=>{
                     alert(error.message);
@@ -90,4 +95,5 @@
             registrationForm.addEventListener('submit', RegisterUser);
         </script>
     </body>
+
 </html>
