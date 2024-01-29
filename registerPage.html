@@ -4,54 +4,110 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Stack Visualizer</title>
+    <title>Registration Page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/registerPage.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
-    <div class="registration-form">
-        <form action="">
-            <h1>Registration</h1>
+    <body class="background-image">
+        <div class="registration-form">
+            <form id = "registrationForm">
+                <h1>Registration</h1>
 
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="text" name="fullname" placeholder="Full Name">
-                    <i class='bx bxs-user'></i>
+                <div class="input-box">
+                    <div class="input-field">
+                        <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                        <i class='bx bxs-user'></i>
+                    </div>
                 </div>
-            </div>
-            <!--<div class="input-box">
-                <div class="input-field">
-                    <input type="text" name="username" placeholder="User Name">
-                    <i class='bx bxs-user-pin'></i>
+                <div class="input-box">
+                    <div class="input-field">
+                        <input type="text" id="username" name="username" placeholder="User Name" required>
+                        <i class='bx bxs-user-pin'></i>
+                    </div>
                 </div>
-            </div>-->
-            <div class="input-box">
-                <div class="input-field">    
-                    <input type="email" name="email" placeholder="Email">
-                    <i class='bx bxs-envelope' ></i>
+                <div class="input-box">
+                    <div class="input-field">    
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        <i class='bx bxs-envelope' ></i>
+                    </div>
                 </div>
-            </div>
-                    
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="password" name="password" placeholder="Password">
-                    <i class='bx bxs-lock' ></i>
+                        
+                <div class="input-box">
+                    <div class="input-field">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <i class='bx bxs-lock' ></i>
+                    </div>
                 </div>
-            </div>
 
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="password" name="password" placeholder="Confirm Password">
-                    <i class='bx bxs-lock' ></i>
+                <div class="input-box">
+                    <div class="input-field">
+                        <input type="password" name="password" placeholder="Confirm Password" required>
+                        <i class='bx bxs-lock' ></i>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="register">Register</button>
-        </form>
-    </div>
-    <script src="js/structures/stack.js"></script>
-</body>
+                <button type="register" id="Reg" class="register" onclick="RegisterUser">Register</button>
+            </form>
+        </div>
+
+        <!--Need to move this to its own registerPage.js script file-->
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+            import { getDatabase } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+            import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+            import { updateProfile } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+
+            const firebaseConfig = {
+            apiKey: "AIzaSyBs8bh4xiBuPm3YBLqVGNId3Y8wiptMRHY",
+            authDomain: "seniorproject07-fa9c6.firebaseapp.com",
+            projectId: "seniorproject07-fa9c6",
+            storageBucket: "seniorproject07-fa9c6.appspot.com",
+            messagingSenderId: "605296004206",
+            appId: "1:605296004206:web:82cc68752684059b846a7f",
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase();
+            const auth = getAuth(app);
+
+            let Email = document.getElementById('email');
+            let FullName = document.getElementById('fullname');
+            let Username = document.getElementById('username');
+            let Password = document.getElementById('password');
+
+            let RegisterUser = evt => {
+                evt.preventDefault();
+
+            createUserWithEmailAndPassword(auth, Email.value, Password.value)
+            .then((userCredential)=>{
+                let user = userCredential.user;
+                // Set the display name for the user
+            return updateProfile(user, { displayName: Username.value })
+            .then(function() {
+                // Update successful
+                console.log("Display name updated successfully!");
+                return userCredential;
+            }).catch(function(error) {
+                // An error occurred
+                console.log("Error updating display name: " + error.message);
+                throw error;
+            });
+        })
+    .then((userCredential) => {
+        alert("User Created!");
+        console.log(userCredential);
+        window.location.href = 'index.html';
+    })
+    .catch((error)=>{
+        alert(error.message);
+        console.log(error.code);
+        console.log(error.message);
+    })
+}
+            registrationForm.addEventListener('submit', RegisterUser);
+        </script>
+    </body>
 
 </html>

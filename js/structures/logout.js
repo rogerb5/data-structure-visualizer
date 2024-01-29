@@ -27,6 +27,18 @@ function logout() {
         alert("Error during logout: " + error.message);
     });
 }
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+      // User is signed in
+      if (user.displayName) {
+          // User has a display name, display it
+          document.getElementById('welcomeMessage').innerText = "Welcome " + user.displayName + "!";
+      } else {
+          // User doesn't have a display name set, provide a default welcome message
+          document.getElementById('welcomeMessage').innerText = "Welcome!";
+      }
+  }
+});
 
 // Check if the user is authenticated
 firebase.auth().onAuthStateChanged(function(user) {
