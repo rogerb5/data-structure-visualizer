@@ -60,17 +60,14 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             size--;
     
-            // Remove the top stack element with shake and fade animation
             const topStackBox = stackContainer.firstChild;
     
-            // Add the "remove" class to apply the animation
-            topStackBox.classList.add('remove');
+            topStackBox.classList.add('stack-remove');
     
             // Wait for the animation to finish before removing the element
             topStackBox.addEventListener('animationend', function() {
                 stackContainer.removeChild(topStackBox);
                 values.pop();
-                animateStack();
             });
         }
     }
@@ -80,13 +77,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stackPeek() {
-        if(!(size === 0)) {
-            alert(`Top of the stack: ${values[size - 1]}`);
-        }
-        else {
+        if (!(size === 0)) {
+            const topStackBox = stackContainer.firstElementChild;
+    
+            // Wait for a brief moment (e.g., 500 milliseconds)
+            topStackBox.classList.add('peek-highlight');
+            setTimeout(() => {
+                topStackBox.classList.remove('peek-highlight');
+                alert(`Top of the stack: ${values[size - 1]}`);
+            }, 1650);
+        } else {
             alert(`Stack is empty!`);
         }
-        
     }
 
     function stackClear() {
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const topStackBox = stackContainer.firstChild;
     
             // Add the "remove" class to apply the animation
-            topStackBox.classList.add('remove');
+            topStackBox.classList.add('stack-remove');
     
             // Wait for the animation to finish before removing the element
             topStackBox.addEventListener('animationend', function() {
@@ -106,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         } else {
             // All elements are removed, perform any additional actions
-            updateStack();
             alert('Stack is now empty!');
         }
     }
