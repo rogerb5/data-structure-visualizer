@@ -9,7 +9,8 @@ body {
   height: calc(100vh - 100px);
   background-color: lightgrey;
   font-family: system-ui;
-  
+  min-width: 600px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -45,9 +46,11 @@ h2 {
 .header {
   background-color: #02006bbe;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 70px;
+  min-width: 60vw;
+  white-space: nowrap;
 }
 
 .container {
@@ -91,6 +94,7 @@ h2 {
   margin-bottom: 2%;
   height: auto;
   width: auto;
+  white-space: nowrap;
 }
 
 .popup-panel {
@@ -202,47 +206,34 @@ input {
   margin-bottom: 5px;
 }
 
-.home-button {
+.header-button-container {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: top;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.header-button {
   display: inline-block;
   font-size: 24px;
   padding: 9px 20px;
+  margin-left: 4px;
+  margin-right: 4px;
   border: 2px solid #ffffff67;
   border-radius: 15px;
   cursor: pointer;
   text-align: center;
   color: #c0c0c0;
   background-color: #00000070;
-  position: absolute;
-  top: 10px;
-  left: 10px;
 }
-.home-button:hover {
+.header-button:hover {
   background-color: #00303f70;
 }
-.home-button:active {
+.header-button:active {
   background-color: #70990070;
 }
 
-.tab button {
-  display: inline-block;
-  font-size: 24px;
-  padding: 9px 20px;
-  border: 2px solid #ffffff67;
-  border-radius: 15px;
-  cursor: pointer;
-  text-align: center;
-  color: #c0c0c0;
-  background-color: #00000070;
-  position: absolute;
-  top: 10px;
-  left: 130px;
-}
-.tab button:hover {
-  background-color: #00303f70;
-}
-.tab button:active {
-  background-color: #70990070;
-}
 
 .method-button {
   display: inline-block;
@@ -250,13 +241,13 @@ input {
   padding: 1% 1%;
   cursor: pointer;
   text-align: center;
-  width: 15%;
+  width: 18%;
   color: #fff;
   background-color: var(--button-color);
   border-radius: 15px;
   box-shadow: 0 6px #00000055;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 0.7%;
+  margin-right: 0.7%;
   margin-top: 12px;
   margin-bottom: 12px;
 }
@@ -277,7 +268,7 @@ input {
 input[type="number"] {
   background-color:white;
   color: black;
-  width: 76%;
+  width: 78%;
   padding: 9px;
   font-size: 1.2rem;
 }
