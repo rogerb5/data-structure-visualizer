@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="prism.css">
 </head>
 
-<div class="background-image">
-    <body>
+<body>
+    <div class="background-image">
         <div class="header">
 
             <div class="header-button-container">
@@ -26,9 +26,15 @@
             <h1>Stack Visualizer</h1>
 
             <div class="header-button-container">
-                <button class="header-button">Java</button>
-                <button class="header-button">C</button>
-                <button class="header-button">Python</button>
+                <a href="#javaC" >
+                    <button class="header-button" onclick="openMoreInfo(event, 'MoreInfo')">Java</button>
+                </a>
+                <a href="#cC" >
+                    <button class="header-button" onclick="openMoreInfo(event, 'MoreInfo')">C</button>
+                </a>
+                <a href="#pythonC" >
+                    <button class="header-button" onclick="openMoreInfo(event, 'MoreInfo')">Python</button>
+                </a>
             </div>
 
         </div>
@@ -37,10 +43,7 @@
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
             <h3>Stacks</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-            <h2>Java</h2>
+            <h2 id="javaC">Java</h2>
             <div class="code-container">
                 <pre><code id="javaCode" class="language-java">
 import java.util.EmptyStackException;
@@ -104,7 +107,7 @@ public class StackExample {
                 </code></pre>
             </div>
 
-            <h2>C</h2>
+            <h2 id="cC">C</h2>
             <div class="code-container">
                 <pre><code id="cCode" class="language-C">
 #include <stdio.h>
@@ -179,7 +182,7 @@ int main() {
                 </code></pre>
             </div>
 
-            <h2>Python</h2>
+            <h2 id="pythonC">Python</h2>
             <div class="code-container">
                 <pre><code id="pythonCode" class="language-python">
 class Stack:
@@ -227,9 +230,8 @@ if __name__ == "__main__":
     print("Size after clear:", stack.get_size())
                 </code></pre>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
         </div>  
+
         <div class="container">
             <div class="column column-40">
                 <div class="button-panel">
@@ -260,5 +262,6 @@ if __name__ == "__main__":
 
     <script src="js/structures/stackvisualizer.js"></script>
     <script src="prism.js"></script>
-    
+</body>
+
 </html>
