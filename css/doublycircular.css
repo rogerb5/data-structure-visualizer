@@ -245,3 +245,37 @@ section.alert-section.active {
 }
 
 /* Modal/Menu Styling **********************/
+
+nav.home-container button,
+#homeBtn {
+    z-index: 1;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
+    top: 0.3rem;
+    left: 0.3rem;
+    transition: background-color 0.5s ease;
+}
+nav.home-container button,#open-btn {
+    z-index: 1;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 0.4rem 1.1rem 0.4rem 1.1rem;
+    top: 0.3rem;
+    left: 0.3rem;
+    transition: background-color 0.5s ease;
+}
+nav.home-container button,
+#homeBtn:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: #333;
+}
+nav.home-container button,
+#open-btn:hover {
+    cursor: pointer;
+    color: #f1faee;
+    background-color: #333;
+}

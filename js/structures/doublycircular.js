@@ -331,10 +331,12 @@ class CircularDoublyLinkedList extends Node {
         }
         let count = 0;
         let current = this.head;
+        const sizeOutput = document.querySelector('p.size-p');
         while (current && current.next != this.head) {
             current = current.next;
             count++;
         }
+        sizeOutput.textContent = `Size: ${count}`;
         return count + 1;
     }
 

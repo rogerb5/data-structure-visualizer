@@ -16,10 +16,10 @@
 
     <header>
         <h1>Doubly Circular Linked List</h1>
-        <div class="mini-container">
-            <a href="Home.html">Home</a>
-            <button class="open-btn">Info Menu</button>
-        </div>
+        <nav class="home-container">
+            <a href="Home.html" class="homeBtn" id="homeBtn">Home</a>
+            <button class="open-btn" id="open-btn">Info</button>
+        </nav>
     </header>
 
     <!--- Insert Menu/Modal -->
@@ -76,6 +76,21 @@
             </p>
             <p></p>
             <p></p>
+        </article>
+
+        <article class="stack-op">
+            <h1>Time Complexity</h1>
+            <p>Every  Data Structure has a time complexity. The time complexity of a Circular Doubly Linked List is can be different between its methods. 
+                <br> Accessing an element by index time complexity is O(n).
+                <br> Insertion and Deletion time complexity is O(1).
+                <br> Searching for an element time complexity is O(n).
+                <br> Inserting or Deleting an element at a specific position time complexity is O(n).
+                <br> It's Important to know that the above time complexities are general cases and vary based on implementation details. 
+            </p>
+            <p></p>
+
+            <p></p>
+            <p> </p>
         </article>
 
         <section class="all">
@@ -448,7 +463,7 @@
         <section class="secondary-operations">
             <h2 class="operation-title">Other Operations:</h2>
             <button class="clear-btn">Clear List</button>
-            <!-- <button class="reverse-btn">Reverse List</button> -->
+            <button class="reverse-btn">Reverse List</button>
         </section>
     </nav>
 
@@ -456,12 +471,12 @@
         <h3>Please enter a valid number</h3>
     </section>
 
-    <!-- <section class="list-info-section">
+    <section class="list-info-section">
         <article class="size-article">
             <p class="size-p">List Size: 0</p>
             <p class="reverse-p">The list is not reversed!</p>
         </article>
-    </section> -->
+    </section>
 
     <!-- All nodes will be rendered here with JavaScript-->
     <main class="list-container">

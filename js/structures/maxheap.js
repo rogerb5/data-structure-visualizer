@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 class MaxHeapUI {
     constructor() {
     }
@@ -32,8 +32,7 @@ class MaxHeapUI {
             rightChildNode.classList.remove('node-hover');
         }
     }
-=======
->>>>>>> 3680339321b7bb29dbdeceaa30bf537883ace480
+
 
     startExtractMaxAnimation(firstHeapIndex, lastHeapIndex) {
         const lastNode = document.querySelectorAll('.node')[lastHeapIndex];
@@ -235,9 +234,9 @@ class MaxHeap extends MaxHeapUI {
     }
 }
 
-<<<<<<< HEAD
+
 export { MaxHeapUI, MaxHeap }; // export MaxHeapUI, and MaxHeap
-=======
+
 
 /*
 
@@ -322,4 +321,4 @@ function testGetParentIndex(heap) {
         console.log(`Index ${index}: Value = ${value}, Parent Index = ${parentIndex}, Parent Value = ${parentValue}`);
     }
 }
->>>>>>> 3680339321b7bb29dbdeceaa30bf537883ace480
+
