@@ -51,7 +51,8 @@
 
 :root {
     --primary-header-bg-color: #199473;
-    --main-page-bg-color: #D9E2EC;
+    --main-page-bg-color:background: rgb(89,251,63);
+     background: radial-gradient(circle, rgba(89,251,63,1) 0%, rgba(70,245,252,1) 100%);
     --header-txt-color: #fff;
     --main-site-padding: 1rem;
     --main-component-bg: whitesmoke;
@@ -62,7 +63,8 @@
 section.modal {
     height: 100%;
     padding: var(--main-site-padding);
-    background-color: #baddd4;
+    background: rgb(89,251,63);
+    background: radial-gradient(circle, rgba(89,251,63,1) 0%, rgba(70,245,252,1) 100%);
     position: fixed;
     top: 0;
     left: 0;
@@ -72,6 +74,7 @@ section.modal {
     pointer-events: none;
     z-index: 0;
     overflow: scroll;
+    padding: 11rem;
 }
 
 button.close-btn {
@@ -146,7 +149,8 @@ button.array-btn {
 
 button:hover {
     cursor: pointer;
-    background-color: #333;
+    background: rgb(89,251,63);
+    background: radial-gradient(circle, rgba(89,251,63,1) 0%, rgba(70,245,252,1) 100%);
     color: whitesmoke;
 }
 
@@ -246,18 +250,30 @@ section.alert-section.active {
 
 /* Modal/Menu Styling **********************/
 
+nav.home-container {
+    display: flex;
+    gap: 0.2rem;
+}
+
+a.homeBtn {
+    text-decoration: none;
+    border: 1px solid black;
+    font-size: 1rem;
+}
+
 nav.home-container button,
 #homeBtn {
     z-index: 1;
     color: black;
     background-color: whitesmoke;
-    border: 1px solid black;
     padding: 0.4rem 1.1rem 0.4rem 1.1rem;
     top: 0.3rem;
     left: 0.3rem;
     transition: background-color 0.5s ease;
 }
-nav.home-container button,#open-btn {
+
+nav.home-container button,
+#open-btn {
     z-index: 1;
     color: black;
     background-color: whitesmoke;
@@ -267,15 +283,35 @@ nav.home-container button,#open-btn {
     left: 0.3rem;
     transition: background-color 0.5s ease;
 }
+
 nav.home-container button,
 #homeBtn:hover {
     cursor: pointer;
     color: #f1faee;
     background-color: #333;
 }
+
 nav.home-container button,
 #open-btn:hover {
     cursor: pointer;
     color: #f1faee;
     background-color: #333;
+}
+
+/****** Modal Scroll to buttons ****/
+article.allbuttons-container {
+    padding: 1rem;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+a.button-link {
+    border: 2px solid #333;
+    text-decoration: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
 }
