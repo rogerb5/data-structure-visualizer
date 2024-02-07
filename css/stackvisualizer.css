@@ -16,13 +16,11 @@ body {
 h1 {
   text-align: center;
   color: #f1faee;
-  position: relative;
 }
 
 h2 {
   text-align: center;
   color: #f1faee;
-  position: relative;
 }
 
 :root{
@@ -239,6 +237,7 @@ input[type="number"] {
 
 .tabcontent {
   display: none;
+  position: absolute;
   padding: 6px 12px;
   background-color: #02006bbe;
   margin-top: 70px;
