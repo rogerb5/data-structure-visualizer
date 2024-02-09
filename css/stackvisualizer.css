@@ -34,7 +34,6 @@ h2 {
   background-image: url('/assets/icons/StackBackground.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -66,6 +65,7 @@ h2 {
 .column {
   flex: 1;
   padding: 20px;
+  padding-bottom: 0px;
   margin: 0px;
   width: auto;
   height: calc(100vh - 70px);
@@ -115,7 +115,7 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 10px;
-  height: 88vh;
+  height: calc(100vh - 110px);
   width: auto;
   overflow: auto;
 }
