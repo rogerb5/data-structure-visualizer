@@ -46,188 +46,188 @@
             <h2 id="javaC">Java</h2>
             <div class="code-container">
                 <pre><code id="javaCode" class="language-java">
-import java.util.EmptyStackException;
+                    import java.util.EmptyStackException;
 
-public class StackExample {
-    private static final int MAX_SIZE = 100;
-    private int[] arr = new int[MAX_SIZE];
-    private int top = -1;
+                    public class StackExample {
+                        private static final int MAX_SIZE = 100;
+                        private int[] arr = new int[MAX_SIZE];
+                        private int top = -1;
 
-    public boolean isEmpty() {
-        return top == -1;
-    }
+                        public boolean isEmpty() {
+                            return top == -1;
+                        }
 
-    public void push(int element) {
-        if (top == MAX_SIZE - 1) {
-            System.out.println("Stack overflow");
-            return;
-        }
-        arr[++top] = element;
-    }
+                        public void push(int element) {
+                            if (top == MAX_SIZE - 1) {
+                                System.out.println("Stack overflow");
+                                return;
+                            }
+                            arr[++top] = element;
+                        }
 
-    public int pop() {
-        if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-        return arr[top--];
-    }
+                        public int pop() {
+                            if (isEmpty()) {
+                                throw new EmptyStackException();
+                            }
+                            return arr[top--];
+                        }
 
-    public int peek() {
-        if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-        return arr[top];
-    }
+                        public int peek() {
+                            if (isEmpty()) {
+                                throw new EmptyStackException();
+                            }
+                            return arr[top];
+                        }
 
-    public int getSize() {
-        return top + 1;
-    }
+                        public int getSize() {
+                            return top + 1;
+                        }
 
-    public void clear() {
-        top = -1;
-    }
+                        public void clear() {
+                            top = -1;
+                        }
 
-    public static void main(String[] args) {
-        StackExample stack = new StackExample();
+                        public static void main(String[] args) {
+                            StackExample stack = new StackExample();
 
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
+                            stack.push(1);
+                            stack.push(2);
+                            stack.push(3);
 
-        System.out.println("Peek: " + stack.peek());
-        System.out.println("Size: " + stack.getSize());
+                            System.out.println("Peek: " + stack.peek());
+                            System.out.println("Size: " + stack.getSize());
 
-        stack.pop();
-        System.out.println("Size after Pop: " + stack.getSize());
+                            stack.pop();
+                            System.out.println("Size after Pop: " + stack.getSize());
 
-        stack.clear();
-        System.out.println("Size after clear: " + stack.getSize());
-    }
-}
+                            stack.clear();
+                            System.out.println("Size after clear: " + stack.getSize());
+                        }
+                    }
                 </code></pre>
             </div>
 
             <h2 id="cC">C</h2>
             <div class="code-container">
                 <pre><code id="cCode" class="language-C">
-#include <stdio.h>
-#include <stdlib.h>
+                    #include <stdio.h>
+                    #include <stdlib.h>
 
-#define MAX_SIZE 100
+                    #define MAX_SIZE 100
 
-struct Stack {
-    int arr[MAX_SIZE];
-    int top;
-};
+                    struct Stack {
+                        int arr[MAX_SIZE];
+                        int top;
+                    };
 
-void initialize(struct Stack *stack) {
-    stack->top = -1;
-}
+                    void initialize(struct Stack *stack) {
+                        stack->top = -1;
+                    }
 
-int isEmpty(struct Stack *stack) {
-    return stack->top == -1;
-}
+                    int isEmpty(struct Stack *stack) {
+                        return stack->top == -1;
+                    }
 
-void Push(struct Stack *stack, int element) {
-    if (stack->top == MAX_SIZE - 1) {
-        printf("Stack overflow\n");
-        return;
-    }
-    stack->arr[++stack->top] = element;
-}
+                    void Push(struct Stack *stack, int element) {
+                        if (stack->top == MAX_SIZE - 1) {
+                            printf("Stack overflow\n");
+                            return;
+                        }
+                        stack->arr[++stack->top] = element;
+                    }
 
-int Pop(struct Stack *stack) {
-    if (isEmpty(stack)) {
-        printf("Stack underflow\n");
-        exit(1);
-    }
-    return stack->arr[stack->top--];
-}
+                    int Pop(struct Stack *stack) {
+                        if (isEmpty(stack)) {
+                            printf("Stack underflow\n");
+                            exit(1);
+                        }
+                        return stack->arr[stack->top--];
+                    }
 
-int Peek(struct Stack *stack) {
-    if (isEmpty(stack)) {
-        printf("Stack is empty\n");
-        exit(1);
-    }
-    return stack->arr[stack->top];
-}
+                    int Peek(struct Stack *stack) {
+                        if (isEmpty(stack)) {
+                            printf("Stack is empty\n");
+                            exit(1);
+                        }
+                        return stack->arr[stack->top];
+                    }
 
-int getSize(struct Stack *stack) {
-    return stack->top + 1;
-}
+                    int getSize(struct Stack *stack) {
+                        return stack->top + 1;
+                    }
 
-void clear(struct Stack *stack) {
-    stack->top = -1;
-}
+                    void clear(struct Stack *stack) {
+                        stack->top = -1;
+                    }
 
-int main() {
-    struct Stack stack;
-    initialize(&stack);
+                    int main() {
+                        struct Stack stack;
+                        initialize(&stack);
 
-    Push(&stack, 1);
-    Push(&stack, 2);
-    Push(&stack, 3);
+                        Push(&stack, 1);
+                        Push(&stack, 2);
+                        Push(&stack, 3);
 
-    printf("Peek: %d\n", Peek(&stack));
-    printf("Size: %d\n", getSize(&stack));
+                        printf("Peek: %d\n", Peek(&stack));
+                        printf("Size: %d\n", getSize(&stack));
 
-    Pop(&stack);
-    printf("Size after Pop: %d\n", getSize(&stack));
+                        Pop(&stack);
+                        printf("Size after Pop: %d\n", getSize(&stack));
 
-    clear(&stack);
-    printf("Size after clear: %d\n", getSize(&stack));
+                        clear(&stack);
+                        printf("Size after clear: %d\n", getSize(&stack));
 
-    return 0;
-}        
+                        return 0;
+                    }        
                 </code></pre>
             </div>
 
             <h2 id="pythonC">Python</h2>
             <div class="code-container">
                 <pre><code id="pythonCode" class="language-python">
-class Stack:
-def __init__(self):
-    self.arr = []
+                    class Stack:
+                    def __init__(self):
+                    self.arr = []
 
-def is_empty(self):
-    return len(self.arr) == 0
+                    def is_empty(self):
+                    return len(self.arr) == 0
 
-def push(self, element):
-    self.arr.append(element)
+                    def push(self, element):
+                    self.arr.append(element)
 
-def pop(self):
-    if self.is_empty():
-        print("Stack underflow")
-        exit(1)
-    return self.arr.pop()
+                    def pop(self):
+                    if self.is_empty():
+                        print("Stack underflow")
+                        exit(1)
+                    return self.arr.pop()
 
-def peek(self):
-    if self.is_empty():
-        print("Stack is empty")
-        exit(1)
-    return self.arr[-1]
+                    def peek(self):
+                    if self.is_empty():
+                        print("Stack is empty")
+                        exit(1)
+                    return self.arr[-1]
 
-def get_size(self):
-    return len(self.arr)
+                    def get_size(self):
+                    return len(self.arr)
 
-def clear(self):
-    self.arr = []
+                    def clear(self):
+                    self.arr = []
 
-if __name__ == "__main__":
-    stack = Stack()
+                    if __name__ == "__main__":
+                    stack = Stack()
 
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
+                    stack.push(1)
+                    stack.push(2)
+                    stack.push(3)
 
-    print("Peek:", stack.peek())
-    print("Size:", stack.get_size())
+                    print("Peek:", stack.peek())
+                    print("Size:", stack.get_size())
 
-    stack.pop()
-    print("Size after Pop:", stack.get_size())
+                    stack.pop()
+                    print("Size after Pop:", stack.get_size())
 
-    stack.clear()
-    print("Size after clear:", stack.get_size())
+                    stack.clear()
+                    print("Size after clear:", stack.get_size())
                 </code></pre>
             </div>
         </div>  
@@ -246,6 +246,7 @@ if __name__ == "__main__":
                         <input type="number" class="custom-input" id="push-input" placeholder="Enter an integer">
                     </div>
                 </div>
+
                 <div class="popup-panel">
                     <h2>Popup</h2>
                     Work in progress

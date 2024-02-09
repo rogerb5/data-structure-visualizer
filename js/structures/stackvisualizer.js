@@ -1,7 +1,7 @@
 console.log('stackvisualizer code output test');
 
 
-
+/* ---------- Stack Data strucutre ---------- */
 function openMoreInfo(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -20,7 +20,7 @@ function openMoreInfo(evt, tabName) {
 
 
 
-/******* Stack Data strucutre *******/
+/* ---------- Stack Data strucutre ---------- */
 document.addEventListener('DOMContentLoaded', function () {
     
     const values = [];
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function animateStack() {
         const stackBoxes = document.querySelectorAll('.stack-box');
         stackBoxes.forEach((box, index) => {
-            box.style.transform = `translateY(${index}px)`; // Adjust the value as needed
+            box.style.transform = `translateY(${index}px)`;
         });
     }
     
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!(size === 0)) {
             const topStackBox = stackContainer.firstElementChild;
     
-            // Wait for a brief moment (e.g., 500 milliseconds)
+            // Wait 500 milliseconds
             topStackBox.classList.add('peek-highlight');
             setTimeout(() => {
                 topStackBox.classList.remove('peek-highlight');
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Remove the top stack element with shake and fade animation
             const topStackBox = stackContainer.firstChild;
     
-            // Add the "remove" class to apply the animation
+            // Add the remove class to apply the animation
             topStackBox.classList.add('stack-remove');
     
             // Wait for the animation to finish before removing the element
@@ -111,12 +111,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 stackClear(); // Call the function recursively after the animation completes
             });
         } else {
-            // All elements are removed, perform any additional actions
+            // All elements are removed
             alert('Stack is now empty!');
         }
     }
 
-    /******* On-Click Events *******/
+    /* ---------- On-Click Events for Stack ---------- */
 
     document.getElementById('Push-Button').addEventListener('click', stackPush);
     document.getElementById('Pop-Button').addEventListener('click', stackPop);

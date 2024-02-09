@@ -1,13 +1,12 @@
+/* ---------- global/defualt functions ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Styles Go Here */
 body {
   height: calc(100vh - 70px);
-  background-color: lightgrey;
   font-family: system-ui;
   min-width: 600px;
   margin: 0 auto;
@@ -23,15 +22,43 @@ h2 {
   color: #f1faee;
 }
 
-:root{
- --bg-color: #8d7e8c;
- --button-color: #df986f;
- --hover-button-color: #013170;
- --clicked-button-color: #373750;
+input {
+  margin-bottom: 5px;
 }
 
+
+/* ---------- Majority of the color scheme ---------- */
+:root{
+--main-background: url('/assets/icons/StackBackground.jpg');
+
+ --header-color: #02006bbe;
+ --header-bottom-border-color: rgba(189, 166, 252, 0.507);
+
+ --panel-background-color :rgba(0, 0, 0, 0.5);
+
+ --stackbox-background-color:rgba(245, 203, 255, 0.616);
+ --stackbox-border-color: #e27dd18f;
+
+ --header-button-color: #00000070;
+ --header-button-border-color: #ffffff67;
+ --header-button-hover-color: #00303f70;
+ --header-button-clicked-color: #70990070;
+
+ --method-button-color: #df986f;
+ --method-button-border-color: #eb7d62a4;
+ --method-button-hover-color: #e6a55c;
+ --method-button-clicked-color: #a5543b;
+
+ --tab-background-color: #02006bbe;
+}
+
+
+
+
+
+/* ---------- GENERAL DESIGN ---------- */
 .background-image {
-  background-image: url('/assets/icons/StackBackground.jpg');
+  background-image: var(--main-background);
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
@@ -45,7 +72,7 @@ h2 {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #02006bbe;
+  background-color: var(--header-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,7 +85,7 @@ h2 {
   display: flex;
   margin-top: 70px;
   height: calc(100vh - 70px);
-  border-top: 8px groove rgba(189, 166, 252, 0.507);
+  border-top: 8px groove var(--header-bottom-border-color);
 }
 
 
@@ -88,10 +115,9 @@ h2 {
 
 
 
-/* -- Panels -- */
-/* Buttons panel */
+/*  ---------- Panels ---------- */
 .button-panel {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--panel-background-color);
   border-radius: 15px;
   padding: 2%;
   margin-bottom: 2%;
@@ -101,7 +127,7 @@ h2 {
 }
 
 .popup-panel {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--panel-background-color);
   border-radius: 15px;
   padding: 2%;
   margin-bottom: 2%;
@@ -110,9 +136,8 @@ h2 {
   color: white;
 }
 
-/* Canvas panel */
 .canvas-panel {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--panel-background-color);
   border-radius: 15px;
   padding: 10px;
   height: calc(100vh - 120px);
@@ -124,7 +149,7 @@ h2 {
 
 
 
-/* Stack Visualizer panel */
+/* ---------- Stack Visualizer within canvas panel ---------- */
 #stack-container {
   display: flex;
   flex-direction: column;
@@ -137,8 +162,8 @@ h2 {
 .stack-box {
   width: 500px;
   height: 50px;
-  border: 4px groove #e27dd18f;
-  background-color: rgba(245, 203, 255, 0.616);
+  border: 4px groove var(--stackbox-border-color);
+  background-color: var(--stackbox-background-color);
   border-radius: 15px;
   font-size: 30px;
   display: flex;
@@ -157,12 +182,11 @@ h2 {
   animation: peek-highlight 2s normal;
 }
 
-input {
-  margin-bottom: 5px;
-}
 
 
 
+
+/* ---------- Buttons ---------- */
 .header-button-container {
   display: inline-block;
   white-space: nowrap;
@@ -177,18 +201,18 @@ input {
   padding: 9px 20px;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #ffffff67;
+  color: #c0c0c0;
+  background-color: var(--header-button-color);
+  border: 2px solid var(--header-button-border-color);
   border-radius: 15px;
   cursor: pointer;
   text-align: center;
-  color: #c0c0c0;
-  background-color: #00000070;
 }
 .header-button:hover {
-  background-color: #00303f70;
+  background-color: var(--header-button-hover-color);
 }
 .header-button:active {
-  background-color: #70990070;
+  background-color: var(--header-button-clicked-color);
 }
 
 
@@ -200,7 +224,8 @@ input {
   text-align: center;
   width: 18%;
   color: #fff;
-  background-color: var(--button-color);
+  border: 2px solid var(--method-button-border-color);
+  background-color: var(--method-button-color);
   border-radius: 15px;
   box-shadow: 0 6px #00000055;
   margin-left: 0.7%;
@@ -209,10 +234,10 @@ input {
   margin-bottom: 12px;
 }
 .method-button:hover {
-  background-color: var(--hover-button-color);
+  background-color: var(--method-button-hover-color);
 }
 .method-button:active {
-  background-color: var(--clicked-button-color);
+  background-color: var(--method-button-clicked-color);
   box-shadow: 0 3px #00000075;
   transform: translateY(3px);
 }
@@ -223,7 +248,7 @@ input {
 }
 
 input[type="number"] {
-  background-color:white;
+  background-color:rgb(255, 255, 255);
   color: black;
   width: 78%;
   padding: 9px;
@@ -233,6 +258,8 @@ input[type="number"] {
 
 
 
+
+/* ---------- More Info Tab ---------- */
 .tab{
   overflow: auto;
 }
@@ -241,7 +268,7 @@ input[type="number"] {
   display: none;
   position: absolute;
   padding: 6px 12px;
-  background-color: #02006bbe;
+  background-color: var(--tab-background-color);
   margin-top: 70px;
   height: calc(100vh - 70px);
   width: 100vw;
@@ -279,7 +306,6 @@ input[type="number"] {
   color: red;
 }
 
-/* Displaying Code */
 .code-container {
   position: relative;
   width: 100%;
@@ -289,14 +315,14 @@ input[type="number"] {
 
 
 .highlight {
-  color: #e44d26; /* Set your desired color for highlighting */
+  color: #e44d26;
 }
 
 
 
 
 
-
+/* ---------- Keyframes for all animations ---------- */
 
 @keyframes dropDown {
   from {
