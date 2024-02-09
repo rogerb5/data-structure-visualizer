@@ -1,6 +1,28 @@
 console.log('stackvisualizer code output test');
 
 
+
+/* ---------- Display Popup Information ---------- */
+document.addEventListener('DOMContentLoaded', function () {
+    const popupBtns = document.querySelectorAll('.method-button');
+    const popupContainer = document.querySelector('.popup-panel');
+    const popupMessage = document.getElementById('popup-message');
+    const closeButton = document.querySelector('.popup-close');
+  
+    popupBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const message = this.getAttribute('data-message');
+        popupMessage.textContent = message;
+        popupContainer.style.display = 'block';
+      });
+    });
+  
+    closeButton.addEventListener('click', function () {
+      popupContainer.style.display = 'none';
+    });
+  });
+
+
 /* ---------- Stack Data strucutre ---------- */
 function openMoreInfo(evt, tabName) {
     var i, tabcontent, tablinks;

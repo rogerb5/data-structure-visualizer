@@ -40,7 +40,7 @@
         </div>
 
         <div id="MoreInfo" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+            <span onclick="this.parentElement.style.display='none'" class="close-tab">&times</span>
             <h3>Stacks</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
             <h2 id="javaC">Java</h2>
@@ -236,20 +236,22 @@
             <div class="column column-40">
                 <div class="button-panel">
                     <h2>Operations</h2>
-                    <a class="method-button" id="Pop-Button">Pop</a>
-                    <a class="method-button" id="Peek-Button">Peek</a>
-                    <a class="method-button" id="isEmpty-Button">isEmpty</a>
-                    <a class="method-button" id="size-Button">Size</a>
-                    <a class="method-button" id="Clear-Button">Clear</a>
+                    <a class="method-button" id="Pop-Button" data-message="Peek was Popped">Pop</a>
+                    <a class="method-button" id="Peek-Button" data-message="The Peek is ">Peek</a>
+                    <a class="method-button" id="isEmpty-Button" data-message="The Stack may be empty">isEmpty</a>
+                    <a class="method-button" id="size-Button" data-message="The Size is">Size</a>
+                    <a class="method-button" id="Clear-Button" data-message="Clearing Stack">Clear</a>
                     <div>
-                        <a class="method-button" id="Push-Button">Push</a>
+                        <a class="method-button" id="Push-Button" data-message="Pushing to the stack">Push</a>
                         <input type="number" class="custom-input" id="push-input" placeholder="Enter an integer">
                     </div>
                 </div>
 
                 <div class="popup-panel">
-                    <h2>Popup</h2>
-                    Work in progress
+                    <div class="popup-content">
+                        <span class="popup-close">&times;</span>
+                        <p id="popup-message"></p>
+                    </div>
                 </div>
             </div>
 

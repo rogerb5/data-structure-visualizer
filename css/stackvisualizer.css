@@ -126,16 +126,6 @@ input {
   white-space: nowrap;
 }
 
-.popup-panel {
-  background-color: var(--panel-background-color);
-  border-radius: 15px;
-  padding: 2%;
-  margin-bottom: 2%;
-  height: auto;
-  width: auto;
-  color: white;
-}
-
 .canvas-panel {
   background-color: var(--panel-background-color);
   border-radius: 15px;
@@ -145,8 +135,32 @@ input {
   overflow: auto;
 }
 
+.popup-panel {
+  display: none;
+  background-color: var(--panel-background-color);
+  border-radius: 15px;
+  padding: 2%;
+  margin-bottom: 2%;
+  height: auto;
+  width: auto;
+  color: white;
+  z-index: 1000;
+}
 
 
+/* ---------- Popup ---------- */
+.popup-content {
+  text-align: center;
+  font-size: large;
+}
+
+.popup-close{
+  float: right;
+  transform: translate(0px, -18px);
+  cursor: pointer;
+  font-size: 32px;
+  
+}
 
 
 /* ---------- Stack Visualizer within canvas panel ---------- */
@@ -296,14 +310,11 @@ input[type="number"] {
   margin-bottom: 10px;
 }
 
-.topright {
+.close-tab {
   float: right;
   cursor: pointer;
-  font-size: 28px;
-}
-
-.topright:hover {
-  color: red;
+  transform: translate(0px, -10px);
+  font-size: 38px;
 }
 
 .code-container {
@@ -313,13 +324,15 @@ input[type="number"] {
   padding-bottom: 50px;
 }
 
-
 .highlight {
   color: #e44d26;
 }
 
 
-
+/* ---------- close button: hover ---------- */
+.close-tab:hover, .popup-close:hover{
+  color: red;
+}
 
 
 /* ---------- Keyframes for all animations ---------- */
