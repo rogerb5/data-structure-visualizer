@@ -76,14 +76,18 @@ th.table-column-title {
 }
 
 main.dashboard-main {
-    min-height: 100vh;
+    /*min-height: 100vh;
     padding: 2rem;
-    border: 2px solid black;
+    border: 2px solid black;*/
+    min-height: 100vh;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(30, 206, 125, 1) 56%, rgba(69, 110, 252, 1) 100%);
 }
 
 table.dashboard-table {
     width: 100%;
     border-collapse: collapse;
+    
 }
 
 th {
@@ -93,7 +97,10 @@ th {
 }
 
 tr:nth-of-type(odd) {
-    background: #eee;
+    /*background: #eee;*/
+    min-height: 100vh;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(30, 206, 125, 1) 56%, rgba(69, 110, 252, 1) 100%);
 }
 
 tr:hover {
