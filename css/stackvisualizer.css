@@ -242,6 +242,7 @@ input[type="number"] {
   background-color: #02006bbe;
   margin-top: 70px;
   height: calc(100vh - 70px);
+  width: 100vw;
   border-top: none;
   text-align: center;
   overflow-y: scroll;
