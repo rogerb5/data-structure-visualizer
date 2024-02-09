@@ -1,17 +1,86 @@
 console.log('stackvisualizer code output test');
 
-
+const values = [];
+    let size = 0;
+    let speed = 750; //0.75 seconds
 
 /* ---------- Display Popup Information ---------- */
 document.addEventListener('DOMContentLoaded', function () {
     const popupBtns = document.querySelectorAll('.method-button');
     const popupContainer = document.querySelector('.popup-panel');
     const popupMessage = document.getElementById('popup-message');
-    const closeButton = document.querySelector('.popup-close');
+    const closeButton = document.querySelector('.close-popup');
   
     popupBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        const message = this.getAttribute('data-message');
+        let message
+        if (this.id === "Push-Button") {
+            const value = parseInt(document.getElementById('push-input').value);
+            if(isNaN(value))
+                message = "Don't forget to enter a value.";
+            else {   
+                message = "Pushing " + value + " to the stack."
+            }
+        }
+        
+        else if (this.id === "Pop-Button") {
+            if(size === 0) {
+                message = "The stack is empty."
+            }
+            else{
+                let value = values[size-1];
+                message = "Popping the top element: " + value;
+            }
+        }
+        
+        else if (this.id === "Peek-Button") {
+            message = "Peek";
+            if (!(size === 0)) {
+                message = "Top of the stack: " + values[size - 1];
+            } else {
+                message = "The stack is empty.";
+            }
+        }
+        
+        else if (this.id === "isEmpty-Button") {
+            if(size === 0) {
+                message = "The stack is empty, size = 0."
+            }
+            else {
+                message = "The stack is NOT empty.";
+            }
+        }
+        
+        else if (this.id === "size-Button") {
+            if(size === 0) {
+                message = "The stack is empty."
+            }
+            else {
+                message = "The size of the stack is " + size + ",\nSize: " + size;
+            }
+        }
+        
+        else if (this.id === "Clear-Button") {
+            if (size === 0) {
+                message = "The stack is empty.";
+            } else {
+                // Display "Clearing Stack..." message while clearing the stack
+                message = "Clearing Stack...";
+                popupMessage.textContent = message;
+        
+                // Clear the stack with animations
+                stackClear(() => {                
+                    message = "Cleared, The stack is now empty.";
+                    popupMessage.textContent = message;
+                }, speed*size);
+                message = "Cleared, The stack is now empty.";
+                popupMessage.textContent = message;
+            }
+        }
+        
+        else {
+            alert(`invalid button, how did you get here?`)
+        }
         popupMessage.textContent = message;
         popupContainer.style.display = 'block';
       });
@@ -44,9 +113,6 @@ function openMoreInfo(evt, tabName) {
 
 /* ---------- Stack Data strucutre ---------- */
 document.addEventListener('DOMContentLoaded', function () {
-    
-    const values = [];
-    let size = 0;
 
     const stackContainer = document.getElementById('stack-container');
 
@@ -57,18 +123,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
-    function stackIsEmpty() {
-        if(size === 0) {
-            alert(`The stack is empty.`);
-        }
-        else
-            alert(`The stack is NOT empty.`);
-    }
 
     function stackPush() {
         const value = parseInt(document.getElementById('push-input').value);
         if(isNaN(value))
-            alert(`Please enter a value`);
+            return;
         else {   
             size++;
             const stackBox = document.createElement('div');
@@ -81,60 +140,41 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stackPop() {
-        if (size === 0) {
-            alert('Stack is empty!');
-        } else {
+        if (!(size === 0)) {
             size--;
     
             const topStackBox = stackContainer.firstChild;
     
             topStackBox.classList.add('stack-remove');
-    
             // Wait for the animation to finish before removing the element
-            topStackBox.addEventListener('animationend', function() {
-                stackContainer.removeChild(topStackBox);
-                values.pop();
-            });
+            topStackBox.addEventListener('animationend', function() {});
+            stackContainer.removeChild(topStackBox);
+            values.pop();
         }
-    }
-
-    function stackGetSize() {
-        alert(`Stack size: ${size}`);
     }
 
     function stackPeek() {
         if (!(size === 0)) {
             const topStackBox = stackContainer.firstElementChild;
-    
-            // Wait 500 milliseconds
             topStackBox.classList.add('peek-highlight');
             setTimeout(() => {
                 topStackBox.classList.remove('peek-highlight');
-                alert(`Top of the stack: ${values[size - 1]}`);
-            }, 1650);
-        } else {
-            alert(`Stack is empty!`);
+            }, speed*2);
         }
     }
 
-    function stackClear() {
+    function stackClear(callback) {
         if (size > 0) {
-            size--;
-    
-            // Remove the top stack element with shake and fade animation
             const topStackBox = stackContainer.firstChild;
-    
-            // Add the remove class to apply the animation
             topStackBox.classList.add('stack-remove');
-    
-            // Wait for the animation to finish before removing the element
-            topStackBox.addEventListener('animationend', function() {
+            setTimeout(() => {
+                values.pop();
                 stackContainer.removeChild(topStackBox);
-                stackClear(); // Call the function recursively after the animation completes
-            });
+                size--;
+                stackClear(callback);
+            }, speed);
         } else {
-            // All elements are removed
-            alert('Stack is now empty!');
+            callback();
         }
     }
 
@@ -143,7 +183,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('Push-Button').addEventListener('click', stackPush);
     document.getElementById('Pop-Button').addEventListener('click', stackPop);
     document.getElementById('Peek-Button').addEventListener('click', stackPeek);
-    document.getElementById('isEmpty-Button').addEventListener('click', stackIsEmpty);
-    document.getElementById('size-Button').addEventListener('click', stackGetSize);
     document.getElementById('Clear-Button').addEventListener('click', stackClear);
 });
