@@ -115,7 +115,7 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 10px;
-  height: calc(100vh - 110px);
+  height: calc(100vh - 120px);
   width: auto;
   overflow: auto;
 }
