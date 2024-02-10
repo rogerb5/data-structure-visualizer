@@ -44,27 +44,34 @@
             <h3>Stacks</h3>
 
             <h2>Time Complexity</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam placeat consequuntur obcaecati fugiat beatae? Cumque, minima fugit dolor dolore ad nobis a natus deserunt, asperiores ea hic. Odio, sequi dolores!</p>
+            <p>Push Operation: Adding an element to the top of the stack. This operation typically has a time complexity of O(1) (constant time). It doesn't depend on the number of elements already in the stack.</p>
+            <p>Pop Operation: Removing an element from the top of the stack. Similar to the push operation, popping an element from the stack also has a time complexity of O(1). It takes constant time, regardless of the size of the stack.</p>
+            <p>Peek Operation: Viewing the top element of the stack without removing it. This operation also has a time complexity of O(1). It involves directly accessing the top element of the stack, which takes constant time.</p>    
+            <p>Clear Operation: Clearing or emptying the stack. Typically, the clear operation is also O(1). It involves resetting the stack to its initial empty state, which doesn't depend on the number of elements in the stack.</p>
             
             <h2>Common implementations</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero aliquam pariatur aut fuga natus. Fuga eaque tenetur sed perspiciatis, officia quam animi perferendis quae doloremque ducimus quibusdam aliquid laudantium hic.</p>
-            
+            <p>Browser History: Stacks are employed in web browsers to manage the back and forward functionality. Each visited webpage is pushed onto the stack, enabling users to navigate backward and forward through their browsing history.</p>
+            <p>Undo Functionality: Stacks are used to implement undo functionality in applications like text editors and graphic design software. Each action that modifies the state (e.g., typing, deleting) is pushed onto the stack, allowing users to undo those actions sequentially.</p> 
             <h2>More about Stacks</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti sit et ex suscipit iure molestias inventore reiciendis dignissimos fugit placeat itaque culpa doloremque saepe fugiat, ullam nobis. Facere, molestias odit?</p>
+            <p></p>
             <h2 id="javaC">Java</h2>
             <div class="code-container">
                 <pre><code id="javaCode" class="language-java">
-public class StackExample { //StackExample class
-    
-    private static final int MAX_SIZE = 100; // Maximum size of the stack
-    private int[] arr = new int[MAX_SIZE]; // Creating an integer array to represent the stack
-    private int top = -1; // Initializing top pointer to -1, indicating an empty stack
+//Stack class
+public class Stack {
 
-    public boolean isEmpty() { // Method to check if the stack is empty
+    private static final int MAX_SIZE = 100; // Maximum size of the stack
+    private int[] arr = new int[MAX_SIZE]; // integer array to represent the stack
+    private int top = -1; // Initializing top pointer to -1, indicating an empty stack
+    
+    // Method to check if the stack is empty
+    public boolean isEmpty() {
         return top == -1; // If top is -1, the stack is empty
     }
 
-    public void push(int element) { // Method to push an element onto the stack
+    // Method to push an element onto the stack
+    public void push(int element) {
         if (top == MAX_SIZE - 1) { // Checking if the stack is full
             System.out.println("Stack overflow"); // Displaying a message if the stack is full
             return; // Exiting the method
@@ -72,29 +79,34 @@ public class StackExample { //StackExample class
         arr[++top] = element; // Incrementing top and adding the element to the stack
     }
 
-    public int pop() { // Method to pop an element from the stack
+    // Method to remove the top element (peek) of the stack
+    public int pop() {
         if (isEmpty()) { // Checking if the stack is empty
-            throw new EmptyStackException(); // Throwing an exception if the stack is empty
+            // Throw an exception if the stack is empty
         }
         return arr[top--]; // Returning the top element and decrementing top
     }
 
-    public int peek() { // Method to peek at the top element of the stack
+    // Method to peek at the top element of the stack
+    public int peek() {
         if (isEmpty()) { // Checking if the stack is empty
-            throw new EmptyStackException(); // Throwing an exception if the stack is empty
+            // Throw an exception if the stack is empty
         }
         return arr[top]; // Returning the top element of the stack
     }
 
-    public int getSize() { // Method to get the size of the stack
+    // Method to get the size of the stack
+    public int getSize() {
         return top + 1; // Returning the size of the stack
     }
 
-    public void clear() { // Method to clear the stack
+    // Method to clear the stack (top to bottom)
+    public void clear() {
         top = -1; // Resetting top to -1, effectively clearing the stack
     }
 
-    public static void main(String[] args) { // Main method to test the stack implementation
+    // Main method to test the stack implementation
+    public static void main(String[] args) {
         StackExample stack = new StackExample(); // Creating a new instance of StackExample
 
         stack.push(1); // Pushing elements onto the stack
@@ -121,121 +133,154 @@ public class StackExample { //StackExample class
 #include <stdio.h>
 #include <stdlib.h>
 
+// Define the maximum size of the stack
 #define MAX_SIZE 100
 
+// Define the structure for the stack
 struct Stack {
-    int arr[MAX_SIZE];
-    int top;
+    int arr[MAX_SIZE];  // Array to store stack elements
+    int top;            // Index of the top element in the stack
 };
 
+// Method to initialize the stack
 void initialize(struct Stack *stack) {
-    stack->top = -1;
+    stack->top = -1;  // Initialize the top index to -1 (indicating an empty stack)
 }
 
+// Method to check if the stack is empty
 int isEmpty(struct Stack *stack) {
-    return stack->top == -1;
+    return stack->top == -1;  // Returns 1 if the stack is empty, 0 otherwise
 }
 
+// Method to push an element onto the stack
 void Push(struct Stack *stack, int element) {
-    if (stack->top == MAX_SIZE - 1) {
-        printf("Stack overflow\n");
+    if (stack->top == MAX_SIZE - 1) {  // Check if the stack is full
+        printf("Stack overflow\n");    // Print an error message if the stack is full
         return;
     }
-    stack->arr[++stack->top] = element;
+    stack->arr[++stack->top] = element;  // Increment top and add the element to the stack
 }
 
+// Method to remove the top element (peek) of the stack
 int Pop(struct Stack *stack) {
-    if (isEmpty(stack)) {
-        printf("Stack underflow\n");
-        exit(1);
+    if (isEmpty(stack)) {                // Check if the stack is empty
+        printf("Stack underflow\n");     // Print an error message if the stack is empty
+        exit(1);                          
     }
-    return stack->arr[stack->top--];
+    return stack->arr[stack->top--];      // Decrement top and return the popped element
 }
 
+// Method to get the top element of the stack without removing it
 int Peek(struct Stack *stack) {
-    if (isEmpty(stack)) {
-        printf("Stack is empty\n");
-        exit(1);
+    if (isEmpty(stack)) {                // Check if the stack is empty
+        printf("Stack is empty\n");      // Print an error message if the stack is empty
+        exit(1);                          
     }
-    return stack->arr[stack->top];
+    return stack->arr[stack->top];       // Return the top element of the stack
 }
 
+// Method to get the size of the stack
 int getSize(struct Stack *stack) {
-    return stack->top + 1;
+    return stack->top + 1;  // Return the number of elements in the stack
 }
 
+// Method to clear the stack (top to bottom)
 void clear(struct Stack *stack) {
-    stack->top = -1;
+    stack->top = -1;  // Reset the top index to -1 (indicating an empty stack)
 }
 
 int main() {
-    struct Stack stack;
-    initialize(&stack);
+    struct Stack stack;  // Declare a stack variable
+    initialize(&stack);  // Initialize the stack
 
-    Push(&stack, 1);
+    Push(&stack, 1);  // Push elements onto the stack
     Push(&stack, 2);
     Push(&stack, 3);
 
-    printf("Peek: %d\n", Peek(&stack));
-    printf("Size: %d\n", getSize(&stack));
+    printf("Peek: %d\n", Peek(&stack));        // Print the top element of the stack
+    printf("Size: %d\n", getSize(&stack));     // Print the size of the stack
 
-    Pop(&stack);
-    printf("Size after Pop: %d\n", getSize(&stack));
+    Pop(&stack);  // Pop an element from the stack
+    printf("Size after Pop: %d\n", getSize(&stack));  // Print the size of the stack after popping
 
-    clear(&stack);
-    printf("Size after clear: %d\n", getSize(&stack));
+    clear(&stack);  // Clear the stack
+    printf("Size after clear: %d\n", getSize(&stack));  // Print the size of the stack after clearing
 
     return 0;
-}        
+}                              
                 </code></pre>
             </div>
 
             <h2 id="pythonC">Python</h2>
             <div class="code-container">
                 <pre><code id="pythonCode" class="language-python">
+# Stack class
 class Stack:
-def __init__(self):
-self.arr = []
-
-def is_empty(self):
-return len(self.arr) == 0
-
-def push(self, element):
-self.arr.append(element)
-
-def pop(self):
-if self.is_empty():
-    print("Stack underflow")
-    exit(1)
-return self.arr.pop()
-
-def peek(self):
-if self.is_empty():
-    print("Stack is empty")
-    exit(1)
-return self.arr[-1]
-
-def get_size(self):
-return len(self.arr)
-
-def clear(self):
-self.arr = []
+    def __init__(self):
+        # Initialize the stack with an empty list
+        self.arr = []
+        
+    # Method to check if the stack is empty
+    def is_empty(self):
+        # Check if the stack is empty
+        return len(self.arr) == 0
+    
+    # Method to push a value onto the stack
+    def push(self, element):
+        # Add an element to the top of the stack
+        self.arr.append(element)
+    
+    # Method to pop the top element of the stack
+    def pop(self):
+        # Remove and return the top element from the stack
+        if self.is_empty():
+            # Check if the stack is empty
+            print("Stack underflow")  # Print error message
+            exit(1)  
+        return self.arr.pop()  # Pop and return the top element
+    
+    # Method to check the top (peek) of the stack
+    def peek(self):
+        # Return the top element of the stack without removing it
+        if self.is_empty():
+            # Check if the stack is empty
+            print("Stack is empty")  # Print error message
+            exit(1) 
+        return self.arr[-1]  # Return the top element
+    
+    # Method to check the size of the stack
+    def get_size(self):
+        # Return the number of elements in the stack
+        return len(self.arr)
+    
+    # Method to clear the stack of all elements (top to bottom)
+    def clear(self):
+        # Clear all elements from the stack
+        self.arr = []
 
 if __name__ == "__main__":
-stack = Stack()
-
-stack.push(1)
-stack.push(2)
-stack.push(3)
-
-print("Peek:", stack.peek())
-print("Size:", stack.get_size())
-
-stack.pop()
-print("Size after Pop:", stack.get_size())
-
-stack.clear()
-print("Size after clear:", stack.get_size())
+    # Create an instance of the Stack class
+    stack = Stack()
+    
+    # Push elements onto the stack
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    
+    # Peek at the top element of the stack and print it
+    print("Peek:", stack.peek())
+    # Get the size of the stack and print it
+    print("Size:", stack.get_size())
+    
+    # Pop an element from the stack
+    stack.pop()
+    # Get the size of the stack after popping and print it
+    print("Size after Pop:", stack.get_size())
+    
+    # Clear all elements from the stack
+    stack.clear()
+    # Get the size of the stack after clearing and print it
+    print("Size after clear:", stack.get_size())                                
                 </code></pre>
             </div>
         </div>  
