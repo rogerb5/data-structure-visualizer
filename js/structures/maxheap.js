@@ -1,5 +1,15 @@
+
 class MaxHeapUI {
     constructor() {
+    }
+
+    highlightNode(index) {
+        this.removeHighlight(index);
+        const node = document.querySelectorAll('.node')[index];
+        node.classList.add('node-highlight');
+        setTimeout(() => {
+            node.classList.remove('node-highlight');
+        }, 700);
     }
 
     highlightFamily(index) {
@@ -95,6 +105,7 @@ class MaxHeapUI {
         }
         this.addRemoveHover();
     }
+
 }
 
 class MaxHeap extends MaxHeapUI {
@@ -193,6 +204,7 @@ class MaxHeap extends MaxHeapUI {
     contains(value) {
         for (let index = 0; index < this.size; index++) {
             if (this.data[index] === value) {
+                this.highlightNode(index);
                 return true;
             }
         }
@@ -231,4 +243,5 @@ class MaxHeap extends MaxHeapUI {
         return result;
     }
 }
+
 export { MaxHeapUI, MaxHeap }; // export MaxHeapUI, and MaxHeap

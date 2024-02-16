@@ -14,17 +14,23 @@
 
 <body>
     <nav class="navigation-bar">
-        <h1>MaxHeap</h1>
-        <section class="info-section">
-            <p class="size-output">Size: 0</p>
-            <p class="isEmpty-output">isEmpty? true</p>
-        </section>
+        <header>
+            <h1>Max Heap Visualizer</h1>
+            <section class="info-section">
+                <p class="size-output">Size: 0</p>
+                <p class="isEmpty-output">isEmpty? true</p>
+            </section>
+            <a href="index.html" class="home-link">Home</a>
+        </header>
+
         <section class="input-section">
             <input type="text" class="node-value" placeholder="Enter Node Value">
             <button class="add-btn">Add</button>
+            <input type="text" class="contains-value" placeholder="Contains Node Value">
+            <button class="contains-btn">Contains</button>
             <button class="extract-btn">Extract Max</button>
             <button class="array-btn">Toggle Array</button>
-            <button class="clear-btn">Clear Heap</button>
+            <button class="clear-btn">Clear</button>
             <button class="open-btn">Info</button>
         </section>
     </nav>
@@ -32,6 +38,7 @@
     <section class="parent-section">
         <section class="info-section">
             <p class="error-msg" id="error-msg">Please Enter a Valid Number</p>
+            <p id="second-error-msg">Node not found</p>
         </section>
     </section>
 
@@ -41,6 +48,13 @@
     </main>
 
     <section class="modal">
+        <section class="modal-buttons-section">
+            <p class="links-p">Jump to Section:</p>
+            <a href="#javaCode" class="link-btn">Java Code</a>
+            <a href="#cCode" class="link-btn">C Code</a>
+            <a href="#pythonCode" class="link-btn">Python Code</a>
+        </section>
+
         <button class="close-btn">Close</button>
         <article class="about-stack">
             <h1 id="">A Binary Max Heap</h1>
@@ -51,11 +65,12 @@
 
             <p>
                 Next, that every node must be greater than or equal to
-                it's children.
+                it's children. This is called the heap invariant.
             </p>
 
             <p>
                 Finally, each level is complete meaning it has no gaps, so heaps are filled left to right.
+                This is called the heap structure invariant.
             </p>
         </article>
 
@@ -65,7 +80,6 @@
                 or we are at a leaf.</p>
             <p>heapify up: swap with the parent until your parent is greater than you or your
                 are the overall root</p>
-
             <p>extract max: removes the max node and replaces the bottom level right most node and heapfies down. </p>
             <p>add: insert a node on the bottom level to ensure no gaps and then you fix the heap invariant by
                 heapifying upwards. </p>
@@ -95,8 +109,36 @@
             </p>
         </article>
 
+
+        <article class="about-heap">
+            <h1>Time Complexity For an Array Based Heap</h1>
+            <p>Extract Max: worst O(log(n)), best O(1)</p>
+            <p>Add: worst: O(log(n)), best: O(1)</p>
+            <p>Contains: O(n)</p>
+
+            <p>
+                The add() method inserts new node into the next avaliable spot and heapifies upward to fix heap
+                invariant.
+            </p>
+
+            <p>The extractMax() removes the root node, finds the last node in the tree to swap, and heapifys downward
+                to fix the heap invariant</p>
+
+            <p>
+                Finding the last node / next avaliable spot is the hard part.
+            </p>
+
+            <p>Alternatively,
+                you can build a heap using an input list using Floyd's buildHeap algorithm which
+                will run in O(n)</p>
+
+            <p>This visualizer abstained from using
+                Floyd's since input is taken once at a time.</p>
+
+        </article>
+
         <section class="all">
-            <article class="java-article">
+            <article class="java-article" id="javaCode">
                 <h2>Java</h2>
                 <pre>
                 <code class="language-java">
@@ -236,7 +278,7 @@
     </pre>
             </article>
 
-            <article class="c-article">
+            <article class="c-article" id="cCode">
                 <h2>C</h2>
                 <pre>
                 <code class="language-c">
@@ -362,7 +404,7 @@
             </pre>
             </article>
 
-            <article class="p-article">
+            <article class="p-article" id="pythonCode">
                 <h2>Python</h2>
                 <pre>
                 <code class="language-python">
