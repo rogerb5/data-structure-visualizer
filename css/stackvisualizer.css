@@ -214,6 +214,7 @@ input {
 }
 .header-button:hover {
   background-color: var(--header-button-hover-color);
+  transition: all 300ms ease;
 }
 .header-button:active {
   background-color: var(--header-button-clicked-color);
@@ -239,6 +240,7 @@ input {
 }
 .method-button:hover {
   background-color: var(--method-button-hover-color);
+  transition: all 300ms ease;
 }
 .method-button:active {
   background-color: var(--method-button-clicked-color);
