@@ -44,19 +44,19 @@ document.addEventListener('DOMContentLoaded', function () {
         
         else if (this.id === "isEmpty-Button") {
             if(size === 0) {
-                message = "The stack is empty, size = 0."
+                message = "The stack is empty, isEmpty = True."
             }
             else {
-                message = "The stack is NOT empty.";
+                message = "The stack is NOT empty, isEmpty = False.";
             }
         }
         
         else if (this.id === "size-Button") {
             if(size === 0) {
-                message = "The stack is empty."
+                message = "The stack has nothing in it, Size: 0"
             }
             else {
-                message = "The size of the stack is " + size + ",\nSize: " + size;
+                message = "The size of the stack is " + size + ", Size: " + size;
             }
         }
         
@@ -122,19 +122,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         } else {
             size++;
-    
             const stackBox = document.createElement('div');
             stackBox.className = 'stack-box';
             stackBox.textContent = value;
             values.push(value);
-
-            // Add class for animation
             stackBox.classList.add('drop-down');
-    
-            // Insert new element at the beginning of the stack container
             stackContainer.insertBefore(stackBox, stackContainer.firstChild);
-    
-            // Remove the animation class after a delay
             setTimeout(() => {
                 stackBox.classList.remove('drop-down');
             }, speed * 2);
@@ -143,19 +136,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function stackPop() {
         if (!(size === 0)) {
+            size--;
             const topStackBox = stackContainer.firstChild;
-            
             // Add an event listener for the end of the animation
             topStackBox.addEventListener('animationend', function() {
                 // Remove the event listener
                 topStackBox.removeEventListener('animationend', arguments.callee);
-                
-
                 stackContainer.removeChild(topStackBox);
                 values.pop();
-                size--;
             });
-            topStackBox.classList.add('stack-remove');
+            setTimeout(() => {
+                topStackBox.classList.add('stack-remove');
+            }, speed/8);
         }
     }
     
@@ -172,12 +164,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function stackClear(callback) {
         if (size > 0) {
+            size--;
             const topStackBox = stackContainer.firstChild;
             topStackBox.classList.add('stack-remove');
             setTimeout(() => {
                 values.pop();
                 stackContainer.removeChild(topStackBox);
-                size--;
                 stackClear(callback);
             }, speed);
         } else {
