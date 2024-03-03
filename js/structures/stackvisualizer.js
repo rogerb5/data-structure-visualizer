@@ -140,19 +140,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stackPop() {
-        if (size > 0) {
+        if (!(size === 0)) {
             const topStackBox = stackContainer.firstChild;
-            topStackBox.classList.add('stack-remove');
-            setTimeout(() => {
-                values.pop();
+            
+            // Add an event listener for the end of the animation
+            topStackBox.addEventListener('animationend', function() {
+                // Remove the event listener
+                topStackBox.removeEventListener('animationend', arguments.callee);
+                
+                // Remove the element from the DOM and update the size
                 stackContainer.removeChild(topStackBox);
+                values.pop();
                 size--;
-                stackClear(callback);
-            }, speed);
-        } else {
-            callback();
+            });
+            
+            // Trigger the animation by adding the class
+            topStackBox.classList.add('stack-remove');
         }
     }
+    
 
     function stackPeek() {
         if (!(size === 0)) {
@@ -174,8 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 size--;
                 stackClear(callback);
             }, speed);
-        }
-        else {
+        } else {
             callback();
         }
     }
