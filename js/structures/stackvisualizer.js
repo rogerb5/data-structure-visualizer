@@ -62,19 +62,15 @@ document.addEventListener('DOMContentLoaded', function () {
         
         else if (this.id === "Clear-Button") {
             if (size === 0) {
-                message = "The stack is empty.";
+                message = "The stack is already empty.";
             } else {
                 // Display "Clearing Stack..." message while clearing the stack
                 message = "Clearing Stack...";
                 popupMessage.textContent = message;
-        
-                // Clear the stack with animations
-                stackClear(() => {                
+                setTimeout(() => {
                     message = "Cleared, The stack is now empty.";
                     popupMessage.textContent = message;
-                }, speed*size);
-                message = "Cleared, The stack is now empty.";
-                popupMessage.textContent = message;
+                }, speed * size);
             }
         }
         
