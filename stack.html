@@ -41,20 +41,29 @@
 
         <div id="MoreInfo" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="close-tab">&times</span>
-            <h3>Stacks</h3>
+            <h3>Stack Details</h3>
+            <div class="text-container">
+                <h2>Time Complexity</h2>
+                <p></p>
+                <p> - Push Operation: Adding an element to the top of the stack. This operation typically has a time complexity of O(1) (constant time). It doesn't depend on the number of elements already in the stack.</p>
+                <p> - Pop Operation: Removing an element from the top of the stack. Similar to the push operation, popping an element from the stack also has a time complexity of O(1). It takes constant time, regardless of the size of the stack.</p>
+                <p> - Peek Operation: Viewing the top element of the stack without removing it. This operation also has a time complexity of O(1). It involves directly accessing the top element of the stack, which takes constant time.</p>    
+                <p> - Clear Operation: Clearing or emptying the stack. Typically, the clear operation is also O(1). It involves resetting the stack to its initial empty state, which doesn't depend on the number of elements in the stack.</p>
+            </div>
 
-            <h2>Time Complexity</h2>
-            <p>Push Operation: Adding an element to the top of the stack. This operation typically has a time complexity of O(1) (constant time). It doesn't depend on the number of elements already in the stack.</p>
-            <p>Pop Operation: Removing an element from the top of the stack. Similar to the push operation, popping an element from the stack also has a time complexity of O(1). It takes constant time, regardless of the size of the stack.</p>
-            <p>Peek Operation: Viewing the top element of the stack without removing it. This operation also has a time complexity of O(1). It involves directly accessing the top element of the stack, which takes constant time.</p>    
-            <p>Clear Operation: Clearing or emptying the stack. Typically, the clear operation is also O(1). It involves resetting the stack to its initial empty state, which doesn't depend on the number of elements in the stack.</p>
-            
-            <h2>Common implementations</h2>
-            <p>Browser History: Stacks are employed in web browsers to manage the back and forward functionality. Each visited webpage is pushed onto the stack, enabling users to navigate backward and forward through their browsing history.</p>
-            <p>Undo Functionality: Stacks are used to implement undo functionality in applications like text editors and graphic design software. Each action that modifies the state (e.g., typing, deleting) is pushed onto the stack, allowing users to undo those actions sequentially.</p> 
-            <h2>More about Stacks</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti sit et ex suscipit iure molestias inventore reiciendis dignissimos fugit placeat itaque culpa doloremque saepe fugiat, ullam nobis. Facere, molestias odit?</p>
-            <p></p>
+            <div class="text-container">
+                <h2>Common implementations</h2>
+                <p></p>
+                <p> - Browser History: Stacks are employed in web browsers to manage the back and forward functionality. Each visited webpage is pushed onto the stack, enabling users to navigate backward and forward through their browsing history.</p>
+                <p> - Undo Functionality: Stacks are used to implement undo functionality in applications like text editors and graphic design software. Each action that modifies the state (e.g., typing, deleting) is pushed onto the stack, allowing users to undo those actions sequentially.</p> 
+            </div>
+
+            <div class="text-container">
+                <h2>More about Stacks</h2>
+                <p></p>
+                <p>The concept of a stack originated from the notion of a "pushdown list" introduced by Alan Turing in 1946. Turing used this concept in his theoretical model of computation known as Turing machines. However, the stack as a data structure wasn't formally defined until around 1957</p>
+            </div>
+            <h4>The Code</h4>
             <h2 id="javaC">Java</h2>
             <div class="code-container">
                 <pre><code id="javaCode" class="language-java">

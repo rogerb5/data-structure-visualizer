@@ -214,6 +214,7 @@ input {
 }
 .header-button:hover {
   background-color: var(--header-button-hover-color);
+  transition: all 300ms ease;
 }
 .header-button:active {
   background-color: var(--header-button-clicked-color);
@@ -239,6 +240,7 @@ input {
 }
 .method-button:hover {
   background-color: var(--method-button-hover-color);
+  transition: all 300ms ease;
 }
 .method-button:active {
   background-color: var(--method-button-clicked-color);
@@ -285,17 +287,26 @@ input[type="number"] {
   z-index: 2;
 }
 
-.tabcontent h3 {
-  font-size: xx-large;
-  color: rgb(255, 255, 255);
-}
-
 .tabcontent h2 {
   text-align: left;
   color: rgb(255, 255, 255);
 }
 
+.tabcontent h3 {
+  font-size: xx-large;
+  color: rgb(255, 255, 255);
+  text-decoration: overline;
+}
+
+.tabcontent h4 {
+  font-size: xx-large;
+  color: rgb(255, 255, 255);
+  margin-top: 20px;
+  text-decoration: overline;
+}
+
 .tabcontent p {
+  text-align: left;
   font-size: large;
   margin-bottom: 10px;
 }
@@ -305,6 +316,16 @@ input[type="number"] {
   width: 100%;
   height: auto;
   padding-bottom: 50px;
+}
+
+.text-container {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  border: 2px solid white;
+  background: rgba(20, 37, 73, 0.747);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .highlight {
