@@ -115,27 +115,29 @@ function openMoreInfo(evt, tabName) {
 document.addEventListener('DOMContentLoaded', function () {
 
     const stackContainer = document.getElementById('stack-container');
-
-    function animateStack() {
-        const stackBoxes = document.querySelectorAll('.stack-box');
-        stackBoxes.forEach((box, index) => {
-            box.style.transform = `translateY(${index}px)`;
-        });
-    }
     
-
     function stackPush() {
         const value = parseInt(document.getElementById('push-input').value);
-        if(isNaN(value))
+        if (isNaN(value)) {
             return;
-        else {   
+        } else {
             size++;
+    
             const stackBox = document.createElement('div');
-            stackBox.className = 'stack-box dropDown';
+            stackBox.className = 'stack-box';
             stackBox.textContent = value;
-            values.push(value)
+            values.push(value);
+
+            // Add class for animation
+            stackBox.classList.add('drop-down');
+    
+            // Insert new element at the beginning of the stack container
             stackContainer.insertBefore(stackBox, stackContainer.firstChild);
-            animateStack();
+    
+            // Remove the animation class after a delay
+            setTimeout(() => {
+                stackBox.classList.remove('drop-down');
+            }, speed * 2);
         }
     }
 
@@ -148,13 +150,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Remove the event listener
                 topStackBox.removeEventListener('animationend', arguments.callee);
                 
-                // Remove the element from the DOM and update the size
+
                 stackContainer.removeChild(topStackBox);
                 values.pop();
                 size--;
             });
-            
-            // Trigger the animation by adding the class
             topStackBox.classList.add('stack-remove');
         }
     }

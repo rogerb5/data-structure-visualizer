@@ -176,8 +176,11 @@ input {
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
-  animation: dropDown 0.5s ease-in 0s 1 normal both;
   z-index: 1;
+}
+
+.stack-box.drop-down {
+  animation: dropDown 0.5s ease-in 0s 1 normal both;
 }
 
 .stack-box.stack-remove {
@@ -356,10 +359,10 @@ input[type="number"] {
 /* ---------- Keyframes for all animations ---------- */
 
 @keyframes dropDown {
-  from {
+  0% {
     transform: translateY(-100px);
   }
-  to {
+  100% {
     transform: translateY(0);
   }
 }
