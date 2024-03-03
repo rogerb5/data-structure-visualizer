@@ -20,6 +20,10 @@ body {
     background-color: var(--background);
 }
 
+i {
+    color: var(--input-placeholder-text-color);
+}
+
 .registration-form h2 {
     padding-bottom: 20px;
 }
