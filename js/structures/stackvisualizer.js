@@ -1,9 +1,13 @@
 console.log('stackvisualizer code output test');
 
+const animationSpeed = document.getElementById("animationSpeed");
 const values = [];
     let size = 0;
     let speed = 750; //0.75 seconds
 
+animationSpeed.addEventListener("input", (e) => {
+    speed = e.target.value;
+});
 /* ---------- Display Popup Information ---------- */
 document.addEventListener('DOMContentLoaded', function () {
     const popupBtns = document.querySelectorAll('.method-button');

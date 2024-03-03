@@ -1,5 +1,30 @@
 /* Created By - Logan Stoltz */
 
+/* ---------- Majority of the color scheme ---------- */
+:root{
+  --main-background: url('/assets/icons/StackBackground.jpg');
+  
+   --header-color: #02006bbe;
+   --header-bottom-border-color: rgba(189, 166, 252, 0.507);
+  
+   --panel-background-color :rgba(0, 0, 0, 0.575);
+  
+   --stackbox-background-color:rgba(245, 203, 255, 0.616);
+   --stackbox-border-color: #e27dd18f;
+  
+   --header-button-color: #00000070;
+   --header-button-border-color: #ffffff67;
+   --header-button-hover-color: #00303f70;
+   --header-button-clicked-color: #70990070;
+  
+   --method-button-color: #df986f;
+   --method-button-border-color: #eb7d62a4;
+   --method-button-hover-color: #e6a55c;
+   --method-button-clicked-color: #a5543b;
+  
+   --tab-background-color: #02006bbe;
+  }
+
 /* ---------- global/defualt functions ---------- */
 * {
   margin: 0;
@@ -24,41 +49,13 @@ h2 {
   color: #f1faee;
 }
 
-input {
-  margin-bottom: 5px;
-}
-
 pre {
   font-size: xx-large;
 }
 
-
-
-/* ---------- Majority of the color scheme ---------- */
-:root{
---main-background: url('/assets/icons/StackBackground.jpg');
-
- --header-color: #02006bbe;
- --header-bottom-border-color: rgba(189, 166, 252, 0.507);
-
- --panel-background-color :rgba(0, 0, 0, 0.5);
-
- --stackbox-background-color:rgba(245, 203, 255, 0.616);
- --stackbox-border-color: #e27dd18f;
-
- --header-button-color: #00000070;
- --header-button-border-color: #ffffff67;
- --header-button-hover-color: #00303f70;
- --header-button-clicked-color: #70990070;
-
- --method-button-color: #df986f;
- --method-button-border-color: #eb7d62a4;
- --method-button-hover-color: #e6a55c;
- --method-button-clicked-color: #a5543b;
-
- --tab-background-color: #02006bbe;
+input {
+  margin-bottom: 5px;
 }
-
 
 
 /* ---------- GENERAL DESIGN ---------- */
@@ -135,6 +132,23 @@ pre {
   height: calc(100vh - 120px);
   width: auto;
   overflow: auto;
+}
+
+.animation-speed-panel {
+  background-color: var(--panel-background-color);
+  border-radius: 15px;
+  padding: 2%;
+  margin-bottom: 2%;
+  height: auto;
+  width: auto;
+  color: white;
+  z-index: 1000;
+}
+.animation-speed-panel p{
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .popup-panel {
@@ -360,8 +374,70 @@ input[type="number"] {
 }
 
 
-/* ---------- Keyframes for all animations ---------- */
+/*** Used this resource to help me create a stylish slider https://range-input-css.netlify.app/ ***/
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
 
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #adbee6;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -8px; /* Centers thumb on the track */
+  background-color: #f7abab;
+  border-radius: 0rem;
+  height: 1.5rem;
+  width: 0.5rem;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  outline: 3px solid #f7abab;
+  outline-offset: 0.125rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  background-color: #adbee6;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: #f7abab;
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0rem;
+  height: 1.5rem;
+  width: 0.5rem;
+}
+
+input[type="range"]:focus::-moz-range-thumb{
+  outline: 3px solid #f7abab;
+  outline-offset: 0.125rem;
+}
+
+
+
+/* ---------- Keyframes for all animations ---------- */
 @keyframes dropDown {
   0% {
     transform: translateY(-100px);
