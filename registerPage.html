@@ -12,54 +12,59 @@
 </head>
 
     <body>
-        <header>
-            <h1>Data Structure Visualizer Registration</h1>
-        </header>
-        <div class="registration-form">
-            <form id = "registrationForm">
-                <h2>Registration</h2>
 
-                <div class="input-box">
-                    <label>Full Name:</label>
-                    <div class="input-field">
-                        <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
-                        <i class='bx bxs-user'></i>
+        <main>
+            <header>
+                <h1>Data Structure Visualizer Registration</h1>
+            </header>
+    
+            <div class="registration-form">
+                <form id = "registrationForm">
+                    <h2>Registration</h2>
+    
+                    <div class="input-box">
+                        <label>Full Name:</label>
+                        <div class="input-field">
+                            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                            <i class='bx bxs-user'></i>
+                        </div>
                     </div>
-                </div>
-                <div class="input-box">
-                    <label>User Name:</label>
-                    <div class="input-field">
-                        <input type="text" id="username" name="username" placeholder="User Name" required>
-                        <i class='bx bxs-user-pin'></i>
+                    <div class="input-box">
+                        <label>User Name:</label>
+                        <div class="input-field">
+                            <input type="text" id="username" name="username" placeholder="User Name" required>
+                            <i class='bx bxs-user-pin'></i>
+                        </div>
                     </div>
-                </div>
-                <div class="input-box">
-                    <label>Email:</label>  
-                    <div class="input-field">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                        <i class='bx bxs-envelope' ></i>
+                    <div class="input-box">
+                        <label>Email:</label>  
+                        <div class="input-field">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <i class='bx bxs-envelope' ></i>
+                        </div>
                     </div>
-                </div>
-                        
-                <div class="input-box">
-                    <label>Password:</label>
-                    <div class="input-field">
-                        <input type="password" id="password" name="password" placeholder="Password" required>
-                        <i class='bx bxs-lock' ></i>
+                            
+                    <div class="input-box">
+                        <label>Password:</label>
+                        <div class="input-field">
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                            <i class='bx bxs-lock' ></i>
+                        </div>
                     </div>
-                </div>
-
-                <div class="input-box">
-                    <label>Confirm Password:</label>
-                    <div class="input-field">
-                        <input type="password" name="password" placeholder="Confirm Password" required>
-                        <i class='bx bxs-lock' ></i>
+    
+                    <div class="input-box">
+                        <label>Confirm Password:</label>
+                        <div class="input-field">
+                            <input type="password" name="password" placeholder="Confirm Password" required>
+                            <i class='bx bxs-lock' ></i>
+                        </div>
                     </div>
-                </div>
-                <button type="register" id="Reg" class="register" onclick="RegisterUser">Register</button>
-            </form>
-        </div>
-
+                    <button type="register" id="Reg" class="register" onclick="RegisterUser">Register</button>
+                </form>
+            </div>
+    
+        </main>
+       
         <!--Need to move this to its own registerPage.js script file-->
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
