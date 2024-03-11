@@ -2,8 +2,7 @@
 
 /* ---------- Majority of the color scheme ---------- */
 :root{
-  --main-background: url('/assets/icons/StackBackground.jpg');
-  
+  --main-background: url('/assets/img/StackBackground.jpg');
    --header-color: #02006bbe;
    --header-bottom-border-color: rgba(189, 166, 252, 0.507);
   
