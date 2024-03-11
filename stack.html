@@ -12,143 +12,327 @@
 </head>
 
 <body>
-    <div class="header">
-      <h1>Stack Visualizer</h1>
-    </div>
+    <div class="background-image">
+        <div class="header">
 
-    <div class="home-container">
-        <a href="home.html" class="home-button" id="home-button">Home</a>
-    </div>
-
-    <div class="tab">
-        <button class="tablinks" onclick="openMoreInfo(event, 'MoreInfo')">More Info</button>
-    </div>
-
-    <div id="MoreInfo" class="tabcontent">
-        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-        <h3>Stacks</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla, aliquam neque praesentium minima asperiores, nemo aperiam adipisci ad fugit reprehenderit quas ut odio. Ratione magnam eaque tempore quam sint.</p>
-        <h2>Java</h2>
-        <div class="code-container">
-            <pre><code id="code" class="language-java">
-public int pop() {
-if (top >= 0) {
-    int poppedValue = stackArray[top--];
-    System.out.println("Popped: " + poppedValue);
-    return poppedValue;
-} else {
-    System.out.println("Stack underflow. Cannot pop from an empty stack.");
-    return -1; // Return a sentinel value to indicate an error or empty stack
-}
-}
-
-public int peek() {
-if (top >= 0) {
-    return stackArray[top];
-} else {
-    System.out.println("Stack is empty. Cannot peek.");
-    return -1; // Return a sentinel value to indicate an error or empty stack
-}
-}
-
-public boolean isEmpty() {
-return top == -1;
-}
-
-public boolean isFull() {
-return top == maxSize - 1;
-}
-
-public int size() {
-return top + 1;
-}
-            </code></pre>
-        </div>
-
-        <h2>C</h2>
-        <div class="code-container">
-            <pre><code id="code" class="language-C">
-future code
-            </code></pre>
-        </div>
-
-        <h2>Python</h2>
-        <div class="code-container">
-            <pre><code id="code" class="language-python">
-future code
-            </code></pre>
-        </div>
-    </div>
+            <div class="header-button-container">
+                <a href="index.html">
+                    <button class="header-button" id="home-button">Home</button>
+                </a>
+                <button class="header-button" onclick="openMoreInfo(event, 'MoreInfo')">More Info</button>
+            </div>
     
 
-    <div class="container">
-        <div class="column column-40">
-            <div class="button-panel">
-                <h2>Operations</h2>
-                <a class="method-button" id="Pop-Button">Pop</a>
-                <a class="method-button" id="Peek-Button">Peek</a>
-                <a class="method-button" id="isEmpty-Button">isEmpty</a>
-                <a class="method-button" id="size-Button">Size</a>
-                <a class="method-button" id="Clear-Button">Clear</a>
-                <div>
-                    <a class="method-button" id="Push-Button">Push</a>
-                    <input type="number" class="custom-input" id="push-input" placeholder="Enter an integer">
-                </div>
+            <h1>Stack Visualizer</h1>
+
+            <div class="header-button-container">
+                <a href="#javaC" >
+                    <button class="header-button" onclick="openMoreInfo(event, 'MoreInfo')">Java</button>
+                </a>
+                <a href="#cC" >
+                    <button class="header-button" onclick="openMoreInfo(event, 'MoreInfo')">C</button>
+                </a>
+                <a href="#pythonC" >
+                    <button class="header-button" onclick="openMoreInfo(event, 'MoreInfo')">Python</button>
+                </a>
             </div>
-            <!--<div class="code-panel">
-                <a onClick="showOrHide()" class="code-button" id="Java-Button">Java</a>
-                <a class="code-button" id="C-Button">C</a>
-                <a class="code-button" id="Python-Button">Python</a>
-                <div class="code-container">
-                    <pre><code id="code" class="language-java">
-public int pop() {
-        if (top >= 0) {
-            int poppedValue = stackArray[top--];
-            System.out.println("Popped: " + poppedValue);
-            return poppedValue;
-        } else {
-            System.out.println("Stack underflow. Cannot pop from an empty stack.");
-            return -1; // Return a sentinel value to indicate an error or empty stack
-        }
-    }
 
-    public int peek() {
-        if (top >= 0) {
-            return stackArray[top];
-        } else {
-            System.out.println("Stack is empty. Cannot peek.");
-            return -1; // Return a sentinel value to indicate an error or empty stack
-        }
-    }
-
-    public boolean isEmpty() {
-        return top == -1;
-    }
-
-    public boolean isFull() {
-        return top == maxSize - 1;
-    }
-
-    public int size() {
-        return top + 1;
-    }
-                    </code></pre>
-                </div>
-            </div>
-        </div>-->
         </div>
 
-        <div class="column column-60">
-            <div class="canvas-panel">
-                <div id="stack-container"></div>
+        <div id="MoreInfo" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="close-tab">&times</span>
+            <h3>Stack Details</h3>
+            <div class="text-container">
+                <h2>Time Complexity</h2>
+                <p></p>
+                <p> - Push Operation: Adding an element to the top of the stack. This operation typically has a time complexity of O(1) (constant time). It doesn't depend on the number of elements already in the stack.</p>
+                <p> - Pop Operation: Removing an element from the top of the stack. Similar to the push operation, popping an element from the stack also has a time complexity of O(1). It takes constant time, regardless of the size of the stack.</p>
+                <p> - Peek Operation: Viewing the top element of the stack without removing it. This operation also has a time complexity of O(1). It involves directly accessing the top element of the stack, which takes constant time.</p>    
+                <p> - Clear Operation: Clearing or emptying the stack. Typically, the clear operation is also O(1). It involves resetting the stack to its initial empty state, which doesn't depend on the number of elements in the stack.</p>
+            </div>
+
+            <div class="text-container">
+                <h2>Common implementations</h2>
+                <p></p>
+                <p> - Browser History: Stacks are employed in web browsers to manage the back and forward functionality. Each visited webpage is pushed onto the stack, enabling users to navigate backward and forward through their browsing history.</p>
+                <p> - Undo Functionality: Stacks are used to implement undo functionality in applications like text editors and graphic design software. Each action that modifies the state (e.g., typing, deleting) is pushed onto the stack, allowing users to undo those actions sequentially.</p> 
+            </div>
+
+            <div class="text-container">
+                <h2>More about Stacks</h2>
+                <p></p>
+                <p>The concept of a stack originated from the notion of a "pushdown list" introduced by Alan Turing in 1946. Turing used this concept in his theoretical model of computation known as Turing machines. However, the stack as a data structure wasn't formally defined until around 1957</p>
+            </div>
+            <h4>The Code</h4>
+            <h2 id="javaC">Java</h2>
+            <div class="code-container">
+                <pre><code id="javaCode" class="language-java">
+//Stack class
+public class Stack {
+
+    private static final int MAX_SIZE = 100; // Maximum size of the stack
+    private int[] arr = new int[MAX_SIZE]; // integer array to represent the stack
+    private int top = -1; // Initializing top pointer to -1, indicating an empty stack
+    
+    // Method to check if the stack is empty
+    public boolean isEmpty() {
+        return top == -1; // If top is -1, the stack is empty
+    }
+
+    // Method to push an element onto the stack
+    public void push(int element) {
+        if (top == MAX_SIZE - 1) { // Checking if the stack is full
+            System.out.println("Stack overflow"); // Displaying a message if the stack is full
+            return; // Exiting the method
+        }
+        arr[++top] = element; // Incrementing top and adding the element to the stack
+    }
+
+    // Method to remove the top element (peek) of the stack
+    public int pop() {
+        if (isEmpty()) { // Checking if the stack is empty
+            // Throw an exception if the stack is empty
+        }
+        return arr[top--]; // Returning the top element and decrementing top
+    }
+
+    // Method to peek at the top element of the stack
+    public int peek() {
+        if (isEmpty()) { // Checking if the stack is empty
+            // Throw an exception if the stack is empty
+        }
+        return arr[top]; // Returning the top element of the stack
+    }
+
+    // Method to get the size of the stack
+    public int getSize() {
+        return top + 1; // Returning the size of the stack
+    }
+
+    // Method to clear the stack (top to bottom)
+    public void clear() {
+        top = -1; // Resetting top to -1, effectively clearing the stack
+    }
+
+    // Main method to test the stack implementation
+    public static void main(String[] args) {
+        StackExample stack = new StackExample(); // Creating a new instance of StackExample
+
+        stack.push(1); // Pushing elements onto the stack
+        stack.push(2);
+        stack.push(3);
+
+        System.out.println("Peek: " + stack.peek()); // Displaying the top element of the stack
+        System.out.println("Size: " + stack.getSize()); // Displaying the size of the stack
+
+        stack.pop(); // Popping an element from the stack
+        System.out.println("Size after Pop: " + stack.getSize()); // Displaying the size of the stack after popping
+
+        stack.clear(); // Clearing the stack
+        System.out.println("Size after clear: " + stack.getSize()); // Displaying the size of the stack after clearing
+    }
+}
+                    
+                </code></pre>
+            </div>
+
+            <h2 id="cC">C</h2>
+            <div class="code-container">
+                <pre><code id="cCode" class="language-C">
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the maximum size of the stack
+#define MAX_SIZE 100
+
+// Define the structure for the stack
+struct Stack {
+    int arr[MAX_SIZE];  // Array to store stack elements
+    int top;            // Index of the top element in the stack
+};
+
+// Method to initialize the stack
+void initialize(struct Stack *stack) {
+    stack->top = -1;  // Initialize the top index to -1 (indicating an empty stack)
+}
+
+// Method to check if the stack is empty
+int isEmpty(struct Stack *stack) {
+    return stack->top == -1;  // Returns 1 if the stack is empty, 0 otherwise
+}
+
+// Method to push an element onto the stack
+void Push(struct Stack *stack, int element) {
+    if (stack->top == MAX_SIZE - 1) {  // Check if the stack is full
+        printf("Stack overflow\n");    // Print an error message if the stack is full
+        return;
+    }
+    stack->arr[++stack->top] = element;  // Increment top and add the element to the stack
+}
+
+// Method to remove the top element (peek) of the stack
+int Pop(struct Stack *stack) {
+    if (isEmpty(stack)) {                // Check if the stack is empty
+        printf("Stack underflow\n");     // Print an error message if the stack is empty
+        exit(1);                          
+    }
+    return stack->arr[stack->top--];      // Decrement top and return the popped element
+}
+
+// Method to get the top element of the stack without removing it
+int Peek(struct Stack *stack) {
+    if (isEmpty(stack)) {                // Check if the stack is empty
+        printf("Stack is empty\n");      // Print an error message if the stack is empty
+        exit(1);                          
+    }
+    return stack->arr[stack->top];       // Return the top element of the stack
+}
+
+// Method to get the size of the stack
+int getSize(struct Stack *stack) {
+    return stack->top + 1;  // Return the number of elements in the stack
+}
+
+// Method to clear the stack (top to bottom)
+void clear(struct Stack *stack) {
+    stack->top = -1;  // Reset the top index to -1 (indicating an empty stack)
+}
+
+int main() {
+    struct Stack stack;  // Declare a stack variable
+    initialize(&stack);  // Initialize the stack
+
+    Push(&stack, 1);  // Push elements onto the stack
+    Push(&stack, 2);
+    Push(&stack, 3);
+
+    printf("Peek: %d\n", Peek(&stack));        // Print the top element of the stack
+    printf("Size: %d\n", getSize(&stack));     // Print the size of the stack
+
+    Pop(&stack);  // Pop an element from the stack
+    printf("Size after Pop: %d\n", getSize(&stack));  // Print the size of the stack after popping
+
+    clear(&stack);  // Clear the stack
+    printf("Size after clear: %d\n", getSize(&stack));  // Print the size of the stack after clearing
+
+    return 0;
+}                              
+                </code></pre>
+            </div>
+
+            <h2 id="pythonC">Python</h2>
+            <div class="code-container">
+                <pre><code id="pythonCode" class="language-python">
+# Stack class
+class Stack:
+    def __init__(self):
+        # Initialize the stack with an empty list
+        self.arr = []
+        
+    # Method to check if the stack is empty
+    def is_empty(self):
+        # Check if the stack is empty
+        return len(self.arr) == 0
+    
+    # Method to push a value onto the stack
+    def push(self, element):
+        # Add an element to the top of the stack
+        self.arr.append(element)
+    
+    # Method to pop the top element of the stack
+    def pop(self):
+        # Remove and return the top element from the stack
+        if self.is_empty():
+            # Check if the stack is empty
+            print("Stack underflow")  # Print error message
+            exit(1)  
+        return self.arr.pop()  # Pop and return the top element
+    
+    # Method to check the top (peek) of the stack
+    def peek(self):
+        # Return the top element of the stack without removing it
+        if self.is_empty():
+            # Check if the stack is empty
+            print("Stack is empty")  # Print error message
+            exit(1) 
+        return self.arr[-1]  # Return the top element
+    
+    # Method to check the size of the stack
+    def get_size(self):
+        # Return the number of elements in the stack
+        return len(self.arr)
+    
+    # Method to clear the stack of all elements (top to bottom)
+    def clear(self):
+        # Clear all elements from the stack
+        self.arr = []
+
+if __name__ == "__main__":
+    # Create an instance of the Stack class
+    stack = Stack()
+    
+    # Push elements onto the stack
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    
+    # Peek at the top element of the stack and print it
+    print("Peek:", stack.peek())
+    # Get the size of the stack and print it
+    print("Size:", stack.get_size())
+    
+    # Pop an element from the stack
+    stack.pop()
+    # Get the size of the stack after popping and print it
+    print("Size after Pop:", stack.get_size())
+    
+    # Clear all elements from the stack
+    stack.clear()
+    # Get the size of the stack after clearing and print it
+    print("Size after clear:", stack.get_size())                                
+                </code></pre>
+            </div>
+        </div>  
+
+        <div class="container">
+            <div class="column column-40">
+                <div class="button-panel">
+                    <h2>Operations</h2>
+                    <a class="method-button" id="Pop-Button">Pop</a>
+                    <a class="method-button" id="Peek-Button">Peek</a>
+                    <a class="method-button" id="isEmpty-Button">isEmpty</a>
+                    <a class="method-button" id="size-Button">Size</a>
+                    <a class="method-button" id="Clear-Button">Clear</a>
+                    <div>
+                        <a class="method-button" id="Push-Button" data-message="Pushing to the stack">Push</a>
+                        <input type="number" class="custom-input" id="push-input" placeholder="Enter an integer">
+                    </div>
+                </div>
+
+                <div class="animation-speed-panel">
+                    <h2>Animation Speed</h2>
+                    <p>Faster to the left, Slower to the right</p>
+                    <input type="range" id="animationSpeed" min="0" max="1000" value="750" />
+                </div>
+
+                <div class="popup-panel">
+                    <div class="popup-content">
+                        <span class="close-popup">&times;</span>
+                        <pre id="popup-message"></pre>  <!--Change pre to p for the same font style i personally thought pre looked better for the popup-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="column column-60">
+                <div class="canvas-panel">
+                    <div id="stack-container"></div>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="js/structures/stackvisualizer.js"></script>
     <script src="prism.js"></script>
-    
+</body>
+
 </html>
