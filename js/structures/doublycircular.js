@@ -158,6 +158,7 @@ class CircularDoublyLinkedList extends Node {
         } else {
             console.log(`No nodes with value ${value} found`);
         }
+        this.size();
     }
 
 
