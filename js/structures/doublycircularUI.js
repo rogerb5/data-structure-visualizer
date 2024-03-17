@@ -85,6 +85,6 @@ clearButton.addEventListener('click', () => {
     doublyList.clear();
 });
 
-reverseButton.addEventListener('click', () => {
-    doublyList.reverse();
-});
+// reverseButton.addEventListener('click', () => {
+//     doublyList.reverse();
+// });

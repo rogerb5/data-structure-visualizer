@@ -16,10 +16,10 @@
 
     <header>
         <h1>Doubly Circular Linked List</h1>
-        <div class="mini-container">
-            <a href="home.html">Home</a>
-            <button class="open-btn">Info Menu</button>
-        </div>
+        <nav class="home-container">
+            <a href="Home.html" class="homeBtn" id="homeBtn">Home</a>
+            <button class="open-btn" id="open-btn">Info</button>
+        </nav>
     </header>
 
     <!--- Insert Menu/Modal -->
@@ -31,11 +31,12 @@
                 can be defined as a circular linked list in which each node has two 
                 links connecting it to the previous node and the next node. </p>
 
-            <p></p>
-
-            <p></p>
-
-            <p></p>
+                <article class="allbuttons-container">
+                    <a href="#javaSection" class="button-link" id="buttonLink">Java Code</a>
+                    <a href="#cSection" class="button-link" id="buttonLink">C Code</a>
+                    <a href="#pythonSection" class="button-link" id="buttonLink">Python Code</a>
+                </article>
+                
         </article>
 
         <article class="stack-op">
@@ -78,18 +79,35 @@
             <p></p>
         </article>
 
+        <article class="stack-op">
+            <h1>Time Complexity</h1>
+            <p>Every  Data Structure has a time complexity. The time complexity of a Circular Doubly Linked List is can be different between its methods. 
+                <br> Accessing an element by index time complexity is O(n).
+                <br> Insertion and Deletion time complexity is O(1).
+                <br> Searching for an element time complexity is O(n).
+                <br> Inserting or Deleting an element at a specific position time complexity is O(n).
+                <br> It's Important to know that the above time complexities are general cases and vary based on implementation details. 
+            </p>
+            <p></p>
+
+            <p></p>
+            <p> </p>
+        </article>
+
         <section class="all">
-            <article class="java-article">
+            <article class="java-article" id="javaSection">
                 <h2>Java</h2>
                 <pre>
                     <!-- Add Java code within code tag-->
                 <code class="language-java">
                     public class Node {
+                        // Node class to represent a node in the circular doubly linked list
 
                         int data;
                         Node next;
                         Node prev;
                 
+                        // Constructor to create a new node with the given data
                         Node(int data) {
                             this.data = data;
                             this.next = null;
@@ -100,7 +118,7 @@
                     //new class file
                     import java.util.Scanner;
                     public class CircularDoublyLinkedList {
-                        Node head;
+                        Node head; //head node of the list
 
                         // Append a new node to the end of the list
                         public void append(int data) {
@@ -201,7 +219,7 @@
                 </pre>
             </article>
 
-            <article class="c-article">
+            <article class="c-article" id="cSection">
                 <h2>C</h2>
                 <pre>
                 <!-- Add c code within code tag-->
@@ -210,15 +228,15 @@
                         #include <stdlib.h>
                         
                         struct Node {
-                            int data;
-                            struct Node* next;
-                            struct Node* prev;
+                            int data; //data stored in the node
+                            struct Node* next; // Pointer to the next node
+                            struct Node* prev; // pointer to the previous node
                         };
                         
                         typedef struct Node Node;
                         
                         struct CircularDoublyLinkedList {
-                            Node* head;
+                            Node* head; //pointer to the head node
                         };
                         
                         typedef struct CircularDoublyLinkedList CircularDoublyLinkedList;
@@ -227,12 +245,14 @@
                         void append(CircularDoublyLinkedList* list, int data) {
                             Node* newNode = (Node*)malloc(sizeof(Node));
                             newNode->data = data;
-                        
+
+                            //if the list is empty, set the new node as the head
                             if (list->head == NULL) {
                                 list->head = newNode;
                                 newNode->next = newNode;
                                 newNode->prev = newNode;
-                            } else {
+                            } else { 
+                                //if the list is not empty, append the new node to the end of the list
                                 Node* last = list->head->prev;
                                 last->next = newNode;
                                 newNode->prev = last;
@@ -246,11 +266,13 @@
                             Node* newNode = (Node*)malloc(sizeof(Node));
                             newNode->data = data;
                         
+                            //if the list is empty, set the new node as the head
                             if (list->head == NULL) {
                                 list->head = newNode;
                                 newNode->next = newNode;
                                 newNode->prev = newNode;
                             } else {
+                                //if the list is not empty, prepend the new node to the beginning of the list
                                 Node* last = list->head->prev;
                                 newNode->next = list->head;
                                 list->head->prev = newNode;
@@ -262,11 +284,13 @@
                         
                         // Function to display the elements in the circular doubly linked list
                         void display(CircularDoublyLinkedList* list) {
+                            //if the list is empty, print a message
                             if (list->head == NULL) {
                                 printf("List is empty.\n");
                                 return;
                             }
-                        
+                            
+                            //traverse the list and print the data of each node
                             Node* current = list->head;
                             do {
                                 printf("%d ", current->data);
@@ -282,6 +306,7 @@
                         
                             int choice;
                             do {
+                                //menu for user
                                 printf("1. Append to the List\n");
                                 printf("2. Prepend to the List\n");
                                 printf("3. Display the Circular Doubly Linked List\n");
@@ -334,25 +359,29 @@
                 <h2>Python</h2>
                 <pre>
                     <!--Add python code within code tage-->
-                <code class="language-python">
+                <code class="language-python" id="pythonSection">
                     class Node:
                         def __init__(self, data):
+                        #Initialize a new node with given data
                             self.data = data
-                            self.next = None
-                            self.prev = None
+                            self.next = None # points to the next node
+                            self.prev = None # points to previous node
 
                     class CircularDoublyLinkedList:
                         def __init__(self):
+                        #initialize an empty list with no head node
                             self.head = None
 
                         # Append a new node to the end of the list
                         def append(self, data):
-                            new_node = Node(data)
+                            new_node = Node(data) #creates a new node with given data
                             if self.head is None:
+                            #if the list is empty, set the new node as the head
                                 self.head = new_node
                                 new_node.next = new_node
                                 new_node.prev = new_node
                             else:
+                            #if the list is not empty, append the new node to the end of the list
                                 last = self.head.prev
                                 last.next = new_node
                                 new_node.prev = last
@@ -361,12 +390,13 @@
 
                         # Prepend a new node to the beginning of the list
                         def prepend(self, data):
-                            new_node = Node(data)
+                            new_node = Node(data) #creates a new node with given data
                             if self.head is None:
+                            #If the list is empty, set the new node as the head
                                 self.head = new_node
                                 new_node.next = new_node
                                 new_node.prev = new_node
-                            else:
+                            else: #if the list is not empty, prepend the new node to the beginning of the list
                                 last = self.head.prev
                                 new_node.next = self.head
                                 self.head.prev = new_node
@@ -376,12 +406,14 @@
 
                         # Display the elements in the circular doubly linked list
                         def display(self):
+                        #if the list is empty, print a message.
                             if self.head is None:
                                 print("List is empty.")
                                 return
 
                             current = self.head
                             while True:
+                            #traverse the list and print the data of each node
                                 print(current.data, end=" ")
                                 current = current.next
                                 if current == self.head:
@@ -392,12 +424,13 @@
                         linked_list = CircularDoublyLinkedList()
 
                         while True:
+                        #display menu options
                             print("1. Append to the List")
                             print("2. Prepend to the List")
                             print("3. Display the Circular Doubly Linked List")
                             print("0. Exit")
 
-                            choice = int(input("Enter your choice: "))
+                            choice = int(input("Enter your choice: "))#Get input from user
 
                             if choice == 1:
                                 append_value = int(input("Enter a value to append: "))
@@ -456,12 +489,12 @@
         <h3>Please enter a valid number</h3>
     </section>
 
-    <!-- <section class="list-info-section">
+    <section class="list-info-section">
         <article class="size-article">
             <p class="size-p">List Size: 0</p>
-            <p class="reverse-p">The list is not reversed!</p>
+            <!-- <p class="reverse-p">The list is not reversed!</p> -->
         </article>
-    </section> -->
+    </section>
 
     <!-- All nodes will be rendered here with JavaScript-->
     <main class="list-container">
