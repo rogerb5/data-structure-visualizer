@@ -3,6 +3,7 @@ class Node {
         this.data = data;
         this.next = null;
         this.prev = null;
+        this.isCleared = false; 
     }
 }
 
@@ -25,6 +26,7 @@ class CircularDoublyLinkedList extends Node {
 
     //add node at the end of the list
     append(data) {
+        this.isCleared = false;
         const newNode = new Node(data);
         const nodeComponent = document.createElement('div');
         nodeComponent.classList.add('node');
@@ -53,6 +55,7 @@ class CircularDoublyLinkedList extends Node {
 
     //add node at the beginning of the list
     prepend(data) {
+        this.isCleared = false;
         const newNode = new Node(data);
         const nodeComponent = document.createElement('div');
         nodeComponent.classList.add('node');
@@ -221,19 +224,23 @@ class CircularDoublyLinkedList extends Node {
     
     //get the size of the list
     size() {
-        if (!this.head) {
+        const sizeOutput = document.querySelector('p.size-p');
+        if (this.isCleared) {
+            sizeOutput.textContent = 'Size: 0';
             return 0;
         }
+
         let count = 1;
         let current = this.head;
-        const sizeOutput = document.querySelector('p.size-p');
-        while (current && current.next != this.head) {
+        while (current && current.next !== this.head) {
             current = current.next;
             count++;
         }
+
         sizeOutput.textContent = `Size: ${count}`;
         return count;
     }
+    
 
     //reverse the list Doesnt work with dom of browser
     // reverse() {
@@ -284,6 +291,7 @@ class CircularDoublyLinkedList extends Node {
         });
         this.head = null;
         this.tail = null;
+        this.isCleared = true;
         this.size();
     }
 }
