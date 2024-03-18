@@ -8,14 +8,29 @@ const arrayBtn = document.querySelector('button.array-btn');
 const maxHeapContainer = document.querySelector('div.maxheap-container');
 const openBtn = document.querySelector('button.open-btn');
 const closeBtn = document.querySelector('button.close-btn');
-
+const containsBtn = document.querySelector('button.contains-btn');
 const modal = document.querySelector('section.modal');
-
 const input = document.querySelector('input.node-value');
+const inputTwo = document.querySelector('input.contains-value');
 const errorMsg = document.querySelector('p#error-msg');
+const secondErrorMsg = document.querySelector('p#second-error-msg');
 
 addBtn.addEventListener('click', () => {
     addInput();
+});
+
+containsBtn.addEventListener('click', () => {
+    const containsInput = parseInt(inputTwo.value);
+    if (!maxHeap.contains(containsInput)) {
+        inputTwo.value = '';
+        secondErrorMsg.classList.add('active')
+        setTimeout(() => {
+            secondErrorMsg.classList.remove('active');
+        }, 3000);
+        return;
+    }
+    maxHeap.contains(containsInput);
+    inputTwo.value = '';
 });
 
 extractBtn.addEventListener('click', () => {
@@ -54,7 +69,6 @@ function addInput() {
     if (isNaN(inputValue)) {
         errorMsg.classList.add('active');
         setTimeout(() => {
-            console.log('hihi')
             errorMsg.classList.remove('active');
         }, 3000);
         return;

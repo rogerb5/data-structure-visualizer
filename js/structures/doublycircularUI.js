@@ -84,7 +84,3 @@ searchButton.addEventListener('click', () => {
 clearButton.addEventListener('click', () => {
     doublyList.clear();
 });
-
-reverseButton.addEventListener('click', () => {
-    doublyList.reverse();
-});

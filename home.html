@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Data Structure Visualizer - CSCD 488 Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="main-page">
+        <header class="main-header">
+            <h1 class="main-title">Visualize Data Structures</h1>
+        </header>
+
+        <div class="login-register">
+            <button onclick="logout()" id="main-login-btn">Logout</button>
+            <a href="dashboard.html"><button id="dashboard-btn">Dashboard</button>
+            <!-- <button id="main-register-btn">Register</button> -->
+        </div>
+
+        <nav>
+            <a href="stack.html"><button class="button" id="stack-bg">Stack</button></a>
+            <a href="doublycircular.html"><button class="button" id="ll-bg">Doubly Circular Linked List</button></a>
+            <a href="binarytree.html"><button class="button" id="bst-bg">Binary Search Tree</button></a>
+            <a href="maxheap.html"><button class="button" id="heap-bg">Max Heap</button></a>
+        </nav>
+        <article class="About Us">
+        <h2 class="About Us">About Us</h2>
+        <p> We are a group of four students in our senior year at Eastern Washington University. This website is our Senior project.
+            We chose to create a website that allows users to visualize data structures. You can view the basic code of the structures and maybe
+            a few methods sprinkled in to get the idea about how the data strutures as manipulated. 
+            There are quite a few number of our peers(and some of us), we noticed who struggle with the visualization of the concepts of how a datastructure works.
+            And so we thought a need for a more visual based learning tool was unfullfilled. If that is you as well then this is the place for you, welcome!
+            We hope you enjoy our website and find it useful.
+        </p>
+        </article>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+<script src="js/structures/logout.js"></script>
+
+
+</html>

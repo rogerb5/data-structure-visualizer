@@ -1,60 +1,103 @@
+/* Created By - Logan Stoltz */
+
+/* ---------- Majority of the color scheme ---------- */
+:root{
+  --main-background: url('/assets/img/StackBackground.jpg');
+   --header-color: #02006bbe;
+   --header-bottom-border-color: rgba(189, 166, 252, 0.507);
+  
+   --panel-background-color :rgba(0, 0, 0, 0.575);
+  
+   --stackbox-background-color:rgba(245, 203, 255, 0.616);
+   --stackbox-border-color: #e27dd18f;
+  
+   --header-button-color: #00000070;
+   --header-button-border-color: #ffffff67;
+   --header-button-hover-color: #00303f70;
+   --header-button-clicked-color: #70990070;
+  
+   --method-button-color: #df986f;
+   --method-button-border-color: #eb7d62a4;
+   --method-button-hover-color: #e6a55c;
+   --method-button-clicked-color: #a5543b;
+  
+   --tab-background-color: #02006bbe;
+  }
+
+/* ---------- global/defualt functions ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Styles Go Here */
 body {
-  height: 100%;
-  background-color: lightgrey;
+  height: calc(100vh - 70px);
   font-family: system-ui;
+  min-width: 600px;
+  margin: 0 auto;
 }
 
 h1 {
   text-align: center;
   color: #f1faee;
-  position: relative;
 }
 
 h2 {
   text-align: center;
   color: #f1faee;
-  position: relative;
 }
 
-:root{
- --bg-color: #8d7e8c;
- --button-color: #8182be;
- --hover-button-color: #81a8be;
- --clicked-button-color: #373750;
+pre {
+  font-size: x-large;
 }
 
+input {
+  margin-bottom: 5px;
+}
+
+
+/* ---------- GENERAL DESIGN ---------- */
+.background-image {
+  background-image: var(--main-background);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
 .header {
-  background-color: #581845;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--header-color);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  min-height: 100px;
+  height: 70px;
+  min-width: 60vw;
+  white-space: nowrap;
 }
 
 .container {
   display: flex;
-  height: 100%;
+  margin-top: 70px;
+  height: calc(100vh - 70px);
+  border-top: 8px groove var(--header-bottom-border-color);
 }
-
 
 .column {
   flex: 1;
   padding: 20px;
+  padding-bottom: 0px;
   margin: 0px;
   width: auto;
-  height: 100%;
+  height: calc(100vh - 70px);
 }
 
 .column-40 {
-  background-color: var(--bg-color);
   height: auto;
   justify-content: space-between;
   width: 40%;
@@ -62,7 +105,6 @@ h2 {
 }
 
 .column-60 {
-  background-color: var(--bg-color);
   height: auto;
   justify-content: space-between;
   width: 60%;
@@ -71,112 +113,133 @@ h2 {
 
 
 
-
-/* -- Panels -- */
-/* Buttons panel */
+/*  ---------- Panels ---------- */
 .button-panel {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--panel-background-color);
   border-radius: 15px;
   padding: 2%;
   margin-bottom: 2%;
   height: auto;
   width: auto;
+  white-space: nowrap;
 }
 
-
-
-/* Canvas panel */
 .canvas-panel {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--panel-background-color);
   border-radius: 15px;
   padding: 10px;
-  height: 85vh;
+  height: calc(100vh - 120px);
   width: auto;
   overflow: auto;
 }
 
+.animation-speed-panel {
+  background-color: var(--panel-background-color);
+  border-radius: 15px;
+  padding: 2%;
+  margin-bottom: 2%;
+  height: auto;
+  width: auto;
+  color: white;
+  z-index: 1000;
+}
+.animation-speed-panel p{
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 
-/* Stack Visualizer panel */
+.popup-panel {
+  display: none;
+  background-color: var(--panel-background-color);
+  border-radius: 15px;
+  padding: 2%;
+  margin-bottom: 2%;
+  height: auto;
+  width: auto;
+  color: white;
+  z-index: 1000;
+}
+
+
+
+/* ---------- Popup ---------- */
+.popup-content {
+  text-align: center;
+  font-size: x-large;
+}
+
+
+
+/* ---------- Stack Visualizer within canvas panel ---------- */
 #stack-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  animation: drop 0.5s ease forwards;
-}
-
-@keyframes drop{
-  100%{transform: translateY(40px);}
-  70%{ transform: translateY(80px)}
-  0%{}
+  height: calc(88vh - 70px);
+  z-index: 1;
 }
 
 .stack-box {
   width: 500px;
   height: 50px;
-  border: 3px solid rgba(255, 255, 255, 0.76);
-  background-color: #6b8eff;
+  border: 4px groove var(--stackbox-border-color);
+  background-color: var(--stackbox-background-color);
+  border-radius: 15px;
   font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
+  z-index: 1;
 }
 
-input {
-  margin-bottom: 5px;
+.stack-box.drop-down {
+  animation: dropDown 0.5s ease-in 0s 1 normal both;
+}
+
+.stack-box.stack-remove {
+  animation: shakeAndFade 0.75s ease-in-out;
+}
+
+.stack-box.peek-highlight {
+  animation: peek-highlight 2s normal;
 }
 
 
-/* Normal Buttons */
-.button-set {
-  display: flex;
-}
-.button {
+
+/* ---------- Buttons ---------- */
+.header-button-container {
   display: inline-block;
-  font-size: 20px;
-  padding: 1% 1%;
-  cursor: pointer;
-  text-align: center;
-  width: flex;
-  color: #fff;
-  background-color: var(--button-color);
-  border-radius: 15px;
-  box-shadow: 0 6px #00000055;
-  margin-left: 4%;
-  margin-right: 4%;
-}
-.button:hover {
-  background-color: var(--hover-button-color);
-}
-.button:active {
-  background-color: var(--clicked-button-color);
-  box-shadow: 0 3px #00000075;
-  transform: translateY(3px);
+  white-space: nowrap;
+  vertical-align: top;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-.home-button {
+.header-button {
   display: inline-block;
   font-size: 24px;
-  padding: 15px 25px;
+  padding: 9px 20px;
+  margin-left: 4px;
+  margin-right: 4px;
+  color: #c0c0c0;
+  background-color: var(--header-button-color);
+  border: 2px solid var(--header-button-border-color);
+  border-radius: 15px;
   cursor: pointer;
   text-align: center;
-  color: #fff;
-  background-color: var(--button-color);
-  border-radius: 15px;
-  box-shadow: 0 9px #00000055;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
 }
-.home-button:hover {
-  background-color: var(--hover-button-color);
+.header-button:hover {
+  background-color: var(--header-button-hover-color);
+  transition: all 300ms ease;
 }
-.home-button:active {
-  background-color: var(--clicked-button-color);
-  box-shadow: 0 5px #00000075;
-  transform: translateY(4px);
+.header-button:active {
+  background-color: var(--header-button-clicked-color);
 }
+
 
 .method-button {
   display: inline-block;
@@ -184,21 +247,23 @@ input {
   padding: 1% 1%;
   cursor: pointer;
   text-align: center;
-  width: 15%;
+  width: 18%;
   color: #fff;
-  background-color: var(--button-color);
+  border: 2px solid var(--method-button-border-color);
+  background-color: var(--method-button-color);
   border-radius: 15px;
   box-shadow: 0 6px #00000055;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 0.7%;
+  margin-right: 0.7%;
   margin-top: 12px;
   margin-bottom: 12px;
 }
 .method-button:hover {
-  background-color: var(--hover-button-color);
+  background-color: var(--method-button-hover-color);
+  transition: all 300ms ease;
 }
 .method-button:active {
-  background-color: var(--clicked-button-color);
+  background-color: var(--method-button-clicked-color);
   box-shadow: 0 3px #00000075;
   transform: translateY(3px);
 }
@@ -209,81 +274,219 @@ input {
 }
 
 input[type="number"] {
-  background-color:white;
+  background-color:rgb(255, 255, 255);
   color: black;
-  width: 76%;
+  width: 78%;
   padding: 9px;
   font-size: 1.2rem;
 }
 
+
+
+
+
+/* ---------- More Info Tab ---------- */
 .tab{
   overflow: auto;
-  background-color: var(--bg-color);
 }
 
-.tab button {
-  display: inline-block;
-  font-size: 24px;
-  padding: 15px 25px;
-  cursor: pointer;
-  text-align: center;
-  color: #fff;
-  background-color: var(--button-color);
-  border-radius: 15px;
-  box-shadow: 0 9px #00000055;
-  position: absolute;
-  top: 16px;
-  left: 150px;
-}
-.tab button:hover {
-  background-color: var(--hover-button-color);
-}
-.tab button:active {
-  background-color: var(--clicked-button-color);
-  box-shadow: 0 3px #00000075;
-  transform: translateY(3px);
-}
 .tabcontent {
   display: none;
+  position: absolute;
   padding: 6px 12px;
-  background-color: var(--bg-color);
-  height: 100%;
+  background-color: var(--tab-background-color);
+  margin-top: 70px;
+  height: calc(100vh - 70px);
+  width: 100vw;
   border-top: none;
   text-align: center;
-}
-
-.tabcontent h3 {
-  font-size: xx-large;
-  color: black;
+  overflow-y: scroll;
+  overflow-x: none;
+  color: white;
+  animation: tabDropDown 1s ease-in-out 0s 1;
+  z-index: 2;
 }
 
 .tabcontent h2 {
   text-align: left;
-  color: black;
+  color: rgb(255, 255, 255);
+}
+
+.tabcontent h3 {
+  font-size: xx-large;
+  color: rgb(255, 255, 255);
+  text-decoration: overline;
+}
+
+.tabcontent h4 {
+  font-size: xx-large;
+  color: rgb(255, 255, 255);
+  margin-top: 20px;
+  text-decoration: overline;
 }
 
 .tabcontent p {
+  text-align: left;
   font-size: large;
+  margin-bottom: 10px;
 }
 
-.topright {
-  float: right;
-  cursor: pointer;
-  font-size: 28px;
-}
-
-.topright:hover {
-  color: red;
-}
-
-/* Displaying Code */
 .code-container {
   position: relative;
   width: 100%;
   height: auto;
+  padding-bottom: 50px;
+}
+
+.text-container {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  border: 2px solid white;
+  background: rgba(20, 37, 73, 0.747);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #e44d26;
 }
 
 
-.highlight {
-  color: #e44d26; /* Set your desired color for highlighting */
+/* ---------- exit buttons: hover ---------- */
+.close-tab {
+  float: right;
+  cursor: pointer;
+  transform: translate(0px, -10px);
+  font-size: 38px;
+}
+
+.close-popup {
+  float: right;
+  cursor: pointer;
+  transform: translate(0px, -15px);
+  font-size: 28px;
+}
+
+.close-tab:hover, .close-popup:hover{
+  color: red;
+}
+
+
+/*** Used this resource to help me create a stylish slider https://range-input-css.netlify.app/ ***/
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #adbee6;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -8px; /* Centers thumb on the track */
+  background-color: #f7abab;
+  border-radius: 0rem;
+  height: 1.5rem;
+  width: 0.5rem;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  outline: 3px solid #f7abab;
+  outline-offset: 0.125rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  background-color: #adbee6;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: #f7abab;
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0rem;
+  height: 1.5rem;
+  width: 0.5rem;
+}
+
+input[type="range"]:focus::-moz-range-thumb{
+  outline: 3px solid #f7abab;
+  outline-offset: 0.125rem;
+}
+
+
+
+/* ---------- Keyframes for all animations ---------- */
+@keyframes dropDown {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes peek-highlight {
+  0% {
+    background-color: rgba(92, 231, 150, 0.753);
+  }
+  50% {
+    background-color: rgba(92, 231, 150, 0.753);
+    transform: scale(1.1); 
+  }
+  100% {
+    background-color: rgba(245, 203, 255, 0.616);
+    transform: scale(1); /* Return to normal scale */
+  }
+}
+
+@keyframes shakeAndFade {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  10%, 30%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+  50% {
+   transform: translateX(-5px);
+   opacity:1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes tabDropDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

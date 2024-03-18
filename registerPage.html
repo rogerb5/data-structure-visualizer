@@ -4,54 +4,66 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Stack Visualizer</title>
+    <title>Registration Page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/registerPage.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
-    <div class="registration-form">
-        <form action="">
-            <h1>Registration</h1>
+    <body>
 
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="text" name="fullname" placeholder="Full Name">
-                    <i class='bx bxs-user'></i>
-                </div>
+        <main>
+            <header>
+                <h1>Data Structure Visualizer Registration</h1>
+            </header>
+    
+            <div class="registration-form">
+                <form id = "registrationForm">
+                    <h2>Registration</h2>
+    
+                    <div class="input-box">
+                        <label>Full Name:</label>
+                        <div class="input-field">
+                            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                            <i class='bx bxs-user'></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>User Name:</label>
+                        <div class="input-field">
+                            <input type="text" id="username" name="username" placeholder="User Name" required>
+                            <i class='bx bxs-user-pin'></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Email:</label>  
+                        <div class="input-field">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <i class='bx bxs-envelope' ></i>
+                        </div>
+                    </div>
+                            
+                    <div class="input-box">
+                        <label>Password:</label>
+                        <div class="input-field">
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                            <i class='bx bxs-lock' ></i>
+                        </div>
+                    </div>
+    
+                    <div class="input-box">
+                        <label>Confirm Password:</label>
+                        <div class="input-field">
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                            <i class='bx bxs-lock' ></i>
+                        </div>
+                    </div>
+                    <button type="register" id="Reg" class="register" onclick="RegisterUser">Register</button>
+                </form>
             </div>
-            <!--<div class="input-box">
-                <div class="input-field">
-                    <input type="text" name="username" placeholder="User Name">
-                    <i class='bx bxs-user-pin'></i>
-                </div>
-            </div>-->
-            <div class="input-box">
-                <div class="input-field">    
-                    <input type="email" name="email" placeholder="Email">
-                    <i class='bx bxs-envelope' ></i>
-                </div>
-            </div>
-                    
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="password" name="password" placeholder="Password">
-                    <i class='bx bxs-lock' ></i>
-                </div>
-            </div>
-
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="password" name="password" placeholder="Confirm Password">
-                    <i class='bx bxs-lock' ></i>
-                </div>
-            </div>
-            <button type="submit" class="register">Register</button>
-        </form>
-    </div>
-    <script src="js/structures/stack.js"></script>
-</body>
+        </main>
+        <script type="module" src="js\structures/registerPage.js"></script>
+    </body>
 
 </html>

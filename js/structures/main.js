@@ -1,1 +1,0 @@
-console.log('main test file is loaded');

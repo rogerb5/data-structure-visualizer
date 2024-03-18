@@ -38,8 +38,3 @@ import {NodeBST,BinarySearchTree} from "./binarytree.js";
     const maxNode = tree.lookupMaxNode(tree.root);
     console.log("Minimum Node:", minNode.data);
     console.log("Maximum Node:", maxNode.data);
-
-
-
-
-

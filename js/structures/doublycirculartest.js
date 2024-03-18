@@ -16,8 +16,3 @@ list.removeNode(3)
 
 console.log('Circular Doubly Linked List after removal: ' + list.display());
 list.removeNode(1)
-// console.log('Circular Doubly Linked List after removal: ' + list.display());
-
-
-// console.log('removed ' + list.removeNode(1));
-// console.log('Circular Doubly Linked List ' + list.display());
