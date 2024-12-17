@@ -15,3 +15,6 @@ page. And the fonts for each specific page.
 
 This project does not include any frameworks so no external downloadeds are neeeded.
 All the code was created using plain JavaScript. 
+
+
+https://datastructurevisualizer.netlify.app/home
